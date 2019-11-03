@@ -22,6 +22,7 @@ namespace Models.Components
         [BsonElement("chapter_ids")]
         public List<string> Chapters { get; set; }
 
-        public Book(string creator): base(creator) {}
+        public Book(string creator) 
+            : base(creator) {}
     }
 }

@@ -14,11 +14,11 @@ namespace Repositories
         protected readonly IMongoCollection<TEntity> _collection;
         public int Limit { get; protected set; } = 25;
 
-        public EntityRepository(IConfiguration config, string document)
+        public EntityRepository(IConfiguration config, string collection)
         {
             var client = new MongoClient(config.GetConnectionString("Database:DBConn"));
             var database = client.GetDatabase(config.GetValue<string>("Database:DBName"));
-            _collection = database.GetCollection<TEntity>(document);
+            _collection = database.GetCollection<TEntity>(collection);
         }
 
         public async Task<Response<IEnumerable<TEntity>>> Paginate(int page, int count = 5, FilterDefinition<TEntity> filter = null, SortDefinition<TEntity> sort = null, ProjectionDefinition<TEntity> projection = null)

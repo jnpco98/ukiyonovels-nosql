@@ -28,6 +28,7 @@ namespace Models.Components
         [BsonElement("comment_ids")]
         public List<string> Comments { get; set; }
 
-        public Chapter(string _creator) : base(_creator) {}
+        public Chapter(string _creator) 
+            : base(_creator) {}
     }
 }

@@ -12,6 +12,7 @@ namespace Models.Components
         [BsonElement("name")]
         public string Name { get; set; }
 
-        public Origin(string creator) : base(creator) {}
+        public Origin(string creator) 
+            : base(creator) {}
     }
 }

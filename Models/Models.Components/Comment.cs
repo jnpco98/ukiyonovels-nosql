@@ -12,6 +12,7 @@ namespace Models.Components
         [BsonElement("message")]
         public string Message { get; set; }
 
-        public Comment(string creator) : base(creator) {}
+        public Comment(string creator) 
+            : base(creator) {}
     }
 }

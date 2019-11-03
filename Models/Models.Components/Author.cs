@@ -18,6 +18,7 @@ namespace Models.Components
         [BsonElement("alt_names")]
         public List<string> AlternateNames { get; set; }
 
-        public Author(string creator) : base(creator) {}
+        public Author(string creator) 
+            : base(creator) {}
     }
 }

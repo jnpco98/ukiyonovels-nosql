@@ -40,6 +40,7 @@ namespace Models.Components
         [BsonElement("authors")]
         public List<Author> Authors { get; set; }
 
-        public Novel(string creator) : base(creator) {}
+        public Novel(string creator) 
+            : base(creator) {}
     }
 }
