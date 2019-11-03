@@ -21,14 +21,18 @@ namespace Repositories
             _collection = database.GetCollection<TEntity>(document);
         }
 
-        public async Task<Response<IEnumerable<TEntity>>> Paginate(int page, int count = 5, FilterDefinition<TEntity> filter = null)
+        public async Task<Response<IEnumerable<TEntity>>> Paginate(int page, int count = 5, FilterDefinition<TEntity> filter = null, SortDefinition<TEntity> sort = null, ProjectionDefinition<TEntity> projection = null)
         {
             if(count > Limit) count = Limit;
             var response = new Response<IEnumerable<TEntity>>();
 
             try 
             {
-                var query = _collection.Find(filter ?? Builders<TEntity>.Filter.Empty).Limit(count).Skip(page * count);
+                var query = _collection.Find<TEntity>(filter ?? Builders<TEntity>.Filter.Empty)
+                                    .Limit(count).Skip(page * count)
+                                    .Sort(sort ?? Builders<TEntity>.Sort.Ascending(e => e.Id))
+                                    .Project<TEntity>(projection);
+
                 var result = await query.ToListAsync();
                 response.Data = result;
                 
