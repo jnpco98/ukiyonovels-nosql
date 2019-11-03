@@ -28,7 +28,7 @@ namespace Repositories
 
             try 
             {
-                var query = _collection.Find(e => true).Limit(count).Skip(page * count);
+                var query = _collection.Find(filter ?? Builders<TEntity>.Filter.Empty).Limit(count).Skip(page * count);
                 var result = await query.ToListAsync();
                 response.Data = result;
                 
