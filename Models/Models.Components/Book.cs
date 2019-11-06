@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 namespace Models.Components
 {
     public class Book : Entity
-    {
+    {        
         [Required]
         [MinLength(5, ErrorMessage = "Title length can't be less than 5 characters")]
         [MaxLength(30, ErrorMessage = "Title length can't be more than 30 characters")]

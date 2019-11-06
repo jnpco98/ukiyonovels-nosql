@@ -6,13 +6,16 @@ using MongoDB.Driver;
 using Models;
 using External.Extensions.MongoDB;
 using HttpResponse;
+using System.Linq;
 
 namespace Repositories
 { 
     public abstract class EntityRepository<TEntity> : IEntityRepository<TEntity> where TEntity : Entity
     {
+        public int Limit { get; protected set; } = 50;
+        
         protected readonly IMongoCollection<TEntity> _collection;
-        public int Limit { get; protected set; } = 25;
+        protected string[] _queryable = new string[] {};
 
         public EntityRepository(IConfiguration config, string collection)
         {
@@ -21,7 +24,43 @@ namespace Repositories
             _collection = database.GetCollection<TEntity>(collection);
         }
 
-        public async Task<Response<IEnumerable<TEntity>>> Paginate(int page, int count = 5, FilterDefinition<TEntity> filter = null, SortDefinition<TEntity> sort = null, ProjectionDefinition<TEntity> projection = null)
+        protected FilterDefinition<TEntity> BuildQuery(IDictionary<string, string> fieldEqValue = null, IDictionary<string, IEnumerable<string>> fieldMatchValues = null, IEnumerable<string> ids = null)
+        {
+            var filters = new List<FilterDefinition<TEntity>>();
+            var filterBuilder = Builders<TEntity>.Filter;
+            var _queryableLower = _queryable.Select(q => q.ToLower());
+
+            if(fieldEqValue != null && fieldEqValue.Any())
+            {
+                filters.Add(fieldEqValue
+                    .Where(f => _queryableLower.Contains(f.Key.ToLower()))
+                    .Select(f => filterBuilder.Eq(f.Key, f.Value))
+                    .Aggregate((curr, acc) => curr | acc)
+                );
+            }
+
+            if(fieldMatchValues != null && fieldMatchValues.Any())
+            {
+                filters.Add(fieldMatchValues.Where(f => _queryableLower.Contains(f.Key.ToLower()))
+                    .Select(f => f.Value
+                        .Select(v => filterBuilder.Eq(f.Key, v))
+                        .Aggregate((curr, acc) => curr | acc))
+                    .Aggregate((curr, acc) => curr | acc)
+                );
+            }
+
+            if(ids != null && ids.Any())
+            {
+                filters.Add(ids
+                    .Select(id => filterBuilder.Eq("_id", id))
+                    .Aggregate((acc, curr) => acc | curr)
+                );
+            }
+
+            return Builders<TEntity>.Filter.Or(filters);
+        }
+
+        protected async Task<Response<IEnumerable<TEntity>>> Paginate(int page, int count = 5, FilterDefinition<TEntity> filter = null, SortDefinition<TEntity> sort = null, ProjectionDefinition<TEntity> projection = null)
         {
             if(count > Limit) count = Limit;
             var response = new Response<IEnumerable<TEntity>>();
