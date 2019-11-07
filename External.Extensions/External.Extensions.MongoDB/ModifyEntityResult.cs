@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Models;
 
 namespace External.Extensions.MongoDB
 {
@@ -15,7 +14,7 @@ namespace External.Extensions.MongoDB
 
         public ModifyEntityResult(IEnumerable<TEntity> entities = null)
         {
-            if(entities != null)
+            if (entities != null)
             {
                 Entities = entities;
             }

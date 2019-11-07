@@ -12,7 +12,7 @@ namespace Models.Components
         [MaxLength(30, ErrorMessage = "Title length can't be more than 30 characters")]
         [BsonElement("title")]
         public string Title { get; set; }
-        
+
         [Required]
         [MinLength(10, ErrorMessage = "Description length can't be less than 10 characters")]
         [MaxLength(40, ErrorMessage = "Description length can't be more than 40 characters")]
@@ -28,7 +28,7 @@ namespace Models.Components
         [BsonElement("comment_ids")]
         public List<string> Comments { get; set; }
 
-        public Chapter(string _creator) 
-            : base(_creator) {}
+        public Chapter(string _creator)
+            : base(_creator) { }
     }
 }

@@ -15,7 +15,7 @@ namespace Models.Components
         [BsonElement("rating")]
         public float Rating { get; set; }
 
-        public Review(string creator) 
-            : base(creator) {}
+        public Review(string creator)
+            : base(creator) { }
     }
 }

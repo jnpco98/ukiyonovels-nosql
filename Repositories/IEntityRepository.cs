@@ -1,11 +1,11 @@
-using System.Threading.Tasks;
 using External.Extensions.MongoDB;
 using HttpResponse;
 using Models;
+using System.Threading.Tasks;
 
-namespace Repositories 
+namespace Repositories
 {
-    interface IEntityRepository<TEntity> where TEntity : Entity
+    internal interface IEntityRepository<TEntity> where TEntity : Entity
     {
         Task<Response<TEntity>> Get(string id);
 

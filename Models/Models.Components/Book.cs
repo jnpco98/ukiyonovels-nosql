@@ -6,13 +6,13 @@ using System.ComponentModel.DataAnnotations;
 namespace Models.Components
 {
     public class Book : Entity
-    {        
+    {
         [Required]
         [MinLength(5, ErrorMessage = "Title length can't be less than 5 characters")]
         [MaxLength(30, ErrorMessage = "Title length can't be more than 30 characters")]
         [BsonElement("title")]
         public string Title { get; set; }
-        
+
         [Required]
         [MinLength(10, ErrorMessage = "Description length can't be less than 10 characters")]
         [MaxLength(40, ErrorMessage = "Description length can't be more than 40 characters")]
@@ -22,7 +22,7 @@ namespace Models.Components
         [BsonElement("chapter_ids")]
         public List<string> Chapters { get; set; }
 
-        public Book(string creator) 
-            : base(creator) {}
+        public Book(string creator)
+            : base(creator) { }
     }
 }

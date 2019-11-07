@@ -1,21 +1,20 @@
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Configuration;
-using MongoDB.Driver;
-using Models;
 using External.Extensions.MongoDB;
 using HttpResponse;
+using Microsoft.Extensions.Configuration;
+using Models;
+using MongoDB.Driver;
+using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Repositories
-{ 
+{
     public abstract class EntityRepository<TEntity> : IEntityRepository<TEntity> where TEntity : Entity
     {
         public int Limit { get; protected set; } = 50;
-        
+
         protected readonly IMongoCollection<TEntity> _collection;
-        protected string[] _queryable = new string[] {};
 
         public EntityRepository(IConfiguration config, string collection)
         {
@@ -24,24 +23,23 @@ namespace Repositories
             _collection = database.GetCollection<TEntity>(collection);
         }
 
-        protected FilterDefinition<TEntity> BuildQuery(IDictionary<string, string> fieldEqValue = null, IDictionary<string, IEnumerable<string>> fieldMatchValues = null, IEnumerable<string> ids = null)
+        public FilterDefinition<TEntity> BuildQuery(IDictionary<string, string> fieldEqValue = null, IDictionary<string, IEnumerable<string>> fieldEqValues = null,
+            IDictionary<string, IEnumerable<string>> fieldAnyInValue = null, IEnumerable<string> ids = null)
         {
             var filters = new List<FilterDefinition<TEntity>>();
             var filterBuilder = Builders<TEntity>.Filter;
-            var _queryableLower = _queryable.Select(q => q.ToLower());
 
-            if(fieldEqValue != null && fieldEqValue.Any())
+            if (fieldEqValue != null && fieldEqValue.Any())
             {
                 filters.Add(fieldEqValue
-                    .Where(f => _queryableLower.Contains(f.Key.ToLower()))
                     .Select(f => filterBuilder.Eq(f.Key, f.Value))
                     .Aggregate((curr, acc) => curr | acc)
                 );
             }
 
-            if(fieldMatchValues != null && fieldMatchValues.Any())
+            if (fieldEqValues != null && fieldEqValues.Any())
             {
-                filters.Add(fieldMatchValues.Where(f => _queryableLower.Contains(f.Key.ToLower()))
+                filters.Add(fieldEqValues
                     .Select(f => f.Value
                         .Select(v => filterBuilder.Eq(f.Key, v))
                         .Aggregate((curr, acc) => curr | acc))
@@ -49,7 +47,15 @@ namespace Repositories
                 );
             }
 
-            if(ids != null && ids.Any())
+            if (fieldAnyInValue != null && fieldAnyInValue.Any())
+            {
+                filters.Add(fieldAnyInValue
+                    .Select(f => filterBuilder.AnyIn(f.Key, f.Value))
+                    .Aggregate((acc, curr) => acc | curr)
+                );
+            }
+
+            if (ids != null && ids.Any())
             {
                 filters.Add(ids
                     .Select(id => filterBuilder.Eq("_id", id))
@@ -60,12 +66,12 @@ namespace Repositories
             return Builders<TEntity>.Filter.Or(filters);
         }
 
-        protected async Task<Response<IEnumerable<TEntity>>> Paginate(int page, int count = 5, FilterDefinition<TEntity> filter = null, SortDefinition<TEntity> sort = null, ProjectionDefinition<TEntity> projection = null)
+        public async Task<Response<IEnumerable<TEntity>>> Paginate(int page, int count = 5, FilterDefinition<TEntity> filter = null, SortDefinition<TEntity> sort = null, ProjectionDefinition<TEntity> projection = null)
         {
-            if(count > Limit) count = Limit;
+            if (count > Limit) count = Limit;
             var response = new Response<IEnumerable<TEntity>>();
 
-            try 
+            try
             {
                 var query = _collection.Find<TEntity>(filter ?? Builders<TEntity>.Filter.Empty)
                                     .Limit(count).Skip(page * count)
@@ -74,10 +80,10 @@ namespace Repositories
 
                 var result = await query.ToListAsync();
                 response.Data = result;
-                
-                if(result == null || result.Count < 1)
+
+                if (result == null || result.Count < 1)
                 {
-                    if(filter != null)
+                    if (filter != null)
                     {
                         response.Message = $"No document was found that matches the filter.";
                     }
@@ -88,7 +94,7 @@ namespace Repositories
                 }
                 return response;
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 response.SetInternalError(ex);
                 return response;
@@ -98,13 +104,13 @@ namespace Repositories
         public async Task<Response<TEntity>> Get(string id)
         {
             var response = new Response<TEntity>();
-            try 
+            try
             {
                 var query = _collection.Find(e => e.Id == id);
                 var result = await query.FirstOrDefaultAsync();
                 response.Data = result;
-                
-                if(result == null)
+
+                if (result == null)
                 {
                     response.Message = $"Entity {id} not found.";
                 }
@@ -140,7 +146,6 @@ namespace Repositories
                 response.SetInternalError(ex);
                 return response;
             }
-
         }
 
         public async Task<Response<ModifyEntityResult<TEntity>>> Delete(string id)
@@ -153,7 +158,7 @@ namespace Repositories
                 var toDelete = await _collection.Find(filter).FirstOrDefaultAsync();
                 var result = await _collection.DeleteOneAsync(filter);
 
-                if(toDelete != null && result.DeletedCount > 0 && result.IsAcknowledged)
+                if (toDelete != null && result.DeletedCount > 0 && result.IsAcknowledged)
                 {
                     var deletedEntities = new List<TEntity>();
                     deletedEntities.Add(toDelete);
@@ -194,11 +199,11 @@ namespace Repositories
                 var toArchive = await _collection.Find(filter).FirstOrDefaultAsync();
                 var result = await _collection.UpdateOneAsync(filter, update);
 
-                if(toArchive != null && result.ModifiedCount > 0 && result.IsAcknowledged)
+                if (toArchive != null && result.ModifiedCount > 0 && result.IsAcknowledged)
                 {
                     var archivedEntities = new List<TEntity>();
                     archivedEntities.Add(toArchive);
-                    
+
                     response.Message = $"Successfully archived {toArchive.Id}.";
                     response.Data = new ModifyEntityResult<TEntity>(archivedEntities)
                     {
@@ -211,7 +216,7 @@ namespace Repositories
                     response.Data = new ModifyEntityResult<TEntity>()
                     {
                         Modified = 0
-                    }; 
+                    };
                 }
                 return response;
             }
@@ -226,13 +231,13 @@ namespace Repositories
         {
             var response = new Response<ModifyEntityResult<TEntity>>();
             var filter = Builders<TEntity>.Filter.Eq(e => e.Id, id);
-            
+
             try
             {
                 var toUpdate = await _collection.Find(filter).FirstOrDefaultAsync();
                 var result = await _collection.ReplaceOneAsync(filter, entity, new UpdateOptions { IsUpsert = true });
-                
-                if(result.ModifiedCount > 0 && result.IsAcknowledged)
+
+                if (result.ModifiedCount > 0 && result.IsAcknowledged)
                 {
                     var updatedEntites = new List<TEntity>();
                     updatedEntites.Add(toUpdate);
