@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Models;
 
 namespace External.Extensions.MongoDB
 {
