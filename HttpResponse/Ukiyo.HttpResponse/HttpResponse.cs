@@ -2,7 +2,7 @@ using System;
 
 namespace Ukiyo.HttpResponse
 {
-    public class Response<TData>
+    public class HttpResponse<TData> : IResponse
     {
         public int StatusCode { get; set; } = 200;
 
@@ -19,7 +19,7 @@ namespace Ukiyo.HttpResponse
             StatusCode = 500;
             Success = false;
             Message = "Internal Error 500";
-            Data = default(TData);
+            Data = default;
             Exception = ex;
         }
     }

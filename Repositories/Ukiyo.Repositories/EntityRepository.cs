@@ -63,19 +63,21 @@ namespace Ukiyo.Repositories
                 );
             }
 
-            return Builders<TEntity>.Filter.Or(filters);
+            return filterBuilder.Or(filters) & filterBuilder.Eq(e => e.Archived, false);
         }
 
-        public async Task<Response<IEnumerable<TEntity>>> Paginate(int page, int count = 5, FilterDefinition<TEntity> filter = null, SortDefinition<TEntity> sort = null, ProjectionDefinition<TEntity> projection = null)
+        public async Task<HttpResponse<IEnumerable<TEntity>>> Paginate(int page, int count = 5, FilterDefinition<TEntity> filter = null, SortDefinition<TEntity> sort = null, ProjectionDefinition<TEntity> projection = null)
         {
             if (count > Limit) count = Limit;
-            var response = new Response<IEnumerable<TEntity>>();
+            var response = new HttpResponse<IEnumerable<TEntity>>();
+            var filterBuilder = Builders<TEntity>.Filter;
+            var sortBuilder = Builders<TEntity>.Sort;
 
             try
             {
-                var query = _collection.Find<TEntity>(filter ?? Builders<TEntity>.Filter.Empty)
+                var query = _collection.Find((filter ?? filterBuilder.Empty) & filterBuilder.Eq(e => e.Archived, false))
                                     .Limit(count).Skip(page * count)
-                                    .Sort(sort ?? Builders<TEntity>.Sort.Ascending(e => e.Id))
+                                    .Sort(sort ?? sortBuilder.Ascending(e => e.Id))
                                     .Project<TEntity>(projection);
 
                 var result = await query.ToListAsync();
@@ -101,9 +103,9 @@ namespace Ukiyo.Repositories
             }
         }
 
-        public async Task<Response<TEntity>> Get(string id)
+        public async Task<HttpResponse<TEntity>> Get(string id)
         {
-            var response = new Response<TEntity>();
+            var response = new HttpResponse<TEntity>();
             try
             {
                 var query = _collection.Find(e => e.Id == id);
@@ -124,9 +126,9 @@ namespace Ukiyo.Repositories
             }
         }
 
-        public async Task<Response<ModifyEntityResult<TEntity>>> Insert(TEntity entity)
+        public async Task<HttpResponse<ModifyEntityResult<TEntity>>> Insert(TEntity entity)
         {
-            var response = new Response<ModifyEntityResult<TEntity>>();
+            var response = new HttpResponse<ModifyEntityResult<TEntity>>();
             try
             {
                 await _collection.InsertOneAsync(entity);
@@ -148,11 +150,11 @@ namespace Ukiyo.Repositories
             }
         }
 
-        public async Task<Response<ModifyEntityResult<TEntity>>> Delete(string id)
+        public async Task<HttpResponse<ModifyEntityResult<TEntity>>> Delete(string id)
         {
-            var response = new Response<ModifyEntityResult<TEntity>>();
-
-            var filter = Builders<TEntity>.Filter.Eq(e => e.Id, id);
+            var response = new HttpResponse<ModifyEntityResult<TEntity>>();
+            var builderFilter = Builders<TEntity>.Filter;
+            var filter = builderFilter.Eq(e => e.Id, id);
             try
             {
                 var toDelete = await _collection.Find(filter).FirstOrDefaultAsync();
@@ -186,11 +188,11 @@ namespace Ukiyo.Repositories
             }
         }
 
-        public async Task<Response<ModifyEntityResult<TEntity>>> Archive(string id)
+        public async Task<HttpResponse<ModifyEntityResult<TEntity>>> Archive(string id)
         {
-            var response = new Response<ModifyEntityResult<TEntity>>();
-
-            var filter = Builders<TEntity>.Filter.Eq(e => e.Id, id);
+            var response = new HttpResponse<ModifyEntityResult<TEntity>>();
+            var filterBuilder = Builders<TEntity>.Filter;
+            var filter = filterBuilder.Eq(e => e.Id, id);
             var update = Builders<TEntity>.Update
                                         .Set(e => e.Archived, true)
                                         .CurrentDate(e => e.LastModified);
@@ -227,10 +229,11 @@ namespace Ukiyo.Repositories
             }
         }
 
-        public async Task<Response<ModifyEntityResult<TEntity>>> Update(string id, TEntity entity)
+        public async Task<HttpResponse<ModifyEntityResult<TEntity>>> Update(string id, TEntity entity)
         {
-            var response = new Response<ModifyEntityResult<TEntity>>();
-            var filter = Builders<TEntity>.Filter.Eq(e => e.Id, id);
+            var response = new HttpResponse<ModifyEntityResult<TEntity>>();
+            var filterBuilder = Builders<TEntity>.Filter;
+            var filter = filterBuilder.Eq(e => e.Id, id);
 
             try
             {

@@ -7,14 +7,14 @@ namespace Ukiyo.Repositories
 {
     public interface IEntityRepository<TEntity> where TEntity : Entity
     {
-        Task<Response<TEntity>> Get(string id);
+        Task<HttpResponse<TEntity>> Get(string id);
 
-        Task<Response<ModifyEntityResult<TEntity>>> Insert(TEntity entity);
+        Task<HttpResponse<ModifyEntityResult<TEntity>>> Insert(TEntity entity);
 
-        Task<Response<ModifyEntityResult<TEntity>>> Delete(string id);
+        Task<HttpResponse<ModifyEntityResult<TEntity>>> Delete(string id);
 
-        Task<Response<ModifyEntityResult<TEntity>>> Archive(string id);
+        Task<HttpResponse<ModifyEntityResult<TEntity>>> Archive(string id);
 
-        Task<Response<ModifyEntityResult<TEntity>>> Update(string id, TEntity entity);
+        Task<HttpResponse<ModifyEntityResult<TEntity>>> Update(string id, TEntity entity);
     }
 }
