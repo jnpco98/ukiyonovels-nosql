@@ -66,7 +66,7 @@ namespace Ukiyo.Repositories
             return filterBuilder.Or(filters) & filterBuilder.Eq(e => e.Archived, false);
         }
 
-        public async Task<HttpResponse<IEnumerable<TEntity>>> Paginate(int page, int count = 5, FilterDefinition<TEntity> filter = null, SortDefinition<TEntity> sort = null, ProjectionDefinition<TEntity> projection = null)
+        public async Task<HttpResponse<IEnumerable<TEntity>>> Paginate(int page = 0, int count = 10, FilterDefinition<TEntity> filter = null, SortDefinition<TEntity> sort = null, ProjectionDefinition<TEntity> projection = null)
         {
             if (count > Limit) count = Limit;
             var response = new HttpResponse<IEnumerable<TEntity>>();
@@ -229,11 +229,11 @@ namespace Ukiyo.Repositories
             }
         }
 
-        public async Task<HttpResponse<ModifyEntityResult<TEntity>>> Update(string id, TEntity entity)
+        public async Task<HttpResponse<ModifyEntityResult<TEntity>>> Update(TEntity entity)
         {
             var response = new HttpResponse<ModifyEntityResult<TEntity>>();
             var filterBuilder = Builders<TEntity>.Filter;
-            var filter = filterBuilder.Eq(e => e.Id, id);
+            var filter = filterBuilder.Eq(e => e.Id, entity.Id);
 
             try
             {

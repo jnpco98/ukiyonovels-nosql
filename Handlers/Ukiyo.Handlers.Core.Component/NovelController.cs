@@ -5,19 +5,18 @@ using System.Threading.Tasks;
 using Ukiyo.HttpResponse;
 using Ukiyo.Models.Components;
 using Ukiyo.Repositories;
-using System;
 
 namespace Ukiyo.Handlers.Core.Component
 {
     internal class NovelQuery
     {
-        internal int page = 15;
-        internal int count = 0;
+        internal int page = 0;
+        internal int count = 15;
         internal string author;
         internal string origin;
         internal string genre;
         internal string tag;
-        internal string sort;
+        internal string order;
     }
 
     [ApiController]
@@ -32,40 +31,40 @@ namespace Ukiyo.Handlers.Core.Component
         }
 
         [HttpGet]
-        public async Task<ActionResult<IResponse>> GetAll([FromQuery] NovelQuery novelquery)
+        public async Task<ActionResult<IResponse>> GetAll([FromQuery] NovelQuery query)
         {
             var filterBuilder = Builders<Novel>.Filter;
             var filters = new List<FilterDefinition<Novel>>();
 
             var sortBuilder = Builders<Novel>.Sort; 
-            var sort = novelquery.sort.ToLower() == "descending" ? 
+            var sort = query.order.ToLower() == "descending" ? 
                 sortBuilder.Descending(n => n.Title) : sortBuilder.Ascending(n => n.Title);
 
-            if (!string.IsNullOrWhiteSpace(novelquery.author.Trim()))
+            if (!string.IsNullOrWhiteSpace(query.author.Trim()))
             {
                 filters.Add(filterBuilder.ElemMatch(n => n.Authors,
-                    a => a.Name.ToLower() == novelquery.author.ToLower()));
+                    a => a.Name.ToLower() == query.author.ToLower()));
             }
 
-            if (!string.IsNullOrWhiteSpace(novelquery.origin.Trim()))
+            if (!string.IsNullOrWhiteSpace(query.origin.Trim()))
             {
                 filters.Add(filterBuilder.ElemMatch(n => n.Origins, 
-                    o => o.Name.ToLower() == novelquery.origin.ToLower()));
+                    o => o.Name.ToLower() == query.origin.ToLower()));
             }
 
-            if (!string.IsNullOrWhiteSpace(novelquery.genre.Trim()))
+            if (!string.IsNullOrWhiteSpace(query.genre.Trim()))
             {
                 filters.Add(filterBuilder.ElemMatch(n => n.Genres, 
-                    g => g.Name.ToLower() == novelquery.genre.ToLower()));
+                    g => g.Name.ToLower() == query.genre.ToLower()));
             }
 
-            if (!string.IsNullOrWhiteSpace(novelquery.tag.Trim()))
+            if (!string.IsNullOrWhiteSpace(query.tag.Trim()))
             {
                 filters.Add(filterBuilder.ElemMatch(n => n.Tags, 
-                    t => t.Name.ToLower() == novelquery.tag.ToLower()));
+                    t => t.Name.ToLower() == query.tag.ToLower()));
             }
 
-            return await _novelRepository.Paginate(novelquery.page, novelquery.count, filterBuilder.And(filters), sort);
+            return await _novelRepository.Paginate(query.page, query.count, filterBuilder.And(filters), sort);
         }
 
         [HttpGet]
@@ -77,7 +76,7 @@ namespace Ukiyo.Handlers.Core.Component
             await _novelRepository.Insert(novel);
 
         [HttpDelete]
-        public async Task<ActionResult<IResponse>> DeleteOne([FromBody] string id) => 
+        public async Task<ActionResult<IResponse>> DeleteOne(string id) => 
             await _novelRepository.Archive(id);
 
         [HttpPut]
