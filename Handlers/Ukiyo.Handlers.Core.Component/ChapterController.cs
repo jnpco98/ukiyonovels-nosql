@@ -6,14 +6,16 @@ using Ukiyo.Models.Components;
 using Ukiyo.Repositories;
 using System.Linq;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Ukiyo.Handlers.Core.Component
 {
-    // Needs novel id and book id(optional)
     internal class ChapterQuery
     {
         internal int page = 0;
-        internal int count = 15;
+        internal int count = 30;
+        [Required]
+        internal string novel;
         internal string book;
         internal string order;
     }
@@ -34,7 +36,7 @@ namespace Ukiyo.Handlers.Core.Component
         }
 
         [HttpGet]
-        public async Task<ActionResult<IResponse>> GetAll(string novelId, [FromQuery] ChapterQuery query)
+        public async Task<ActionResult<IResponse>> GetAll([FromQuery] ChapterQuery query)
         {
             var filterBuilder = Builders<Chapter>.Filter;
             var filters = new List<FilterDefinition<Chapter>>();
@@ -43,7 +45,7 @@ namespace Ukiyo.Handlers.Core.Component
             var sort = query.order.ToLower() == "descending" ?
                 sortBuilder.Descending(n => n.Title) : sortBuilder.Ascending(n => n.Title);
 
-            var novel = (await _novelRepository.Get(novelId)).Data;
+            var novel = (await _novelRepository.Get(query.novel)).Data;
             filters.Add(filterBuilder.Where(c => novel.Chapters.Contains(c.Id)));
 
             if(query.book != null)

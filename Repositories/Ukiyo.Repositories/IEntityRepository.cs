@@ -15,6 +15,6 @@ namespace Ukiyo.Repositories
 
         Task<HttpResponse<ModifyEntityResult<TEntity>>> Archive(string id);
 
-        Task<HttpResponse<ModifyEntityResult<TEntity>>> Update(string id, TEntity entity);
+        Task<HttpResponse<ModifyEntityResult<TEntity>>> Update(TEntity entity);
     }
 }
