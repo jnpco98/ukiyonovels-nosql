@@ -19,7 +19,7 @@ namespace Ukiyo.Repositories
         public EntityRepository(IConfiguration config, string collection)
         {
             var client = new MongoClient(config.GetConnectionString("Database:DBConn"));
-            var database = client.GetDatabase(config.GetValue<string>("Database:DBName"));
+            var database = client.GetDatabase(config.GetConnectionString("Database:DBName"));
             _collection = database.GetCollection<TEntity>(collection);
         }
 
@@ -78,7 +78,7 @@ namespace Ukiyo.Repositories
                 var query = _collection.Find((filter ?? filterBuilder.Empty) & filterBuilder.Eq(e => e.Archived, false))
                                     .Limit(count).Skip(page * count)
                                     .Sort(sort ?? sortBuilder.Ascending(e => e.Id))
-                                    .Project<TEntity>(projection);
+                                    .Project<TEntity>(projection ?? Builders<TEntity>.Projection.Exclude(e => e.Archived));
 
                 var result = await query.ToListAsync();
                 response.Data = result;
