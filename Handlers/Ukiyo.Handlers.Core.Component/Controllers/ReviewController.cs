@@ -10,19 +10,19 @@ using Ukiyo.Repositories;
 
 namespace Ukiyo.Handlers.Core.Component
 {
-    internal class ReviewQuery
+    public class ReviewQuery
     {
-        internal int page = 0;
-        internal int count = 15;
+        public int Page { get; set; } = 0;
+        public int Count { get; set; } = 15;
         [Required]
-        internal string novel;
-        internal string sort;
-        internal string order;
+        public string Novel { get; set; }
+        public string Sort { get; set; } = "";
+        public string Order { get; set; } = "desc";
     }
 
     [ApiController]
     [Route("api/[controller]")]
-    internal class ReviewController : ControllerBase
+    public class ReviewController : ControllerBase
     {
         private readonly ReviewRepository _reviewRepository;
         private readonly NovelRepository _novelRepository;
@@ -36,23 +36,28 @@ namespace Ukiyo.Handlers.Core.Component
         [HttpGet]
         public async Task<ActionResult<IResponse>> GetAll([FromQuery] ReviewQuery query)
         {
+            if(query == null)
+            {
+                query = new ReviewQuery();
+            }
+
             var filterBuilder = Builders<Review>.Filter;
             var filters = new List<FilterDefinition<Review>>();
 
             var sortBuilder = Builders<Review>.Sort;
-            var sort = string.IsNullOrWhiteSpace(query.sort) && query.sort.ToLower() == "ratings" ?
-                query.order.ToLower() == "descending" ?
-                    sortBuilder.Descending(r => r.Rating) : sortBuilder.Ascending(r => r.Rating) :
-                query.order.ToLower() == "descending" ?
-                    sortBuilder.Descending(r => r.LastModified) : sortBuilder.Ascending(r => r.LastModified);
+            var sort = string.IsNullOrWhiteSpace(query.Sort) || query.Sort.ToLower() == "ratings" ?
+                query.Order.ToLower() == "asc" ?
+                    sortBuilder.Ascending(r => r.Rating) : sortBuilder.Descending(r => r.Rating) :
+                query.Order.ToLower() == "asc" ?
+                    sortBuilder.Ascending(r => r.LastModified) : sortBuilder.Descending(r => r.LastModified);
 
-            var novel = (await _novelRepository.Get(query.novel)).Data;
+            var novel = (await _novelRepository.Get(query.Novel)).Data;
             filters.Add(filterBuilder.Where(b => novel.Reviews.Contains(b.Id)));
 
-            return await _reviewRepository.Paginate(query.page, query.count, filterBuilder.And(filters), sort);
+            return await _reviewRepository.Paginate(query.Page, query.Count, filterBuilder.And(filters), sort);
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public async Task<ActionResult<IResponse>> GetOne(string id) =>
             await _reviewRepository.Get(id);
 
@@ -60,7 +65,7 @@ namespace Ukiyo.Handlers.Core.Component
         public async Task<ActionResult<IResponse>> InsertOne(Review review) =>
             await _reviewRepository.Insert(review);
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<ActionResult<IResponse>> DeleteOne(string id) =>
             await _reviewRepository.Archive(id);
 

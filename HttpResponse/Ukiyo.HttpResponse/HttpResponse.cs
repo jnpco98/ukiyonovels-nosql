@@ -14,6 +14,11 @@ namespace Ukiyo.HttpResponse
 
         public Exception Exception { get; set; }
 
+        public void SetCreatedResource()
+        {
+            StatusCode = 201;
+        }
+
         public void SetInternalError(Exception ex = null)
         {
             StatusCode = 500;

@@ -10,18 +10,18 @@ using Ukiyo.Repositories;
 
 namespace Ukiyo.Handlers.Core.Component
 {
-    internal class CommentQuery
+    public class CommentQuery
     {
-        internal int page = 0;
-        internal int count = 15;
+        public int Page { get; set; }
+        public int Count { get; set; }
         [Required]
-        internal string chapter;
-        internal string order;
+        public string Chapter { get; set; }
+        public string Order { get; set; } = "desc";
     }
 
     [ApiController]
     [Route("api/[controller]")]
-    internal class CommentController : ControllerBase
+    public class CommentController : ControllerBase
     {
         private readonly CommentRepository _commentRepository;
         private readonly ChapterRepository _chapterRepository;
@@ -35,20 +35,25 @@ namespace Ukiyo.Handlers.Core.Component
         [HttpGet]
         public async Task<ActionResult<IResponse>> GetAll([FromQuery] CommentQuery query)
         {
+            if(query == null)
+            {
+                query = new CommentQuery();
+            }
+
             var filterBuilder = Builders<Comment>.Filter;
             var filters = new List<FilterDefinition<Comment>>();
 
             var sortBuilder = Builders<Comment>.Sort;
-            var sort = query.order.ToLower() == "descending" ?
-                sortBuilder.Descending(r => r.LastModified) : sortBuilder.Ascending(r => r.LastModified);
+            var sort = query.Order.ToLower() == "asc" ?
+                sortBuilder.Ascending(r => r.LastModified) : sortBuilder.Descending(r => r.LastModified);
 
-            var chapter = (await _chapterRepository.Get(query.chapter)).Data;
+            var chapter = (await _chapterRepository.Get(query.Chapter)).Data;
             filters.Add(filterBuilder.Where(c => chapter.Comments.Contains(c.Id)));
 
-            return await _commentRepository.Paginate(query.page, query.count, filterBuilder.And(filters), sort);
+            return await _commentRepository.Paginate(query.Page, query.Count, filterBuilder.And(filters), sort);
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public async Task<ActionResult<IResponse>> GetOne(string id) =>
             await _commentRepository.Get(id);
 
@@ -56,7 +61,7 @@ namespace Ukiyo.Handlers.Core.Component
         public async Task<ActionResult<IResponse>> InsertOne(Comment comment) =>
             await _commentRepository.Insert(comment);
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<ActionResult<IResponse>> DeleteOne(string id) =>
             await _commentRepository.Archive(id);
 

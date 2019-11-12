@@ -42,14 +42,13 @@ namespace Ukiyo.Handlers.Core.Component
             var filters = new List<FilterDefinition<Novel>>();
 
             var sortBuilder = Builders<Novel>.Sort; 
-            var sort = query.Order.ToLower() == "desc" ? 
-                sortBuilder.Descending(n => n.Title) : sortBuilder.Ascending(n => n.Title);
+            var sort = query.Order.ToLower() == "asc" ? 
+                sortBuilder.Ascending(n => n.Title) : sortBuilder.Descending(n => n.Title);
 
             if (!string.IsNullOrWhiteSpace(query.Author))
             {
-                var temp = filterBuilder.ElemMatch(n => n.Authors,
-                    a => a.Name.ToLower() == query.Author.ToLower());
-                filters.Add(temp);
+                filters.Add(filterBuilder.ElemMatch(n => n.Authors,
+                    a => a.Name.ToLower() == query.Author.ToLower()));
             }
 
             if (!string.IsNullOrWhiteSpace(query.Origin))
@@ -69,7 +68,6 @@ namespace Ukiyo.Handlers.Core.Component
                 filters.Add(filterBuilder.ElemMatch(n => n.Tags, 
                     t => t.Name.ToLower() == query.Tag.ToLower()));
             }
-            var a = filterBuilder.And(filters);
 
             return await _novelRepository.Paginate(query.Page, query.Count, filterBuilder.And(filters), sort);
         }

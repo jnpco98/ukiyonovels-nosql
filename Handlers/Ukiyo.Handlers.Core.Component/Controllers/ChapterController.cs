@@ -10,19 +10,19 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Ukiyo.Handlers.Core.Component
 {
-    internal class ChapterQuery
+    public class ChapterQuery
     {
-        internal int page = 0;
-        internal int count = 30;
+        public int Page { get; set; } = 0;
+        public int Count { get; set; } = 30;
         [Required]
-        internal string novel;
-        internal string book;
-        internal string order;
+        public string Novel { get; set; }
+        public string Book { get; set; }
+        public string Order { get; set; } = "desc";
     }
 
     [ApiController]
     [Route("api/[controller]")]
-    internal class ChapterController : ControllerBase
+    public class ChapterController : ControllerBase
     {
         private readonly ChapterRepository _chapterRepository;
         private readonly NovelRepository _novelRepository;
@@ -38,26 +38,31 @@ namespace Ukiyo.Handlers.Core.Component
         [HttpGet]
         public async Task<ActionResult<IResponse>> GetAll([FromQuery] ChapterQuery query)
         {
+            if(query == null)
+            {
+                query = new ChapterQuery();
+            }
+
             var filterBuilder = Builders<Chapter>.Filter;
             var filters = new List<FilterDefinition<Chapter>>();
 
             var sortBuilder = Builders<Chapter>.Sort;
-            var sort = query.order.ToLower() == "descending" ?
-                sortBuilder.Descending(n => n.Title) : sortBuilder.Ascending(n => n.Title);
+            var sort = query.Order.ToLower() == "asc" ?
+                sortBuilder.Ascending(c => c.Title) : sortBuilder.Descending(c => c.Title);
 
-            var novel = (await _novelRepository.Get(query.novel)).Data;
+            var novel = (await _novelRepository.Get(query.Novel)).Data;
             filters.Add(filterBuilder.Where(c => novel.Chapters.Contains(c.Id)));
 
-            if(query.book != null)
+            if(query.Book != null)
             {
-                var book = (await _bookRepository.Get(query.book)).Data;
+                var book = (await _bookRepository.Get(query.Book)).Data;
                 filters.Add(filterBuilder.Where(c => book.Chapters.Contains(c.Id)));
             }
 
-            return await _chapterRepository.Paginate(query.page, query.count, filterBuilder.And(filters), sort);
+            return await _chapterRepository.Paginate(query.Page, query.Count, filterBuilder.And(filters), sort);
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public async Task<ActionResult<IResponse>> GetOne(string id) =>
             await _chapterRepository.Get(id);
 
@@ -65,7 +70,7 @@ namespace Ukiyo.Handlers.Core.Component
         public async Task<ActionResult<IResponse>> InsertOne(Chapter chapter) =>
             await _chapterRepository.Insert(chapter);
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<ActionResult<IResponse>> DeleteOne(string id) =>
             await _chapterRepository.Archive(id);
 
