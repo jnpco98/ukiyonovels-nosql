@@ -75,9 +75,9 @@ namespace Ukiyo.Repositories
 
             try
             {
-                var query = _collection.Find((filter ?? filterBuilder.Empty) & filterBuilder.Eq(e => e.Archived, false))
+                var query = _collection.Find(( filterBuilder.Empty) & filterBuilder.Eq(e => e.Archived, false))
                                     .Limit(count).Skip(page * count)
-                                    .Sort(sort ?? sortBuilder.Ascending(e => e.Id))
+                                    .Sort(sort ?? sortBuilder.Ascending(e => e.LastModified))
                                     .Project<TEntity>(projection ?? Builders<TEntity>.Projection.Exclude(e => e.Archived));
 
                 var result = await query.ToListAsync();
@@ -87,11 +87,11 @@ namespace Ukiyo.Repositories
                 {
                     if (filter != null)
                     {
-                        response.Message = $"No document was found that matches the filter.";
+                        response.Message = $"No {typeof(TEntity).Name} was found that matches the filter.";
                     }
                     else
                     {
-                        response.Message = "Collection is empty.";
+                        response.Message = $"{typeof(TEntity).Name} collection is empty.";
                     }
                 }
                 return response;
@@ -114,7 +114,7 @@ namespace Ukiyo.Repositories
 
                 if (result == null)
                 {
-                    response.Message = $"Entity {id} not found.";
+                    response.Message = $"{typeof(TEntity).Name} ({id}) not found.";
                 }
 
                 return response;
@@ -140,7 +140,12 @@ namespace Ukiyo.Repositories
                     Created = insertedEntities.Count
                 };
 
-                response.Message = $"Successfully created {entity.Id}.";
+                if(insertedEntities.Count > 0)
+                {
+                    response.SetCreatedResource();
+                }
+
+                response.Message = $"Successfully created resource [{typeof(TEntity).Name} ({entity.Id})].";
                 return response;
             }
             catch (Exception ex)
@@ -165,7 +170,7 @@ namespace Ukiyo.Repositories
                     var deletedEntities = new List<TEntity>();
                     deletedEntities.Add(toDelete);
 
-                    response.Message = $"Successfuly deleted {toDelete.Id}.";
+                    response.Message = $"Successfuly deleted resource [{typeof(TEntity).Name} ({toDelete.Id})].";
                     response.Data = new ModifyEntityResult<TEntity>(deletedEntities)
                     {
                         Created = deletedEntities.Count
@@ -173,7 +178,7 @@ namespace Ukiyo.Repositories
                 }
                 else
                 {
-                    response.Message = $"Deleted {result.DeletedCount} documents.";
+                    response.Message = $"Deleted {result.DeletedCount} {typeof(TEntity).Name} resource.";
                     response.Data = new ModifyEntityResult<TEntity>()
                     {
                         Created = 0
@@ -206,7 +211,7 @@ namespace Ukiyo.Repositories
                     var archivedEntities = new List<TEntity>();
                     archivedEntities.Add(toArchive);
 
-                    response.Message = $"Successfully archived {toArchive.Id}.";
+                    response.Message = $"Successfully archived resource [{typeof(TEntity).Name} ({toArchive.Id}]).";
                     response.Data = new ModifyEntityResult<TEntity>(archivedEntities)
                     {
                         Modified = (int)result.ModifiedCount
@@ -214,7 +219,7 @@ namespace Ukiyo.Repositories
                 }
                 else
                 {
-                    response.Message = $"Archived {result.ModifiedCount} documents.";
+                    response.Message = $"Archived {result.ModifiedCount} {typeof(TEntity).Name} resource.";
                     response.Data = new ModifyEntityResult<TEntity>()
                     {
                         Modified = 0
@@ -245,7 +250,7 @@ namespace Ukiyo.Repositories
                     var updatedEntites = new List<TEntity>();
                     updatedEntites.Add(toUpdate);
 
-                    response.Message = $"Successfully updated {toUpdate.Id}.";
+                    response.Message = $"Successfully updated resource [{typeof(TEntity).Name} ({toUpdate.Id}]).";
                     response.Data = new ModifyEntityResult<TEntity>(updatedEntites)
                     {
                         Modified = updatedEntites.Count
@@ -253,7 +258,7 @@ namespace Ukiyo.Repositories
                 }
                 else
                 {
-                    response.Message = $"Modified {result.ModifiedCount} of {result.MatchedCount} matched documents.";
+                    response.Message = $"Modified {result.ModifiedCount} of {result.MatchedCount} matched {typeof(TEntity).Name} resource.";
                     response.Data = new ModifyEntityResult<TEntity>()
                     {
                         Modified = 0

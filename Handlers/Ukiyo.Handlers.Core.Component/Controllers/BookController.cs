@@ -7,17 +7,14 @@ using Ukiyo.Models.Components;
 using Ukiyo.Repositories;
 using System.Linq;
 using System.ComponentModel.DataAnnotations;
+using Ukiyo.Handlers.Query;
 
 namespace Ukiyo.Handlers.Core.Component
 {
-    public class BookQuery
+    public class BookQuery : BaseQuery
     {
-        public int Page { get; set; } = 0;
-        public int Count { get; set; } = 15;
-
         [Required]
-        public string Novel { get; set; }
-        public string Order { get; set; } = "desc";
+        public string Novel { get; set; } = "";
     }
 
     [ApiController]
@@ -48,10 +45,19 @@ namespace Ukiyo.Handlers.Core.Component
             var sort = query.Order.ToLower() == "asc" ?
                 sortBuilder.Ascending(b => b.Title) : sortBuilder.Descending(b => b.Title);
 
-            var novel = (await _novelRepository.Get(query.Novel)).Data;
-            filters.Add(filterBuilder.Where(b => novel.Books.Contains(b.Id)));
+            if (!string.IsNullOrWhiteSpace(query.Novel))
+            {
+                var novel = (await _novelRepository.Get(query.Novel)).Data;
 
-            return await _bookRepository.Paginate(query.Page, query.Count, filterBuilder.And(filters), sort);
+                if (novel != null)
+                {
+                    filters.Add(filterBuilder.Where(b => novel.Books.Contains(b.Id)));
+                }
+            }
+
+            var accumulatedFilter = filters.Count > 0 ? filterBuilder.And(filters) : null;
+
+            return await _bookRepository.Paginate(query.Page, query.Count, accumulatedFilter, sort);
         }
 
         [HttpGet("{id}")]

@@ -4,19 +4,17 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using Ukiyo.Handlers.Query;
 using Ukiyo.HttpResponse;
 using Ukiyo.Models.Components;
 using Ukiyo.Repositories;
 
 namespace Ukiyo.Handlers.Core.Component
 {
-    public class CommentQuery
+    public class CommentQuery : BaseQuery
     {
-        public int Page { get; set; }
-        public int Count { get; set; }
         [Required]
-        public string Chapter { get; set; }
-        public string Order { get; set; } = "desc";
+        public string Chapter { get; set; } = "";
     }
 
     [ApiController]
@@ -47,10 +45,19 @@ namespace Ukiyo.Handlers.Core.Component
             var sort = query.Order.ToLower() == "asc" ?
                 sortBuilder.Ascending(r => r.LastModified) : sortBuilder.Descending(r => r.LastModified);
 
-            var chapter = (await _chapterRepository.Get(query.Chapter)).Data;
-            filters.Add(filterBuilder.Where(c => chapter.Comments.Contains(c.Id)));
+            if (!string.IsNullOrWhiteSpace(query.Chapter))
+            {
+                var chapter = (await _chapterRepository.Get(query.Chapter)).Data;
 
-            return await _commentRepository.Paginate(query.Page, query.Count, filterBuilder.And(filters), sort);
+                if(chapter != null)
+                {
+                   filters.Add(filterBuilder.Where(c => chapter.Comments.Contains(c.Id)));
+                }
+            }
+
+            var accumulatedFilter = filters.Count > 0 ? filterBuilder.And(filters) : null;
+
+            return await _commentRepository.Paginate(query.Page, query.Count, accumulatedFilter, sort);
         }
 
         [HttpGet("{id}")]

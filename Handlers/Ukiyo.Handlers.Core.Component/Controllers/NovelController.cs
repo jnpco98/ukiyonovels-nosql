@@ -2,21 +2,19 @@ using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Ukiyo.Handlers.Query;
 using Ukiyo.HttpResponse;
 using Ukiyo.Models.Components;
 using Ukiyo.Repositories;
 
 namespace Ukiyo.Handlers.Core.Component
 {
-    public class NovelQuery
+    public class NovelQuery : BaseQuery
     {
-        public int Page { get; set; } = 0;
-        public int Count { get; set; } = 15;
-        public string Author { get; set; }
-        public string Origin { get; set; }
-        public string Genre { get; set; }
-        public string Tag { get; set; }
-        public string Order { get; set; } = "desc";
+        public string Author { get; set; } = "";
+        public string Origin { get; set; } = "";
+        public string Genre { get; set; } = "";
+        public string Tag { get; set; } = "";
     }
 
     [Route("api/[controller]")]
@@ -69,7 +67,9 @@ namespace Ukiyo.Handlers.Core.Component
                     t => t.Name.ToLower() == query.Tag.ToLower()));
             }
 
-            return await _novelRepository.Paginate(query.Page, query.Count, filterBuilder.And(filters), sort);
+            var accumulatedFilter = filters.Count > 0 ? filterBuilder.And(filters) : null;
+
+            return await _novelRepository.Paginate(query.Page, query.Count, accumulatedFilter, sort);
         }
 
         [HttpGet("{id}")]

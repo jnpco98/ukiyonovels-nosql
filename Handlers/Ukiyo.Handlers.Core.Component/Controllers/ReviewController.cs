@@ -4,20 +4,18 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using Ukiyo.Handlers.Query;
 using Ukiyo.HttpResponse;
 using Ukiyo.Models.Components;
 using Ukiyo.Repositories;
 
 namespace Ukiyo.Handlers.Core.Component
 {
-    public class ReviewQuery
+    public class ReviewQuery : BaseQuery
     {
-        public int Page { get; set; } = 0;
-        public int Count { get; set; } = 15;
         [Required]
         public string Novel { get; set; }
         public string Sort { get; set; } = "";
-        public string Order { get; set; } = "desc";
     }
 
     [ApiController]
@@ -51,10 +49,19 @@ namespace Ukiyo.Handlers.Core.Component
                 query.Order.ToLower() == "asc" ?
                     sortBuilder.Ascending(r => r.LastModified) : sortBuilder.Descending(r => r.LastModified);
 
-            var novel = (await _novelRepository.Get(query.Novel)).Data;
-            filters.Add(filterBuilder.Where(b => novel.Reviews.Contains(b.Id)));
+            if (!string.IsNullOrWhiteSpace(query.Novel))
+            {
+                var novel = (await _novelRepository.Get(query.Novel)).Data;
 
-            return await _reviewRepository.Paginate(query.Page, query.Count, filterBuilder.And(filters), sort);
+                if(novel != null)
+                {
+                    filters.Add(filterBuilder.Where(b => novel.Reviews.Contains(b.Id)));
+                }
+            }
+
+            var accumulatedFilter = filters.Count > 0 ? filterBuilder.And(filters) : null;
+
+            return await _reviewRepository.Paginate(query.Page, query.Count, accumulatedFilter, sort);
         }
 
         [HttpGet("{id}")]
