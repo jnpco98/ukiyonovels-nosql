@@ -1,5 +1,6 @@
 using Amazon.Lambda.Core;
 using Microsoft.AspNetCore.Hosting;
+using System;
 
 [assembly:LambdaSerializer(typeof(Amazon.Lambda.Serialization.Json.JsonSerializer))]
 

@@ -43,19 +43,21 @@ namespace Ukiyo.Handlers.Core.Component
 
             if (!env.IsProduction())
             {
-                var swaggerOptions = new SwaggerOptions();
-                Configuration.GetSection(nameof(SwaggerOptions)).Bind(swaggerOptions);
 
-                app.UseStaticFiles();
-
-                app.UseSwagger(option => option.RouteTemplate = swaggerOptions.JsonRoute);
-
-                app.UseSwaggerUI(option =>
-                {
-                    option.SwaggerEndpoint(swaggerOptions.UIEndpoint, swaggerOptions.Description);
-                    option.RoutePrefix = swaggerOptions.RoutePrefix;
-                });
             }
+
+            var swaggerOptions = new SwaggerOptions();
+            Configuration.GetSection(nameof(SwaggerOptions)).Bind(swaggerOptions);
+
+            app.UseStaticFiles();
+
+            app.UseSwagger(option => option.RouteTemplate = swaggerOptions.JsonRoute);
+
+            app.UseSwaggerUI(option =>
+            {
+                option.SwaggerEndpoint(swaggerOptions.UIEndpoint, swaggerOptions.Description);
+                option.RoutePrefix = swaggerOptions.RoutePrefix;
+            });
 
             app.UseHttpsRedirection();
 

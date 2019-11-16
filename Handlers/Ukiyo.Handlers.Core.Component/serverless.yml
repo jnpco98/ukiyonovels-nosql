@@ -2,7 +2,7 @@ service: ukiyonovels-core-component
 
 provider:
   name: aws
-  runtime: dotnetcore3.0
+  runtime: dotnetcore2.1
   region: us-east-2
 
 package:
