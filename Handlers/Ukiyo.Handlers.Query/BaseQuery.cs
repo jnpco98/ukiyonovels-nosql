@@ -10,7 +10,7 @@
     {
 
         public int Page { get; set; } = 0;
-        public int Count { get; set; } = 0;
+        public int Count { get; set; } = 15;
         public string Order { get; set; } = SORT_ORDER.DESCENDING;
 
     }

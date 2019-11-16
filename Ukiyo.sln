@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ukiyo.Repositories", "Repos
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ukiyo.Repositories.Results", "Repositories\Ukiyo.Repositories.Results\Ukiyo.Repositories.Results.csproj", "{A3D2047C-16B1-4A7D-89D9-1DC3956B1AE7}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ukiyo.Handlers.Query", "Handlers\Ukiyo.Handlers.Query\Ukiyo.Handlers.Query.csproj", "{D2DC451D-2667-41A2-B93F-52AF271790FF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +85,18 @@ Global
 		{A3D2047C-16B1-4A7D-89D9-1DC3956B1AE7}.Release|x64.Build.0 = Release|Any CPU
 		{A3D2047C-16B1-4A7D-89D9-1DC3956B1AE7}.Release|x86.ActiveCfg = Release|Any CPU
 		{A3D2047C-16B1-4A7D-89D9-1DC3956B1AE7}.Release|x86.Build.0 = Release|Any CPU
+		{D2DC451D-2667-41A2-B93F-52AF271790FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2DC451D-2667-41A2-B93F-52AF271790FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2DC451D-2667-41A2-B93F-52AF271790FF}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D2DC451D-2667-41A2-B93F-52AF271790FF}.Debug|x64.Build.0 = Debug|Any CPU
+		{D2DC451D-2667-41A2-B93F-52AF271790FF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D2DC451D-2667-41A2-B93F-52AF271790FF}.Debug|x86.Build.0 = Debug|Any CPU
+		{D2DC451D-2667-41A2-B93F-52AF271790FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2DC451D-2667-41A2-B93F-52AF271790FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2DC451D-2667-41A2-B93F-52AF271790FF}.Release|x64.ActiveCfg = Release|Any CPU
+		{D2DC451D-2667-41A2-B93F-52AF271790FF}.Release|x64.Build.0 = Release|Any CPU
+		{D2DC451D-2667-41A2-B93F-52AF271790FF}.Release|x86.ActiveCfg = Release|Any CPU
+		{D2DC451D-2667-41A2-B93F-52AF271790FF}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

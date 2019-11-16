@@ -23,14 +23,10 @@ namespace Ukiyo.Handlers.Core.Component
     public class ChapterController : ControllerBase
     {
         private readonly ChapterRepository _chapterRepository;
-        private readonly NovelRepository _novelRepository;
-        private readonly BookRepository _bookRepository;
 
-        public ChapterController(IEntityRepository<Chapter> chapterRepository, IEntityRepository<Novel> novelRepository, IEntityRepository<Book> bookRepository)
+        public ChapterController(IEntityRepository<Chapter> chapterRepository)
         {
             _chapterRepository = (ChapterRepository) chapterRepository;
-            _novelRepository = (NovelRepository) novelRepository;
-            _bookRepository = (BookRepository) bookRepository;
         }
 
         [HttpGet]
@@ -45,30 +41,20 @@ namespace Ukiyo.Handlers.Core.Component
             var filters = new List<FilterDefinition<Chapter>>();
 
             var sortBuilder = Builders<Chapter>.Sort;
-            var sort = query.Order.ToLower() == "asc" ?
+            var sort = query.Order.ToLower() == SORT_ORDER.ASCENDING ?
                 sortBuilder.Ascending(c => c.Title) : sortBuilder.Descending(c => c.Title);
 
             if(!string.IsNullOrWhiteSpace(query.Novel))
             {
-                var novel = (await _novelRepository.Get(query.Novel)).Data;
-
-                if (novel != null)
-                {
-                    filters.Add(filterBuilder.Where(c => novel.Chapters.Contains(c.Id)));
-                }
+                filters.Add(filterBuilder.Where(c => c.Novel == query.Novel));
             }
 
             if(!string.IsNullOrWhiteSpace(query.Book))
             {
-                var book = (await _bookRepository.Get(query.Book)).Data;
-                
-                if(book != null)
-                {
-                    filters.Add(filterBuilder.Where(c => book.Chapters.Contains(c.Id)));
-                }
+                filters.Add(filterBuilder.Where(c => c.Book == query.Book));
             }
 
-            var accumulatedFilter = filters.Count > 0 ? filterBuilder.And(filters) : null;
+            var accumulatedFilter = filters.Count > 0 ? filterBuilder.And(filters) : filterBuilder.Empty;
 
             return await _chapterRepository.Paginate(query.Page, query.Count, accumulatedFilter, sort);
         }

@@ -23,12 +23,10 @@ namespace Ukiyo.Handlers.Core.Component
     public class ReviewController : ControllerBase
     {
         private readonly ReviewRepository _reviewRepository;
-        private readonly NovelRepository _novelRepository;
 
-        public ReviewController(IEntityRepository<Review> reviewRepository, IEntityRepository<Novel> novelRepository)
+        public ReviewController(IEntityRepository<Review> reviewRepository)
         {
             _reviewRepository = (ReviewRepository) reviewRepository;
-            _novelRepository = (NovelRepository) novelRepository;
         }
 
         [HttpGet]
@@ -44,22 +42,17 @@ namespace Ukiyo.Handlers.Core.Component
 
             var sortBuilder = Builders<Review>.Sort;
             var sort = string.IsNullOrWhiteSpace(query.Sort) || query.Sort.ToLower() == "ratings" ?
-                query.Order.ToLower() == "asc" ?
+                query.Order.ToLower() == SORT_ORDER.ASCENDING ?
                     sortBuilder.Ascending(r => r.Rating) : sortBuilder.Descending(r => r.Rating) :
-                query.Order.ToLower() == "asc" ?
+                query.Order.ToLower() == SORT_ORDER.ASCENDING ?
                     sortBuilder.Ascending(r => r.LastModified) : sortBuilder.Descending(r => r.LastModified);
 
             if (!string.IsNullOrWhiteSpace(query.Novel))
             {
-                var novel = (await _novelRepository.Get(query.Novel)).Data;
-
-                if(novel != null)
-                {
-                    filters.Add(filterBuilder.Where(b => novel.Reviews.Contains(b.Id)));
-                }
+                filters.Add(filterBuilder.Where(r => r.Novel == query.Novel));
             }
 
-            var accumulatedFilter = filters.Count > 0 ? filterBuilder.And(filters) : null;
+            var accumulatedFilter = filters.Count > 0 ? filterBuilder.And(filters) : filterBuilder.Empty;
 
             return await _reviewRepository.Paginate(query.Page, query.Count, accumulatedFilter, sort);
         }

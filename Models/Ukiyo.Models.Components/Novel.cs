@@ -18,15 +18,6 @@ namespace Ukiyo.Models.Components
         [BsonElement("description")]
         public string Description { get; set; }
 
-        [BsonElement("book_ids")]
-        public IEnumerable<string> Books { get; set; }
-
-        [BsonElement("chapter_ids")]
-        public IEnumerable<string> Chapters { get; set; }
-
-        [BsonElement("review_ids")]
-        public IEnumerable<string> Reviews { get; set; }
-
         [BsonElement("tags")]
         public IEnumerable<Tag> Tags { get; set; }
 

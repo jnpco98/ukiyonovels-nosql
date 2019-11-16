@@ -18,8 +18,9 @@ namespace Ukiyo.Models.Components
         [BsonElement("description")]
         public string Description { get; set; }
 
-        [BsonElement("chapter_ids")]
-        public IEnumerable<string> Chapters { get; set; }
+        [Required]
+        [BsonElement("novel_id")]
+        public string Novel { get; set; }
 
         public Book(string creator)
             : base(creator) { }

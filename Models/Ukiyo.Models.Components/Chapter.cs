@@ -8,11 +8,10 @@ namespace Ukiyo.Models.Components
     {
         [Required]
         [MinLength(5, ErrorMessage = "Title length can't be less than 5 characters")]
-        [MaxLength(30, ErrorMessage = "Title length can't be more than 30 characters")]
+        [MaxLength(100, ErrorMessage = "Title length can't be more than 30 characters")]
         [BsonElement("title")]
         public string Title { get; set; }
 
-        [Required]
         [MinLength(10, ErrorMessage = "Description length can't be less than 10 characters")]
         [MaxLength(40, ErrorMessage = "Description length can't be more than 40 characters")]
         [BsonElement("description")]
@@ -24,8 +23,12 @@ namespace Ukiyo.Models.Components
         [BsonElement("content")]
         public string Content { get; set; }
 
-        [BsonElement("comment_ids")]
-        public IEnumerable<string> Comments { get; set; }
+        [Required]
+        [BsonElement("novel_id")]
+        public string Novel { get; set; }
+
+        [BsonElement("book_id")]
+        public string Book { get; set; }
 
         public Chapter(string _creator)
             : base(_creator) { }

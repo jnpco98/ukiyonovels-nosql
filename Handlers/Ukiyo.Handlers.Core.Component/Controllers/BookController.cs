@@ -22,12 +22,10 @@ namespace Ukiyo.Handlers.Core.Component
     public class BookController : ControllerBase
     {
         private readonly BookRepository _bookRepository;
-        private readonly NovelRepository _novelRepository;
 
-        public BookController(IEntityRepository<Book> bookRepository, IEntityRepository<Novel> novelRepository)
+        public BookController(IEntityRepository<Book> bookRepository)
         {
             _bookRepository = (BookRepository)bookRepository;
-            _novelRepository = (NovelRepository)novelRepository;
         }
 
         [HttpGet]
@@ -42,20 +40,15 @@ namespace Ukiyo.Handlers.Core.Component
             var filters = new List<FilterDefinition<Book>>();
 
             var sortBuilder = Builders<Book>.Sort;
-            var sort = query.Order.ToLower() == "asc" ?
+            var sort = query.Order.ToLower() == SORT_ORDER.ASCENDING ?
                 sortBuilder.Ascending(b => b.Title) : sortBuilder.Descending(b => b.Title);
 
             if (!string.IsNullOrWhiteSpace(query.Novel))
             {
-                var novel = (await _novelRepository.Get(query.Novel)).Data;
-
-                if (novel != null)
-                {
-                    filters.Add(filterBuilder.Where(b => novel.Books.Contains(b.Id)));
-                }
+                filters.Add(filterBuilder.Where(b => b.Novel == query.Novel));
             }
 
-            var accumulatedFilter = filters.Count > 0 ? filterBuilder.And(filters) : null;
+            var accumulatedFilter = filters.Count > 0 ? filterBuilder.And(filters) : filterBuilder.Empty;
 
             return await _bookRepository.Paginate(query.Page, query.Count, accumulatedFilter, sort);
         }

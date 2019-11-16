@@ -11,6 +11,11 @@ namespace Ukiyo.Models.Components
         [BsonElement("message")]
         public string Message { get; set; }
 
+        [Required]
+        [BsonElement("chapter_id")]
+        public string Chapter { get; set; }
+
+
         public Comment(string creator)
             : base(creator) { }
     }

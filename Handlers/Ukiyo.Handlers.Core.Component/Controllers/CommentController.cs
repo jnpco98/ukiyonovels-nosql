@@ -42,20 +42,15 @@ namespace Ukiyo.Handlers.Core.Component
             var filters = new List<FilterDefinition<Comment>>();
 
             var sortBuilder = Builders<Comment>.Sort;
-            var sort = query.Order.ToLower() == "asc" ?
+            var sort = query.Order.ToLower() == SORT_ORDER.ASCENDING ?
                 sortBuilder.Ascending(r => r.LastModified) : sortBuilder.Descending(r => r.LastModified);
 
             if (!string.IsNullOrWhiteSpace(query.Chapter))
             {
-                var chapter = (await _chapterRepository.Get(query.Chapter)).Data;
-
-                if(chapter != null)
-                {
-                   filters.Add(filterBuilder.Where(c => chapter.Comments.Contains(c.Id)));
-                }
+                filters.Add(filterBuilder.Where(c => c.Chapter == query.Chapter));
             }
 
-            var accumulatedFilter = filters.Count > 0 ? filterBuilder.And(filters) : null;
+            var accumulatedFilter = filters.Count > 0 ? filterBuilder.And(filters) : filterBuilder.Empty;
 
             return await _commentRepository.Paginate(query.Page, query.Count, accumulatedFilter, sort);
         }

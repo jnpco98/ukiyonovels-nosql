@@ -14,6 +14,10 @@ namespace Ukiyo.Models.Components
         [BsonElement("rating")]
         public float Rating { get; set; }
 
+        [BsonElement("novel_id")]
+        [Required]
+        public string Novel { get; set; }
+
         public Review(string creator)
             : base(creator) { }
     }

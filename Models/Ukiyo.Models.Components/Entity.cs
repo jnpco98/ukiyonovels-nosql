@@ -14,7 +14,7 @@ namespace Ukiyo.Models.Components
         public string Creator { get; set; }
 
         [BsonElement("archived")]
-        public bool Archived { get; set; }
+        public bool? Archived { get; set; }
 
         [BsonElement("created_at")]
         public DateTime CreatedAt { get; set; }
@@ -28,6 +28,7 @@ namespace Ukiyo.Models.Components
             Creator = creator;
             Archived = false;
             CreatedAt = DateTime.Now;
+            LastModified = DateTime.Now;
         }
     }
 }
