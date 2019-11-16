@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ukiyo.Repositories.Results"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ukiyo.Handlers.Query", "Handlers\Ukiyo.Handlers.Query\Ukiyo.Handlers.Query.csproj", "{D2DC451D-2667-41A2-B93F-52AF271790FF}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ukiyo.Handlers.Lambda", "Handlers\Ukiyo.Handlers.Lambda\Ukiyo.Handlers.Lambda.csproj", "{C7D10D06-E272-4591-8D56-FABC0B5CA230}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -97,6 +99,18 @@ Global
 		{D2DC451D-2667-41A2-B93F-52AF271790FF}.Release|x64.Build.0 = Release|Any CPU
 		{D2DC451D-2667-41A2-B93F-52AF271790FF}.Release|x86.ActiveCfg = Release|Any CPU
 		{D2DC451D-2667-41A2-B93F-52AF271790FF}.Release|x86.Build.0 = Release|Any CPU
+		{C7D10D06-E272-4591-8D56-FABC0B5CA230}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7D10D06-E272-4591-8D56-FABC0B5CA230}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7D10D06-E272-4591-8D56-FABC0B5CA230}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C7D10D06-E272-4591-8D56-FABC0B5CA230}.Debug|x64.Build.0 = Debug|Any CPU
+		{C7D10D06-E272-4591-8D56-FABC0B5CA230}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C7D10D06-E272-4591-8D56-FABC0B5CA230}.Debug|x86.Build.0 = Debug|Any CPU
+		{C7D10D06-E272-4591-8D56-FABC0B5CA230}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7D10D06-E272-4591-8D56-FABC0B5CA230}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7D10D06-E272-4591-8D56-FABC0B5CA230}.Release|x64.ActiveCfg = Release|Any CPU
+		{C7D10D06-E272-4591-8D56-FABC0B5CA230}.Release|x64.Build.0 = Release|Any CPU
+		{C7D10D06-E272-4591-8D56-FABC0B5CA230}.Release|x86.ActiveCfg = Release|Any CPU
+		{C7D10D06-E272-4591-8D56-FABC0B5CA230}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
