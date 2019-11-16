@@ -8,13 +8,13 @@ namespace Ukiyo.Models.Components
     {
         [Required]
         [MinLength(10, ErrorMessage = "Title length can't be less than 10 characters")]
-        [MaxLength(30, ErrorMessage = "Title length can't be more than 30 characters")]
+        [MaxLength(50, ErrorMessage = "Title length can't be more than 50 characters")]
         [BsonElement("title")]
         public string Title { get; set; }
 
         [Required]
         [MinLength(20, ErrorMessage = "Description length can't be less than 20 characters")]
-        [MaxLength(300, ErrorMessage = "Description length can't be more than 300 characters")]
+        [MaxLength(500, ErrorMessage = "Description length can't be more than 500 characters")]
         [BsonElement("description")]
         public string Description { get; set; }
 

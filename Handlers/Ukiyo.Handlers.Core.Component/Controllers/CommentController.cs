@@ -67,7 +67,7 @@ namespace Ukiyo.Handlers.Core.Component
         public async Task<ActionResult<IResponse>> DeleteOne(string id) =>
             await _commentRepository.Archive(id);
 
-        [HttpPost]
+        [HttpPut]
         public async Task<ActionResult<IResponse>> UpdateOne(Comment comment) =>
             await _commentRepository.Update(comment);
     }

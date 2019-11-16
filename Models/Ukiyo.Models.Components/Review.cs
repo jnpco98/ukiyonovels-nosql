@@ -6,7 +6,7 @@ namespace Ukiyo.Models.Components
     public class Review : Entity
     {
         [Required]
-        [MinLength(40, ErrorMessage = "Message length can't be less than 40 characters")]
+        [MinLength(20, ErrorMessage = "Message length can't be less than 20 characters")]
         [MaxLength(3000, ErrorMessage = "Message length can't be more than 3000 characters")]
         [BsonElement("message")]
         public string Message { get; set; }

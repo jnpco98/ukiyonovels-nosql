@@ -14,7 +14,7 @@ namespace Ukiyo.Handlers.Core.Component
     public class ReviewQuery : BaseQuery
     {
         [Required]
-        public string Novel { get; set; }
+        public string Novel { get; set; } = "";
         public string Sort { get; set; } = "";
     }
 
@@ -69,7 +69,7 @@ namespace Ukiyo.Handlers.Core.Component
         public async Task<ActionResult<IResponse>> DeleteOne(string id) =>
             await _reviewRepository.Archive(id);
 
-        [HttpPost]
+        [HttpPut]
         public async Task<ActionResult<IResponse>> UpdateOne(Review review) =>
             await _reviewRepository.Update(review);
     }

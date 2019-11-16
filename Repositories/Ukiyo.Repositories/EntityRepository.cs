@@ -75,7 +75,7 @@ namespace Ukiyo.Repositories
 
             try
             {
-                var query = _collection.Find(( filterBuilder.Empty) & filterBuilder.Eq(e => e.Archived, false))
+                var query = _collection.Find(filter & filterBuilder.Eq(e => e.Archived, false))
                                     .Limit(count).Skip(page * count)
                                     .Sort(sort ?? sortBuilder.Ascending(e => e.LastModified))
                                     .Project<TEntity>(projection ?? Builders<TEntity>.Projection.Exclude(e => e.Archived));
