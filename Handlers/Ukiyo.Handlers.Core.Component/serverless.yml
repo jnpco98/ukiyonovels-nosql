@@ -1,0 +1,17 @@
+service: ukiyonovels-core-component
+
+provider:
+  name: aws
+  runtime: dotnetcore3.0
+  region: us-east-2
+
+package:
+  artifact: bin/release/netcoreapp3.0/deploy-package.zip
+
+functions:
+  cc:
+    handler: UkiyoNovelsCoreComponent::Ukiyo.Handlers.Core.Component.LambdaEntryPoint::FunctionHandlerAsync
+    events:
+      - http:
+          path: /{proxy+}
+          method: ANY
