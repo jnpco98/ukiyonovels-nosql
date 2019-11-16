@@ -15,7 +15,6 @@ namespace Ukiyo.Models.Components
         [BsonElement("chapter_id")]
         public string Chapter { get; set; }
 
-
         public Comment(string creator)
             : base(creator) { }
     }

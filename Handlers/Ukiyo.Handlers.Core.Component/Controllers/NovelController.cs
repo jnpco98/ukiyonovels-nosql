@@ -25,7 +25,7 @@ namespace Ukiyo.Handlers.Core.Component
 
         public NovelController(IEntityRepository<Novel> novelRepository)
         {
-            _novelRepository = (NovelRepository) novelRepository;
+            _novelRepository = (NovelRepository)novelRepository;
         }
 
         [HttpGet]
@@ -39,8 +39,8 @@ namespace Ukiyo.Handlers.Core.Component
             var filterBuilder = Builders<Novel>.Filter;
             var filters = new List<FilterDefinition<Novel>>();
 
-            var sortBuilder = Builders<Novel>.Sort; 
-            var sort = query.Order.ToLower() == SORT_ORDER.ASCENDING ? 
+            var sortBuilder = Builders<Novel>.Sort;
+            var sort = query.Order.ToLower() == SORT_ORDER.ASCENDING ?
                 sortBuilder.Ascending(n => n.Title) : sortBuilder.Descending(n => n.Title);
 
             if (!string.IsNullOrWhiteSpace(query.Author))
@@ -51,19 +51,19 @@ namespace Ukiyo.Handlers.Core.Component
 
             if (!string.IsNullOrWhiteSpace(query.Origin))
             {
-                filters.Add(filterBuilder.ElemMatch(n => n.Origins, 
+                filters.Add(filterBuilder.ElemMatch(n => n.Origins,
                     o => o.Name.ToLower() == query.Origin.ToLower()));
             }
 
             if (!string.IsNullOrWhiteSpace(query.Genre))
             {
-                filters.Add(filterBuilder.ElemMatch(n => n.Genres, 
+                filters.Add(filterBuilder.ElemMatch(n => n.Genres,
                     g => g.Name.ToLower() == query.Genre.ToLower()));
             }
 
             if (!string.IsNullOrWhiteSpace(query.Tag))
             {
-                filters.Add(filterBuilder.ElemMatch(n => n.Tags, 
+                filters.Add(filterBuilder.ElemMatch(n => n.Tags,
                     t => t.Name.ToLower() == query.Tag.ToLower()));
             }
 
@@ -73,19 +73,19 @@ namespace Ukiyo.Handlers.Core.Component
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<IResponse>> GetOne(string id) => 
+        public async Task<ActionResult<IResponse>> GetOne(string id) =>
             await _novelRepository.Get(id);
 
         [HttpPost]
-        public async Task<ActionResult<IResponse>> InsertOne(Novel novel) => 
+        public async Task<ActionResult<IResponse>> InsertOne(Novel novel) =>
             await _novelRepository.Insert(novel);
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<IResponse>> DeleteOne(string id) => 
+        public async Task<ActionResult<IResponse>> DeleteOne(string id) =>
             await _novelRepository.Archive(id);
 
         [HttpPut]
-        public async Task<ActionResult<IResponse>> UpdateOne(Novel novel) => 
+        public async Task<ActionResult<IResponse>> UpdateOne(Novel novel) =>
             await _novelRepository.Update(novel);
     }
 }

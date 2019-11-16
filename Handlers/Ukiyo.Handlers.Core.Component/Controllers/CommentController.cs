@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Threading.Tasks;
 using Ukiyo.Handlers.Query;
 using Ukiyo.HttpResponse;
@@ -26,14 +25,14 @@ namespace Ukiyo.Handlers.Core.Component
 
         public CommentController(IEntityRepository<Comment> commentRepository, IEntityRepository<Chapter> chapterRepository)
         {
-            _commentRepository = (CommentRepository) commentRepository;
-            _chapterRepository = (ChapterRepository) chapterRepository;
+            _commentRepository = (CommentRepository)commentRepository;
+            _chapterRepository = (ChapterRepository)chapterRepository;
         }
 
         [HttpGet]
         public async Task<ActionResult<IResponse>> GetAll([FromQuery] CommentQuery query)
         {
-            if(query == null)
+            if (query == null)
             {
                 query = new CommentQuery();
             }

@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Threading.Tasks;
 using Ukiyo.Handlers.Query;
 using Ukiyo.HttpResponse;
@@ -15,6 +14,7 @@ namespace Ukiyo.Handlers.Core.Component
     {
         [Required]
         public string Novel { get; set; } = "";
+
         public string Sort { get; set; } = "";
     }
 
@@ -26,13 +26,13 @@ namespace Ukiyo.Handlers.Core.Component
 
         public ReviewController(IEntityRepository<Review> reviewRepository)
         {
-            _reviewRepository = (ReviewRepository) reviewRepository;
+            _reviewRepository = (ReviewRepository)reviewRepository;
         }
 
         [HttpGet]
         public async Task<ActionResult<IResponse>> GetAll([FromQuery] ReviewQuery query)
         {
-            if(query == null)
+            if (query == null)
             {
                 query = new ReviewQuery();
             }

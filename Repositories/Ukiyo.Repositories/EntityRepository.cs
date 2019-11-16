@@ -140,7 +140,7 @@ namespace Ukiyo.Repositories
                     Created = insertedEntities.Count
                 };
 
-                if(insertedEntities.Count > 0)
+                if (insertedEntities.Count > 0)
                 {
                     response.SetCreatedResource();
                 }
