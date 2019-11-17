@@ -11,7 +11,7 @@
         "Handler": "not_required_for_custom_runtime",
         "Runtime": "provided",
         "CodeUri": "",
-        "MemorySize": 128,
+        "MemorySize": 256,
         "Timeout": 30,
         "Role": null,
         "Policies": [
