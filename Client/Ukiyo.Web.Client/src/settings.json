@@ -1,0 +1,28 @@
+{
+  "navigation": {
+    "items": [
+        { "label": "Homepage", "link": "" },
+        { "label": "Novel List", "link": "" },
+        { "label": "Genre", "link": "" },
+        { "label": "Latest Update", "link": "" },
+        { "label": "Top Novels", "link": "" },
+        { "label": "Advanced Search", "link": "" }
+      ]
+  },
+  "home": {
+    "carousel": {
+      "images": [
+          "http://img1.ak.crunchyroll.com/i/spire3/b3163ae5f2f498741d7e0ac904471d781502462515_full.jpg",
+          "https://i0.wp.com/zirusmusings.com/wp-content/uploads/2018/01/Colored_3.png?ssl=1",
+          "https://firegirlthetranslation.files.wordpress.com/2015/09/img006-english.jpg",
+          "https://i.pinimg.com/originals/7d/b5/98/7db598c5a982f6116f521158feee0376.jpg",
+          "https://firegirlthetranslation.files.wordpress.com/2015/09/img010-english.jpg",
+          "https://i.pinimg.com/originals/3f/7b/98/3f7b987d2977fe3a2a5a7b0422afd66e.jpg",
+          "https://66.media.tumblr.com/96ca21aab66b4376c0fe80980e058bd2/tumblr_on34v2TORz1w13l7eo1_1280.jpg",
+          "https://files.yande.re/sample/6ac7a492d7e3b8c6b8cd6305afad0ebc/yande.re%20493926%20sample%20ishida_kana%20mahouka_koukou_no_rettousei%20seifuku%20shiba_miyuki%20shiba_tatsuya.jpg",
+          "https://vignette.wikia.nocookie.net/hakomari/images/e/ec/10037244533461a86e%281%29.jpg/revision/latest/scale-to-width-down/670?cb=20140419214757",
+          "http://images6.fanpop.com/image/photos/40400000/Shido-and-Kurumi-date-a-live-40451719-1600-1128.jpg"
+      ]
+    }
+  }
+}
