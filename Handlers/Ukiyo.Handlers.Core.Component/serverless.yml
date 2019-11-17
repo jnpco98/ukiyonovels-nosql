@@ -1,8 +1,11 @@
-service: ukiyonovels-core-component
+# Netcore3.0 is currently not supported yet
+# Using std aws lambda tools at the moment
+
+service: ukiyo-cc
 
 provider:
   name: aws
-  runtime: dotnetcore2.1
+  runtime: dotnetcore3.0
   region: us-east-2
 
 package:
@@ -10,7 +13,8 @@ package:
 
 functions:
   cc:
-    handler: UkiyoNovelsCoreComponent::Ukiyo.Handlers.Core.Component.LambdaEntryPoint::FunctionHandlerAsync
+    # handler: UkiyoNovelsCoreComponent::Ukiyo.Handlers.Core.Component.LambdaEntryPoint::FunctionHandlerAsync
+    handler: bootstrap::Ukiyo.Handlers.Core.Component.LambdaEntryPoint::FunctionHandlerAsync
     events:
       - http:
           path: /{proxy+}

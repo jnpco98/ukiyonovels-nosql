@@ -6,9 +6,16 @@
     <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
     <LangVersion>latest</LangVersion>
     <AWSProjectType>Lambda</AWSProjectType>
+    
+    <!-- Once netcore3.0 becomes available in serverless framework -->
+    <!-- <AssemblyName>UkiyoNovelsCoreComponent</AssemblyName> -->
+    
+    <!-- Using bootstrap for the assembly name to run with Runtime Support -->
     <AssemblyName>bootstrap</AssemblyName>
+    
   </PropertyGroup>
   
+  <!-- Runtime Support Bootstrap bash script -->
   <ItemGroup>
     <Content Include="bootstrap">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

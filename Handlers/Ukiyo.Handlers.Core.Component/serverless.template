@@ -11,7 +11,7 @@
         "Handler": "not_required_for_custom_runtime",
         "Runtime": "provided",
         "CodeUri": "",
-        "MemorySize": 256,
+        "MemorySize": 128,
         "Timeout": 30,
         "Role": null,
         "Policies": [
@@ -43,7 +43,7 @@
   },
   "Outputs": {
     "ApiURL": {
-      "Description": "API endpoint URL for Prod environment",
+      "Description": "UkiyoNovels Component Api Deployment",
       "Value": {
         "Fn::Sub": "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/"
       }
