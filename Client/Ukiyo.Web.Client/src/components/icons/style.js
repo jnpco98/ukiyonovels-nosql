@@ -1,2 +1,0 @@
-// chevron left
-// dots
