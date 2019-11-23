@@ -1,4 +1,5 @@
 import { css } from 'styled-components';
+import { math } from 'polished';
 
 export const CENTER_VERTICAL = 'CENTER_VERTICAL';
 export const CENTER_HORIZONTAL = 'CENTER_HORIZONTAL';
@@ -58,4 +59,21 @@ export const padding = (top: string, right: string, bottom: string, left: string
   ${right && css` padding-right: ${right}; `};
   ${bottom && css` padding-bottom: ${bottom}; `};
   ${left && css` padding-left: ${left}; `};
+`;
+
+export const truncate = (fontSize: string, lineHeight: number = 1, linesToShow: number = 1, maxWidth: string = '100%') => css`
+  display: block;
+  display: -webkit-box;
+  max-width: ${maxWidth};
+  height: ${math(`${fontSize} * ${lineHeight} * ${linesToShow}`)};
+  font-size: ${fontSize};
+  line-height: ${lineHeight};
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: ${linesToShow};
+  -webkit-box-orient: vertical;
+`;
+
+export const gradient = (degrees: string, colors: []) => css`
+  background: linear-gradient(${degrees}, ${colors.join(',')});
 `;
