@@ -1,0 +1,9 @@
+# Disable linting for all styled components
+**/style.ts
+**/mixins.ts
+
+# Disable linting for resets
+**/reset.ts
+
+# CRA auto generated code
+src/serviceWorker.ts

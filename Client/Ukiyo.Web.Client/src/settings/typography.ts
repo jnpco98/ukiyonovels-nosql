@@ -1,4 +1,4 @@
-export const FONT_DEFAULT = '\'Roboto Condensed\', Sans-Serif';
+export const FONT_DEFAULT = '"Roboto Condensed", Sans-Serif';
 export const FONT_SECONDARY = 'Cabin, Sans-Serif';
 
 export const FONT_SIZE_DEFAULT = '1rem';
