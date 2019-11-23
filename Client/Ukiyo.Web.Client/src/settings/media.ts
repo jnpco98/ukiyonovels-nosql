@@ -1,4 +1,4 @@
-const generateQuery = (screen: string) => `@media only screen and (min-width: ${screen})`;
+const generateQuery = (screen: string): string => `@media only screen and (min-width: ${screen})`;
 
 export const XXSMALL = '375px';
 export const XSMALL = '667px';
