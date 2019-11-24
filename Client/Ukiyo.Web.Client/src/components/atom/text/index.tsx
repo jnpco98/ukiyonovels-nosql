@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-import { AnyStyledComponent, DefaultTheme } from 'styled-components';
+import { AnyStyledComponent } from 'styled-components';
 import * as S from './style';
 
 export enum TextType {
@@ -32,6 +32,7 @@ const Text: React.FC<Props> = (props: Props): ReactElement => {
         case TextType.SubsectionTitle:
             StyledText = S.SubsectionTitle;
             break;
+        default:
         case TextType.Paragraph:
             StyledText = S.Paragraph;
             break;
@@ -40,9 +41,6 @@ const Text: React.FC<Props> = (props: Props): ReactElement => {
             break;
         case TextType.Anchor:
             StyledText = S.Anchor;
-            break;
-        default:
-            StyledText = S.Paragraph;
             break;
     }
 

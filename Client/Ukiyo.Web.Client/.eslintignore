@@ -2,7 +2,7 @@
 **/style.ts
 **/mixins.ts
 
-# Disable linting for resets
+# Disable linting for css resets
 **/reset.ts
 
 # CRA auto generated code

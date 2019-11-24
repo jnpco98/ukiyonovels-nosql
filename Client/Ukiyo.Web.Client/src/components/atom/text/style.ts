@@ -3,7 +3,7 @@ import { math } from 'polished';
 import * as M from '../../../settings/media';
 
 export const PageTitle = styled.h1`
-  ${({theme, ...props}) => 
+  ${({ theme, ...props }) => 
     css`
       font-size: ${math(`${theme.font.baseSize} * 1`)};
       margin-bottom: 1.5rem;
@@ -23,7 +23,7 @@ export const PageTitle = styled.h1`
 `;
 
 export const SectionTitle = styled.h2`
-  ${({theme, ...props}) =>
+  ${({ theme, ...props }) =>
     css`
       font-size: ${math(`${theme.font.baseSize} * 0.85`)};
       margin-bottom: 1.5rem;
@@ -44,7 +44,7 @@ export const SectionTitle = styled.h2`
 `;
 
 export const SubsectionTitle = styled.h3`
-  ${({theme, ...props}) => 
+  ${({ theme, ...props }) => 
     css`
       font-size: ${math(`${theme.font.baseSize} * 0.75`)};
       margin-bottom: 1.5rem;
@@ -64,7 +64,7 @@ export const SubsectionTitle = styled.h3`
 `;
 
 export const Paragraph = styled.p`
-  ${({theme, ...props}) =>
+  ${({ theme, ...props }) =>
     css`
       font-size: ${math(`${theme.font.baseSize} * 0.6`)};
       margin-bottom: 1.5rem;
@@ -84,7 +84,7 @@ export const Paragraph = styled.p`
 `;
 
 export const Span = styled.span`
-  ${({theme, ...props}) =>
+  ${({ theme, ...props }) =>
     css`
       font-size: ${math(`${theme.font.baseSize} * 0.6`)};
       margin-bottom: 1.5rem;
@@ -104,7 +104,7 @@ export const Span = styled.span`
 `;
 
 export const Anchor = styled.a`
-  ${({theme, ...props}) =>
+  ${({ theme, ...props }) =>
     css`
       font-size: ${math(`${theme.font.baseSize} * 0.6`)};
       margin-bottom: 1.5rem;
