@@ -26,11 +26,11 @@ module.exports =  {
   },
   rules:  {
     'prettier/prettier': ['warn', { singleQuote: true, semi: true }],
-    'no-unused-vars': 'warn',
     'no-console': 'off',
     "import/prefer-default-export": 'off',
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".tsx"] }],
     semi: ["warn", "always"],
+    'no-unused-vars': 'warn'
   },
   settings:  {
     react:  {
