@@ -3,7 +3,8 @@ import { math } from 'polished';
 
 type IconStyleProps = {
   size?: string;
-  count?: string;
+  message?: string;
+  countColor?: string;
   countBackground?: string;
 };
 
@@ -14,19 +15,23 @@ export const Icon = styled.div<IconStyleProps>`
   height: ${props => props.size ? props.size : '2rem'};
 
   ${({ theme, ...props }) =>
-    props.count && 
-    props.count.trim() &&
+    props.message && 
+    props.message.trim() &&
     css`
       background-color: transparent;
       &::after {
-        content: '${props.count}';
+        content: '${props.message}';
         position: absolute;
-        top: -2px;
-        left: calc(100% - 12px);
-        font-size: ${math(`${theme.font.baseSize} * 0.8`)};
+        top:  -${math(`${props.size} * 0.1`)};
+        left: calc(100% - ${math(`${props.size} * 0.45`)});
+        font-size:  ${math(`${props.size} * 0.4`)};
         font-weight: ${theme.font.weightBold};
+        font-family: ${theme.font.primary};
+        border-radius: ${math(`${props.size} * 0.2`)};
+        padding: ${math(`${props.size} * 0.04`)} ${math(`${props.size} * 0.1`)};
+        border: ${math(`${props.size} * 0.04`)} solid;
         background: ${props.countBackground ? props.countBackground : 'transparent'};
-        color: ${theme.colors.primary};
+        color: ${props.countColor ? props.countColor : theme.colors.primary};
       }
     `
   };

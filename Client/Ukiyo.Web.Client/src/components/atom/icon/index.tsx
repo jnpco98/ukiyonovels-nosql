@@ -4,17 +4,19 @@ import * as S from './style';
 
 type Props = {
     glyph: GlyphType;
-    size?: string;
-    count?: string;
     fill?: string;
     stroke?: string;
+    size?: string;
+    message?: string;
+    countColor?: string;
+    countBackground?: string;
 };
 
 const Icon: React.FC<Props> = (props: Props): ReactElement => {
-    const { glyph, size = '2rem', count, fill, stroke } = props;
+    const { glyph, fill, stroke, size = '2rem', message: count, countColor, countBackground } = props;
 
     return (
-        <S.Icon count={count} size={size}>
+        <S.Icon message={count} countColor={countColor} countBackground={countBackground} size={size}>
             <S.IconSvg
                 fill={fill}
                 stroke={stroke}
