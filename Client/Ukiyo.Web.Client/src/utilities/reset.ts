@@ -1,5 +1,4 @@
 import { css, createGlobalStyle } from 'styled-components';
-import { FONT_DEFAULT } from '../settings/typography';
 
 const reset = css`
   * {
@@ -24,7 +23,7 @@ const reset = css`
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
-    font-family: ${FONT_DEFAULT};
+    font-family: "Roboto Condensed", Sans-Serif;
 
     &::selection {
       background: #7d7d7d;
@@ -52,7 +51,7 @@ const reset = css`
 
   ol, ul {
     list-style: none;
-    font-family: ${FONT_DEFAULT};
+    font-family: "Roboto Condensed", Sans-Serif';
   }
 
   blockquote, q {
@@ -79,7 +78,7 @@ const reset = css`
   }
 
   button {
-    font-family: ${FONT_DEFAULT};
+    font-family: "Roboto Condensed", Sans-Serif';
   }
 `;
 

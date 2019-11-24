@@ -1,4 +1,5 @@
 import React, { ReactElement } from 'react';
+import { AnyStyledComponent, DefaultTheme } from 'styled-components';
 import * as S from './style';
 
 export enum TextType {
@@ -12,14 +13,14 @@ export enum TextType {
 
 type Props = {
     className?: string;
-    children: React.ReactNode;
+    children?: React.ReactNode;
     type?: TextType;
 };
 
 const Text: React.FC<Props> = (props: Props): ReactElement => {
     const { children = '', className = '', type } = props;
 
-    let StyledText;
+    let StyledText: AnyStyledComponent;
 
     switch (type) {
         case TextType.PageTitle:
@@ -45,7 +46,7 @@ const Text: React.FC<Props> = (props: Props): ReactElement => {
             break;
     }
 
-    return <StyledText className={className}>{{ children }}</StyledText>;
+    return <StyledText className={className}>{children}</StyledText>;
 };
 
 export default Text;

@@ -1,22 +1,27 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, ReactElement } from 'react';
+import { ThemeProvider } from 'styled-components';
 import { AppContainer } from './style';
-import Reset from '../helpers/reset';
-import { debounce } from '../helpers/delay';
+import { BaseTheme } from '../settings/theme';
+import Text, { TextType } from '../components/atom/text';
 
-const App: React.FC = () => {
-  const [headerOffset, setHeaderOffset] = useState("0");
-  const navigationRef = useRef(document.createElement('div'));
+const App: React.FC = (): ReactElement => {
+    const [headerOffset, setHeaderOffset] = useState<string>('0');
+    const navigationRef = useRef(document.createElement('div'));
 
-  useEffect(() => {
-    setHeaderOffset(`${navigationRef.current.getBoundingClientRect().bottom}px`);
-  }, []);
+    useEffect(() => {
+        setHeaderOffset(`${navigationRef.current.getBoundingClientRect().bottom}px`);
+    }, []);
 
-  return (
-    <AppContainer>
-      <Reset/>
-      TEST
-    </AppContainer>
-  );
-}
+    return (
+        <ThemeProvider theme={BaseTheme}>
+            <AppContainer>
+                <Text type={TextType.SectionTitle}>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt corporis aut eius rerum dicta nostrum,
+                    possimus vero. Sint, numquam nam?
+                </Text>
+            </AppContainer>
+        </ThemeProvider>
+    );
+};
 
 export default App;
