@@ -21,7 +21,7 @@ const App: React.FC = (): ReactElement => {
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt corporis aut eius rerum dicta nostrum,
                     possimus vero. Sint, numquam nam?
                 </Text>
-                <Icon glyph={GlyphType.Sam} message="hello" countColor="black" countBackground="#ffff" size="3rem" />
+                <Icon glyph={GlyphType.Upload} message="up" countColor="black" countBackground="#ffff" size="3rem" />
             </AppContainer>
         </ThemeProvider>
     );

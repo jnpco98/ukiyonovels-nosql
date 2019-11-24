@@ -10,7 +10,7 @@ export enum GlyphType {
     Mention, Message, MessageSimple, MessageSimpleNew, MessageFill, MessageNew, Minus, 
     MinusFill, Mute, Notification, NotificationFill, Person, Photo, PhotoFill, Pin, PinFill, 
     Plus, PlusFill, Post, PostCancel, PostFill, Private, PrivateOutline, PrivateUnlocked, PrivateFill, 
-    ProductHunt, Profile, ProfileFill, Quote, Rep, Reply, Sam, Search, Send, SendFill, Settings, 
+    ProductHunt, Profile, ProfileFill, Quote, Rep, Reply, Search, Send, SendFill, Settings, 
     Share, Slack, SlackColored, SlackWhite, Support, SupportFill, Thread, Thumbsdown, ThumbsdownFill, 
     Thumbsup, ThumbsupFill, Twitter, Up, UpFill, Upload, View, ViewFill, ViewBack, ViewClose, 
     ViewCloseSmall, ViewForward, ViewReload, Welcome, Windows
@@ -609,15 +609,6 @@ const Glyph: React.FC<Props> = (props: Props): ReactElement => {
                     <path
                         d="M 5.8902 8.70774C 6.31445 9.0613 6.3718 9.69185 6.01822 10.1161C 5.66464 10.5404 5.03409 10.5977 4.6098 10.2442L 4.60855 10.2431C 3 9.22597 2 8.22597 0.40863 6.27944C 0.19043 5.96819 0 5.61611 0 5.22594C 0 4.83579 0.19043 4.48371 0.40863 4.17246C 2 2.22597 3 1.22597 4.60944 0.20804C 5.0762 -0.0871717 5.66464 -0.0885144 6.01822 0.335756C 6.3718 0.760027 6.31445 1.3906 5.8902 1.74416L 5.72845 1.87903C 4.58041 2.83635 3.8909 3.41132 3.07352 4.22597L 16 4.22597C 18.7614 4.22597 21 6.46454 21 9.22597C 21 11.9874 18.7614 14.226 16 14.226L 12 14.226C 11.4477 14.226 11 13.7783 11 13.226C 11 12.6737 11.4477 12.226 12 12.226L 16 12.226C 17.6569 12.226 19 10.8828 19 9.22597C 19 7.56911 17.6569 6.22597 16 6.22597L 3.07495 6.22597C 3.87918 7.02567 4.56436 7.59874 5.64545 8.50295L 5.8902 8.70774Z"
                         transform="translate(6 9)"
-                    />
-                </g>
-            );
-        case GlyphType.Sam:
-            return (
-                <g>
-                    <path
-                        d="M 14 2C 14 2.74028 13.5978 3.38663 13 3.73244L 13 6L 11 6L 11 3.73244C 10.4022 3.38663 10 2.74028 10 2C 10 0.895432 10.8954 0 12 0C 13.1046 0 14 0.895432 14 2ZM 11 7.00577L 11 7L 13 7L 13 7.00577C 22.1347 7.11594 24 8.8546 24 16.5C 24 24.4167 22 26 12 26C 2 26 0 24.4167 0 16.5C 0 8.8546 1.8653 7.11594 11 7.00577ZM 5.5 17C 6.32843 17 7 16.3284 7 15.5C 7 14.6716 6.32843 14 5.5 14C 4.67157 14 4 14.6716 4 15.5C 4 16.3284 4.67157 17 5.5 17ZM 18.5 17C 19.3284 17 20 16.3284 20 15.5C 20 14.6716 19.3284 14 18.5 14C 17.6716 14 17 14.6716 17 15.5C 17 16.3284 17.6716 17 18.5 17ZM 12.0008 21C 13.9558 21 15.6185 19.7531 15.9905 18.0909C 16.176 17.262 13.597 17 12.0011 17C 10.4053 17 7.80522 17.1678 8.01158 18.0909C 8.38356 19.7531 10.0457 21 12.0008 21Z"
-                        transform="translate(4 2)"
                     />
                 </g>
             );
