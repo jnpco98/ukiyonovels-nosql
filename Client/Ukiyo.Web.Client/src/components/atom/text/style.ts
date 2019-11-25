@@ -27,7 +27,6 @@ export const SectionTitle = styled.h2`
     css`
       font-size: ${math(`${theme.font.baseSize} * 0.85`)};
       margin-bottom: 1.5rem;
-      color: ${theme.colors.accent};
 
       ${M.MEDIA_SMALL} {
         font-size: ${math(`${theme.font.baseSize} * 1.5`)};

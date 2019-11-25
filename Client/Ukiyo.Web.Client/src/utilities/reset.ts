@@ -51,7 +51,7 @@ const reset = css`
 
   ol, ul {
     list-style: none;
-    font-family: "Roboto Condensed", Sans-Serif';
+    font-family: "Roboto Condensed", Sans-Serif;
   }
 
   blockquote, q {
@@ -71,6 +71,7 @@ const reset = css`
   a {
     color: currentColor;
     text-decoration: none;
+    cursor: pointer;
   }
 
   ul {
@@ -78,7 +79,7 @@ const reset = css`
   }
 
   button {
-    font-family: "Roboto Condensed", Sans-Serif';
+    font-family: "Roboto Condensed", Sans-Serif;
   }
 `;
 

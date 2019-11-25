@@ -17,10 +17,16 @@ const App: React.FC = (): ReactElement => {
     return (
         <ThemeProvider theme={BaseTheme}>
             <AppContainer>
-                <Text type={TextType.SectionTitle}>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt corporis aut eius rerum dicta nostrum,
-                    possimus vero. Sint, numquam nam?
+                <Text type={TextType.PageTitle}>H1: Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
+                <Text type={TextType.SectionTitle}>H2: Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
+                <Text type={TextType.SubsectionTitle}>
+                    H3: Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 </Text>
+                <Text type={TextType.Paragraph}>
+                    Paragraph: Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                </Text>
+                <Text type={TextType.Span}>Span: Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
+                <Text type={TextType.Anchor}>Achor: Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
                 <Icon glyph={GlyphType.Upload} message="up" countColor="black" countBackground="#ffff" size="3rem" />
             </AppContainer>
         </ThemeProvider>
