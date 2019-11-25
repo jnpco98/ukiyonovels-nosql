@@ -39,7 +39,7 @@ export const BaseTheme: DefaultTheme = {
 
         primary: '#5f6062',
         secondary: '#4b503f',
-        accent: '#eb4034',
+        accent: '#7289da',
 
         selection: '#7d7d7d',
 

@@ -28,7 +28,7 @@ export const Icon = styled.div<IconStyleProps>`
         font-weight: ${theme.font.weightBold};
         font-family: ${theme.font.primary};
         border-radius: ${math(`${props.size} * 0.2`)};
-        padding: ${math(`${props.size} * 0.04`)} ${math(`${props.size} * 0.1`)};
+        padding: ${math(`${props.size} * 0.045`)} ${math(`${props.size} * 0.1`)};
         border: ${math(`${props.size} * 0.04`)} solid;
         background: ${props.countBackground ? props.countBackground : 'transparent'};
         color: ${props.countColor ? props.countColor : theme.colors.primary};

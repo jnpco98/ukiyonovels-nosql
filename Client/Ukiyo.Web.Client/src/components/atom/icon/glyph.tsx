@@ -9,11 +9,11 @@ export enum GlyphType {
     Home, Idea, Info, Inserter, Like, LikeFill, Link, Markdown, MemberAdd, MemberRemove, 
     Mention, Message, MessageSimple, MessageSimpleNew, MessageFill, MessageNew, Minus, 
     MinusFill, Mute, Notification, NotificationFill, Person, Photo, PhotoFill, Pin, PinFill, 
-    Plus, PlusFill, Post, PostCancel, PostFill, Private, PrivateOutline, PrivateUnlocked, PrivateFill, 
-    ProductHunt, Profile, ProfileFill, Quote, Rep, Reply, Search, Send, SendFill, Settings, 
-    Share, Slack, SlackColored, SlackWhite, Support, SupportFill, Thread, Thumbsdown, ThumbsdownFill, 
-    Thumbsup, ThumbsupFill, Twitter, Up, UpFill, Upload, View, ViewFill, ViewBack, ViewClose, 
-    ViewCloseSmall, ViewForward, ViewReload, Welcome, Windows
+    Plus, PlusFill, Post, PostCancel, PostFill, Private, PrivateOutline, PrivateUnlocked, 
+    PrivateFill, ProductHunt, Profile, ProfileFill, Quote, Rep, Reply, Search, Send, SendFill, 
+    Settings, Share, Slack, SlackColored, SlackWhite, Star, StarFilled, Support, SupportFill, 
+    Thread, Thumbsdown, ThumbsdownFill, Thumbsup, ThumbsupFill, Twitter, Up, UpFill, Upload, 
+    View, ViewFill, ViewBack, ViewClose, ViewCloseSmall, ViewForward, ViewReload, Welcome, Windows
     /* eslint-enable */
 }
 

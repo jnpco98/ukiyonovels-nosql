@@ -4,6 +4,7 @@ import { AppContainer } from './style';
 import { BaseTheme } from '../settings/theme';
 import Text, { TextType } from '../components/atom/text';
 import Icon from '../components/atom/icon';
+import Bar from '../components/atom/bar';
 import { GlyphType } from '../components/atom/icon/glyph';
 
 const App: React.FC = (): ReactElement => {
@@ -27,7 +28,15 @@ const App: React.FC = (): ReactElement => {
                 </Text>
                 <Text type={TextType.Span}>Span: Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
                 <Text type={TextType.Anchor}>Achor: Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
-                <Icon glyph={GlyphType.Upload} message="up" countColor="black" countBackground="#ffff" size="3rem" />
+                <Icon
+                    glyph={GlyphType.LikeFill}
+                    message="99k"
+                    countColor="#7289DA"
+                    countBackground="#ffff"
+                    size="3rem"
+                    fill="#7289DA"
+                />
+                <Bar width="10rem" height="0.5rem" rounded />
             </AppContainer>
         </ThemeProvider>
     );
