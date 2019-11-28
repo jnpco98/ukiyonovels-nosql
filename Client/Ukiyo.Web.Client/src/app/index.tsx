@@ -36,7 +36,7 @@ const App: React.FC = (): ReactElement => {
                     size="3rem"
                     fill="#7289DA"
                 />
-                <Bar width="10rem" height="0.5rem" rounded />
+                <Bar width="10rem" height="0.5rem" rounded fillRate={0.5} />
             </AppContainer>
         </ThemeProvider>
     );

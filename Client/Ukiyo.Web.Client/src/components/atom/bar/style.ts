@@ -29,7 +29,7 @@ export const Fill = styled.span<FillStyleProps>`
     position: absolute;
     top: 0;
     left: 0;
-    width: 50%;
+    width: ${props => props.fillRate * 100}%;
     height: 100%;
     background: ${({ theme, ...props }) => props.color ? props.color : theme.colors.accent};
 `;

@@ -5,7 +5,7 @@ import * as M from '../../../settings/media';
 export const PageTitle = styled.h1`
   ${({ theme, ...props }) => 
     css`
-      font-size: ${math(`${theme.font.baseSize} * 1`)};
+      font-size: ${math(`${theme.font.baseSize} * 1.5`)};
       margin-bottom: 1.5rem;
       
       ${M.MEDIA_SMALL} {
@@ -25,7 +25,7 @@ export const PageTitle = styled.h1`
 export const SectionTitle = styled.h2`
   ${({ theme, ...props }) =>
     css`
-      font-size: ${math(`${theme.font.baseSize} * 0.85`)};
+      font-size: ${math(`${theme.font.baseSize} * 1.1`)};
       margin-bottom: 1.5rem;
 
       ${M.MEDIA_SMALL} {
@@ -45,7 +45,7 @@ export const SectionTitle = styled.h2`
 export const SubsectionTitle = styled.h3`
   ${({ theme, ...props }) => 
     css`
-      font-size: ${math(`${theme.font.baseSize} * 0.75`)};
+      font-size: ${math(`${theme.font.baseSize} * 1`)};
       margin-bottom: 1.5rem;
 
       ${M.MEDIA_SMALL} {
@@ -65,7 +65,7 @@ export const SubsectionTitle = styled.h3`
 export const Paragraph = styled.p`
   ${({ theme, ...props }) =>
     css`
-      font-size: ${math(`${theme.font.baseSize} * 0.6`)};
+      font-size: ${math(`${theme.font.baseSize} * 0.8`)};
       margin-bottom: 1.5rem;
 
       ${M.MEDIA_SMALL} {
@@ -85,7 +85,7 @@ export const Paragraph = styled.p`
 export const Span = styled.span`
   ${({ theme, ...props }) =>
     css`
-      font-size: ${math(`${theme.font.baseSize} * 0.6`)};
+      font-size: ${math(`${theme.font.baseSize} * 0.8`)};
       margin-bottom: 1.5rem;
 
       ${M.MEDIA_SMALL} {
@@ -105,7 +105,7 @@ export const Span = styled.span`
 export const Anchor = styled.a`
   ${({ theme, ...props }) =>
     css`
-      font-size: ${math(`${theme.font.baseSize} * 0.6`)};
+      font-size: ${math(`${theme.font.baseSize} * 0.8`)};
       margin-bottom: 1.5rem;
 
       ${M.MEDIA_SMALL} {

@@ -2,17 +2,17 @@ import React, { ReactElement } from 'react';
 
 export enum GlyphType {
     /* eslint-disable */
-    Analytics, Announcement, Apple, Attachment, Bug, BugFill, Channel, ChannelPrivate, 
-    Checkbox, Checkmark, Code, Community, Controls, Delete, DoorEnter, DoorLeave, Down, 
-    DownCaret, Download, UpCaret, DownFill, Edit, Email, EmailFill, Embed, Emoji, Enter, 
-    Everything, Expand, Explore, Facebook, Flag, FlagFill, Freeze, Friend, Github, Google, 
-    Home, Idea, Info, Inserter, Like, LikeFill, Link, Markdown, MemberAdd, MemberRemove, 
-    Mention, Message, MessageSimple, MessageSimpleNew, MessageFill, MessageNew, Minus, 
-    MinusFill, Mute, Notification, NotificationFill, Person, Photo, PhotoFill, Pin, PinFill, 
-    Plus, PlusFill, Post, PostCancel, PostFill, Private, PrivateOutline, PrivateUnlocked, 
-    PrivateFill, ProductHunt, Profile, ProfileFill, Quote, Rep, Reply, Search, Send, SendFill, 
-    Settings, Share, Slack, SlackColored, SlackWhite, Star, StarFilled, Support, SupportFill, 
-    Thread, Thumbsdown, ThumbsdownFill, Thumbsup, ThumbsupFill, Twitter, Up, UpFill, Upload, 
+    Analytics, Announcement, Apple, Attachment, Bug, BugFill, Calendar, Channel,
+    ChannelPrivate, Checkbox, Checkmark, Code, Community, Controls, Delete, DoorEnter,
+    DoorLeave, Down, DownCaret, Download, UpCaret, DownFill, Edit, Email, EmailFill,
+    Embed, Emoji, Enter, Everything, Expand, Explore, Facebook, Flag, FlagFill, Freeze,
+    Friend, Github, Google, Home, Idea, Info, Inserter, Like, LikeFill, Link, Markdown,
+    MemberAdd, MemberRemove, Mention, Message, MessageSimple, MessageSimpleNew, MessageFill,
+    MessageNew, Minus, MinusFill, Mute, Notification, NotificationFill, Person, Photo,
+    PhotoFill, Pin, PinFill, Plus, PlusFill, Post, PostCancel, PostFill, Private, PrivateOutline,
+    PrivateUnlocked, PrivateFill, ProductHunt, Profile, ProfileFill, Quote, Rep, Reply, Search,
+    Send, SendFill, Settings, Share, Slack, SlackColored, SlackWhite, Support, SupportFill,
+    Thread, Thumbsdown, ThumbsdownFill, Thumbsup, ThumbsupFill, Twitter, Up, UpFill, Upload,
     View, ViewFill, ViewBack, ViewClose, ViewCloseSmall, ViewForward, ViewReload, Welcome, Windows
     /* eslint-enable */
 }
@@ -25,6 +25,12 @@ const Glyph: React.FC<Props> = (props: Props): ReactElement => {
     const { glyph } = props;
 
     switch (glyph) {
+        case GlyphType.Calendar:
+            return(
+                <g>
+                    <path d="M22 5c0-.552-.447-1-1-1s-1 .448-1 1v2c0 .552.447 1 1 1s1-.448 1-1v-2zm-12 2c0 .552-.447 1-1 1s-1-.448-1-1v-2c0-.552.447-1 1-1s1 .448 1 1v2zm13 5v10h-16v-10h16zm2-6h-2v1c0 1.103-.897 2-2 2s-2-.897-2-2v-1h-8v1c0 1.103-.897 2-2 2s-2-.897-2-2v-1h-2v18h20v-18zm4 3v19h-22v-2h20v-17h2zm-17 7h-2v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2zm-8 4h-2v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2z"/>
+                </g>
+            );
         case GlyphType.Analytics:
             return (
                 <g transform="translate(9 9)">
