@@ -10,13 +10,20 @@ type Props = {
     message?: string;
     countColor?: string;
     countBackground?: string;
+    className?: string;
 };
 
 const Icon: React.FC<Props> = (props: Props): ReactElement => {
-    const { glyph, fill, stroke, size = '2rem', message: count, countColor, countBackground } = props;
+    const { glyph, fill, stroke, size = '2rem', message: count, countColor, countBackground, className } = props;
 
     return (
-        <S.Icon message={count} countColor={countColor} countBackground={countBackground} size={size}>
+        <S.Icon
+            className={className}
+            message={count}
+            countColor={countColor}
+            countBackground={countBackground}
+            size={size}
+        >
             <S.IconSvg
                 fill={fill}
                 stroke={stroke}

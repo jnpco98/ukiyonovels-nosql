@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-import { AnyStyledComponent } from 'styled-components';
+import { AnyStyledComponent } from 'styled-components/macro';
 import * as S from './style';
 
 export enum TextType {

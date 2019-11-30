@@ -1,4 +1,4 @@
-import { css } from 'styled-components';
+import { css } from 'styled-components/macro';
 import { math } from 'polished';
 
 export const CENTER_VERTICAL = 'CENTER_VERTICAL';
