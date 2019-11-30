@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useState } from 'react';
 import { ThemeProvider } from 'styled-components/macro';
 import { AppContainer } from './style';
 import { BaseTheme } from '../settings/theme';
@@ -7,11 +7,13 @@ import Icon from '../components/atom/icon';
 import Bar from '../components/atom/bar';
 import Select from '../components/atom/select';
 import { GlyphType } from '../components/atom/icon/glyph';
+import { HamburgerMenu, MenuType } from '../components/atom/hamburger';
 
 // eslint-disable-next-line
 import 'simplebar/dist/simplebar.min.css';
 
 const App: React.FC = (): ReactElement => {
+    const [hamburgerIdx, setHamburgerIdx] = useState(0);
     // const [headerOffset, setHeaderOffset] = useState<string>('0');
     // const navigationRef = useRef(document.createElement('div'));
 
@@ -48,6 +50,15 @@ const App: React.FC = (): ReactElement => {
                     size="3rem"
                     fill="#7289DA"
                 />
+                <div style={{ display: 'flex', margin: '2rem' }}>
+                    {[MenuType.NoEntry, MenuType.SpeedRunner, MenuType.Spread, MenuType.Tear].map((type, idx) => (
+                        /* eslint-disable */
+                        <div onClick={() => setHamburgerIdx(idx)}>
+                            <HamburgerMenu type={type} active={hamburgerIdx === idx} key={idx} />
+                        </div>
+                        /* eslint-enable */
+                    ))}
+                </div>
                 <Select
                     optionName="genre"
                     defaultValue="Select game genre"
