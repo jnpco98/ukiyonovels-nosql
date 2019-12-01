@@ -13,6 +13,7 @@ import { HamburgerMenu, MenuType } from '../components/atom/hamburger';
 // eslint-disable-next-line
 import 'simplebar/dist/simplebar.min.css';
 import Search from '../components/atom/search';
+import Input from '../components/atom/input';
 
 const App: React.FC = (): ReactElement => {
     const [hamburgerIdx, setHamburgerIdx] = useState(0);
@@ -25,7 +26,7 @@ const App: React.FC = (): ReactElement => {
 
     return (
         <ThemeProvider theme={BaseTheme}>
-            <AppContainer>
+            <AppContainer style={{ margin: '2rem' }}>
                 <Text type={TextType.PageTitle}>H1: Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
                 <Text type={TextType.SectionTitle}>H2: Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
                 <Text type={TextType.SubsectionTitle}>
@@ -96,6 +97,7 @@ const App: React.FC = (): ReactElement => {
                     <Button type={ButtonType.Warning}>button</Button>
                     <Button type={ButtonType.Error}>button</Button>
                 </div>
+                <Input name="inp" label="Name" />
             </AppContainer>
         </ThemeProvider>
     );

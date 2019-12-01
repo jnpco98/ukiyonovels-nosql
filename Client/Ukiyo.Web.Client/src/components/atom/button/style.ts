@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { lighten, darken } from 'polished';
+import { lighten } from 'polished';
 import { ButtonType } from './index';
 
 type ButtonStyleProps = {
