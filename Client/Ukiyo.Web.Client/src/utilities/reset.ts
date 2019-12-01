@@ -38,6 +38,10 @@ const reset = css`
   *[hidden] {
       display: none;
   }
+  
+  img {
+    display: block;
+  }
 
   #root {
     display: flex;

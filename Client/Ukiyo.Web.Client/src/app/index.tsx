@@ -14,6 +14,7 @@ import { HamburgerMenu, MenuType } from '../components/atom/hamburger';
 import 'simplebar/dist/simplebar.min.css';
 import Search from '../components/atom/search';
 import Input from '../components/atom/input';
+import Thumbnail from '../components/atom/thumbnail';
 
 const App: React.FC = (): ReactElement => {
     const [hamburgerIdx, setHamburgerIdx] = useState(0);
@@ -98,6 +99,18 @@ const App: React.FC = (): ReactElement => {
                     <Button type={ButtonType.Error}>button</Button>
                 </div>
                 <Input name="inp" label="Name" />
+                <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between', margin: '2rem', maxWidth: '40rem', flexWrap: 'wrap' }}>
+                    {[
+                        'https://assets3.thrillist.com/v1/image/2813543/size/gn-gift_guide_variable_c_2x.jpg',
+                        'http://novelfull.com/uploads/thumbs/library-of-heavens-path-d6292facbc-6d010b89b8fcb6a6cfa04853f099ea20.jpg',
+                        'http://novelfull.com/uploads/thumbs/martial-god-asura-4fbd99df7b-22fdb7e1b842e5705f8694f5d6d533ea.jpg',
+                        'http://novelfull.com/uploads/thumbs/trial-marriage-husband-need-to-w-539b2f7281-f1d09c1a26ec65934d410c1153037bfc.jpg'
+                    ].map(src => (
+                        <Thumbnail imgSrc={src} key={src}>
+                            Kono Tsubasa
+                        </Thumbnail>
+                    ))}
+                </div>
             </AppContainer>
         </ThemeProvider>
     );
