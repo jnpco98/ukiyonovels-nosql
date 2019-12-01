@@ -10,7 +10,7 @@ export enum MenuType {
 }
 
 type Props = {
-    type: MenuType;
+    type?: MenuType;
     active?: boolean;
 };
 

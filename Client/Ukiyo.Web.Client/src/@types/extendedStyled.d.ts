@@ -44,8 +44,14 @@ declare module 'styled-components' {
 
             selection: string;
 
+            info: string;
+            infoText: string;
             success: string;
+            successText: string;
+            warning: string;
+            warningText: string;
             error: string;
+            errorText: string;
         };
     }
 }

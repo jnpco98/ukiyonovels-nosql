@@ -43,7 +43,13 @@ export const BaseTheme: DefaultTheme = {
 
         selection: '#7d7d7d',
 
-        error: '#eb4034',
-        success: '#eef0f4'
+        info: '#7289da',
+        infoText: '#fff',
+        success: '#218838',
+        successText: '#fff',
+        warning: '#e0a800',
+        warningText: '#fff',
+        error: '#dc3545',
+        errorText: '#fff'
     }
 };

@@ -6,11 +6,13 @@ import Text, { TextType } from '../components/atom/text';
 import Icon from '../components/atom/icon';
 import Bar from '../components/atom/bar';
 import Select from '../components/atom/select';
+import Button, { ButtonType } from '../components/atom/button';
 import { GlyphType } from '../components/atom/icon/glyph';
 import { HamburgerMenu, MenuType } from '../components/atom/hamburger';
 
 // eslint-disable-next-line
 import 'simplebar/dist/simplebar.min.css';
+import Search from '../components/atom/search';
 
 const App: React.FC = (): ReactElement => {
     const [hamburgerIdx, setHamburgerIdx] = useState(0);
@@ -85,6 +87,15 @@ const App: React.FC = (): ReactElement => {
                     fill="#7289DA"
                 />
                 <Bar width="10rem" height="0.5rem" rounded fillRate={0.5} />
+                <div style={{ margin: '2rem' }}>
+                    <Search name="def" />
+                </div>
+                <div style={{ display: 'flex', margin: '2rem', justifyContent: 'space-between', minWidth: '22rem' }}>
+                    <Button type={ButtonType.Info}>button</Button>
+                    <Button type={ButtonType.Success}>button</Button>
+                    <Button type={ButtonType.Warning}>button</Button>
+                    <Button type={ButtonType.Error}>button</Button>
+                </div>
             </AppContainer>
         </ThemeProvider>
     );

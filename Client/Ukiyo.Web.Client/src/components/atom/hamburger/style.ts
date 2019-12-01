@@ -1,5 +1,9 @@
 import styled, { css } from 'styled-components';
 
+type HamburgerStyleProps = {
+  active?: boolean;
+}
+
 const MULTIPLIER = 0.3;
 const BASE_WIDTH = 4 * MULTIPLIER;
 const BASE_HEIGHT = 3 * MULTIPLIER;
@@ -27,10 +31,6 @@ const Line = css`
   transform: rotate(0.001deg);
   transition: .25s ease-in-out;
 `;
-
-type HamburgerStyleProps = {
-    active?: boolean;
-}
 
 export const SpeedRunner = styled.div<HamburgerStyleProps>`
   ${Base};
