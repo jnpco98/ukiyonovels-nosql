@@ -1,0 +1,32 @@
+{
+    "statusCode": 200,
+    "success": true,
+    "message": "",
+    "data": [
+        {
+            "title": "Chapter 2: Everything for you",
+            "description": null,
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat",
+            "novel": "5dcf7fc58b73012ed80256b4",
+            "book": null,
+            "id": "5dcf805f8b73012ed80256bb",
+            "creator": null,
+            "archived": null,
+            "createdAt": "2019-11-16T04:51:43.174Z",
+            "lastModified": "2019-11-16T04:51:43.174Z"
+        },
+        {
+            "title": "Chapter 1: World in pain",
+            "description": null,
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat",
+            "novel": "5dcf7fc58b73012ed80256b4",
+            "book": null,
+            "id": "5dcf80538b73012ed80256ba",
+            "creator": null,
+            "archived": null,
+            "createdAt": "2019-11-16T04:51:31.217Z",
+            "lastModified": "2019-11-16T04:51:31.217Z"
+        }
+    ],
+    "exception": null
+}

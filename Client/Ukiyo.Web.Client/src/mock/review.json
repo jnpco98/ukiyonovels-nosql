@@ -1,0 +1,28 @@
+{
+    "statusCode": 200,
+    "success": true,
+    "message": "",
+    "data": [
+        {
+            "message": "Awesome novel!!!! ^_^",
+            "rating": 0.5,
+            "novel": "5dcf7fc58b73012ed80256b4",
+            "id": "5dcf84ed58999b7064eea89d",
+            "creator": null,
+            "archived": null,
+            "createdAt": "2019-11-16T05:11:09.507Z",
+            "lastModified": "2019-11-16T05:11:09.507Z"
+        },
+        {
+            "message": "Meh -_- ...................",
+            "rating": 0.2,
+            "novel": "5dcf7fc58b73012ed80256b4",
+            "id": "5dcf852d58999b7064eea8a0",
+            "creator": null,
+            "archived": null,
+            "createdAt": "2019-11-16T05:12:13.529Z",
+            "lastModified": "2019-11-16T05:12:13.529Z"
+        }
+    ],
+    "exception": null
+}

@@ -1,0 +1,86 @@
+{
+    "statusCode": 200,
+    "success": true,
+    "message": "",
+    "data": [
+        {
+            "title": "Second Novel",
+            "description": "This is the second novel in the ukiyo database.",
+            "tags": [
+                {
+                    "name": "c-novel"
+                }
+            ],
+            "genres": [
+                {
+                    "name": "seinen"
+                },
+                {
+                    "name": "romance"
+                }
+            ],
+            "origins": null,
+            "authors": [
+                {
+                    "name": "Mi ja",
+                    "alternateNames": [
+                        "Yao xiang ji"
+                    ]
+                }
+            ],
+            "relatedNovels": null,
+            "mediaGallery": [
+                "https://static01.nyt.com/images/2019/07/18/arts/18anime3/18anime3-jumbo.jpg?quality=90&auto=webp",
+                "https://thebackloggers.files.wordpress.com/2017/12/horriblesubs-koe-no-katachi-00-1080p-mkv_snapshot_00-44-14_2017-12-14_08-38-50.png?w=705&h=435&crop=1"
+            ],
+            "coverImage": [
+                "https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Flaurenorsini%2Ffiles%2F2019%2F04%2Fhozuki-1200x675.jpg"
+            ],
+            "id": "5dcf7fc58b73012ed80256b4",
+            "creator": null,
+            "archived": null,
+            "createdAt": "2019-11-16T04:49:09.031Z",
+            "lastModified": "2019-11-16T04:49:09.031Z"
+        },
+        {
+            "title": "First Novel",
+            "description": "This is the first novel in the ukiyo database.",
+            "tags": [
+                {
+                    "name": "c-novel"
+                }
+            ],
+            "genres": [
+                {
+                    "name": "action"
+                },
+                {
+                    "name": "romance"
+                }
+            ],
+            "origins": null,
+            "authors": [
+                {
+                    "name": "Ji yao",
+                    "alternateNames": [
+                        "Li yao"
+                    ]
+                }
+            ],
+            "relatedNovels": null,
+            "mediaGallery": [
+                "https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Flaurenorsini%2Ffiles%2F2019%2F04%2Fdemon-slayer-kimetsu-no-yaiba-ep.-1-6-1200x675.jpg",
+                "https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Flaurenorsini%2Ffiles%2F2019%2F04%2FFruits-Basket-01-57-1200x675.jpg"
+            ],
+            "coverImage": [
+                "https://archzine.net/wp-content/uploads/2018/01/graue-haarfarbe-eine-zeichnung-mit-einem-ma%CC%88dchen-mit-wei%C3%9Fen-haaren.jpg"
+            ],
+            "id": "5dcf7fb78b73012ed80256b3",
+            "creator": null,
+            "archived": null,
+            "createdAt": "2019-11-16T04:48:55.815Z",
+            "lastModified": "2019-11-16T04:48:55.815Z"
+        }
+    ],
+    "exception": null
+}
