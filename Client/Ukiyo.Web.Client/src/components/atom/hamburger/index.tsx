@@ -14,7 +14,7 @@ type Props = {
     active?: boolean;
 };
 
-export const HamburgerMenu = (props: Props): ReactElement => {
+export const HamburgerMenu: React.FC<Props> = (props: Props): ReactElement => {
     const { active, type } = props;
 
     /* eslint-disable */

@@ -1,15 +1,14 @@
 import styled, { css } from 'styled-components/macro';
-import { math, lighten } from 'polished';
-import * as M from '../../../settings/media';
+import { lighten } from 'polished';
 import { center, CENTER_VERTICAL } from '../../../utilities/mixins';
 import Simplebar from 'simplebar-react';
 import Icon from '../icon';
 
-type SelectType = {
+type SelectStyleType = {
   width?: string;
 }
 
-type OptionContainerType = {
+type OptionContainerStyleType = {
   height?: string;
   autoHide?: boolean;
 }
@@ -24,14 +23,14 @@ export const SelectIcon = styled(Icon)`
   }
 `;
 
-export const Select = styled.div<SelectType>`
+export const Select = styled.div<SelectStyleType>`
   display: flex;
   flex-direction: column;
   width: ${props => props.width || `100%`};
   position: relative;
 `;
 
-export const OptionContainer = styled(Simplebar)<OptionContainerType>`
+export const OptionContainer = styled(Simplebar)<OptionContainerStyleType>`
   width: 100%;
   background: ${({ theme, ...props }) => theme.colors.backgroundAlternate};
   color: ${({ theme, ...props }) => theme.colors.accent};

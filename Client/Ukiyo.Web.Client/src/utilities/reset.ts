@@ -80,6 +80,11 @@ const reset = css`
 
   button {
     font-family: "Roboto Condensed", Sans-Serif;
+    outline: none;
+  }
+
+  input {
+    outline: none;
   }
 `;
 

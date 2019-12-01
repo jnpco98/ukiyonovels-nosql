@@ -37,6 +37,7 @@ export const center = (pos: string) => css`
   ${pos === CENTER_BOTH && css`
     ${centerVertical};
     ${centerHorizontal};
+    transform: translate(-50%, -50%);
   `};
 
   ${pos === FLEX_ALIGN_MAIN && mainAxisAlignment};
