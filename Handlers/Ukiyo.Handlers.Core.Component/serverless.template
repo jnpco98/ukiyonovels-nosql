@@ -5,7 +5,7 @@
   "Parameters": {},
   "Conditions": {},
   "Resources": {
-    "AspNetCoreFunction": {
+    "app": {
       "Type": "AWS::Serverless::Function",
       "Properties": {
         "Handler": "not_required_for_custom_runtime",

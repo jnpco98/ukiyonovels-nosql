@@ -7,6 +7,8 @@ provider:
   name: aws
   runtime: dotnetcore3.0
   region: us-east-2
+  memorySize: 128
+  timeout: 30
 
 package:
   artifact: bin/release/netcoreapp3.0/deploy-package.zip
@@ -16,6 +18,9 @@ functions:
     # handler: UkiyoNovelsCoreComponent::Ukiyo.Handlers.Core.Component.LambdaEntryPoint::FunctionHandlerAsync
     handler: bootstrap::Ukiyo.Handlers.Core.Component.LambdaEntryPoint::FunctionHandlerAsync
     events:
+      - http:
+          path: /
+          method: ANY
       - http:
           path: /{proxy+}
           method: ANY
