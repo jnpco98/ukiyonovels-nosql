@@ -67,7 +67,7 @@ const NavigationMenu: React.FC<Props> = (props: Props): ReactElement => {
                 <>
                     <ul>
                         <S.HamburgerLink onClick={(): void => setDrawerActive(!drawerActive)}>
-                            <HamburgerMenu />
+                            <HamburgerMenu active={drawerActive} />
                         </S.HamburgerLink>
                     </ul>
 

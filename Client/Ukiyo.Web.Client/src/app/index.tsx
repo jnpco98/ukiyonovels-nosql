@@ -6,13 +6,13 @@ import { navigation } from '../settings/settings.data.json';
 
 // eslint-disable-next-line
 import 'simplebar/dist/simplebar.min.css';
-import DesktopMenu from '../components/molecule/menu';
+import NavigationMenu from '../components/molecule/menu';
 
 const App: React.FC = (): ReactElement => {
     return (
         <ThemeProvider theme={BaseTheme}>
             <AppContainer>
-                <DesktopMenu menuItems={navigation.items} />
+                <NavigationMenu menuItems={navigation.items} />
             </AppContainer>
         </ThemeProvider>
     );

@@ -1,5 +1,25 @@
 import styled, { css } from 'styled-components';
 
+const menuItemDefaultStyle = css`
+  display: flex;
+  color: whitesmoke;
+  text-transform: uppercase;
+  font-weight: bolder;
+  cursor: pointer;
+  text-align: center;
+  align-items: center;
+  transition: background 0.09s ease-in;
+  
+  a {
+    display: block;
+    padding: 1.1rem;
+  }
+  
+  &:hover {
+    background: #ed5353;
+  }
+`;
+
 export const Container = styled.div`
   display: flex;
   justify-content: space-between;
@@ -17,60 +37,22 @@ type MenuItemStyleProps = {
 }
 
 export const MenuItem = styled.li<MenuItemStyleProps>`
-  display: flex;
-  color: whitesmoke;
+  ${menuItemDefaultStyle};
   background: ${props => props.active ? '#ed5353' : ''};
-  text-transform: uppercase;
-  font-weight: bolder;
-  cursor: pointer;
-  transition: background 0.09s ease-in;
-  text-align: center;
-  align-items: center;
-
-  &:hover {
-    background: #ed5353;
-  }
-
-  a {
-    display: block;
-    padding: 1.1rem;
-  }
 `;
 
 export const UserLink = styled.li`
-  display: flex;
-  color: whitesmoke;
-  text-transform: uppercase;
-  font-weight: bolder;
-  cursor: pointer;
+  ${menuItemDefaultStyle};
   transition: background 0.09s ease-in;
-  text-align: center;
-  align-items: center;
-
-  &:hover {
-    background: #ed5353;
-  }
-
-  a {
-    display: block;
-    padding: 1.1rem;
-  }
 `;
 
 export const HamburgerLink = styled.li`
-  display: flex;
-  color: whitesmoke;
-  text-transform: uppercase;
-  font-weight: bolder;
-  cursor: pointer;
+  ${menuItemDefaultStyle};
   transition: background 0.09s ease-in;
-  text-align: center;
-  align-items: center;
   padding: 1rem 0;
-  
-  a {
-    display: block;
-    padding: 1.1rem;
+
+  &:hover {
+    background: initial;
   }
 `;
 
@@ -82,14 +64,16 @@ type DrawerStyleProps = {
 
 export const Drawer = styled.div<DrawerStyleProps>`
   position: absolute;
-  width: 100%;
-  top: ${props => props.topOffset || 0};
-  left: 0;
   background: #111;
   overflow: hidden;
-  height: ${props => props.height};
   transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
   z-index: 5;
+
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  max-width: 17rem;
 
   li {
     white-space: nowrap;
@@ -99,14 +83,15 @@ export const Drawer = styled.div<DrawerStyleProps>`
     props.sidenavActive ?
       css`
         opacity: 1;
+        transform: translateX(0);
       ` :
       css`
-        padding: 0;
         opacity: 0;
+        transform: translateX(-100%);
       `}
 
   ${MenuItem}:first-child {
-    margin-top: 0.5rem;
+    margin-top: 4rem;
   }
 
   ${MenuItem}:last-child {
