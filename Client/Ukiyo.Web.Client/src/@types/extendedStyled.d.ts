@@ -30,6 +30,8 @@ declare module 'styled-components' {
             black: string;
             white: string;
 
+            backdropColor: string;
+
             background: string;
             backgroundAlternate: string;
             backgroundSecondary: string;

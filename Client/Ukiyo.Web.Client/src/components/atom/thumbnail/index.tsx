@@ -13,7 +13,7 @@ const Thumbnail: React.FC<Props> = (props: Props): ReactElement => {
     return (
         <S.Thumbnail href={link}>
             <S.ThumbnailImage src={imgSrc} />
-            <S.ThumbnailContent>{children}</S.ThumbnailContent>
+            {children && <S.ThumbnailContent>{children}</S.ThumbnailContent>}
         </S.Thumbnail>
     );
 };

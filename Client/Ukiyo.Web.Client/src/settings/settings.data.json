@@ -1,0 +1,30 @@
+{
+    "navigation": {
+        "items": [
+            {
+                "label": "Homepage",
+                "link": ""
+            },
+            {
+                "label": "Novel List",
+                "link": ""
+            },
+            {
+                "label": "Genre",
+                "link": ""
+            },
+            {
+                "label": "Latest Update",
+                "link": ""
+            },
+            {
+                "label": "Top Novels",
+                "link": ""
+            },
+            {
+                "label": "Advanced Search",
+                "link": ""
+            }
+        ]
+    }
+}

@@ -13,7 +13,7 @@ type Props = {
     type?: ButtonType;
     className?: string;
     children?: React.ReactNode;
-    onClick?: () => void;
+    onClick?: (event: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement, MouseEvent>) => void;
 };
 
 const Button: React.FC<Props> = (props: Props): ReactElement => {

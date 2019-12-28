@@ -5,6 +5,10 @@ const reset = css`
     box-sizing: border-box;
   }
 
+  main {
+    width: 100%;
+  }
+
   html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
   a, abbr, acronym, address, big, cite, code,
@@ -24,6 +28,8 @@ const reset = css`
     font: inherit;
     vertical-align: baseline;
     font-family: "Roboto Condensed", Sans-Serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 
     &::selection {
       background: #7d7d7d;

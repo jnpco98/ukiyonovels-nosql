@@ -29,6 +29,8 @@ export const BaseTheme: DefaultTheme = {
         black: '#000',
         white: '#fff',
 
+        backdropColor: 'rgba(0, 0, 0, 0.5)',
+
         background: '#fff',
         backgroundAlternate: '#f8f8f8',
         backgroundSecondary: '#eef0f4',

@@ -26,10 +26,10 @@ export const Thumbnail = styled.a`
   width: 6.5rem;
   height: 9rem;
   overflow: hidden;
-  transition: all 0.2s ease-in;
+  transition: all 0.15s ease-in;
 
   &:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
     z-index: 1;
 
     ${ThumbnailContent} {
