@@ -14,13 +14,14 @@ type Props = {
     className?: string;
     children?: React.ReactNode;
     onClick?: (event: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement, MouseEvent>) => void;
+    href?: string;
 };
 
 const Button: React.FC<Props> = (props: Props): ReactElement => {
-    const { children, className, flat, onClick, type } = props;
+    const { children, className, flat, onClick, type, href } = props;
 
     return (
-        <S.Button className={className} onClick={onClick} buttonType={type} flat={flat}>
+        <S.Button className={className} onClick={onClick} buttonType={type} flat={flat} href={href}>
             {children}
         </S.Button>
     );

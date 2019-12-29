@@ -28,7 +28,7 @@ export const InputLabel = styled.label<InputStyleProps>`
   transition: all 0.5s ease;
   border-bottom: 1px solid ${({ theme, ...props }) => props.active ? theme.colors.accent : 'black' };
 
-  &::after {
+  &:after {
     top: -1px;
     left: 0;
     content: '';

@@ -53,9 +53,7 @@ const NavigationMenu: React.FC<Props> = (props: Props): ReactElement => {
     const renderMenuItems = (): ReactElement[] =>
         menuItems.map(({ label, link }, idx) => (
             <S.MenuItem key={label + link} onClick={(): void => handleSelect(idx)} active={active === idx}>
-                <Text textType={TextType.Anchor} href={link || '#'}>
-                    {label}
-                </Text>
+                <S.MenuItemLink href={link || '#'}>{label}</S.MenuItemLink>
             </S.MenuItem>
         ));
 
@@ -87,6 +85,7 @@ const NavigationMenu: React.FC<Props> = (props: Props): ReactElement => {
                     <Backdrop show={drawerActive} onClick={(): void => setDrawerActive(false)} />
                     <S.Drawer
                         ref={drawerRef}
+                        zIndex={51}
                         sidenavActive={drawerActive}
                         topOffset={`${containerRef.current.offsetTop + containerRef.current.scrollHeight}px`}
                     >

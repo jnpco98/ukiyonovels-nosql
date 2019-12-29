@@ -19,7 +19,7 @@ export const Icon = styled.div<IconStyleProps>`
     props.message.trim() &&
     css`
       background-color: transparent;
-      &::after {
+      &:after {
         content: '${props.message}';
         position: absolute;
         top:  -${math(`${props.size} * 0.1`)};

@@ -1,0 +1,58 @@
+{
+    "navigation": {
+        "items": [
+            {
+                "label": "Homepage",
+                "link": ""
+            },
+            {
+                "label": "Novel List",
+                "link": ""
+            },
+            {
+                "label": "Genre",
+                "link": ""
+            },
+            {
+                "label": "Latest Update",
+                "link": ""
+            },
+            {
+                "label": "Top Novels",
+                "link": ""
+            },
+            {
+                "label": "Advanced Search",
+                "link": ""
+            }
+        ]
+    },
+    "heroBanner": {
+        "items": [
+            {
+                "mobileImage": "https://images2.alphacoders.com/100/thumb-1920-1008472.png",
+                "desktopImage": "https://wallpapercave.com/wp/wp4589844.jpg",
+                "headingText": "Demon Slayer: Kimetsu no Yaiba",
+                "description": "In Taishō-era Japan, Tanjirō Kamado is a kindhearted and intelligent boy who lives with his family. He has become his family's sole source of income after the passing of his father. Everything changes when his family is attacked and slaughtered by a demon. Tanjirō and his sister Nezuko are the sole survivors of the incident, with Nezuko being transformed into a demon, but still surprisingly showing signs of human emotion and thought. After an encounter with Giyu Tomioka, a demon slayer, Tanjirō is recruited by Giyu to also become a demon slayer to help his sister turn human again and avenge the deaths of the rest of his family.",
+                "buttonText": "Read now",
+                "link": ""
+            },
+            {
+                "mobileImage": "",
+                "desktopImage": "https://cdn.dribbble.com/users/3813239/screenshots/9167569/media/398a85716480e2ace205dbad21928ca3.png",
+                "headingText": "Demon Slayer: Kimetsu no Yaiba",
+                "description": "In Taishō-era Japan, Tanjirō Kamado is a kindhearted and intelligent boy who lives with his family. He has become his family's sole source of income after the passing of his father. Everything changes when his family is attacked and slaughtered by a demon. Tanjirō and his sister Nezuko are the sole survivors of the incident, with Nezuko being transformed into a demon, but still surprisingly showing signs of human emotion and thought. After an encounter with Giyu Tomioka, a demon slayer, Tanjirō is recruited by Giyu to also become a demon slayer to help his sister turn human again and avenge the deaths of the rest of his family.",
+                "buttonText": "Read now",
+                "link": ""
+            },
+            {
+                "mobileImage": "",
+                "desktopImage": "https://cdn.dribbble.com/users/3813239/screenshots/9073476/media/9aa59dfd233e467819799a1e63be3253.png",
+                "headingText": "Demon Slayer: Kimetsu no Yaiba",
+                "description": "In Taishō-era Japan, Tanjirō Kamado is a kindhearted and intelligent boy who lives with his family. He has become his family's sole source of income after the passing of his father. Everything changes when his family is attacked and slaughtered by a demon. Tanjirō and his sister Nezuko are the sole survivors of the incident, with Nezuko being transformed into a demon, but still surprisingly showing signs of human emotion and thought. After an encounter with Giyu Tomioka, a demon slayer, Tanjirō is recruited by Giyu to also become a demon slayer to help his sister turn human again and avenge the deaths of the rest of his family.",
+                "buttonText": "Read now",
+                "link": ""
+            }
+        ]
+    }
+}

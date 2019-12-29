@@ -4,6 +4,7 @@
 
 # Disable linting for css resets
 **/reset.ts
+**/trumps.ts
 
 # CRA auto generated code
 src/serviceWorker.ts

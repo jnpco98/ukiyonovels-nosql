@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 import { lighten } from 'polished';
 import { ButtonType } from './index';
+import * as M from '../../../settings/media';
 
 type ButtonStyleProps = {
   flat?: boolean;
@@ -39,14 +40,15 @@ export const Button = styled.a<ButtonStyleProps>`
   align-items: center;
   color: ${({ theme, ...props }) => theme.colors.infoText};
   background-color: ${({ theme, ...props }) => theme.colors.info};
-  padding: 0.7rem 1rem;
-  font-size: 0.8rem;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.7rem;
   text-transform: uppercase;
   border-radius: 7px;
   transition: all 0.1s ease-in;
+  font-weight: 600;
 
   &:hover {
-    background-color: ${({ theme, ...props }) => lighten(0.1, theme.colors.info)};
+    background-color: ${({ theme, ...props }) => theme.colors.primary};
   }
 
   ${props => props.buttonType === ButtonType.Success && Success};
@@ -58,4 +60,14 @@ export const Button = styled.a<ButtonStyleProps>`
       css`
         border: none;
       `}
+  
+  ${M.MEDIA_SMALL} {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.75rem;
+  }
+
+  ${M.MEDIA_LARGE} {
+    padding: 0.75rem 1.6rem;
+    font-size: 0.8rem;
+  }
 `;

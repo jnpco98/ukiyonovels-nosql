@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import * as M from '../../../settings/media';
+import Text, { TextType } from '../../atom/text';
 
 const menuItemDefaultStyle = css`
   display: flex;
@@ -20,7 +21,7 @@ const menuItemDefaultStyle = css`
 
   ${M.MEDIA_SMALL} {
     a {
-      padding: 1.1rem 0.8rem;
+      padding: 1.1rem 0.7rem;
     }
   }
 
@@ -43,9 +44,10 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  background: ${({ theme, ...props }) => theme.colors.black};
+  background: ${({ theme, ...props }) => theme.colors.primary};
   position: fixed;
   transition: all 0.12s ease-in;
+  z-index: 50;
 
   ul {
     display: flex;
@@ -74,6 +76,16 @@ export const MenuItem = styled.li<MenuItemStyleProps>`
   background: ${({ theme, ...props }) => props.active ? theme.colors.accent: ''};
 `;
 
+export const MenuItemLink = styled(Text).attrs({
+  textType: TextType.Anchor
+})`
+  font-size: 0.7rem;
+
+  ${M.MEDIA_LARGE} {
+    font-size: 0.8rem;
+  }
+`;
+
 export const UserLink = styled.li`
   ${menuItemDefaultStyle};
   transition: background 0.09s ease-in;
@@ -92,14 +104,15 @@ export const HamburgerLink = styled.li`
 type DrawerStyleProps = {
   sidenavActive: boolean;
   topOffset?: string;
+  zIndex?: number;
 }
 
 export const Drawer = styled.div<DrawerStyleProps>`
   position: fixed;
-  background: ${({ theme, ...props }) => theme.colors.black};
+  background: ${({ theme, ...props }) => theme.colors.primary};
   overflow: hidden;
   transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
-  z-index: 5;
+  z-index: ${props => props.zIndex || 5};
 
   top: 0;
   left: 0;
