@@ -4,7 +4,7 @@ type HamburgerStyleProps = {
   active?: boolean;
 }
 
-const MULTIPLIER = 0.32;
+const MULTIPLIER = 0.25;
 const BASE_WIDTH = 4 * MULTIPLIER;
 const BASE_HEIGHT = 3 * MULTIPLIER;
 
