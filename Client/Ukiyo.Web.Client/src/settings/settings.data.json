@@ -26,5 +26,25 @@
                 "link": ""
             }
         ]
+    },
+    "heroBanner": {
+        "items": [
+            {
+                "mobileImage": "https://animemotivation.com/wp-content/uploads/2019/08/Demon-Slayer-wallpaper-anime.jpg",
+                "desktopImage": "https://images2.alphacoders.com/100/thumb-1920-1008472.png",
+                "headingText": "Demon Slayer: Kimetsu no Yaiba",
+                "description": "In Taishō-era Japan, Tanjirō Kamado is a kindhearted and intelligent boy who lives with his family. He has become his family's sole source of income after the passing of his father. Everything changes when his family is attacked and slaughtered by a demon. Tanjirō and his sister Nezuko are the sole survivors of the incident, with Nezuko being transformed into a demon, but still surprisingly showing signs of human emotion and thought. After an encounter with Giyu Tomioka, a demon slayer, Tanjirō is recruited by Giyu to also become a demon slayer to help his sister turn human again and avenge the deaths of the rest of his family.",
+                "buttonText": "Read now",
+                "buttonlink": ""
+            },
+            {
+                "mobileImage": "https://animemotivation.com/wp-content/uploads/2019/08/Demon-Slayer-wallpaper-anime.jpg",
+                "desktopImage": "https://images2.alphacoders.com/100/thumb-1920-1008472.png",
+                "headingText": "Demon Slayer: Kimetsu no Yaiba",
+                "description": "In Taishō-era Japan, Tanjirō Kamado is a kindhearted and intelligent boy who lives with his family. He has become his family's sole source of income after the passing of his father. Everything changes when his family is attacked and slaughtered by a demon. Tanjirō and his sister Nezuko are the sole survivors of the incident, with Nezuko being transformed into a demon, but still surprisingly showing signs of human emotion and thought. After an encounter with Giyu Tomioka, a demon slayer, Tanjirō is recruited by Giyu to also become a demon slayer to help his sister turn human again and avenge the deaths of the rest of his family.",
+                "buttonText": "Read now",
+                "buttonlink": ""
+            }
+        ]
     }
 }
