@@ -30,7 +30,10 @@ module.exports =  {
     "import/prefer-default-export": 'off',
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".tsx"] }],
     semi: ["warn", "always"],
-    'no-unused-vars': 'warn'
+    'no-unused-vars': 'warn',
+    "no-unused-vars":"off",
+    "@typescript-eslint/no-unused-vars": "off",
+    'no-bitwise': 'off'
   },
   settings:  {
     react:  {

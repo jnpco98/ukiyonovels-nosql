@@ -99,7 +99,7 @@ export const Anchor = styled.a`
       }
 
       ${M.MEDIA_XLARGE} {
-        font-size: ${math(`${theme.font.baseSize} * 1.1`)};
+        font-size: ${math(`${theme.font.baseSize} * 1`)};
       }
   `};
 `;

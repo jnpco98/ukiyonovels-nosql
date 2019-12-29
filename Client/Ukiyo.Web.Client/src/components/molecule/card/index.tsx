@@ -20,12 +20,12 @@ const Card: React.FC<Props> = (props: Props): ReactElement => {
         <S.Card>
             <Thumbnail imgSrc={imgSrc} link={link} />
             <S.CardContent>
-                {title && <Text type={TextType.SubsectionTitle}>{title}</Text>}
-                <Text type={TextType.SubsectionTitle}>{children}</Text>
+                {title && <Text textType={TextType.SubsectionTitle}>{title}</Text>}
+                <Text textType={TextType.SubsectionTitle}>{children}</Text>
                 <S.CardInfo>
                     <S.CardMeta>
                         <Icon glyph={GlyphType.Calendar} size="1.2rem" />
-                        <Text type={TextType.Span}>45 Minutes ago</Text>
+                        <Text textType={TextType.Span}>45 Minutes ago</Text>
                         <Icon glyph={GlyphType.LikeFill} message="1" size="1.2rem" />
                         <Icon glyph={GlyphType.View} message="1" size="1.2rem" />
                     </S.CardMeta>

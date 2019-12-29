@@ -4,6 +4,7 @@ import { faUserAlt, faCog } from '@fortawesome/free-solid-svg-icons';
 import { useMediaQuery } from 'react-responsive';
 import { SMALL } from '../../../settings/media';
 import { HamburgerMenu } from '../../atom/hamburger';
+import Text, { TextType } from '../../atom/text';
 import * as S from './style';
 import Backdrop from '../../atom/backdrop';
 
@@ -19,19 +20,29 @@ type Props = {
 
 const NavigationMenu: React.FC<Props> = (props: Props): ReactElement => {
     const [active, setActive] = useState(0);
+    const [floating, setFloating] = useState(false);
     const [drawerActive, setDrawerActive] = useState(false);
     const { menuItems, onSelect } = props;
 
-    const isMobile = useMediaQuery({ maxWidth: SMALL });
+    const isSmallScreen = useMediaQuery({ minWidth: SMALL });
     const containerRef = useRef(document.createElement('div'));
     const drawerRef = useRef(document.createElement('div'));
 
-    useEffect(() => onSelect && onSelect(active));
+    const handleScroll = (): void => setFloating(window.pageYOffset >= containerRef.current.scrollHeight);
+
+    const handleResize = (): void => drawerActive && !isSmallScreen && setDrawerActive(false);
+
+    useEffect(() => onSelect && onSelect(active), []);
+
     useEffect(() => {
-        const handleResize = (): void => drawerActive && !isMobile && setDrawerActive(false);
+        window.addEventListener('scroll', handleScroll);
+        return (): void => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    useEffect(() => {
         window.addEventListener('resize', handleResize);
         return (): void => window.removeEventListener('resize', handleResize);
-    });
+    }, [isSmallScreen]);
 
     const handleSelect = (idx: number): void => {
         setActive(idx);
@@ -42,28 +53,30 @@ const NavigationMenu: React.FC<Props> = (props: Props): ReactElement => {
     const renderMenuItems = (): ReactElement[] =>
         menuItems.map(({ label, link }, idx) => (
             <S.MenuItem key={label + link} onClick={(): void => handleSelect(idx)} active={active === idx}>
-                <a href={link || '#'}>{label}</a>
+                <Text textType={TextType.Anchor} href={link || '#'}>
+                    {label}
+                </Text>
             </S.MenuItem>
         ));
 
     const renderUserLinks = (): ReactElement => (
         <>
             <S.UserLink>
-                <a href="/account">
+                <Text textType={TextType.Anchor} href="/account">
                     <FontAwesomeIcon icon={faUserAlt} />
-                </a>
+                </Text>
             </S.UserLink>
             <S.UserLink>
-                <a href="/settings">
+                <Text textType={TextType.Anchor} href="/settings">
                     <FontAwesomeIcon icon={faCog} />
-                </a>
+                </Text>
             </S.UserLink>
         </>
     );
 
     return (
-        <S.Container ref={containerRef}>
-            {isMobile ? (
+        <S.Container className={floating && S.CLASS_FLOATING} ref={containerRef}>
+            {!isSmallScreen ? (
                 <>
                     <ul>
                         <S.HamburgerLink onClick={(): void => setDrawerActive(!drawerActive)}>
@@ -76,7 +89,6 @@ const NavigationMenu: React.FC<Props> = (props: Props): ReactElement => {
                         ref={drawerRef}
                         sidenavActive={drawerActive}
                         topOffset={`${containerRef.current.offsetTop + containerRef.current.scrollHeight}px`}
-                        height={`${drawerActive ? drawerRef.current.scrollHeight : 0}px`}
                     >
                         {renderMenuItems()}
                     </S.Drawer>

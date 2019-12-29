@@ -5,6 +5,10 @@ const reset = css`
     box-sizing: border-box;
   }
 
+  body.no-scroll {
+    overflow: hidden;
+  }
+
   main {
     width: 100%;
   }
@@ -27,7 +31,7 @@ const reset = css`
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
-    font-family: "Roboto Condensed", Sans-Serif;
+    font-family: "Nunito Sans", Sans-Serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
@@ -61,7 +65,7 @@ const reset = css`
 
   ol, ul {
     list-style: none;
-    font-family: "Roboto Condensed", Sans-Serif;
+    font-family: "Roboto", Sans-Serif;
   }
 
   blockquote, q {
@@ -89,7 +93,7 @@ const reset = css`
   }
 
   button {
-    font-family: "Roboto Condensed", Sans-Serif;
+    font-family: "Roboto", Sans-Serif;
     outline: none;
   }
 

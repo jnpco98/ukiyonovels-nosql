@@ -19,8 +19,8 @@ export const BaseTheme: DefaultTheme = {
         weightLight: '200',
         weightRegular: '400',
         weightBold: '600',
-        primary: '"Roboto Condensed", Sans-Serif',
-        secondary: 'Cabin, Sans-Serif'
+        primary: '"Roboto", Sans-Serif',
+        secondary: '"Nunito Sans", Sans-Serif'
     },
     colors: {
         default: '#5f6062',

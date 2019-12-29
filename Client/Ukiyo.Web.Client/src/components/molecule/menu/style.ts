@@ -1,35 +1,68 @@
 import styled, { css } from 'styled-components';
+import * as M from '../../../settings/media';
 
 const menuItemDefaultStyle = css`
   display: flex;
   color: whitesmoke;
   text-transform: uppercase;
-  font-weight: bolder;
-  cursor: pointer;
   text-align: center;
   align-items: center;
   transition: background 0.09s ease-in;
   
   a {
     display: block;
-    padding: 1.1rem;
+    padding: 1.1rem 0.9rem;
   }
   
   &:hover {
-    background: #ed5353;
+    background: ${({ theme, ...props }) => theme.colors.accent};
+  }
+
+  ${M.MEDIA_SMALL} {
+    a {
+      padding: 1.1rem 0.8rem;
+    }
+  }
+
+  ${M.MEDIA_MEDIUM} {
+    a {
+      padding: 1.1rem 1.2rem;
+    }
+  }
+
+  ${M.MEDIA_XLARGE} {
+    a {
+      padding: 1.1rem 1.5rem;
+    }
   }
 `;
+
+export const CLASS_FLOATING = 'floating';
 
 export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  background: #323633;
+  background: ${({ theme, ...props }) => theme.colors.black};
+  position: fixed;
+  transition: all 0.12s ease-in;
 
   ul {
     display: flex;
     max-width: 80%;
   }
+
+  ${M.MEDIA_SMALL} {
+    &.${CLASS_FLOATING} {
+      border-radius: 3rem;
+      width: 95%;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+      overflow: hidden;
+      position: fixed;
+    }
+  }
+
 `;
 
 type MenuItemStyleProps = {
@@ -38,7 +71,7 @@ type MenuItemStyleProps = {
 
 export const MenuItem = styled.li<MenuItemStyleProps>`
   ${menuItemDefaultStyle};
-  background: ${props => props.active ? '#ed5353' : ''};
+  background: ${({ theme, ...props }) => props.active ? theme.colors.accent: ''};
 `;
 
 export const UserLink = styled.li`
@@ -59,12 +92,11 @@ export const HamburgerLink = styled.li`
 type DrawerStyleProps = {
   sidenavActive: boolean;
   topOffset?: string;
-  height: string;
 }
 
 export const Drawer = styled.div<DrawerStyleProps>`
-  position: absolute;
-  background: #111;
+  position: fixed;
+  background: ${({ theme, ...props }) => theme.colors.black};
   overflow: hidden;
   transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
   z-index: 5;

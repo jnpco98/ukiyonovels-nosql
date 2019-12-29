@@ -14,15 +14,15 @@ export enum TextType {
 type Props = {
     className?: string;
     children?: React.ReactNode;
-    type?: TextType;
-};
+    textType?: TextType;
+} & React.HTMLProps<HTMLAnchorElement>;
 
 const Text: React.FC<Props> = (props: Props): ReactElement => {
-    const { children = '', className = '', type } = props;
+    const { children = '', className = '', textType, href } = props;
 
     let StyledText: AnyStyledComponent;
 
-    switch (type) {
+    switch (textType) {
         case TextType.PageTitle:
             StyledText = S.PageTitle;
             break;
@@ -44,7 +44,11 @@ const Text: React.FC<Props> = (props: Props): ReactElement => {
             break;
     }
 
-    return <StyledText className={className}>{children}</StyledText>;
+    return (
+        <StyledText href={href} className={className}>
+            {children}
+        </StyledText>
+    );
 };
 
 export default Text;
