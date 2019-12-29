@@ -39,19 +39,18 @@ export const SliderItem = styled.div`
     bottom: 0;
     left: 0;
     pointer-events: none;
-    /* background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 90%); */
     background: linear-gradient(to bottom, rgba(22, 22, 34, 0) 0%, rgba(22, 22, 34, 1) 100%);
     width: 100%;
     height: 5rem;
   }
 
   ${M.MEDIA_XXSMALL} {
-    min-height: 16rem;
+    min-height: 18rem;
     padding-left: 2rem;
   }
 
   ${M.MEDIA_XSMALL} {
-    min-height: 20rem;
+    min-height: 23rem;
     padding-left: 3rem;
   }
 
@@ -112,16 +111,16 @@ export const Content = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  margin-top: 1.2rem;
+  margin-top: 2.2rem;
   max-width: 14rem;
 
   ${M.MEDIA_XXSMALL} {
     max-width: 16rem;
-    margin-top: 1.8rem;
+    margin-top: 2.7rem;
   }
 
   ${M.MEDIA_XSMALL} {
-    margin-top: 2.5rem;
+    margin-top: 5.3rem;
   }
 
   ${M.MEDIA_SMALL} {
