@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Button from '../../atom/button';
 import * as M from '../../../settings/media';
+import { center, FLEX_ALIGN_BOTH } from '../../../utilities/mixins';
 
 export const Card = styled.div`
   display: flex;
@@ -36,7 +37,5 @@ export const CardInfo = styled.div`
 export const CardButton = styled(Button)``;
 
 export const CardMeta = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  ${center(FLEX_ALIGN_BOTH)};
 `;

@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 import { lighten } from 'polished';
 import { ButtonType } from './index';
 import * as M from '../../../settings/media';
+import { center, FLEX_ALIGN_MAIN } from '../../../utilities/mixins';
 
 type ButtonStyleProps = {
   flat?: boolean;
@@ -36,8 +37,7 @@ const Danger = css`
 `;
 
 export const Button = styled.a<ButtonStyleProps>`
-  display: flex;
-  align-items: center;
+  ${center(FLEX_ALIGN_MAIN)};
   color: ${({ theme, ...props }) => theme.colors.infoText};
   background-color: ${({ theme, ...props }) => theme.colors.info};
   padding: 0.6rem 1.2rem;

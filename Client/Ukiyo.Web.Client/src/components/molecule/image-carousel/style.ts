@@ -6,6 +6,7 @@ import * as M from '../../../settings/media';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookOpen } from '@fortawesome/free-solid-svg-icons';
 import { Paragraph, SubsectionTitle } from '../../atom/text/style';
+import { center, FLEX_ALIGN_CROSS } from '../../../utilities/mixins';
 
 export const Container = styled.div`
   width: 100%;
@@ -107,9 +108,8 @@ export const MobileBackgroundImage = styled(BackgroundImage)`
 `;
 
 export const Content = styled.div`
+  ${center(FLEX_ALIGN_CROSS)};
   position: relative;
-  display: flex;
-  justify-content: center;
   flex-direction: column;
   margin-top: 2.2rem;
   max-width: 14rem;
@@ -140,32 +140,6 @@ export const Content = styled.div`
 `;
 
 export const Arrow = styled(SlickArrow)`
-  ${M.MEDIA_MEDIUM} {
-    width: 1.8rem;
-    height: 1.8rem;
-    
-    &:before {
-      font-size: 1.8rem;
-    }
-
-    &.slick-next {
-      right: 1rem;
-    }
-
-    &.slick-prev {
-      left: 1rem;
-    }
-  }
-
-  ${M.MEDIA_LARGE} {
-    &.slick-next {
-      right: 2rem;
-    }
-
-    &.slick-prev {
-      left: 2rem;
-    }
-  }
 `;
 
 export const Heading = styled(SubsectionTitle)`

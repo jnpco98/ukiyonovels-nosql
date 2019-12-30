@@ -3,6 +3,7 @@ import * as M from '../../../settings/media';
 import { Anchor } from '../../atom/text/style';
 import { math } from 'polished';
 import HamburgerMenu from '../../atom/hamburger';
+import { center, FLEX_ALIGN_MAIN } from '../../../utilities/mixins';
 
 const underLineMenuLink = css`
   content: '';
@@ -16,11 +17,10 @@ const underLineMenuLink = css`
 `;
 
 const menuItemDefaultStyle = css`
-  display: flex;
+  ${center(FLEX_ALIGN_MAIN)};
   color: whitesmoke;
   text-transform: uppercase;
   text-align: center;
-  align-items: center;
   transition: background 0.09s ease-in;
   position: relative;
   
