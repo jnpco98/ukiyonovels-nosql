@@ -65,7 +65,7 @@ export const Paragraph = styled.p`
       font-size: ${math(`${theme.font.baseSize} * 0.75`)};
 
       ${M.MEDIA_SMALL} {
-        font-size: ${math(`${theme.font.baseSize} * 0.85`)};
+        font-size: ${math(`${theme.font.baseSize} * 0.8`)};
       }
 
       ${M.MEDIA_MEDIUM} {
@@ -84,7 +84,7 @@ export const Span = styled.span`
       font-size: ${math(`${theme.font.baseSize} * 0.75`)};
 
       ${M.MEDIA_SMALL} {
-        font-size: ${math(`${theme.font.baseSize} * 0.85`)};
+        font-size: ${math(`${theme.font.baseSize} * 0.8`)};
       }
 
       ${M.MEDIA_MEDIUM} {
@@ -103,7 +103,7 @@ export const Anchor = styled.a`
       font-size: ${math(`${theme.font.baseSize} * 0.75`)};
 
       ${M.MEDIA_SMALL} {
-        font-size: ${math(`${theme.font.baseSize} * 0.85`)};
+        font-size: ${math(`${theme.font.baseSize} * 0.8`)};
       }
       
       ${M.MEDIA_MEDIUM} {
@@ -111,7 +111,7 @@ export const Anchor = styled.a`
       }
 
       ${M.MEDIA_XLARGE} {
-        font-size: ${math(`${theme.font.baseSize} * 1`)};
+        font-size: ${math(`${theme.font.baseSize} * 1.1`)};
       }
   `};
 `;

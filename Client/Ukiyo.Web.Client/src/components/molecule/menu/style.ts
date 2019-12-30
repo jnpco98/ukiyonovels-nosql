@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 import * as M from '../../../settings/media';
 import { Anchor } from '../../atom/text/style';
+import { math } from 'polished';
 
 const underLineMenuLink = css`
   content: '';
@@ -89,12 +90,23 @@ type MenuItemStyleProps = {
     active: boolean;
 }
 
-export const MenuItemLink = styled(Anchor)`
-  font-size: 0.7rem;
+export const MenuItemLink = styled(Anchor)`  
+  ${({ theme, ...props }) =>
+    css`
+      font-size: ${math(`${theme.font.baseSize} * 0.7`)};
 
-  ${M.MEDIA_LARGE} {
-    font-size: 0.8rem;
-  }
+      ${M.MEDIA_SMALL} {
+        font-size: ${math(`${theme.font.baseSize} * 0.7`)};
+      }
+      
+      ${M.MEDIA_MEDIUM} {
+        font-size: ${math(`${theme.font.baseSize} * 0.7`)};
+      }
+
+      ${M.MEDIA_XLARGE} {
+        font-size: ${math(`${theme.font.baseSize} * 0.8`)};
+      }
+  `};
 `;
 
 export const MenuItem = styled.li<MenuItemStyleProps>`
