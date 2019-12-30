@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import * as M from '../../../settings/media';
-import Text, { TextType } from '../../atom/text';
+import { Anchor } from '../../atom/text/style';
 
 const underLineMenuLink = css`
   content: '';
@@ -89,9 +89,7 @@ type MenuItemStyleProps = {
     active: boolean;
 }
 
-export const MenuItemLink = styled(Text).attrs({
-  textType: TextType.Anchor
-})`
+export const MenuItemLink = styled(Anchor)`
   font-size: 0.7rem;
 
   ${M.MEDIA_LARGE} {

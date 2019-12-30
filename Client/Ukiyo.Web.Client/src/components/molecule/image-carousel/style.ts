@@ -1,11 +1,11 @@
 import styled from 'styled-components/macro';
 import Slick from 'react-slick';
 import SlickArrow from '../../atom/slick-arrow';
-import Text, { TextType } from '../../atom/text';
 import Button, { ButtonType } from '../../atom/button';
 import * as M from '../../../settings/media';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookOpen } from '@fortawesome/free-solid-svg-icons';
+import { Paragraph, SubsectionTitle } from '../../atom/text/style';
 
 export const Container = styled.div`
   width: 100%;
@@ -142,6 +142,8 @@ export const Content = styled.div`
 export const Arrow = styled(SlickArrow)`
   ${M.MEDIA_MEDIUM} {
     width: 1.8rem;
+    height: 1.8rem;
+    
     &:before {
       font-size: 1.8rem;
     }
@@ -166,9 +168,7 @@ export const Arrow = styled(SlickArrow)`
   }
 `;
 
-export const Heading = styled(Text).attrs({
-  textType: TextType.SubsectionTitle
-})`
+export const Heading = styled(SubsectionTitle)`
   color: ${({ theme, ...props }) => theme.colors.white};
   font-size: 1.4rem;
   margin-bottom: 0.5rem;
@@ -196,9 +196,7 @@ export const Heading = styled(Text).attrs({
   }
 `;
 
-export const Paragraph = styled(Text).attrs({
-  textType: TextType.Paragraph
-})`
+export const Subtitle = styled(Paragraph)`
   color: ${({ theme, ...props }) => theme.colors.white};
   margin-bottom: 1.2rem;
   width: 90%;

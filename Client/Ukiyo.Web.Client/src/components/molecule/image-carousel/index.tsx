@@ -9,8 +9,8 @@ import { truncate } from '../../../utilities/string';
 const HeroBanner: React.FC = (): ReactElement => {
     const sliderOptions: Settings = {
         ...DEFAULT_SLIDER_SETTINGS,
-        prevArrow: <S.Arrow>prev</S.Arrow>,
-        nextArrow: <S.Arrow>next</S.Arrow>,
+        prevArrow: <S.Arrow />,
+        nextArrow: <S.Arrow />,
         responsive: [
             {
                 breakpoint: +SMALL.replace(/\D/g, ''),
@@ -35,7 +35,7 @@ const HeroBanner: React.FC = (): ReactElement => {
                             <S.MobileBackgroundImage src={mobileImage || desktopImage} alt="Hero Banner" />
                             <S.Content>
                                 <S.Heading>{headingText}</S.Heading>
-                                <S.Paragraph>{truncate(description, 100)}</S.Paragraph>
+                                <S.Subtitle>{truncate(description, 130)}</S.Subtitle>
                                 <S.LinkButton href={link}>
                                     <S.BookButtonIcon /> {buttonText}
                                 </S.LinkButton>
