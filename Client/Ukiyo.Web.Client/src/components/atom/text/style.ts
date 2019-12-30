@@ -62,7 +62,7 @@ export const SubsectionTitle = styled.h3`
 export const Paragraph = styled.p`
   ${({ theme, ...props }) =>
     css`
-      font-size: ${math(`${theme.font.baseSize} * 0.75`)};
+      font-size: ${math(`${theme.font.baseSize} * 0.7`)};
 
       ${M.MEDIA_SMALL} {
         font-size: ${math(`${theme.font.baseSize} * 0.8`)};
@@ -81,7 +81,7 @@ export const Paragraph = styled.p`
 export const Span = styled.span`
   ${({ theme, ...props }) =>
     css`
-      font-size: ${math(`${theme.font.baseSize} * 0.75`)};
+      font-size: ${math(`${theme.font.baseSize} * 0.7`)};
 
       ${M.MEDIA_SMALL} {
         font-size: ${math(`${theme.font.baseSize} * 0.8`)};
@@ -100,7 +100,7 @@ export const Span = styled.span`
 export const Anchor = styled.a`
   ${({ theme, ...props }) =>
     css`
-      font-size: ${math(`${theme.font.baseSize} * 0.75`)};
+      font-size: ${math(`${theme.font.baseSize} * 0.7`)};
 
       ${M.MEDIA_SMALL} {
         font-size: ${math(`${theme.font.baseSize} * 0.8`)};

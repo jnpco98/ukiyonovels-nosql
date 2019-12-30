@@ -1,4 +1,4 @@
-import { css } from 'styled-components/macro';
+import { css, keyframes, StyledComponent, AnyStyledComponent } from 'styled-components/macro';
 import { math } from 'polished';
 
 export const CENTER_VERTICAL = 'CENTER_VERTICAL';
@@ -105,4 +105,17 @@ export const truncate = (fontSize: string | TruncateResponsiveSettings, lineHeig
 
 export const gradient = (degrees: string, colors: []) => css`
   background: linear-gradient(${degrees}, ${colors.join(',')});
+`;
+
+export const fadeInTextHover = (container: AnyStyledComponent) => css`
+  transform: scale(0);
+  opacity: 0;
+  transition-property: transform, opacity;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+
+  ${container}:hover & {
+    opacity: 1;
+    transform: scale(1);
+  }
 `;
