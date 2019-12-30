@@ -1,6 +1,7 @@
 import { DefaultTheme } from 'styled-components/macro';
 
 export const BaseTheme: DefaultTheme = {
+    maxScreenSize: '1600px',
     gutter: {
         xsmall: '0.5rem',
         small: '1rem',

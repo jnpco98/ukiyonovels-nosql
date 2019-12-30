@@ -2,6 +2,7 @@ import 'styled-components';
 
 declare module 'styled-components' {
     export interface DefaultTheme {
+        maxScreenSize: string;
         gutter: {
             xsmall: string;
             small: string;
