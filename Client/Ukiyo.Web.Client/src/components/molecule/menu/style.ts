@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 import * as M from '../../../settings/media';
 import { Anchor } from '../../atom/text/style';
 import { math } from 'polished';
+import HamburgerMenu from '../../atom/hamburger';
 
 const underLineMenuLink = css`
   content: '';
@@ -69,6 +70,7 @@ export const Container = styled.div`
   transition: all 0.12s ease-in;
   z-index: 50;
   background: transparent;
+  max-width: ${({ theme, ...props }) => theme.maxScreenSize};
 
   ul {
     display: flex;
@@ -77,12 +79,18 @@ export const Container = styled.div`
   
   &.${CLASS_FLOATING} {
     border-radius: 3rem;
-    width: 95%;
+    width: 90%;
+    max-width: ${({ theme, ...props }) => math(`${theme.maxScreenSize} * 0.90`)};
     font-size: 0.9rem;
     margin-top: 0.5rem;
-    overflow: hidden;
     position: fixed;
     background: ${({ theme, ...props }) => theme.colors.primary};
+  }
+
+  ${M.MEDIA_SMALL} {
+    &.${CLASS_FLOATING} {
+      overflow: hidden;
+    }
   }
 `;
 
@@ -150,7 +158,7 @@ export const UserLink = styled.li`
   transition: background 0.09s ease-in;
 `;
 
-export const HamburgerLink = styled.li`
+export const HamburgerContainer = styled.li`
   ${menuItemDefaultStyle};
   transition: background 0.09s ease-in;
   padding: 1rem 0;
@@ -158,6 +166,25 @@ export const HamburgerLink = styled.li`
   &:hover {
     background: initial;
   }
+`;
+
+type HamburgerIconStyleProps = {
+  active: boolean;
+  clientRect: ClientRect;
+  screenOffset: {
+    top: number;
+    left: number;
+  }
+}
+
+export const HamburgerIcon = styled(HamburgerMenu)<HamburgerIconStyleProps>`
+  transition: transform 0.3s ease;
+
+  ${props =>
+    props.active &&
+    css`
+      transform: rotate(0.001deg)  translate(${props.screenOffset.left - props.clientRect.left}px, ${props.screenOffset.top - props.clientRect.top}px);
+    `}
 `;
 
 type DrawerStyleProps = {

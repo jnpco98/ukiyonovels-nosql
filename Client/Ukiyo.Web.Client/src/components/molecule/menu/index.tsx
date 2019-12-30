@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserAlt, faCog } from '@fortawesome/free-solid-svg-icons';
 import { useMediaQuery } from 'react-responsive';
 import { SMALL } from '../../../settings/media';
-import { HamburgerMenu } from '../../atom/hamburger';
 import Text, { TextType } from '../../atom/text';
 import * as S from './style';
 import Backdrop from '../../atom/backdrop';
@@ -27,6 +26,9 @@ const NavigationMenu: React.FC<Props> = (props: Props): ReactElement => {
     const isSmallScreen = useMediaQuery({ minWidth: SMALL });
     const containerRef = useRef(document.createElement('div'));
     const drawerRef = useRef(document.createElement('div'));
+    const hamburgerRef = useRef(document.createElement('div'));
+
+    const hamburgerScreenOffset = { top: 25, left: 13 };
 
     const handleScroll = (): void => setFloating(window.pageYOffset >= containerRef.current.scrollHeight);
 
@@ -77,9 +79,14 @@ const NavigationMenu: React.FC<Props> = (props: Props): ReactElement => {
             {!isSmallScreen ? (
                 <>
                     <ul>
-                        <S.HamburgerLink onClick={(): void => setDrawerActive(!drawerActive)}>
-                            <HamburgerMenu active={drawerActive} />
-                        </S.HamburgerLink>
+                        <S.HamburgerContainer onClick={(): void => setDrawerActive(!drawerActive)}>
+                            <S.HamburgerIcon
+                                ref={hamburgerRef}
+                                active={drawerActive}
+                                clientRect={hamburgerRef.current && hamburgerRef.current.getBoundingClientRect()}
+                                screenOffset={hamburgerScreenOffset}
+                            />
+                        </S.HamburgerContainer>
                     </ul>
 
                     <Backdrop show={drawerActive} onClick={(): void => setDrawerActive(false)} />

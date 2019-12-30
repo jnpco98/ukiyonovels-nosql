@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, forwardRef } from 'react';
 import { AnyStyledComponent } from 'styled-components';
 import * as S from './style';
 
@@ -12,10 +12,11 @@ export enum MenuType {
 type Props = {
     type?: MenuType;
     active?: boolean;
+    className?: string;
 };
 
-export const HamburgerMenu: React.FC<Props> = (props: Props): ReactElement => {
-    const { active, type } = props;
+const HamburgerMenu: React.FC<Props> = (props: Props, ref: React.RefObject<HTMLElement>): ReactElement => {
+    const { className, active, type } = props;
 
     /* eslint-disable */
     const generateSpan = (count: number): ReactElement[] =>
@@ -47,5 +48,11 @@ export const HamburgerMenu: React.FC<Props> = (props: Props): ReactElement => {
             break;
     }
 
-    return <StyledHamburger active={active}>{generateSpan(spanCount)}</StyledHamburger>;
+    return (
+        <StyledHamburger ref={ref} active={active} className={className}>
+            {generateSpan(spanCount)}
+        </StyledHamburger>
+    );
 };
+
+export default forwardRef(HamburgerMenu);
