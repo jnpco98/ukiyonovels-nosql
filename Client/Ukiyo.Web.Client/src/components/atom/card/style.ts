@@ -4,7 +4,7 @@ import { Paragraph, Span } from '../text/style';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookOpen } from '@fortawesome/free-solid-svg-icons';
 import { math } from 'polished';
-import { fadeInTextHover } from '../../../utilities/mixins';
+import { fadeInTextHover, center, CENTER_BOTH, FLEX_ALIGN_BOTH } from '../../../utilities/mixins';
 import { transparentize } from 'polished';
 
 const frameMultiplier = 1.44;
@@ -44,16 +44,14 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
+  ${center(FLEX_ALIGN_BOTH)};
+  flex-direction: column;
+  text-align: center;
   position: absolute;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
   z-index: 2;
   display: flex;
   transform: translateY(35%);
@@ -82,7 +80,7 @@ export const Heading = styled(Paragraph).attrs({ as: 'h3' })`
   color: ${({ theme, ...props }) => theme.colors.white};
   
   ${Container}:hover & {
-    margin: 0.5rem;
+    margin: 0.5rem 0.3rem;
   }
 
   ${M.MEDIA_SMALL} {
@@ -126,6 +124,9 @@ export const ReadIconLink = styled.a`
   border: 4px solid ${({ theme, ...props }) => transparentize(0.5, theme.colors.white)};
   transition: border-color 0.3s ease;
 
+  position: relative;
+  padding: 14%;
+
   &:hover {
     border-color: ${({ theme, ...props }) => theme.colors.white};
   }
@@ -140,8 +141,12 @@ export const ReadIconLink = styled.a`
 
   ${M.MEDIA_MEDIUM} {
     border-width: 6px;
-    padding: 1px;
   }
+`;
+
+export const IconWrapper = styled.div`
+  ${center(CENTER_BOTH)};
+  transform: translate(-50%, -46%);
 `;
 
 export const ReadIcon = styled(FontAwesomeIcon).attrs({
@@ -149,14 +154,14 @@ export const ReadIcon = styled(FontAwesomeIcon).attrs({
 })`
   color: ${({ theme, ...props }) => theme.colors.white};
   ${fadeInTextHover(Container)};
-  padding: 0.3rem 0.4rem;
-  font-size: 1.4rem;
+
+  font-size: 0.9rem;
 
   ${M.MEDIA_SMALL} {
-    font-size: 1.6rem;
+    font-size: 1.1rem;
   }
 
   ${M.MEDIA_MEDIUM} {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
   }
 `;
