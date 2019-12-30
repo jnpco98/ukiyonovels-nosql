@@ -1,14 +1,20 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import * as M from '../../../settings/media';
 import { Paragraph, Span } from '../text/style';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookOpen } from '@fortawesome/free-solid-svg-icons';
+import { math } from 'polished';
+import { fadeInTextHover } from '../../../utilities/mixins';
+import { transparentize } from 'polished';
+
+const frameMultiplier = 1.44;
 
 export const Container = styled.div`
   display: flex;
   position: relative;
   width: 6.7rem;
-  height: 9.7rem;
+  height: ${math(`6.7rem * ${frameMultiplier}`)};
+  overflow: hidden;
   
   &:after {
     content: '';
@@ -20,6 +26,44 @@ export const Container = styled.div`
     width: 100%;
     height: 7rem;
   }
+
+  ${M.MEDIA_SMALL} {
+    width: 8.5rem;
+    height: ${math(`8.5rem * ${frameMultiplier}`)};
+  }
+
+  ${M.MEDIA_MEDIUM} {
+    width: 9.5rem;
+    height: ${math(`9.5rem * ${frameMultiplier}`)};
+  }
+
+  ${M.MEDIA_XLARGE} {
+    width: 10.7rem;
+    height: ${math(`10.7rem * ${frameMultiplier}`)};
+  }
+`;
+
+export const Content = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 2;
+  display: flex;
+  transform: translateY(35%);
+  transition: transform 0.3s ease;
+  
+  ${Container}:hover & {
+    background: linear-gradient(to bottom, rgba(22, 22, 34, 0.5) 0%, rgba(22, 22, 34, 1) 100%);
+    transform: translateY(0%);
+    justify-content: space-around;
+  }
 `;
 
 export const Image = styled.img`
@@ -28,44 +72,91 @@ export const Image = styled.img`
   left: 0;
   width: 100%;
   height: 100%;
-`;
 
-export const Content = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 25%;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  z-index: 2;
-  display: flex;
-  justify-content: center;
-  
+  ${Container}:hover & {
+    filter: blur(1px);
+  }
 `;
 
 export const Heading = styled(Paragraph).attrs({ as: 'h3' })`
   color: ${({ theme, ...props }) => theme.colors.white};
-  margin: 0.5rem;
+  
+  ${Container}:hover & {
+    margin: 0.5rem;
+  }
+
+  ${M.MEDIA_SMALL} {
+    ${Container}:hover & {
+      margin-bottom: 0;
+    }
+  }
 `;
 
 export const Subtitle = styled(Paragraph)`
 	color: ${({ theme, ...props }) => theme.colors.white};
-	margin-bottom: 0.5rem;
+  ${fadeInTextHover(Container)};
 
-  display: none;
+  ${Container}:hover & {
+    margin: 1rem 0.3rem;
+    margin-bottom: 0;
+  }
 `;
 
 export const Genre = styled(Span)`
 	color: ${({ theme, ...props }) => theme.colors.white};
+  ${fadeInTextHover(Container)};
+  font-size: 0.5rem;
+
+  ${Container}:hover & {
+    margin-bottom: 1rem;
+  }
+
+  ${M.MEDIA_SMALL} {
+    font-size: 0.6rem;
+  }
+  ${M.MEDIA_MEDIUM} {
+    font-size: 0.7rem;
+  }
+`;
+
+export const ReadIconLink = styled.a`
   display: none;
+  margin: 1rem 0.5rem 0.5rem;
+  border-radius: 50%;
+  border: 4px solid ${({ theme, ...props }) => transparentize(0.5, theme.colors.white)};
+  transition: border-color 0.3s ease;
+
+  &:hover {
+    border-color: ${({ theme, ...props }) => theme.colors.white};
+  }
+
+  ${Container}:hover & {
+    display: block;
+  }
+
+  ${M.MEDIA_SMALL} {
+    border-width: 5px;
+  }
+
+  ${M.MEDIA_MEDIUM} {
+    border-width: 6px;
+    padding: 1px;
+  }
 `;
 
 export const ReadIcon = styled(FontAwesomeIcon).attrs({
 	icon: faBookOpen
 })`
   color: ${({ theme, ...props }) => theme.colors.white};
-  display: none;
+  ${fadeInTextHover(Container)};
+  padding: 0.3rem 0.4rem;
+  font-size: 1.4rem;
+
+  ${M.MEDIA_SMALL} {
+    font-size: 1.6rem;
+  }
+
+  ${M.MEDIA_MEDIUM} {
+    font-size: 1.8rem;
+  }
 `;
