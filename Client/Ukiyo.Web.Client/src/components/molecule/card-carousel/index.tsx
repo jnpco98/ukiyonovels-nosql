@@ -3,7 +3,7 @@ import { Settings } from 'react-slick';
 import Card from '../../atom/card';
 import * as S from './style';
 import { DEFAULT_SLIDER_SETTINGS } from '../../../utilities/slider';
-import { SMALL } from '../../../settings/media';
+import { SMALL, XXSMALL, XSMALL } from '../../../settings/media';
 
 type Props = {
     content: {
@@ -20,39 +20,27 @@ const CardCarousel: React.FC<Props> = (props: Props): ReactElement => {
 
     const sliderOptions: Settings = {
         ...DEFAULT_SLIDER_SETTINGS,
-        slidesToShow: 3,
         swipeToSlide: true,
-        centerMode: true,
         prevArrow: <S.Arrow />,
         nextArrow: <S.Arrow />,
-        responsive: [
-            {
-                breakpoint: +SMALL.replace(/\D/g, ''),
-                settings: {
-                    dots: true,
-                    arrows: false,
-                    slidesToShow: 3,
-                    centerMode: false
-                }
-            }
-        ]
+        variableWidth: true,
+        centerMode: true
     };
 
     /* eslint-disable react/jsx-props-no-spreading */
     return (
         <S.Container>
+            {/* <h2 style={{ color: 'white', margin: '2rem' }}>Latest Releases</h2> */}
             <S.Slider {...sliderOptions}>
                 {content.map(({ heading, subtitle, genre, link, image }) => (
-                    <S.ItemWrapper className="wrapper" key={heading + subtitle}>
-                        <S.Item
-                            key={heading + subtitle}
-                            heading={heading}
-                            subtitle={subtitle}
-                            genre={genre}
-                            link={link}
-                            image={image}
-                        />
-                    </S.ItemWrapper>
+                    <S.Item
+                        key={heading + subtitle}
+                        heading={heading}
+                        subtitle={subtitle}
+                        genre={genre}
+                        link={link}
+                        image={image}
+                    />
                 ))}
             </S.Slider>
         </S.Container>

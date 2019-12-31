@@ -1,4 +1,4 @@
-import styled, { css, keyframes } from 'styled-components';
+import styled from 'styled-components/macro';
 import CustomSlickArrow from '../../atom/slick-arrow';
 import Slick from 'react-slick';
 import * as M from '../../../settings/media';
@@ -6,15 +6,16 @@ import Card from '../../atom/card';
 
 export const Container = styled.div`
   width: 100%;
-  overflow: hidden;
+  /* overflow: hidden; */
   position: relative;
 
   &:before, &:after {
-    /* content: ''; */
+    content: '';
     position: absolute;
     width: 8%;
     height: 100%;
     top: -8%;
+    z-index: 1;
   }
 
   &:before {
@@ -30,16 +31,10 @@ export const Container = styled.div`
 
 export const ItemWrapper = styled.div`
   position: relative;
-  padding-bottom: 100%;
 `;
 
 export const Item = styled(Card)`
-  position: absolute;
-  width: 95%;
-  height: 130%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  margin: 0 0.5rem;
 `;
 
 export const Slider = styled(Slick)`
@@ -58,12 +53,20 @@ export const Slider = styled(Slick)`
     }
   }
 
-  /* padding: 0 2rem; */
-
   .slick-list {
     overflow: visible;
   }
 `;
 
 export const Arrow = styled(CustomSlickArrow)`
+  /* top: -1.5rem;
+
+  &.slick-prev {
+    right: 4.5rem;
+    left: unset;
+  }
+
+  &.slick-next {
+    right: 2rem;
+  } */
 `;

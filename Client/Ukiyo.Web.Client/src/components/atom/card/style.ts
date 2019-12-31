@@ -7,13 +7,14 @@ import { math } from 'polished';
 import { fadeInTextHover, center, CENTER_BOTH, FLEX_ALIGN_BOTH } from '../../../utilities/mixins';
 import { transparentize } from 'polished';
 
-const frameMultiplier = 1.44;
+export const cardDimRatio = 1.5;
 
 export const Container = styled.div`
   display: flex;
   position: relative;
-  width: 6.7rem;
-  height: ${math(`6.7rem * ${frameMultiplier}`)};
+  
+  width: 6.2rem;
+  height: ${math(`6.2rem * ${cardDimRatio}`)};
   overflow: hidden;
   margin: auto;
   
@@ -30,17 +31,17 @@ export const Container = styled.div`
 
   ${M.MEDIA_SMALL} {
     width: 8.5rem;
-    height: ${math(`8.5rem * ${frameMultiplier}`)};
+    height: ${math(`8.5rem * ${cardDimRatio}`)};
   }
 
   ${M.MEDIA_MEDIUM} {
     width: 9.5rem;
-    height: ${math(`9.5rem * ${frameMultiplier}`)};
+    height: ${math(`9.5rem * ${cardDimRatio}`)};
   }
 
   ${M.MEDIA_XLARGE} {
     width: 10.7rem;
-    height: ${math(`10.7rem * ${frameMultiplier}`)};
+    height: ${math(`10.7rem * ${cardDimRatio}`)};
   }
 `;
 
@@ -71,6 +72,7 @@ export const Image = styled.img`
   left: 0;
   width: 100%;
   height: 100%;
+  object-fit: cover;
 
   ${Container}:hover & {
     filter: blur(1px);

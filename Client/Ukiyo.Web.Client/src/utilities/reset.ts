@@ -11,6 +11,7 @@ const reset = css`
 
   main {
     width: 100%;
+    overflow: hidden;
   }
 
   html, body, div, span, applet, object, iframe,
