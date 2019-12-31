@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro';
 import Slick from 'react-slick';
-import SlickArrow from '../../atom/slick-arrow';
+import CustomSlickArrow from '../../atom/slick-arrow';
 import Button, { ButtonType } from '../../atom/button';
 import * as M from '../../../settings/media';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -17,6 +17,7 @@ export const Slider = styled(Slick)`
   margin-bottom: 2rem;
   
   .slick-dots {
+    left: 0;
     bottom: 1.5rem;
 
     li {
@@ -139,7 +140,7 @@ export const Content = styled.div`
   }
 `;
 
-export const Arrow = styled(SlickArrow)`
+export const Arrow = styled(CustomSlickArrow)`
 `;
 
 export const Heading = styled(SubsectionTitle)`

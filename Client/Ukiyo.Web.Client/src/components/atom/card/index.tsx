@@ -10,10 +10,11 @@ type Props = {
     subtitle?: string;
     genre?: string;
     link: string;
+    className?: string;
 };
 
 const Card: React.FC<Props> = (props: Props): ReactElement => {
-    const { image, heading, subtitle, genre, link } = props;
+    const { className, image, heading, subtitle, genre, link } = props;
 
     const isSmallScreen = useMediaQuery({ minWidth: SMALL });
     const isDesktopScreen = useMediaQuery({ minWidth: MEDIUM });
@@ -23,7 +24,7 @@ const Card: React.FC<Props> = (props: Props): ReactElement => {
     if (isDesktopScreen) textTruncate = 40;
 
     return (
-        <S.Container>
+        <S.Container className={className}>
             <a href={link}>
                 <S.Image src={image} alt={heading} />
             </a>

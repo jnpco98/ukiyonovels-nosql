@@ -15,6 +15,7 @@ export const Container = styled.div`
   width: 6.7rem;
   height: ${math(`6.7rem * ${frameMultiplier}`)};
   overflow: hidden;
+  margin: auto;
   
   &:after {
     content: '';
