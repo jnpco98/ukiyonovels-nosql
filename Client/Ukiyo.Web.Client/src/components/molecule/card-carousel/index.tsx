@@ -1,9 +1,10 @@
 import React, { ReactElement } from 'react';
 import { Settings } from 'react-slick';
+import { useMediaQuery } from 'react-responsive';
 import Card from '../../atom/card';
 import * as S from './style';
 import { DEFAULT_SLIDER_SETTINGS } from '../../../utilities/slider';
-import { SMALL, XXSMALL, XSMALL } from '../../../settings/media';
+import { SMALL, XXSMALL, XSMALL, MEDIUM } from '../../../settings/media';
 
 type Props = {
     content: {
@@ -13,36 +14,53 @@ type Props = {
         link: string;
         image: string;
     }[];
+    headingText?: string;
 };
 
 const CardCarousel: React.FC<Props> = (props: Props): ReactElement => {
-    const { content } = props;
+    const { content, headingText } = props;
+
+    const isDesktopScreen = useMediaQuery({ minWidth: MEDIUM });
 
     const sliderOptions: Settings = {
-        ...DEFAULT_SLIDER_SETTINGS,
-        swipeToSlide: true,
-        prevArrow: <S.Arrow />,
-        nextArrow: <S.Arrow />,
-        variableWidth: true,
-        centerMode: true
+        responsive: [
+            {
+                breakpoint: +MEDIUM.replace(/\D/g, ''),
+                settings: {
+                    ...DEFAULT_SLIDER_SETTINGS,
+                    swipeToSlide: true,
+                    prevArrow: <S.Arrow />,
+                    nextArrow: <S.Arrow />,
+                    variableWidth: true,
+                    centerMode: true
+                }
+            }
+        ]
     };
+
+    const generateCardContent = (start: number, last: number): React.ReactNode =>
+        content
+            .filter((c, idx) => idx >= start && idx < last)
+            .map(({ heading, subtitle, genre, link, image }, idx, filtered) => (
+                <S.Item
+                    key={heading + subtitle}
+                    heading={heading}
+                    subtitle={subtitle}
+                    genre={genre}
+                    link={link}
+                    image={image}
+                />
+            ));
 
     /* eslint-disable react/jsx-props-no-spreading */
     return (
         <S.Container>
-            {/* <h2 style={{ color: 'white', margin: '2rem' }}>Latest Releases</h2> */}
-            <S.Slider {...sliderOptions}>
-                {content.map(({ heading, subtitle, genre, link, image }) => (
-                    <S.Item
-                        key={heading + subtitle}
-                        heading={heading}
-                        subtitle={subtitle}
-                        genre={genre}
-                        link={link}
-                        image={image}
-                    />
-                ))}
-            </S.Slider>
+            {headingText && <S.SectionHeading>{headingText}</S.SectionHeading>}
+            {isDesktopScreen ? (
+                <S.FlexContainer>{generateCardContent(0, content.length)}</S.FlexContainer>
+            ) : (
+                <S.Slider {...sliderOptions}>{generateCardContent(0, content.length)}</S.Slider>
+            )}
         </S.Container>
     );
     /* eslint-enable react/jsx-props-no-spreading */

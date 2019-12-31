@@ -14,7 +14,7 @@ export const Container = styled.div`
 `;
 
 export const Slider = styled(Slick)`
-  margin-bottom: 2rem;
+  /* margin-bottom: 2rem; */
   
   .slick-dots {
     left: 0;

@@ -11,5 +11,6 @@ export const DEFAULT_SLIDER_SETTINGS: Settings = {
     slidesToShow: 1,
     slidesToScroll: 1,
     swipe: true,
-    touchMove: true
+    touchMove: true,
+    swipeToSlide: true
 };

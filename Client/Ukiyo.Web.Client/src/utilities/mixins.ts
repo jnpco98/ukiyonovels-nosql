@@ -1,5 +1,6 @@
 import { css, keyframes, StyledComponent, AnyStyledComponent } from 'styled-components/macro';
 import { math } from 'polished';
+import * as M from '../settings/media';
 
 export const CENTER_VERTICAL = 'CENTER_VERTICAL';
 export const CENTER_HORIZONTAL = 'CENTER_HORIZONTAL';
@@ -119,3 +120,80 @@ export const fadeInTextHover = (container: AnyStyledComponent) => css`
     transform: scale(1);
   }
 `;
+
+export const PageTitleFontSize = css`
+  ${({ theme, ...props }) => 
+    css`
+      font-size: ${math(`${theme.font.baseSize} * 1.5`)};
+      
+      ${M.MEDIA_SMALL} {
+        font-size: ${math(`${theme.font.baseSize} * 1.8`)};
+      }
+
+      ${M.MEDIA_MEDIUM} {
+        font-size: ${math(`${theme.font.baseSize} * 2.1`)};
+      }
+
+      ${M.MEDIA_XLARGE} {
+        font-size: ${math(`${theme.font.baseSize} * 2.5`)};
+      }
+  `};
+`;
+
+export const SectionFontSize = css`
+  ${({ theme, ...props }) =>
+    css`
+      font-size: ${math(`${theme.font.baseSize} * 1.1`)};
+
+      ${M.MEDIA_SMALL} {
+        font-size: ${math(`${theme.font.baseSize} * 1.4`)};
+      }
+
+      ${M.MEDIA_MEDIUM} {
+        font-size: ${math(`${theme.font.baseSize} * 1.8`)};
+      }
+
+      ${M.MEDIA_XLARGE} {
+        font-size: ${math(`${theme.font.baseSize} * 2.1`)};
+      }
+  `};
+`;
+
+export const SubsectionFontSize = css`
+  ${({ theme, ...props }) => 
+    css`
+      font-size: ${math(`${theme.font.baseSize} * 0.75`)};
+
+      ${M.MEDIA_SMALL} {
+        font-size: ${math(`${theme.font.baseSize} * 1`)};
+      }
+
+      ${M.MEDIA_MEDIUM} {
+        font-size: ${math(`${theme.font.baseSize} * 1.2`)};
+      }
+
+      ${M.MEDIA_XLARGE} {
+        font-size: ${math(`${theme.font.baseSize} * 1.4`)};
+      }
+  `};
+`;
+
+export const RegularFontSize = css`
+  ${({ theme, ...props }) =>
+    css`
+      font-size: ${math(`${theme.font.baseSize} * 0.7`)};
+
+      ${M.MEDIA_SMALL} {
+        font-size: ${math(`${theme.font.baseSize} * 0.8`)};
+      }
+
+      ${M.MEDIA_MEDIUM} {
+        font-size: ${math(`${theme.font.baseSize} * 0.9`)};
+      }
+
+      ${M.MEDIA_XLARGE} {
+        font-size: ${math(`${theme.font.baseSize} * 1.1`)};
+      }
+  `};
+`;
+

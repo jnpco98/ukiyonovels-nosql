@@ -4,6 +4,10 @@ import * as M from '../../../settings/media';
 export const Container = styled.div`
   z-index: 10;
 
+  &:before, &:after {
+    transition: all 0.3s ease;
+  }
+
   &.slick-prev {
     left: 0.5rem;
   }
