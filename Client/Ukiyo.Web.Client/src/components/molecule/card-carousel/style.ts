@@ -30,18 +30,16 @@ export const Container = styled.div`
 
 export const ItemWrapper = styled.div`
   position: relative;
-  padding-bottom: 60%;
+  padding-bottom: 100%;
 `;
 
 export const Item = styled(Card)`
   position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  width: unset;
-  height: unset;
-  width: 45%;
+  width: 95%;
+  height: 130%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
 
 export const Slider = styled(Slick)`
