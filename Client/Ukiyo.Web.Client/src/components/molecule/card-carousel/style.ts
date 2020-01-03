@@ -2,10 +2,11 @@ import styled, { css } from 'styled-components/macro';
 import CustomSlickArrow from '../../atom/slick-arrow';
 import Slick from 'react-slick';
 import * as M from '../../../settings/media';
-import Card from '../../atom/card';
+import InfoThumbnail from '../../atom/info-thumbnail';
 import Text, { TextType } from '../../atom/text';
 import { math } from 'polished';
-import { cardDimRatio } from '../../atom/card/style';
+import { Genre, Heading, Subtitle, ReadIcon } from '../../atom/info-thumbnail/style';
+import { cardDimRatio } from '../../atom/thumbnail/style';
 
 const sliderFadeStyle = (start: string, end: string) => css`
   &:before {
@@ -47,9 +48,18 @@ export const SectionHeading = styled(Text).attrs({
     padding-left: 5rem;
     padding-bottom: 0.5rem;
   }
+
+  ${M.MEDIA_MEDIUM} {
+    padding-left: 7rem;
+    margin-bottom: 2.5rem;
+  }
+
+  ${M.MEDIA_LARGE} {
+    padding-left: 12rem;
+  }
 `;
 
-export const Item = styled(Card)`
+export const Item = styled(InfoThumbnail)`
   margin-left: 0.6rem;
 
   ${M.MEDIA_XXSMALL} {
@@ -61,9 +71,46 @@ export const Item = styled(Card)`
   }
 
   ${M.MEDIA_MEDIUM} {
-    width: 6.2rem;
-    height: ${math(`6.2rem * ${cardDimRatio}`)};
-    margin-bottom: 1rem;
+    width: 8rem;
+    height: ${math(`8rem * ${cardDimRatio}`)};
+    margin-bottom: 1.5rem;
+
+    ${Heading} {
+      font-size: 0.8rem;
+    }
+
+    ${Subtitle} {
+      font-size: 0.8rem;
+    }
+
+    ${Genre} {
+      font-size: 0.6rem;
+    }
+
+    ${ReadIcon} {
+      font-size: 1.3rem;
+    }
+  }
+
+  ${M.MEDIA_XLARGE} {
+    width: 9.5rem;
+    height: ${math(`9.5rem * ${cardDimRatio}`)};
+
+    ${Heading} {
+      font-size: 0.9rem;
+    }
+
+    ${Subtitle} {
+      font-size: 0.9rem;
+    }
+
+    ${Genre} {
+      font-size: 0.7rem;
+    }
+
+    ${ReadIcon} {
+      font-size: 1.5rem;
+    }
   }
 `;
 
@@ -123,6 +170,15 @@ export const FlexContainer = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   padding: 0 2rem;
+
+  ${M.MEDIA_MEDIUM} {
+    padding: 0 3rem;
+  }
+
+  ${M.MEDIA_LARGE} {
+    padding: 0 12rem;
+    justify-content: flex-start;
+  }
 `;
 
 export const Arrow = styled(CustomSlickArrow)`

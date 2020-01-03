@@ -6,8 +6,7 @@ import { faBookOpen } from '@fortawesome/free-solid-svg-icons';
 import { math } from 'polished';
 import { fadeInTextHover, center, CENTER_BOTH, FLEX_ALIGN_BOTH } from '../../../utilities/mixins';
 import { transparentize } from 'polished';
-
-export const cardDimRatio = 1.5;
+import { cardDimRatio } from '../thumbnail/style';
 
 export const Container = styled.div`
   display: flex;
@@ -116,6 +115,7 @@ export const Genre = styled(Span)`
   ${M.MEDIA_SMALL} {
     font-size: 0.6rem;
   }
+  
   ${M.MEDIA_MEDIUM} {
     font-size: 0.7rem;
   }

@@ -1,6 +1,8 @@
 import styled, { css } from 'styled-components';
-import { rgba } from 'polished';
-import { MEDIA_MEDIUM, MEDIA_LARGE } from '../../../settings/media';
+import { rgba, math } from 'polished';
+import * as M from '../../../settings/media';
+
+export const cardDimRatio = 1.5;
 
 export const ThumbnailContent = styled.div`
   width: 100%;
@@ -23,8 +25,8 @@ export const ThumbnailImage = styled.img`
 
 export const Thumbnail = styled.a`
   position: relative;
-  width: 6.5rem;
-  height: 9rem;
+  width: 6.2rem;
+  height: ${math(`6.2rem * ${cardDimRatio}`)};
   overflow: hidden;
   transition: all 0.15s ease-in;
 
@@ -37,14 +39,18 @@ export const Thumbnail = styled.a`
     }  
   }
 
-  ${MEDIA_MEDIUM} {
-    width: 8rem;
-    height: 11rem;
+  ${M.MEDIA_SMALL} {
+    width: 8.5rem;
+    height: ${math(`8.5rem * ${cardDimRatio}`)};
   }
 
-  ${MEDIA_LARGE} {
-    width: 11rem;
-    height: 16rem;
+  ${M.MEDIA_MEDIUM} {
+    width: 9rem;
+    height: ${math(`9rem * ${cardDimRatio}`)};
   }
 
+  ${M.MEDIA_XLARGE} {
+    width: 10rem;
+    height: ${math(`10rem * ${cardDimRatio}`)};
+  }
 `;

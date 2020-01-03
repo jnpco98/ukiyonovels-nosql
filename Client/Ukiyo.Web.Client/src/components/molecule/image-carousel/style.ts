@@ -183,6 +183,14 @@ export const Subtitle = styled(Paragraph)`
   ${M.MEDIA_LARGE} {
     margin-bottom: 1.8rem;
   }
+
+  ${M.MEDIA_MEDIUM} {
+    font-size: 0.9;
+  }
+
+  ${M.MEDIA_XLARGE} {
+    font-size: 1.1;
+  }
 `;
 
 export const LinkButton = styled(Button).attrs({

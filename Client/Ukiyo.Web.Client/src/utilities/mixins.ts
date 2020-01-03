@@ -188,11 +188,11 @@ export const RegularFontSize = css`
       }
 
       ${M.MEDIA_MEDIUM} {
-        font-size: ${math(`${theme.font.baseSize} * 0.9`)};
+        font-size: ${math(`${theme.font.baseSize} * 0.8`)};
       }
 
       ${M.MEDIA_XLARGE} {
-        font-size: ${math(`${theme.font.baseSize} * 1.1`)};
+        font-size: ${math(`${theme.font.baseSize} * 1`)};
       }
   `};
 `;

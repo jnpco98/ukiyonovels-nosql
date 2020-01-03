@@ -1,10 +1,9 @@
 import React, { ReactElement } from 'react';
 import { Settings } from 'react-slick';
 import { useMediaQuery } from 'react-responsive';
-import Card from '../../atom/card';
 import * as S from './style';
 import { DEFAULT_SLIDER_SETTINGS } from '../../../utilities/slider';
-import { SMALL, XXSMALL, XSMALL, MEDIUM } from '../../../settings/media';
+import { MEDIUM } from '../../../settings/media';
 
 type Props = {
     content: {
