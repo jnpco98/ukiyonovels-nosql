@@ -1,19 +1,16 @@
-import { DefaultTheme } from 'styled-components/macro';
+import { ThemeSettings } from 'styled-components/macro';
 
-export const BaseTheme: DefaultTheme = {
-    maxScreenSize: '1600px',
+export const BaseTheme: ThemeSettings = {
+    maxScreenSize: '2650px',
     gutter: {
-        xsmall: '0.5rem',
-        small: '1rem',
-        medium: '1.125rem',
-        large: '3.25rem',
-        xlarge: '6.125rem',
-        xxlarge: '13.25rem',
-
-        edgeSmall: '2.5rem',
-        edgeMedium: '4.5rem',
-        edgeLarge: '7rem',
-        edgeXLarge: '9.5rem'
+        base: '1rem',
+        xxsmall: '2rem',
+        xsmall: '3rem',
+        small: '5rem',
+        medium: '7rem',
+        large: '12rem',
+        xlarge: '15',
+        xxlarge: '17rem'
     },
     font: {
         baseSize: '1rem',
@@ -24,25 +21,28 @@ export const BaseTheme: DefaultTheme = {
         secondary: '"Nunito Sans", Sans-Serif'
     },
     colors: {
-        default: '#054857',
-        subdued: '#04828D',
+        default: '#5F6062',
+        subdued: '#AFAFB0',
 
         black: '#000',
-        white: '#fff',
+        white: '#FFF',
 
         backdropColor: 'rgba(0, 0, 0, 0.5)',
 
-        background: '#fff',
-        backgroundAlternate: '#161622',
-        backgroundSecondary: '#eef0f4',
+        background: 'white',
+        backgroundAlternate: '#F8F8F8',
 
-        border: '#eee',
-        borderAlternate: '#f0eeec',
-        borderSecondary: '#d4d5d9',
+        border: '#EEE',
+        borderHover: '#F3F3F3',
+        borderAlternate: '#F0EEEC',
+        borderHoverAlternate: '#D4D5D9',
 
-        primary: '#161622',
-        secondary: '#054857',
+        primary: '#5F6062',
+        primaryCompliment: 'white',
+        secondary: '#4b503f',
+        secondaryCompliment: 'white',
         accent: '#04828D',
+        accentCompliment: '4b503f',
 
         selection: '#7d7d7d',
 

@@ -6,7 +6,7 @@ import * as M from '../../../settings/media';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookOpen } from '@fortawesome/free-solid-svg-icons';
 import { Paragraph, SubsectionTitle } from '../../atom/text/style';
-import { center, FLEX_ALIGN_CROSS } from '../../../utilities/mixins';
+import { center, FLEX_ALIGN_CROSS, gutter, GUTTER_LEFT } from '../../../utilities/mixins';
 
 export const Container = styled.div`
   width: 100%;
@@ -31,9 +31,11 @@ export const Slider = styled(Slick)`
 `;
 
 export const SliderItem = styled.div`
+  display: flex !important;
   position: relative;
-  padding: 1rem;
   min-height: 16rem;
+
+  ${gutter(GUTTER_LEFT)};
 
   &:after {
     content: '';
@@ -48,17 +50,14 @@ export const SliderItem = styled.div`
 
   ${M.MEDIA_XXSMALL} {
     min-height: 18rem;
-    padding-left: 2rem;
   }
 
   ${M.MEDIA_XSMALL} {
     min-height: 23rem;
-    padding-left: 3rem;
   }
 
   ${M.MEDIA_SMALL} {
     min-height: 30rem;
-    padding-left: 5rem;
 
     &:after {
       height: 10rem;
@@ -67,7 +66,6 @@ export const SliderItem = styled.div`
 
   ${M.MEDIA_MEDIUM} {
     min-height: 35rem;
-    padding-left: 7rem;
 
     &:after {
       height: 14rem;
@@ -76,7 +74,14 @@ export const SliderItem = styled.div`
 
   ${M.MEDIA_LARGE} {
     min-height: 40rem;
-    padding-left: 12rem;
+  }
+
+  ${M.MEDIA_XLARGE} {
+    min-height: 48rem;
+  }
+
+  ${M.MEDIA_XXLARGE} {
+    min-height: 60rem;
   }
 `;
 
@@ -112,30 +117,21 @@ export const Content = styled.div`
   ${center(FLEX_ALIGN_CROSS)};
   position: relative;
   flex-direction: column;
-  margin-top: 2.2rem;
   max-width: 14rem;
 
   ${M.MEDIA_XXSMALL} {
     max-width: 16rem;
-    margin-top: 2.7rem;
-  }
-
-  ${M.MEDIA_XSMALL} {
-    margin-top: 5.3rem;
   }
 
   ${M.MEDIA_SMALL} {
-    margin-top: 8.5rem;
     max-width: 20rem;
   }
 
   ${M.MEDIA_MEDIUM} {
-    margin-top: 10.5rem;
     max-width: 25rem;
   }
 
   ${M.MEDIA_LARGE} {
-    margin-top: 12.5rem;
     max-width: 30rem;
   }
 `;

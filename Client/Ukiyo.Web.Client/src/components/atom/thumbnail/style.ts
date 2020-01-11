@@ -12,7 +12,7 @@ export const ThumbnailContent = styled.div`
   transform: translateY(80%);
   transition: all 0.2s ease-in;
   background: ${({ theme, ...props }) => rgba(theme.colors.black, 0.5)};
-  color: ${({ theme, ...props }) => theme.colors.backgroundSecondary};
+  color: ${({ theme, ...props }) => theme.colors.backgroundAlternate};
   padding: 0.2rem;
 `;
 

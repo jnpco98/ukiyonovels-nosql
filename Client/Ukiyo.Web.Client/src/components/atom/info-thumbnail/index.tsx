@@ -13,7 +13,7 @@ type Props = {
     className?: string;
 };
 
-const Card: React.FC<Props> = (props: Props): ReactElement => {
+const InfoThumbnail: React.FC<Props> = (props: Props): ReactElement => {
     const { className, image, heading, subtitle, genre, link } = props;
 
     const isSmallScreen = useMediaQuery({ minWidth: SMALL });
@@ -42,4 +42,4 @@ const Card: React.FC<Props> = (props: Props): ReactElement => {
     );
 };
 
-export default Card;
+export default InfoThumbnail;

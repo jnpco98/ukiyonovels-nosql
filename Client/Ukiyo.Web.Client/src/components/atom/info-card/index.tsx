@@ -6,14 +6,21 @@ import { truncate } from '../../../utilities/string';
 import { SMALL, XXSMALL, MEDIUM } from '../../../settings/media';
 
 type Props = {
+    className?: string;
     title: string;
     description: string;
     link: string;
     imgSrc: string;
+
+    meta?: {
+        updatedOn?: string;
+        likesCount?: string;
+        viewsCount?: string;
+    };
 };
 
 const InfoCard: React.FC<Props> = (props: Props): ReactElement => {
-    const { title, description, link, imgSrc } = props;
+    const { className, title, description, link, imgSrc, meta } = props;
 
     const isXXSmallScreen = useMediaQuery({ minWidth: XXSMALL });
     const isSmallScreen = useMediaQuery({ minWidth: SMALL });
@@ -25,20 +32,34 @@ const InfoCard: React.FC<Props> = (props: Props): ReactElement => {
     if (isDesktopScreen) textTruncate = 350;
 
     return (
-        <S.Card>
+        <S.Card className={className}>
             <Thumbnail imgSrc={imgSrc} link={link} />
             <S.CardContent>
                 <S.Title>{title}</S.Title>
                 <S.Description>{truncate(description, textTruncate)}</S.Description>
                 <S.CardInfo>
-                    <S.CardMeta>
-                        <S.CalendarIcon />
-                        <S.InfoText>45 min ago</S.InfoText>
-                        <S.LikesIcon />
-                        <S.InfoText>2.5k</S.InfoText>
-                        <S.ViewsIcon />
-                        <S.InfoText>12k</S.InfoText>
-                    </S.CardMeta>
+                    {meta && (
+                        <S.CardMeta>
+                            {meta.updatedOn && (
+                                <>
+                                    <S.CalendarIcon />
+                                    <S.InfoText>{meta.updatedOn}</S.InfoText>
+                                </>
+                            )}
+                            {meta.likesCount && (
+                                <>
+                                    <S.LikesIcon />
+                                    <S.InfoText>{meta.likesCount}</S.InfoText>
+                                </>
+                            )}
+                            {meta.viewsCount && (
+                                <>
+                                    <S.ViewsIcon />
+                                    <S.InfoText>{meta.viewsCount}</S.InfoText>
+                                </>
+                            )}
+                        </S.CardMeta>
+                    )}
                     <S.CardButton href="#">Continue Reading</S.CardButton>
                 </S.CardInfo>
             </S.CardContent>

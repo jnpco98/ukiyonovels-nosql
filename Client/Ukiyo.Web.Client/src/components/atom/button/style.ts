@@ -6,6 +6,7 @@ import { center, FLEX_ALIGN_MAIN } from '../../../utilities/mixins';
 
 type ButtonStyleProps = {
   flat?: boolean;
+  disabled?: boolean;
   buttonType: ButtonType;
 }
 

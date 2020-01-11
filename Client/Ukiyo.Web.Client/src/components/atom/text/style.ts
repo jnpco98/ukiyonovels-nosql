@@ -1,26 +1,26 @@
 import styled, { css } from 'styled-components/macro';
-import { PageTitleFontSize, SectionFontSize, SubsectionFontSize, RegularFontSize } from '../../../utilities/mixins';
+import { pageTitleFontSize, sectionFontSize, subsectionFontSize, regularFontSize } from '../../../utilities/mixins';
 
 export const PageTitle = styled.h1`
-  ${PageTitleFontSize};
+  ${pageTitleFontSize};
 `;
 
 export const SectionTitle = styled.h2`
-  ${SectionFontSize};
+  ${sectionFontSize};
 `;
 
 export const SubsectionTitle = styled.h3`
-  ${SubsectionFontSize};
+  ${subsectionFontSize};
 `;
 
 export const Paragraph = styled.p`
-  ${RegularFontSize};
+  ${regularFontSize};
 `;
 
 export const Span = styled.span`
-  ${RegularFontSize};
+  ${regularFontSize};
 `;
 
 export const Anchor = styled.a`
-  ${RegularFontSize};
+  ${regularFontSize};
 `;

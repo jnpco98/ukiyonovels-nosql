@@ -138,9 +138,9 @@ export const Slider = styled(Slick)`
     content: '';
     position: absolute;
     width: 10%;
-    height: 100%;
+    height: 120%;
     z-index: 1;
-    top: 0;
+    top: -10%;
   }
 
   &:before {

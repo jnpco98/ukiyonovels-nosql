@@ -1,20 +1,17 @@
 import 'styled-components';
 
 declare module 'styled-components' {
-    export interface DefaultTheme {
+    export interface ThemeSettings {
         maxScreenSize: string;
         gutter: {
+            base: string;
+            xxsmall: string;
             xsmall: string;
             small: string;
             medium: string;
             large: string;
             xlarge: string;
             xxlarge: string;
-
-            edgeSmall: string;
-            edgeMedium: string;
-            edgeLarge: string;
-            edgeXLarge: string;
         };
         font: {
             baseSize: string;
@@ -35,15 +32,18 @@ declare module 'styled-components' {
 
             background: string;
             backgroundAlternate: string;
-            backgroundSecondary: string;
 
             border: string;
+            borderHover: string;
             borderAlternate: string;
-            borderSecondary: string;
+            borderHoverAlternate: string;
 
             primary: string;
+            primaryCompliment: string;
             secondary: string;
+            secondaryCompliment: string;
             accent: string;
+            accentCompliment: string;
 
             selection: string;
 

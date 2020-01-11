@@ -10,6 +10,11 @@ export const FLEX_ALIGN_MAIN = `FLEX_ALIGN_MAIN`;
 export const FLEX_ALIGN_CROSS = `FLEX_ALIGN_CROSS`;
 export const FLEX_ALIGN_BOTH = `FLEX_ALIGN_BOTH`;
 
+export const GUTTER_TOP = 'top';
+export const GUTTER_LEFT = 'left';
+export const GUTTER_BOTTOM = 'bottom';
+export const GUTTER_RIGHT = 'right';
+
 const centerVertical = css`
   position: absolute;
   top: 50%;
@@ -121,7 +126,7 @@ export const fadeInTextHover = (container: AnyStyledComponent) => css`
   }
 `;
 
-export const PageTitleFontSize = css`
+export const pageTitleFontSize = css`
   ${({ theme, ...props }) => 
     css`
       font-size: ${math(`${theme.font.baseSize} * 1.5`)};
@@ -140,7 +145,7 @@ export const PageTitleFontSize = css`
   `};
 `;
 
-export const SectionFontSize = css`
+export const sectionFontSize = css`
   ${({ theme, ...props }) =>
     css`
       font-size: ${math(`${theme.font.baseSize} * 1.1`)};
@@ -159,7 +164,7 @@ export const SectionFontSize = css`
   `};
 `;
 
-export const SubsectionFontSize = css`
+export const subsectionFontSize = css`
   ${({ theme, ...props }) => 
     css`
       font-size: ${math(`${theme.font.baseSize} * 0.75`)};
@@ -178,7 +183,7 @@ export const SubsectionFontSize = css`
   `};
 `;
 
-export const RegularFontSize = css`
+export const regularFontSize = css`
   ${({ theme, ...props }) =>
     css`
       font-size: ${math(`${theme.font.baseSize} * 0.7`)};
@@ -197,3 +202,96 @@ export const RegularFontSize = css`
   `};
 `;
 
+export const gutter = (pos: string, useMargin?: boolean) => {
+  const gutterFn = useMargin ? margin : padding;
+
+  //#region Gutters CSS
+  return css`
+    ${({ theme, ...props }) =>
+      gutterFn(
+        pos == GUTTER_TOP ? theme.gutter.base : null, 
+        pos == GUTTER_RIGHT ? theme.gutter.base : null, 
+        pos == GUTTER_BOTTOM ? theme.gutter.base : null, 
+        pos == GUTTER_LEFT ? theme.gutter.base : null
+      )
+    }
+
+    ${M.MEDIA_XXSMALL} {
+      ${({ theme, ...props }) =>
+        gutterFn(
+          pos == GUTTER_TOP ? theme.gutter.xxsmall : null, 
+          pos == GUTTER_RIGHT ? theme.gutter.xxsmall : null, 
+          pos == GUTTER_BOTTOM ? theme.gutter.xxsmall : null, 
+          pos == GUTTER_LEFT ? theme.gutter.xxsmall : null
+        )
+      }
+    }
+
+    ${M.MEDIA_XSMALL} {
+      ${({ theme, ...props }) =>
+        gutterFn(
+          pos == GUTTER_TOP ? theme.gutter.xsmall : null, 
+          pos == GUTTER_RIGHT ? theme.gutter.xsmall : null, 
+          pos == GUTTER_BOTTOM ? theme.gutter.xsmall : null, 
+          pos == GUTTER_LEFT ? theme.gutter.xsmall : null
+        )
+      }
+    }
+
+    ${M.MEDIA_SMALL} {
+      ${({ theme, ...props }) =>
+        gutterFn(
+          pos == GUTTER_TOP ? theme.gutter.small : null, 
+          pos == GUTTER_RIGHT ? theme.gutter.small : null, 
+          pos == GUTTER_BOTTOM ? theme.gutter.small : null, 
+          pos == GUTTER_LEFT ? theme.gutter.small : null
+        )
+      }
+    }
+
+    ${M.MEDIA_MEDIUM} {
+      ${({ theme, ...props }) =>
+        gutterFn(
+          pos == GUTTER_TOP ? theme.gutter.medium : null, 
+          pos == GUTTER_RIGHT ? theme.gutter.medium : null, 
+          pos == GUTTER_BOTTOM ? theme.gutter.medium : null, 
+          pos == GUTTER_LEFT ? theme.gutter.medium : null
+        )
+      }
+    }
+
+    ${M.LARGE} {
+      ${({ theme, ...props }) =>
+        gutterFn(
+          pos == GUTTER_TOP ? theme.gutter.large : null, 
+          pos == GUTTER_RIGHT ? theme.gutter.large : null, 
+          pos == GUTTER_BOTTOM ? theme.gutter.large : null, 
+          pos == GUTTER_LEFT ? theme.gutter.large : null
+        )
+      }
+    }
+
+    ${M.MEDIA_XLARGE} {
+      ${({ theme, ...props }) =>
+        gutterFn(
+          pos == GUTTER_TOP ? theme.gutter.xlarge : null, 
+          pos == GUTTER_RIGHT ? theme.gutter.xlarge : null, 
+          pos == GUTTER_BOTTOM ? theme.gutter.xlarge : null, 
+          pos == GUTTER_LEFT ? theme.gutter.xlarge : null
+        )
+      }
+    }
+
+    ${M.MEDIA_XXLARGE} {
+      ${({ theme, ...props }) =>
+        gutterFn(
+          pos == GUTTER_TOP ? theme.gutter.xxlarge : null, 
+          pos == GUTTER_RIGHT ? theme.gutter.xxlarge : null, 
+          pos == GUTTER_BOTTOM ? theme.gutter.xxlarge : null, 
+          pos == GUTTER_LEFT ? theme.gutter.xxlarge : null
+        )
+      }
+    }
+  `;
+  //#endregion Gutters CSS
+}

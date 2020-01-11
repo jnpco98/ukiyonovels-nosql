@@ -37,6 +37,7 @@ export const Title = styled(Text).attrs({
   textType: TextType.SubsectionTitle
 })`    
   margin-bottom: 0.7rem;
+  max-width: 80%;
 
   ${M.MEDIA_SMALL} {
     margin-bottom: 1.2rem;
