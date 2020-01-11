@@ -1,5 +1,5 @@
 import { css, keyframes, StyledComponent, AnyStyledComponent } from 'styled-components/macro';
-import { math } from 'polished';
+import { math, margin, padding } from 'polished';
 import * as M from '../settings/media';
 
 export const CENTER_VERTICAL = 'CENTER_VERTICAL';
@@ -54,19 +54,6 @@ export const center = (pos: string) => css`
   `}
 `;
 
-export const margin = (top: string, right: string, bottom: string, left: string) => css`
-  ${top && css` margin-top: ${top}; `};
-  ${right && css` margin-right: ${right}; `};
-  ${bottom && css` margin-bottom: ${bottom}; `};
-  ${left && css` margin-left: ${left}; `};
-`;
-
-export const padding = (top: string, right: string, bottom: string, left: string) => css`
-  ${top && css` padding-top: ${top}; `};
-  ${right && css` padding-right: ${right}; `};
-  ${bottom && css` padding-bottom: ${bottom}; `};
-  ${left && css` padding-left: ${left}; `};
-`;
 
 type TruncateResponsiveSettings = {
   default: { fontSize: string };
@@ -148,18 +135,10 @@ export const pageTitleFontSize = css`
 export const sectionFontSize = css`
   ${({ theme, ...props }) =>
     css`
-      font-size: ${math(`${theme.font.baseSize} * 1.1`)};
-
-      ${M.MEDIA_SMALL} {
-        font-size: ${math(`${theme.font.baseSize} * 1.4`)};
-      }
+      font-size: ${math(`${theme.font.baseSize} * 1`)};
 
       ${M.MEDIA_MEDIUM} {
-        font-size: ${math(`${theme.font.baseSize} * 1.8`)};
-      }
-
-      ${M.MEDIA_XLARGE} {
-        font-size: ${math(`${theme.font.baseSize} * 2.1`)};
+        font-size: ${math(`${theme.font.baseSize} * 1.4`)};
       }
   `};
 `;
