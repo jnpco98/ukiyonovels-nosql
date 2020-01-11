@@ -22,7 +22,7 @@ const InfoCardList: React.FC<Props> = (props: Props) => {
     return (
         <S.Container>
             <S.SectionDivider>
-                <Text textType={TextType.SubsectionTitle}>Latest Release</Text>
+                <S.HeadingText>Latest Release</S.HeadingText>
             </S.SectionDivider>
             {content.map(({ title, link, imgSrc, description, meta }) => (
                 <S.Card

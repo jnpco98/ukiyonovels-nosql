@@ -43,7 +43,7 @@ export const SliderItem = styled.div`
     bottom: 0;
     left: 0;
     pointer-events: none;
-    background: linear-gradient(to bottom, rgba(22, 22, 34, 0) 0%, rgba(22, 22, 34, 1) 100%);
+    background: linear-gradient(to bottom, rgba(245, 245, 245, 0) 0%, rgba(245, 245, 245, 1) 100%);
     width: 100%;
     height: 5rem;
   }
@@ -189,6 +189,7 @@ export const LinkButton = styled(Button).attrs({
   type: ButtonType.Info
 })`
   align-self: baseline;
+    z-index: 1;
 `;
 
 export const BookButtonIcon = styled(FontAwesomeIcon).attrs({ icon: faBookOpen })`

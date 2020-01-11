@@ -9,7 +9,7 @@ import { faCalendarAlt, faHeart, faEye } from '@fortawesome/free-solid-svg-icons
 export const Card = styled.div`
   display: flex;
   align-items: center;
-  color: ${({ theme, ...props }) => theme.colors.white};
+  color: ${({ theme, ...props }) => theme.colors.black};
 `;
 
 export const CardImage = styled.img`

@@ -137,6 +137,27 @@ export const MenuItem = styled.li<MenuItemStyleProps>`
 export const UserLink = styled.li`
   ${menuItemDefaultStyle};
   transition: background 0.09s ease-in;
+
+  &:hover {
+    background: none;
+  }
+
+  a {
+    padding: 1.1rem 0.7rem;
+  }
+
+  
+  ${M.MEDIA_MEDIUM} {
+    a {
+      padding: 1.1rem 1.2rem;
+    }
+  }
+
+  ${M.MEDIA_XLARGE} {
+    a {
+      padding: 1.1rem 1.2rem;
+    }
+  }
 `;
 
 export const HamburgerContainer = styled.li`
