@@ -1,5 +1,5 @@
 import React, { ReactElement, useState, useContext, useRef } from 'react';
-import { ThemeContext } from 'styled-components';
+import { ThemeContext } from 'styled-components/macro';
 import { GlyphType } from '../icon/glyph';
 import { useOnClickOutside } from '../../../utilities/hooks';
 import * as S from './style';

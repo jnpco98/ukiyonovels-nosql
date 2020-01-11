@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import Button from '../button';
 import * as M from '../../../settings/media';
 import { center, FLEX_ALIGN_BOTH } from '../../../utilities/mixins';

@@ -41,18 +41,18 @@ export const BaseTheme: ThemeSettings = {
         primaryCompliment: 'white',
         secondary: '#4b503f',
         secondaryCompliment: 'white',
-        accent: '#04828D',
-        accentCompliment: '4b503f',
+        accent: '#000',
+        accentCompliment: 'white',
 
         selection: '#7d7d7d',
 
-        info: '#04828D',
-        infoText: '#fff',
+        info: 'white',
+        infoCompliment: '#000',
         success: '#218838',
-        successText: '#fff',
+        successCompliment: '#fff',
         warning: '#e0a800',
-        warningText: '#fff',
+        warningCompliment: '#fff',
         error: '#dc3545',
-        errorText: '#fff'
+        errorCompliment: '#fff'
     }
 };

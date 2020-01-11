@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from 'styled-components/macro';
 import { lighten } from 'polished';
 import { ButtonType } from './index';
 import * as M from '../../../settings/media';
@@ -11,45 +11,49 @@ type ButtonStyleProps = {
 }
 
 const Success = css`
-  color: ${({ theme, ...props }) => theme.colors.successText};
+  color: ${({ theme, ...props }) => theme.colors.successCompliment};
   background-color: ${({ theme, ...props }) => theme.colors.success};
   
   &:hover {
-    background-color: ${({ theme, ...props }) => lighten(0.1, theme.colors.success)};
+    color: ${({ theme, ...props }) => theme.colors.success};
+    background-color: ${({ theme, ...props }) => theme.colors.successCompliment};
   }
 `;
 
 const Warning = css`
-  color: ${({ theme, ...props }) => theme.colors.warningText};
+  color: ${({ theme, ...props }) => theme.colors.warningCompliment};
   background-color: ${({ theme, ...props }) => theme.colors.warning};
   
   &:hover {
-    background-color: ${({ theme, ...props }) => lighten(0.1, theme.colors.warning)};
+    color: ${({ theme, ...props }) => theme.colors.warning};
+    background-color: ${({ theme, ...props }) => theme.colors.warningCompliment};
   }
 `;
 
 const Danger = css`
-  color: ${({ theme, ...props }) => theme.colors.errorText};
+  color: ${({ theme, ...props }) => theme.colors.errorCompliment};
   background-color: ${({ theme, ...props }) => theme.colors.error};
   
   &:hover {
-    background-color: ${({ theme, ...props }) => lighten(0.1, theme.colors.error)};
+    color: ${({ theme, ...props }) => theme.colors.error};
+    background-color: ${({ theme, ...props }) => theme.colors.errorCompliment};
   }
 `;
 
 export const Button = styled.a<ButtonStyleProps>`
   ${center(FLEX_ALIGN_MAIN)};
-  color: ${({ theme, ...props }) => theme.colors.infoText};
+  color: ${({ theme, ...props }) => theme.colors.infoCompliment};
   background-color: ${({ theme, ...props }) => theme.colors.info};
+  border: 2px solid ${({ theme, ...props }) => theme.colors.infoCompliment};
   padding: 0.6rem 1.2rem;
   font-size: 0.7rem;
   text-transform: uppercase;
-  border-radius: 7px;
   transition: all 0.1s ease-in;
   font-weight: 600;
 
   &:hover {
-    background-color: ${({ theme, ...props }) => theme.colors.primary};
+    color: ${({ theme, ...props }) => theme.colors.info};
+    background-color: ${({ theme, ...props }) => theme.colors.infoCompliment};
   }
 
   ${props => props.buttonType === ButtonType.Success && Success};
@@ -68,7 +72,7 @@ export const Button = styled.a<ButtonStyleProps>`
   }
 
   ${M.MEDIA_LARGE} {
-    padding: 0.75rem 1.6rem;
+    padding: 0.75rem 2rem;
     font-size: 0.8rem;
   }
 `;

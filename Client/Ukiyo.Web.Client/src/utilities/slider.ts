@@ -5,7 +5,7 @@ export const DEFAULT_SLIDER_SETTINGS: Settings = {
     arrows: true,
     dots: false,
     autoplay: false,
-    cssEase: 'ease-in',
+    cssEase: 'linear',
     infinite: true,
     initialSlide: 0,
     slidesToShow: 1,

@@ -48,13 +48,13 @@ declare module 'styled-components' {
             selection: string;
 
             info: string;
-            infoText: string;
+            infoCompliment: string;
             success: string;
-            successText: string;
+            successCompliment: string;
             warning: string;
-            warningText: string;
+            warningCompliment: string;
             error: string;
-            errorText: string;
+            errorCompliment: string;
         };
     }
 }

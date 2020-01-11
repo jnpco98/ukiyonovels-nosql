@@ -1,8 +1,6 @@
 import React, { useState, ReactElement, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserAlt, faCog } from '@fortawesome/free-solid-svg-icons';
-import { useMediaQuery } from 'react-responsive';
-import { SMALL } from '../../../settings/media';
 import Text, { TextType } from '../../atom/text';
 import * as S from './style';
 import Backdrop from '../../atom/backdrop';
@@ -23,7 +21,6 @@ const NavigationMenu: React.FC<Props> = (props: Props): ReactElement => {
     const [drawerActive, setDrawerActive] = useState(false);
     const { menuItems, onSelect } = props;
 
-    const isSmallScreen = useMediaQuery({ minWidth: SMALL });
     const containerRef = useRef(document.createElement('div'));
     const drawerRef = useRef(document.createElement('div'));
     const hamburgerRef = useRef(document.createElement('div'));
@@ -32,19 +29,12 @@ const NavigationMenu: React.FC<Props> = (props: Props): ReactElement => {
 
     const handleScroll = (): void => setFloating(window.pageYOffset >= containerRef.current.scrollHeight);
 
-    const handleResize = (): void => drawerActive && !isSmallScreen && setDrawerActive(false);
-
     useEffect(() => onSelect && onSelect(active), []);
 
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);
         return (): void => window.removeEventListener('scroll', handleScroll);
     }, []);
-
-    useEffect(() => {
-        window.addEventListener('resize', handleResize);
-        return (): void => window.removeEventListener('resize', handleResize);
-    }, [isSmallScreen]);
 
     const handleSelect = (idx: number): void => {
         setActive(idx);
@@ -76,35 +66,28 @@ const NavigationMenu: React.FC<Props> = (props: Props): ReactElement => {
 
     return (
         <S.Container className={floating && S.CLASS_FLOATING} ref={containerRef}>
-            {!isSmallScreen ? (
-                <>
-                    <ul>
-                        <S.HamburgerContainer onClick={(): void => setDrawerActive(!drawerActive)}>
-                            <S.HamburgerIcon
-                                ref={hamburgerRef}
-                                active={drawerActive}
-                                clientRect={hamburgerRef.current && hamburgerRef.current.getBoundingClientRect()}
-                                screenOffset={hamburgerScreenOffset}
-                            />
-                        </S.HamburgerContainer>
-                    </ul>
+            <S.LeftMenu>
+                <S.HamburgerContainer onClick={(): void => setDrawerActive(!drawerActive)}>
+                    <S.HamburgerIcon
+                        ref={hamburgerRef}
+                        active={drawerActive}
+                        clientRect={hamburgerRef.current && hamburgerRef.current.getBoundingClientRect()}
+                        screenOffset={hamburgerScreenOffset}
+                    />
+                </S.HamburgerContainer>
+            </S.LeftMenu>
 
-                    <Backdrop show={drawerActive} onClick={(): void => setDrawerActive(false)} />
-                    <S.Drawer
-                        ref={drawerRef}
-                        zIndex={51}
-                        sidenavActive={drawerActive}
-                        topOffset={`${containerRef.current.offsetTop + containerRef.current.scrollHeight}px`}
-                    >
-                        {renderMenuItems()}
-                    </S.Drawer>
-                </>
-            ) : (
-                <>
-                    <ul>{renderMenuItems()}</ul>
-                    <ul>{renderUserLinks()}</ul>
-                </>
-            )}
+            <S.RightMenu>{renderUserLinks()}</S.RightMenu>
+
+            <S.Drawer
+                ref={drawerRef}
+                zIndex={51}
+                sidenavActive={drawerActive}
+                topOffset={`${containerRef.current.offsetTop + containerRef.current.scrollHeight}px`}
+            >
+                {renderMenuItems()}
+            </S.Drawer>
+            <Backdrop show={drawerActive} onClick={(): void => setDrawerActive(false)} />
         </S.Container>
     );
 };

@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from 'styled-components/macro';
 import { rgba, math } from 'polished';
 import * as M from '../../../settings/media';
 

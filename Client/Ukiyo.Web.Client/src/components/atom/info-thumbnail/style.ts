@@ -1,4 +1,4 @@
-import styled, { css, keyframes } from 'styled-components';
+import styled from 'styled-components/macro';
 import * as M from '../../../settings/media';
 import { Paragraph, Span } from '../text/style';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

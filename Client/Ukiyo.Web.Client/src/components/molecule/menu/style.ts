@@ -1,28 +1,22 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from 'styled-components/macro';
 import * as M from '../../../settings/media';
 import { Anchor } from '../../atom/text/style';
 import { math } from 'polished';
 import HamburgerMenu from '../../atom/hamburger';
 import { center, FLEX_ALIGN_MAIN } from '../../../utilities/mixins';
 
-const underLineMenuLink = css`
-  content: '';
-  position: absolute;
-  bottom: 0.5rem;
-  height: 3px;
-  width: 80%;
-  left: 50%;
-  background: ${({ theme, ...props }) => theme.colors.accent};
-  transform: translateX(-50%);
-`;
+type MenuItemStyleProps = {
+  active?: boolean;
+}
 
-const menuItemDefaultStyle = css`
+const menuItemDefaultStyle = css<MenuItemStyleProps>`
   ${center(FLEX_ALIGN_MAIN)};
-  color: whitesmoke;
+  color: ${({ theme, ...props }) => props.active ? theme.colors.background : theme.colors.accent};
   text-transform: uppercase;
   text-align: center;
   transition: background 0.09s ease-in;
   position: relative;
+  cursor: pointer;
   
   a {
     display: block;
@@ -30,21 +24,8 @@ const menuItemDefaultStyle = css`
   }
   
   &:hover {
+    color: ${({ theme, ...props }) => theme.colors.background};
     background: ${({ theme, ...props }) => theme.colors.accent};
-  }
-
-  ${M.MEDIA_SMALL} {
-    &:hover {
-      background: none;
-
-      a:after {
-        ${underLineMenuLink};
-      }
-    }
-
-    a {
-      padding: 1.1rem 0.7rem;
-    }
   }
 
   ${M.MEDIA_MEDIUM} {
@@ -67,7 +48,7 @@ export const Container = styled.div`
   justify-content: space-between;
   width: 100%;
   position: fixed;
-  transition: all 0.12s ease-in;
+  transition: all 0.2s ease;
   z-index: 50;
   background: transparent;
   max-width: ${({ theme, ...props }) => theme.maxScreenSize};
@@ -78,25 +59,43 @@ export const Container = styled.div`
   }
   
   &.${CLASS_FLOATING} {
-    border-radius: 3rem;
-    width: 90%;
-    max-width: ${({ theme, ...props }) => math(`${theme.maxScreenSize} * 0.90`)};
     font-size: 0.9rem;
-    margin-top: 0.5rem;
     position: fixed;
-    background: ${({ theme, ...props }) => theme.colors.primary};
+    background: ${({ theme, ...props }) => theme.colors.background};
   }
 
-  ${M.MEDIA_SMALL} {
-    &.${CLASS_FLOATING} {
-      overflow: hidden;
-    }
+  ${M.MEDIA_XXSMALL} {
+    min-height: 4rem;
+  }
+
+  ${M.MEDIA_XSMALL} {
+    min-height: 5rem;
+  }
+
+  ${M.MEDIA_XLARGE} {
+    min-height: 6rem;
   }
 `;
 
-type MenuItemStyleProps = {
-    active: boolean;
-}
+export const LeftMenu = styled.ul`
+  ${M.MEDIA_XXSMALL} {
+    padding-left: 1rem;
+  }
+
+  ${M.MEDIA_XSMALL} {
+    padding-left: 2rem;
+  }
+`;
+
+export const RightMenu = styled.ul`
+  ${M.MEDIA_XXSMALL} {
+    padding-right: 1rem;
+  }
+  
+  ${M.MEDIA_XSMALL} {
+    padding-right: 2rem;
+  }
+`;
 
 export const MenuItemLink = styled(Anchor)`  
   ${({ theme, ...props }) =>
@@ -119,38 +118,20 @@ export const MenuItemLink = styled(Anchor)`
 
 export const MenuItem = styled.li<MenuItemStyleProps>`
   ${menuItemDefaultStyle};
-  
-  background: ${({ theme, ...props }) => props.active ? theme.colors.accent: ''};
 
-  ${M.MEDIA_SMALL} {
-    background: none;
-
-    ${props =>
-      props.active &&
-        css`
-          ${MenuItemLink}:after {
-            ${underLineMenuLink}
-          }
-        `
-    }
-
-    &:hover {
-      ${MenuItemLink}:after {
-        ${underLineMenuLink}
-      }
-    }
-
-    .${CLASS_FLOATING} & {
-      background: ${({ theme, ...props }) => props.active ? theme.colors.accent: ''};
-
-      &:hover {
-        ${MenuItemLink}:after {
-          content: unset;
-        }
-        background: ${({ theme, ...props }) => theme.colors.accent};
-      }
-    }
+  ${M.MEDIA_XXSMALL} {
+    padding-left: 1rem;
   }
+
+  ${M.MEDIA_XSMALL} {
+    padding-left: 2rem;
+  }
+
+  ${M.MEDIA_XXLARGE}{    
+    padding-left: 1.1rem;
+  }
+
+  background: ${({ theme, ...props }) => props.active ? theme.colors.accent: ''};
 `;
 
 export const UserLink = styled.li`
@@ -179,12 +160,6 @@ type HamburgerIconStyleProps = {
 
 export const HamburgerIcon = styled(HamburgerMenu)<HamburgerIconStyleProps>`
   transition: transform 0.3s ease;
-
-  ${props =>
-    props.active &&
-    css`
-      transform: rotate(0.001deg)  translate(${props.screenOffset.left - props.clientRect.left}px, ${props.screenOffset.top - props.clientRect.top}px);
-    `}
 `;
 
 type DrawerStyleProps = {
@@ -195,7 +170,7 @@ type DrawerStyleProps = {
 
 export const Drawer = styled.div<DrawerStyleProps>`
   position: fixed;
-  background: ${({ theme, ...props }) => theme.colors.primary};
+  background: ${({ theme, ...props }) => theme.colors.background};
   overflow: hidden;
   transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
   z-index: ${props => props.zIndex || 5};
@@ -227,5 +202,29 @@ export const Drawer = styled.div<DrawerStyleProps>`
 
   ${MenuItem}:last-child {
     margin-bottom: 0.5rem;
+  }
+
+  ${M.MEDIA_XXSMALL} {
+    max-width: 23rem;
+
+    ${MenuItem}:first-child {
+      margin-top: 4.5rem;
+    }
+  }
+  
+  ${M.MEDIA_XSMALL} {
+    max-width: 28rem;
+
+    ${MenuItem}:first-child {
+      margin-top: 5.5rem;
+    }
+  }
+
+  ${M.MEDIA_SMALL} {
+    max-width: 28rem;
+  }
+
+  ${M.MEDIA_MEDIUM} {
+    max-width: 45rem;
   }
 `;

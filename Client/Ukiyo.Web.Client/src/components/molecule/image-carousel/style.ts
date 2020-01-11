@@ -53,7 +53,7 @@ export const SliderItem = styled.div`
   }
 
   ${M.MEDIA_XSMALL} {
-    min-height: 23rem;
+    min-height: 26rem;
   }
 
   ${M.MEDIA_SMALL} {
@@ -65,7 +65,7 @@ export const SliderItem = styled.div`
   }
 
   ${M.MEDIA_MEDIUM} {
-    min-height: 35rem;
+    min-height: 37rem;
 
     &:after {
       height: 14rem;
@@ -77,11 +77,7 @@ export const SliderItem = styled.div`
   }
 
   ${M.MEDIA_XLARGE} {
-    min-height: 48rem;
-  }
-
-  ${M.MEDIA_XXLARGE} {
-    min-height: 60rem;
+    min-height: 55rem;
   }
 `;
 
