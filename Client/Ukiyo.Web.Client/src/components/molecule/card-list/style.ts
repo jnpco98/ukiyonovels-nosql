@@ -49,9 +49,29 @@ export const CardListSectionDivider = styled.div`
 `;
 
 export const CardListItem = styled(InfoCard)`
-  margin-bottom: 1rem
+  margin-bottom: 2rem;
+  position: relative;
+
+  &:not(:last-child) {
+    &:after {
+      content: '';
+      width: 100%;
+      height: 1px;
+      background:  ${({ theme, ...props }) => theme.colors.primary};
+      position: absolute;
+      bottom: -1rem;
+      left: 0;
+    }
+  }
 `;
 
 export const CardListHeadingText = styled(SectionTitle)`
   font-weight: ${({ theme, ...props }) => theme.font.weightBold};
+`;
+
+export const CardListRowDivider = styled.div`
+  width: 100%;
+  height: 1px;
+  background: darkgrey;
+  margin: -0.5rem 0 0.5rem;
 `;
