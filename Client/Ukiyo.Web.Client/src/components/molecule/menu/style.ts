@@ -62,6 +62,7 @@ export const MenuContainer = styled.div`
     font-size: 0.9rem;
     position: fixed;
     background: ${({ theme, ...props }) => theme.colors.background};
+    box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
   }
 
   ${M.MEDIA_XXSMALL} {
