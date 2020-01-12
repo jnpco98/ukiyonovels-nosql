@@ -14,9 +14,9 @@ const Bar: React.FC<Props> = (props: Props): ReactElement => {
     const { width, height, color, background, rounded, fillRate } = props;
 
     return (
-        <S.Bar color={background} width={width} height={height} rounded={rounded}>
-            <S.Fill color={color} fillRate={fillRate} />
-        </S.Bar>
+        <S.BarContainer color={background} width={width} height={height} rounded={rounded}>
+            <S.BarFill color={color} fillRate={fillRate} />
+        </S.BarContainer>
     );
 };
 

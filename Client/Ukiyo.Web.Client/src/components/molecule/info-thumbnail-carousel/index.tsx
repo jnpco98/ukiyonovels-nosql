@@ -1,9 +1,7 @@
 import React, { ReactElement } from 'react';
 import { Settings } from 'react-slick';
-import { useMediaQuery } from 'react-responsive';
 import * as S from './style';
 import { DEFAULT_SLIDER_SETTINGS } from '../../../utilities/slider';
-import { MEDIUM } from '../../../settings/media';
 
 type Props = {
     content: {
@@ -19,22 +17,13 @@ type Props = {
 const CardCarousel: React.FC<Props> = (props: Props): ReactElement => {
     const { content, headingText } = props;
 
-    const isDesktopScreen = useMediaQuery({ minWidth: MEDIUM });
-
     const sliderOptions: Settings = {
-        responsive: [
-            {
-                breakpoint: +MEDIUM.replace(/\D/g, ''),
-                settings: {
-                    ...DEFAULT_SLIDER_SETTINGS,
-                    swipeToSlide: true,
-                    prevArrow: <S.Arrow />,
-                    nextArrow: <S.Arrow />,
-                    variableWidth: true,
-                    centerMode: true
-                }
-            }
-        ]
+        ...DEFAULT_SLIDER_SETTINGS,
+        swipeToSlide: true,
+        prevArrow: <S.Arrow />,
+        nextArrow: <S.Arrow />,
+        variableWidth: true,
+        centerMode: false
     };
 
     const generateCardContent = (start: number, last: number): React.ReactNode =>
@@ -54,12 +43,8 @@ const CardCarousel: React.FC<Props> = (props: Props): ReactElement => {
     /* eslint-disable react/jsx-props-no-spreading */
     return (
         <S.Container>
-            {headingText && <S.SectionHeading>{headingText}</S.SectionHeading>}
-            {isDesktopScreen ? (
-                <S.FlexContainer>{generateCardContent(0, content.length)}</S.FlexContainer>
-            ) : (
-                <S.Slider {...sliderOptions}>{generateCardContent(0, content.length)}</S.Slider>
-            )}
+            <S.SectionDivider>{headingText && <S.HeadingText>{headingText}</S.HeadingText>}</S.SectionDivider>
+            <S.Slider {...sliderOptions}>{generateCardContent(0, content.length)}</S.Slider>
         </S.Container>
     );
     /* eslint-enable react/jsx-props-no-spreading */

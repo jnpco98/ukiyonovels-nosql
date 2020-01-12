@@ -9,7 +9,7 @@ export const BaseTheme: ThemeSettings = {
         small: '5rem',
         medium: '7rem',
         large: '12rem',
-        xlarge: '15',
+        xlarge: '13rem',
         xxlarge: '17rem'
     },
     font: {
@@ -17,8 +17,8 @@ export const BaseTheme: ThemeSettings = {
         weightLight: '200',
         weightRegular: '400',
         weightBold: '600',
-        primary: '"Roboto", Sans-Serif',
-        secondary: '"Nunito Sans", Sans-Serif'
+        primary: '"Nunito Sans", Sans-Serif',
+        secondary: 'Oswald, sans-serif'
     },
     colors: {
         default: '#5F6062',

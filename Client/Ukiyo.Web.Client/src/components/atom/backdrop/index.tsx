@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container } from './style';
+import { BackdropContainer } from './style';
 
 type Props = {
     show: boolean;
@@ -19,7 +19,15 @@ const Backdrop: React.FC<Props> = (props: Props) => {
         document.body.classList.remove('no-scroll');
     }
 
-    return <Container className={className} onClick={onClick} show={show} transparent={transparent} zIndex={zIndex} />;
+    return (
+        <BackdropContainer
+            className={className}
+            onClick={onClick}
+            show={show}
+            transparent={transparent}
+            zIndex={zIndex}
+        />
+    );
 };
 
 export default Backdrop;

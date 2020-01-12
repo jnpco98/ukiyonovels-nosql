@@ -6,26 +6,37 @@ import * as M from '../../../settings/media';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookOpen } from '@fortawesome/free-solid-svg-icons';
 import { Paragraph, SubsectionTitle } from '../../atom/text/style';
-import { center, FLEX_ALIGN_CROSS, gutter, GUTTER_LEFT } from '../../../utilities/mixins';
+import { center, FLEX_ALIGN_CROSS, gutter, GUTTER_LEFT, pageTitleFontSize } from '../../../utilities/mixins';
 
 export const Container = styled.div`
   width: 100%;
   overflow: hidden;
+  margin-bottom: 0.65rem;
+
+  ${M.MEDIA_XXSMALL} {
+    margin-bottom: 1rem;
+  }
+
+  ${M.MEDIA_SMALL} {
+    margin-bottom: 1.5rem;
+  }
+
+  ${M.MEDIA_MEDIUM} {
+    margin-bottom: 2rem;
+  }
+  
+  ${M.MEDIA_LARGE} {
+    margin-bottom: 2.5rem;
+  }
 `;
 
 export const Slider = styled(Slick)`
-  /* margin-bottom: 2rem; */
-  
   .slick-dots {
     left: 0;
     bottom: 1.5rem;
 
     li {
       margin: 0;
-
-      button:before {
-        color: white;
-      }
     }
   }
 `;
@@ -33,7 +44,7 @@ export const Slider = styled(Slick)`
 export const SliderItem = styled.div`
   display: flex !important;
   position: relative;
-  min-height: 16rem;
+  min-height: 20rem;
 
   ${gutter(GUTTER_LEFT)};
 
@@ -46,10 +57,6 @@ export const SliderItem = styled.div`
     background: linear-gradient(to bottom, rgba(245, 245, 245, 0) 0%, rgba(245, 245, 245, 1) 100%);
     width: 100%;
     height: 5rem;
-  }
-
-  ${M.MEDIA_XXSMALL} {
-    min-height: 18rem;
   }
 
   ${M.MEDIA_XSMALL} {
@@ -137,30 +144,21 @@ export const Arrow = styled(CustomSlickArrow)`
 
 export const Heading = styled(SubsectionTitle)`
   color: ${({ theme, ...props }) => theme.colors.white};
-  font-size: 1.4rem;
   margin-bottom: 0.5rem;
 
   ${M.MEDIA_XXSMALL} {
     margin-bottom: 0.9rem;
   }
 
-  ${M.MEDIA_XSMALL} {
-    font-size: 1.7rem;
-  }
-
   ${M.MEDIA_SMALL} {
-    font-size: 2rem;
     margin-bottom: 1.2rem;
   }
 
-  ${M.MEDIA_MEDIUM} {
-    font-size: 2.5rem;
-  }
-
   ${M.MEDIA_LARGE} {
-    font-size: 3rem;
     margin-bottom: 1.8rem;
   }
+
+  ${pageTitleFontSize};
 `;
 
 export const Subtitle = styled(Paragraph)`

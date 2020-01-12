@@ -116,18 +116,22 @@ export const fadeInTextHover = (container: AnyStyledComponent) => css`
 export const pageTitleFontSize = css`
   ${({ theme, ...props }) => 
     css`
-      font-size: ${math(`${theme.font.baseSize} * 1.5`)};
+      font-size: ${math(`${theme.font.baseSize} * 1.8`)};
       
+      ${M.MEDIA_XSMALL} {
+        font-size: ${math(`${theme.font.baseSize} * 2`)};
+      }
+
       ${M.MEDIA_SMALL} {
-        font-size: ${math(`${theme.font.baseSize} * 1.8`)};
+        font-size: ${math(`${theme.font.baseSize} * 2.4`)};
       }
 
       ${M.MEDIA_MEDIUM} {
-        font-size: ${math(`${theme.font.baseSize} * 2.1`)};
+        font-size: ${math(`${theme.font.baseSize} * 3`)};
       }
 
-      ${M.MEDIA_XLARGE} {
-        font-size: ${math(`${theme.font.baseSize} * 2.5`)};
+      ${M.MEDIA_LARGE} {
+        font-size: ${math(`${theme.font.baseSize} * 3.7`)};
       }
   `};
 `;
@@ -137,8 +141,20 @@ export const sectionFontSize = css`
     css`
       font-size: ${math(`${theme.font.baseSize} * 1`)};
 
-      ${M.MEDIA_MEDIUM} {
+      ${M.MEDIA_XSMALL} {
+        font-size: ${math(`${theme.font.baseSize} * 1.1`)};
+      }
+
+      ${M.MEDIA_SMALL} {
         font-size: ${math(`${theme.font.baseSize} * 1.4`)};
+      }
+
+      ${M.MEDIA_MEDIUM} {
+        font-size: ${math(`${theme.font.baseSize} * 1.6`)};
+      }
+
+      ${M.MEDIA_LARGE} {
+        font-size: ${math(`${theme.font.baseSize} * 2`)};
       }
   `};
 `;
@@ -146,14 +162,18 @@ export const sectionFontSize = css`
 export const subsectionFontSize = css`
   ${({ theme, ...props }) => 
     css`
-      font-size: ${math(`${theme.font.baseSize} * 0.75`)};
+      font-size: ${math(`${theme.font.baseSize} * 0.8`)};
 
-      ${M.MEDIA_SMALL} {
+      ${M.MEDIA_XSMALL} {
         font-size: ${math(`${theme.font.baseSize} * 1`)};
       }
 
+      ${M.MEDIA_SMALL} {
+        font-size: ${math(`${theme.font.baseSize} * 1.1`)};
+      }
+
       ${M.MEDIA_MEDIUM} {
-        font-size: ${math(`${theme.font.baseSize} * 1.2`)};
+        font-size: ${math(`${theme.font.baseSize} * 1.3`)};
       }
 
       ${M.MEDIA_XLARGE} {

@@ -1,73 +1,72 @@
-import styled, { css } from 'styled-components/macro';
+import styled from 'styled-components/macro';
 import CustomSlickArrow from '../../atom/slick-arrow';
 import Slick from 'react-slick';
 import * as M from '../../../settings/media';
 import InfoThumbnail from '../../atom/info-thumbnail';
 import Text, { TextType } from '../../atom/text';
-import { math } from 'polished';
+import { math, margin } from 'polished';
 import { Genre, Heading, Subtitle, ReadIcon } from '../../atom/info-thumbnail/style';
 import { cardDimRatio } from '../../atom/thumbnail/style';
-
-const sliderFadeStyle = (start: string, end: string) => css`
-  &:before {
-    background: linear-gradient(to left, rgba(22, 22, 34, 0) ${start}, rgba(22, 22, 34, 1) ${end});
-  }
-
-  &:after {
-    background: linear-gradient(to right, rgba(22, 22, 34, 0) ${start}, rgba(22, 22, 34, 1) ${end});
-  }
-`
+import { gutter, GUTTER_LEFT, GUTTER_RIGHT } from '../../../utilities/mixins';
+import { SectionTitle } from '../../atom/text/style';
 
 export const Container = styled.div`
   width: 100%;
   position: relative;
+  margin: 0.65rem 0;
 
-  ${M.MEDIA_SMALL} {
-    padding-top: 2rem;
-  }
-`;
-
-export const SectionHeading = styled(Text).attrs({
-  textType: TextType.SubsectionTitle
-})`
-  margin: 1.2rem 0;
-  padding-left: 1rem;
-  text-transform: uppercase;
-  color: ${({ theme, ...props }) => theme.colors.accent };
-
-  ${M.MEDIA_XXSMALL} {
-    padding-left: 2rem;
-    margin-bottom: 1.5rem;
-  }
-
+  ${gutter(GUTTER_LEFT)};
+  ${gutter(GUTTER_RIGHT)};
+  
   ${M.MEDIA_XSMALL} {
-    padding-left: 3.1rem;
+    ${margin('1rem', null, '1rem', null)};
   }
 
   ${M.MEDIA_SMALL} {
-    padding-left: 5rem;
-    padding-bottom: 0.5rem;
+    ${margin('1.5rem', null, '1.5rem', null)};
   }
 
   ${M.MEDIA_MEDIUM} {
-    padding-left: 7rem;
-    margin-bottom: 2.5rem;
+    ${margin('2rem', null, '2rem', null)};
   }
-
+  
   ${M.MEDIA_LARGE} {
-    padding-left: 12rem;
+    ${margin('2.5rem', null, '2.5rem', null)};
   }
 `;
 
+export const SectionDivider = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  color: ${({ theme, ...props }) => theme.colors.black};
+  border-bottom: 2px solid ${({ theme, ...props }) => theme.colors.black};
+  padding: 0.5rem 0;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+
+  ${M.MEDIA_SMALL} {
+    margin-bottom: 1.5rem;
+  }
+
+  ${M.MEDIA_MEDIUM} {
+    margin-bottom: 2rem;
+  }
+`;
+
+export const HeadingText = styled(SectionTitle)`
+  font-weight: ${({ theme, ...props }) => theme.font.weightBold};
+`;
+
 export const Item = styled(InfoThumbnail)`
-  margin-left: 0.6rem;
+  margin-right: 0.65rem;
 
   ${M.MEDIA_XXSMALL} {
-    margin: 0 0.65rem;
+    margin-right: 0.9rem;
   }
 
   ${M.MEDIA_SMALL} {
-    margin: 0 0.75rem;
+    margin-right: 1.2rem;
   }
 
   ${M.MEDIA_MEDIUM} {
@@ -114,9 +113,7 @@ export const Item = styled(InfoThumbnail)`
   }
 `;
 
-export const Slider = styled(Slick)`
-  margin-bottom: 2rem;
-  
+export const Slider = styled(Slick)`  
   .slick-dots {
     left: 0;
     bottom: -2rem;
@@ -128,33 +125,6 @@ export const Slider = styled(Slick)`
         color: white;
       }
     }
-  }
-
-  .slick-list {
-    overflow: visible;
-  }
-
-  &:before, &:after {
-    content: '';
-    position: absolute;
-    width: 10%;
-    height: 120%;
-    z-index: 1;
-    top: -10%;
-  }
-
-  &:before {
-    left: 0;
-  }
-
-  &:after {
-    right: 0;
-  }
-
-  ${sliderFadeStyle('0%', '60%')}
-
-  ${M.MEDIA_XXSMALL} {
-    ${sliderFadeStyle('0%', '30%')}
   }
 
   ${M.MEDIA_SMALL} {

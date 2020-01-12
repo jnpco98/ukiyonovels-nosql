@@ -62,6 +62,9 @@
     "prettier": "^1.19.1"
   },
   "babelMacros": {
-    "styledComponents": {}
+    "styledComponents": {
+      "pure": true,
+      "fileName": false
+    }
   }
 }

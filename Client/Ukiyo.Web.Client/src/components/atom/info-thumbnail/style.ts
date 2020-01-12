@@ -1,12 +1,13 @@
 import styled from 'styled-components/macro';
 import * as M from '../../../settings/media';
-import { Paragraph, Span } from '../text/style';
+import { Paragraph, Span, SubsectionTitle } from '../text/style';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookOpen } from '@fortawesome/free-solid-svg-icons';
 import { math } from 'polished';
-import { fadeInTextHover, center, CENTER_BOTH, FLEX_ALIGN_BOTH } from '../../../utilities/mixins';
+import { fadeInTextHover, center, CENTER_BOTH, FLEX_ALIGN_BOTH, regularFontSize } from '../../../utilities/mixins';
 import { transparentize } from 'polished';
 import { cardDimRatio } from '../thumbnail/style';
+import Text, { TextType } from '../text';
 
 export const Container = styled.div`
   display: flex;
@@ -79,9 +80,11 @@ export const Image = styled.img`
   }
 `;
 
-export const Heading = styled(Paragraph).attrs({ as: 'h3' })`
+export const Heading = styled(SubsectionTitle)`
   color: ${({ theme, ...props }) => theme.colors.white};
   
+  padding: 0 0.5rem;
+
   ${Container}:hover & {
     margin: 0.5rem 0.3rem;
   }
@@ -91,6 +94,7 @@ export const Heading = styled(Paragraph).attrs({ as: 'h3' })`
       margin-bottom: 0;
     }
   }
+  ${regularFontSize};
 `;
 
 export const Subtitle = styled(Paragraph)`
@@ -101,6 +105,7 @@ export const Subtitle = styled(Paragraph)`
     margin: 1rem 0.3rem;
     margin-bottom: 0;
   }
+  font-family: ${({ theme, ...props }) => theme.font.secondary};
 `;
 
 export const Genre = styled(Span)`

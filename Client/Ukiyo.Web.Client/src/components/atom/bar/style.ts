@@ -11,7 +11,7 @@ type FillStyleProps = {
     fillRate?: number;
 }
 
-export const Bar = styled.span<BarStyleProps>`
+export const BarContainer = styled.span<BarStyleProps>`
     position: relative;
     width: ${(props) => props.width || '100%'};
     height: ${(props) => props.height || '0.8rem'};
@@ -25,7 +25,7 @@ export const Bar = styled.span<BarStyleProps>`
     overflow: hidden;
 `;
 
-export const Fill = styled.span<FillStyleProps>`
+export const BarFill = styled.span<FillStyleProps>`
     position: absolute;
     top: 0;
     left: 0;

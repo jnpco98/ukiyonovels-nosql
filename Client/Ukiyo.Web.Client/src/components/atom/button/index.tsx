@@ -21,9 +21,9 @@ const Button: React.FC<Props> = (props: Props): ReactElement => {
     const { children, className, flat, onClick, type, href } = props;
 
     return (
-        <S.Button className={className} onClick={onClick} buttonType={type} flat={flat} href={href}>
+        <S.ButtonContainer className={className} onClick={onClick} buttonType={type} flat={flat} href={href}>
             {children}
-        </S.Button>
+        </S.ButtonContainer>
     );
 };
 

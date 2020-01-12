@@ -6,7 +6,7 @@ type ContainerStyleProps = {
     transparent?: boolean;
 }
 
-export const Container = styled.div<ContainerStyleProps>`
+export const BackdropContainer = styled.div<ContainerStyleProps>`
   width: 100%;
   height: 100%;
   background-color: ${({ theme, ...props }) => theme.colors.backdropColor};

@@ -40,7 +40,7 @@ const Danger = css`
   }
 `;
 
-export const Button = styled.a<ButtonStyleProps>`
+export const ButtonContainer = styled.a<ButtonStyleProps>`
   ${center(FLEX_ALIGN_MAIN)};
   color: ${({ theme, ...props }) => theme.colors.infoCompliment};
   background-color: ${({ theme, ...props }) => theme.colors.info};
@@ -50,6 +50,7 @@ export const Button = styled.a<ButtonStyleProps>`
   text-transform: uppercase;
   transition: all 0.1s ease-in;
   font-weight: 600;
+  font-family: ${({ theme, ...props }) => theme.font.secondary};
 
   &:hover {
     color: ${({ theme, ...props }) => theme.colors.info};

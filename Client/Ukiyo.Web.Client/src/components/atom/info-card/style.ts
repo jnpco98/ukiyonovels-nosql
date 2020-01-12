@@ -5,6 +5,7 @@ import { center, FLEX_ALIGN_BOTH } from '../../../utilities/mixins';
 import Text, { TextType } from '../text';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarAlt, faHeart, faEye } from '@fortawesome/free-solid-svg-icons';
+import { Paragraph, SubsectionTitle } from '../text/style';
 
 export const Card = styled.div`
   display: flex;
@@ -33,9 +34,7 @@ export const CardContent = styled.div`
   }
 `;
 
-export const Title = styled(Text).attrs({
-  textType: TextType.SubsectionTitle
-})`    
+export const Title = styled(SubsectionTitle)`    
   margin-bottom: 0.7rem;
   max-width: 80%;
 
@@ -44,9 +43,7 @@ export const Title = styled(Text).attrs({
   }
 `;
 
-export const Description = styled(Text).attrs({
-  textType: TextType.Paragraph
-})`
+export const Description = styled(Paragraph)`
   margin-bottom: 0.3rem;
 
   ${M.MEDIA_SMALL} {
