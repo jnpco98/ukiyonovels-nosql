@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserAlt, faCog } from '@fortawesome/free-solid-svg-icons';
 import Text, { TextType } from '../../atom/text';
 import * as S from './style';
-import Backdrop from '../../atom/backdrop';
+import MenuBackdrop from '../../atom/backdrop';
 
 export interface MenuItem {
     label: string;
@@ -51,44 +51,44 @@ const NavigationMenu: React.FC<Props> = (props: Props): ReactElement => {
 
     const renderUserLinks = (): ReactElement => (
         <>
-            <S.UserLink>
+            <S.MenuUserLink>
                 <Text textType={TextType.Anchor} href="/account">
                     <FontAwesomeIcon icon={faUserAlt} />
                 </Text>
-            </S.UserLink>
-            <S.UserLink>
+            </S.MenuUserLink>
+            <S.MenuUserLink>
                 <Text textType={TextType.Anchor} href="/settings">
                     <FontAwesomeIcon icon={faCog} />
                 </Text>
-            </S.UserLink>
+            </S.MenuUserLink>
         </>
     );
 
     return (
-        <S.Container className={floating && S.CLASS_FLOATING} ref={containerRef}>
-            <S.LeftMenu>
-                <S.HamburgerContainer onClick={(): void => setDrawerActive(!drawerActive)}>
-                    <S.HamburgerIcon
+        <S.MenuContainer className={floating && S.CLASS_FLOATING} ref={containerRef}>
+            <S.MenuLeft>
+                <S.MenuHamburger onClick={(): void => setDrawerActive(!drawerActive)}>
+                    <S.MenuHamburgerIcon
                         ref={hamburgerRef}
                         active={drawerActive}
                         clientRect={hamburgerRef.current && hamburgerRef.current.getBoundingClientRect()}
                         screenOffset={hamburgerScreenOffset}
                     />
-                </S.HamburgerContainer>
-            </S.LeftMenu>
+                </S.MenuHamburger>
+            </S.MenuLeft>
 
-            <S.RightMenu>{renderUserLinks()}</S.RightMenu>
+            <S.MenuRight>{renderUserLinks()}</S.MenuRight>
 
-            <S.Drawer
+            <S.MenuDrawer
                 ref={drawerRef}
                 zIndex={51}
                 sidenavActive={drawerActive}
                 topOffset={`${containerRef.current.offsetTop + containerRef.current.scrollHeight}px`}
             >
                 {renderMenuItems()}
-            </S.Drawer>
-            <Backdrop show={drawerActive} onClick={(): void => setDrawerActive(false)} />
-        </S.Container>
+            </S.MenuDrawer>
+            <MenuBackdrop show={drawerActive} onClick={(): void => setDrawerActive(false)} />
+        </S.MenuContainer>
     );
 };
 

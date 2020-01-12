@@ -8,7 +8,7 @@ type IconStyleProps = {
   countBackground?: string;
 };
 
-export const Icon = styled.div<IconStyleProps>`
+export const IconContainer = styled.div<IconStyleProps>`
   position: relative;
   display: inline-block;
   width:${props => props.size ? props.size : '2rem'};

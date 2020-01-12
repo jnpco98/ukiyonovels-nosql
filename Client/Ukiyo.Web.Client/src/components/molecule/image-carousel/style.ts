@@ -8,7 +8,7 @@ import { faBookOpen } from '@fortawesome/free-solid-svg-icons';
 import { Paragraph, SubsectionTitle } from '../../atom/text/style';
 import { center, FLEX_ALIGN_CROSS, gutter, GUTTER_LEFT, pageTitleFontSize } from '../../../utilities/mixins';
 
-export const Container = styled.div`
+export const ImageCarouselContainer = styled.div`
   width: 100%;
   overflow: hidden;
   margin-bottom: 0.65rem;
@@ -30,7 +30,7 @@ export const Container = styled.div`
   }
 `;
 
-export const Slider = styled(Slick)`
+export const ImageCarouselSlider = styled(Slick)`
   .slick-dots {
     left: 0;
     bottom: 1.5rem;
@@ -41,7 +41,7 @@ export const Slider = styled(Slick)`
   }
 `;
 
-export const SliderItem = styled.div`
+export const ImageCarouselSliderItem = styled.div`
   display: flex !important;
   position: relative;
   min-height: 20rem;
@@ -88,7 +88,7 @@ export const SliderItem = styled.div`
   }
 `;
 
-export const BackgroundImage = styled.img`
+export const ImageCarouselBackgroundImage = styled.img`
   top: 0;
   left: 0;
   object-fit: cover;
@@ -106,7 +106,7 @@ export const BackgroundImage = styled.img`
   }
 `;
 
-export const MobileBackgroundImage = styled(BackgroundImage)`
+export const ImageCarouselMobileBackgroundImage = styled(ImageCarouselBackgroundImage)`
   display: block;
 
   ${M.MEDIA_SMALL} {
@@ -116,7 +116,7 @@ export const MobileBackgroundImage = styled(BackgroundImage)`
   }
 `;
 
-export const Content = styled.div`
+export const ImageCarouselContent = styled.div`
   ${center(FLEX_ALIGN_CROSS)};
   position: relative;
   flex-direction: column;
@@ -142,7 +142,7 @@ export const Content = styled.div`
 export const Arrow = styled(CustomSlickArrow)`
 `;
 
-export const Heading = styled(SubsectionTitle)`
+export const ImageCarouselHeading = styled(SubsectionTitle)`
   color: ${({ theme, ...props }) => theme.colors.white};
   margin-bottom: 0.5rem;
 
@@ -161,7 +161,7 @@ export const Heading = styled(SubsectionTitle)`
   ${pageTitleFontSize};
 `;
 
-export const Subtitle = styled(Paragraph)`
+export const ImageCarouselSubtitle = styled(Paragraph)`
   color: ${({ theme, ...props }) => theme.colors.white};
   margin-bottom: 1.2rem;
   width: 90%;
@@ -183,13 +183,13 @@ export const Subtitle = styled(Paragraph)`
   }
 `;
 
-export const LinkButton = styled(Button).attrs({
+export const ImageCarouselLinkButton = styled(Button).attrs({
   type: ButtonType.Info
 })`
   align-self: baseline;
     z-index: 1;
 `;
 
-export const BookButtonIcon = styled(FontAwesomeIcon).attrs({ icon: faBookOpen })`
+export const ImageCarouselBookButtonIcon = styled(FontAwesomeIcon).attrs({ icon: faBookOpen })`
   margin-right: 0.3rem;
 `;

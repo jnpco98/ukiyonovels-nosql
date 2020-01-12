@@ -32,38 +32,38 @@ const InfoCard: React.FC<Props> = (props: Props): ReactElement => {
     if (isDesktopScreen) textTruncate = 350;
 
     return (
-        <S.Card className={className}>
+        <S.InfoCardContainer className={className}>
             <Thumbnail imgSrc={imgSrc} link={link} />
-            <S.CardContent>
-                <S.Title>{title}</S.Title>
-                <S.Description>{truncate(description, textTruncate)}</S.Description>
-                <S.CardInfo>
+            <S.InfoCardContent>
+                <S.InfoCardTitle>{title}</S.InfoCardTitle>
+                <S.InfoCardDescription>{truncate(description, textTruncate)}</S.InfoCardDescription>
+                <S.InfoCardMetaWrapper>
                     {meta && (
-                        <S.CardMeta>
+                        <S.InfoCardMeta>
                             {meta.updatedOn && (
                                 <>
-                                    <S.CalendarIcon />
-                                    <S.InfoText>{meta.updatedOn}</S.InfoText>
+                                    <S.InfoCardCalendarIcon />
+                                    <S.InfoCardText>{meta.updatedOn}</S.InfoCardText>
                                 </>
                             )}
                             {meta.likesCount && (
                                 <>
-                                    <S.LikesIcon />
-                                    <S.InfoText>{meta.likesCount}</S.InfoText>
+                                    <S.InfoCardLikesIcon />
+                                    <S.InfoCardText>{meta.likesCount}</S.InfoCardText>
                                 </>
                             )}
                             {meta.viewsCount && (
                                 <>
-                                    <S.ViewsIcon />
-                                    <S.InfoText>{meta.viewsCount}</S.InfoText>
+                                    <S.InfoCardViewsIcon />
+                                    <S.InfoCardText>{meta.viewsCount}</S.InfoCardText>
                                 </>
                             )}
-                        </S.CardMeta>
+                        </S.InfoCardMeta>
                     )}
-                    <S.CardButton href="#">Continue Reading</S.CardButton>
-                </S.CardInfo>
-            </S.CardContent>
-        </S.Card>
+                    <S.InfoCardButtonContinue href={link}>Continue Reading</S.InfoCardButtonContinue>
+                </S.InfoCardMetaWrapper>
+            </S.InfoCardContent>
+        </S.InfoCardContainer>
     );
 };
 

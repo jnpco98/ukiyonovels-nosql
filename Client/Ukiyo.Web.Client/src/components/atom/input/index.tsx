@@ -19,7 +19,7 @@ const Input: React.FC<Props> = (props: Props): ReactElement => {
     useOnClickOutside(inputRef, () => empty && setActive(false));
 
     return (
-        <S.Input ref={inputRef} onClick={(): void => setActive(true)}>
+        <S.InputContainer ref={inputRef} onClick={(): void => setActive(true)}>
             <S.InputField
                 type="text"
                 name={name}
@@ -31,7 +31,7 @@ const Input: React.FC<Props> = (props: Props): ReactElement => {
             <S.InputLabel active={active} htmlFor={name}>
                 <S.InputLabelSpan active={active}>{label}</S.InputLabelSpan>
             </S.InputLabel>
-        </S.Input>
+        </S.InputContainer>
     );
 };
 

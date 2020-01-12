@@ -7,9 +7,8 @@ import { math } from 'polished';
 import { fadeInTextHover, center, CENTER_BOTH, FLEX_ALIGN_BOTH, regularFontSize } from '../../../utilities/mixins';
 import { transparentize } from 'polished';
 import { cardDimRatio } from '../thumbnail/style';
-import Text, { TextType } from '../text';
 
-export const Container = styled.div`
+export const InfoThumbnailContainer = styled.div`
   display: flex;
   position: relative;
   
@@ -45,7 +44,7 @@ export const Container = styled.div`
   }
 `;
 
-export const Content = styled.div`
+export const InfoThumbnailContent = styled.div`
   ${center(FLEX_ALIGN_BOTH)};
   flex-direction: column;
   text-align: center;
@@ -59,14 +58,14 @@ export const Content = styled.div`
   transform: translateY(35%);
   transition: transform 0.3s ease;
   
-  ${Container}:hover & {
+  ${InfoThumbnailContainer}:hover & {
     background: linear-gradient(to bottom, rgba(22, 22, 34, 0.5) 0%, rgba(22, 22, 34, 1) 100%);
     transform: translateY(0%);
     justify-content: space-around;
   }
 `;
 
-export const Image = styled.img`
+export const InfoThumbnailImage = styled.img`
   position: absolute;
   top: 0;
   left: 0;
@@ -75,45 +74,45 @@ export const Image = styled.img`
   object-fit: cover;
   cursor: pointer;
 
-  ${Container}:hover & {
+  ${InfoThumbnailContainer}:hover & {
     filter: blur(1px);
   }
 `;
 
-export const Heading = styled(SubsectionTitle)`
+export const InfoThumbnailHeading = styled(SubsectionTitle)`
   color: ${({ theme, ...props }) => theme.colors.white};
   
   padding: 0 0.5rem;
 
-  ${Container}:hover & {
+  ${InfoThumbnailContainer}:hover & {
     margin: 0.5rem 0.3rem;
   }
 
   ${M.MEDIA_SMALL} {
-    ${Container}:hover & {
+    ${InfoThumbnailContainer}:hover & {
       margin-bottom: 0;
     }
   }
   ${regularFontSize};
 `;
 
-export const Subtitle = styled(Paragraph)`
+export const InfoThumbnailSubtitle = styled(Paragraph)`
 	color: ${({ theme, ...props }) => theme.colors.white};
-  ${fadeInTextHover(Container)};
+  ${fadeInTextHover(InfoThumbnailContainer)};
 
-  ${Container}:hover & {
+  ${InfoThumbnailContainer}:hover & {
     margin: 1rem 0.3rem;
     margin-bottom: 0;
   }
   font-family: ${({ theme, ...props }) => theme.font.secondary};
 `;
 
-export const Genre = styled(Span)`
+export const InfoThumbnailGenre = styled(Span)`
 	color: ${({ theme, ...props }) => theme.colors.white};
-  ${fadeInTextHover(Container)};
+  ${fadeInTextHover(InfoThumbnailContainer)};
   font-size: 0.5rem;
 
-  ${Container}:hover & {
+  ${InfoThumbnailContainer}:hover & {
     margin-bottom: 1rem;
   }
 
@@ -126,7 +125,7 @@ export const Genre = styled(Span)`
   }
 `;
 
-export const ReadIconLink = styled.a`
+export const InfoThumbnailReadIconLink = styled.a`
   display: none;
   margin: 1rem 0.5rem 0.5rem;
   border-radius: 50%;
@@ -140,7 +139,7 @@ export const ReadIconLink = styled.a`
     border-color: ${({ theme, ...props }) => theme.colors.white};
   }
 
-  ${Container}:hover & {
+  ${InfoThumbnailContainer}:hover & {
     display: block;
   }
 
@@ -153,16 +152,16 @@ export const ReadIconLink = styled.a`
   }
 `;
 
-export const IconWrapper = styled.div`
+export const InfoThumbnailIconWrapper = styled.div`
   ${center(CENTER_BOTH)};
   transform: translate(-50%, -46%);
 `;
 
-export const ReadIcon = styled(FontAwesomeIcon).attrs({
+export const InfoThumbnailReadIcon = styled(FontAwesomeIcon).attrs({
 	icon: faBookOpen
 })`
   color: ${({ theme, ...props }) => theme.colors.white};
-  ${fadeInTextHover(Container)};
+  ${fadeInTextHover(InfoThumbnailContainer)};
 
   font-size: 0.9rem;
 

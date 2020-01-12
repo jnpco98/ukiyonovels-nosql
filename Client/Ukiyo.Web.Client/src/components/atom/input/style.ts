@@ -5,7 +5,7 @@ type InputStyleProps = {
   active?: boolean;
 }
 
-export const Input = styled.div`
+export const InputContainer = styled.div`
   position: relative;
   width: 15rem;
 `;

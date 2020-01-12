@@ -6,7 +6,7 @@ import Text, { TextType } from '../../atom/text';
 import { margin } from 'polished';
 import { SectionTitle } from '../../atom/text/style';
 
-export const Container = styled.div`
+export const CardListContainer = styled.div`
   margin: 0.65rem 0;
 
   ${gutter(GUTTER_LEFT)};
@@ -29,7 +29,7 @@ export const Container = styled.div`
   }
 `;
 
-export const SectionDivider = styled.div`
+export const CardListSectionDivider = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
@@ -48,10 +48,10 @@ export const SectionDivider = styled.div`
   }
 `;
 
-export const Card = styled(InfoCard)`
+export const CardListItem = styled(InfoCard)`
   margin-bottom: 1rem
 `;
 
-export const HeadingText = styled(SectionTitle)`
+export const CardListHeadingText = styled(SectionTitle)`
   font-weight: ${({ theme, ...props }) => theme.font.weightBold};
 `;

@@ -23,7 +23,7 @@ export const ThumbnailImage = styled.img`
   object-position: center;
 `;
 
-export const Thumbnail = styled.a`
+export const ThumbnailContainer = styled.a`
   position: relative;
   width: 6.2rem;
   height: ${math(`6.2rem * ${cardDimRatio}`)};

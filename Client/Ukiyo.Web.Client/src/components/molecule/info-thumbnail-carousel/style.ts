@@ -5,12 +5,12 @@ import * as M from '../../../settings/media';
 import InfoThumbnail from '../../atom/info-thumbnail';
 import Text, { TextType } from '../../atom/text';
 import { math, margin } from 'polished';
-import { Genre, Heading, Subtitle, ReadIcon } from '../../atom/info-thumbnail/style';
+import { InfoThumbnailGenre, InfoThumbnailHeading, InfoThumbnailSubtitle, InfoThumbnailReadIcon } from '../../atom/info-thumbnail/style';
 import { cardDimRatio } from '../../atom/thumbnail/style';
 import { gutter, GUTTER_LEFT, GUTTER_RIGHT } from '../../../utilities/mixins';
 import { SectionTitle } from '../../atom/text/style';
 
-export const Container = styled.div`
+export const InfoThumbnailContainer = styled.div`
   width: 100%;
   position: relative;
   margin: 0.65rem 0;
@@ -35,7 +35,7 @@ export const Container = styled.div`
   }
 `;
 
-export const SectionDivider = styled.div`
+export const InfoThumbnailSectionDivider = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
@@ -54,11 +54,11 @@ export const SectionDivider = styled.div`
   }
 `;
 
-export const HeadingText = styled(SectionTitle)`
+export const InfoThumbnailHeadingText = styled(SectionTitle)`
   font-weight: ${({ theme, ...props }) => theme.font.weightBold};
 `;
 
-export const Item = styled(InfoThumbnail)`
+export const InfoThumbnailItem = styled(InfoThumbnail)`
   margin-right: 0.65rem;
 
   ${M.MEDIA_XXSMALL} {
@@ -74,19 +74,19 @@ export const Item = styled(InfoThumbnail)`
     height: ${math(`8rem * ${cardDimRatio}`)};
     margin-bottom: 1.5rem;
 
-    ${Heading} {
+    ${InfoThumbnailHeading} {
       font-size: 0.8rem;
     }
 
-    ${Subtitle} {
+    ${InfoThumbnailSubtitle} {
       font-size: 0.8rem;
     }
 
-    ${Genre} {
+    ${InfoThumbnailGenre} {
       font-size: 0.6rem;
     }
 
-    ${ReadIcon} {
+    ${InfoThumbnailReadIcon} {
       font-size: 1.3rem;
     }
   }
@@ -95,25 +95,25 @@ export const Item = styled(InfoThumbnail)`
     width: 9.5rem;
     height: ${math(`9.5rem * ${cardDimRatio}`)};
 
-    ${Heading} {
+    ${InfoThumbnailHeading} {
       font-size: 0.9rem;
     }
 
-    ${Subtitle} {
+    ${InfoThumbnailSubtitle} {
       font-size: 0.9rem;
     }
 
-    ${Genre} {
+    ${InfoThumbnailGenre} {
       font-size: 0.7rem;
     }
 
-    ${ReadIcon} {
+    ${InfoThumbnailReadIcon} {
       font-size: 1.5rem;
     }
   }
 `;
 
-export const Slider = styled(Slick)`  
+export const InfoThumbnailSlider = styled(Slick)`  
   .slick-dots {
     left: 0;
     bottom: -2rem;
@@ -134,32 +134,5 @@ export const Slider = styled(Slick)`
   }
 `;
 
-export const FlexContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  padding: 0 2rem;
-
-  ${M.MEDIA_MEDIUM} {
-    padding: 0 3rem;
-  }
-
-  ${M.MEDIA_LARGE} {
-    padding: 0 12rem;
-    justify-content: flex-start;
-  }
-`;
-
-export const Arrow = styled(CustomSlickArrow)`
-  /* top: -1.5rem;
-
-  &.slick-prev {
-    right: 4.5rem;
-    left: unset;
-  }
-
-  &.slick-next {
-    right: 2rem;
-  } */
+export const InfoThumbnailArrow = styled(CustomSlickArrow)`
 `;

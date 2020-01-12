@@ -43,7 +43,7 @@ const menuItemDefaultStyle = css<MenuItemStyleProps>`
 
 export const CLASS_FLOATING = 'floating';
 
-export const Container = styled.div`
+export const MenuContainer = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -77,7 +77,7 @@ export const Container = styled.div`
   }
 `;
 
-export const LeftMenu = styled.ul`
+export const MenuLeft = styled.ul`
   ${M.MEDIA_XXSMALL} {
     padding-left: 1rem;
   }
@@ -87,7 +87,7 @@ export const LeftMenu = styled.ul`
   }
 `;
 
-export const RightMenu = styled.ul`
+export const MenuRight = styled.ul`
   ${M.MEDIA_XXSMALL} {
     padding-right: 1rem;
   }
@@ -134,7 +134,7 @@ export const MenuItem = styled.li<MenuItemStyleProps>`
   background: ${({ theme, ...props }) => props.active ? theme.colors.accent: ''};
 `;
 
-export const UserLink = styled.li`
+export const MenuUserLink = styled.li`
   ${menuItemDefaultStyle};
   transition: background 0.09s ease-in;
 
@@ -160,7 +160,7 @@ export const UserLink = styled.li`
   }
 `;
 
-export const HamburgerContainer = styled.li`
+export const MenuHamburger = styled.li`
   ${menuItemDefaultStyle};
   transition: background 0.09s ease-in;
   padding: 1rem 0;
@@ -179,7 +179,7 @@ type HamburgerIconStyleProps = {
   }
 }
 
-export const HamburgerIcon = styled(HamburgerMenu)<HamburgerIconStyleProps>`
+export const MenuHamburgerIcon = styled(HamburgerMenu)<HamburgerIconStyleProps>`
   transition: transform 0.3s ease;
 `;
 
@@ -189,7 +189,7 @@ type DrawerStyleProps = {
   zIndex?: number;
 }
 
-export const Drawer = styled.div<DrawerStyleProps>`
+export const MenuDrawer = styled.div<DrawerStyleProps>`
   position: fixed;
   background: ${({ theme, ...props }) => theme.colors.background};
   overflow: hidden;

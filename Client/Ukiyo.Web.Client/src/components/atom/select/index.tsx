@@ -28,8 +28,8 @@ const Select = (props: Props): ReactElement => {
     useOnClickOutside(selectRef, () => setSelectOpen(false));
 
     return (
-        <S.Select ref={selectRef} onClick={(): void => setSelectOpen(!selectOpen)}>
-            <S.OptionSelected>
+        <S.SelectContainer ref={selectRef} onClick={(): void => setSelectOpen(!selectOpen)}>
+            <S.SelectOptionSelected>
                 {selected === -1 ? defaultValue : options[selected].displayName}
                 <S.SelectIcon
                     className={selectOpen ? 'active' : ''}
@@ -37,10 +37,10 @@ const Select = (props: Props): ReactElement => {
                     size="1.5rem"
                     fill={selectOpen ? themeContext.colors.default : themeContext.colors.accent}
                 />
-            </S.OptionSelected>
-            <S.OptionContainer className={selectOpen ? 'active' : ''} height={maxHeight} autoHide>
+            </S.SelectOptionSelected>
+            <S.SelectOptionsContainer className={selectOpen ? 'active' : ''} height={maxHeight} autoHide>
                 {options.map((o, idx) => (
-                    <S.Option
+                    <S.SelectOption
                         className={idx === selected ? 'selected' : ''}
                         key={o.value}
                         onClick={(): void => {
@@ -49,12 +49,14 @@ const Select = (props: Props): ReactElement => {
                             onSelect(options[idx]);
                         }}
                     >
-                        <S.OptionInput id={`${o.displayName}_${o.value}`} name={optionName} />
-                        <S.OptionLabel htmlFor={`${o.displayName}_${o.value}`}>{o.displayName}</S.OptionLabel>
-                    </S.Option>
+                        <S.SelectOptionInput id={`${o.displayName}_${o.value}`} name={optionName} />
+                        <S.SelectOptionLabel htmlFor={`${o.displayName}_${o.value}`}>
+                            {o.displayName}
+                        </S.SelectOptionLabel>
+                    </S.SelectOption>
                 ))}
-            </S.OptionContainer>
-        </S.Select>
+            </S.SelectOptionsContainer>
+        </S.SelectContainer>
     );
 };
 

@@ -17,7 +17,7 @@ const Icon: React.FC<Props> = (props: Props): ReactElement => {
     const { glyph, fill, stroke, size = '2rem', message: count, countColor, countBackground, className } = props;
 
     return (
-        <S.Icon
+        <S.IconContainer
             className={className}
             message={count}
             countColor={countColor}
@@ -35,7 +35,7 @@ const Icon: React.FC<Props> = (props: Props): ReactElement => {
                 <title id="title">{GlyphType[glyph]}</title>
                 <Glyph glyph={glyph} />
             </S.IconSvg>
-        </S.Icon>
+        </S.IconContainer>
     );
 };
 

@@ -24,21 +24,21 @@ const InfoThumbnail: React.FC<Props> = (props: Props): ReactElement => {
     if (isDesktopScreen) textTruncate = 40;
 
     return (
-        <S.Container className={className}>
+        <S.InfoThumbnailContainer className={className}>
             <a href={link}>
-                <S.Image src={image} alt={heading} />
+                <S.InfoThumbnailImage src={image} alt={heading} />
             </a>
-            <S.Content>
-                <S.Subtitle>{subtitle}</S.Subtitle>
-                <S.ReadIconLink href={link}>
-                    <S.IconWrapper>
-                        <S.ReadIcon />
-                    </S.IconWrapper>
-                </S.ReadIconLink>
-                <S.Heading>{truncate(heading, textTruncate)}</S.Heading>
-                <S.Genre>{truncate(genre, textTruncate)}</S.Genre>
-            </S.Content>
-        </S.Container>
+            <S.InfoThumbnailContent>
+                <S.InfoThumbnailSubtitle>{subtitle}</S.InfoThumbnailSubtitle>
+                <S.InfoThumbnailReadIconLink href={link}>
+                    <S.InfoThumbnailIconWrapper>
+                        <S.InfoThumbnailReadIcon />
+                    </S.InfoThumbnailIconWrapper>
+                </S.InfoThumbnailReadIconLink>
+                <S.InfoThumbnailHeading>{truncate(heading, textTruncate)}</S.InfoThumbnailHeading>
+                <S.InfoThumbnailGenre>{truncate(genre, textTruncate)}</S.InfoThumbnailGenre>
+            </S.InfoThumbnailContent>
+        </S.InfoThumbnailContainer>
     );
 };
 

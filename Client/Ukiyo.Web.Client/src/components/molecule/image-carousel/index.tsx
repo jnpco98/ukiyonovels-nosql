@@ -24,27 +24,27 @@ const HeroBanner: React.FC = (): ReactElement => {
 
     /* eslint-disable react/jsx-props-no-spreading */
     return (
-        <S.Container>
-            <S.Slider {...sliderOptions}>
+        <S.ImageCarouselContainer>
+            <S.ImageCarouselSlider {...sliderOptions}>
                 {heroBanner.items.map(props => {
                     const { mobileImage, desktopImage, headingText, description, buttonText, link } = props;
 
                     return (
-                        <S.SliderItem key={mobileImage + desktopImage}>
-                            <S.BackgroundImage src={desktopImage || mobileImage} alt="Hero Banner" />
-                            <S.MobileBackgroundImage src={mobileImage || desktopImage} alt="Hero Banner" />
-                            <S.Content>
-                                <S.Heading>{headingText}</S.Heading>
-                                <S.Subtitle>{truncate(description, 130)}</S.Subtitle>
-                                <S.LinkButton href={link}>
-                                    <S.BookButtonIcon /> {buttonText}
-                                </S.LinkButton>
-                            </S.Content>
-                        </S.SliderItem>
+                        <S.ImageCarouselSliderItem key={mobileImage + desktopImage}>
+                            <S.ImageCarouselBackgroundImage src={desktopImage || mobileImage} alt="Hero Banner" />
+                            <S.ImageCarouselMobileBackgroundImage src={mobileImage || desktopImage} alt="Hero Banner" />
+                            <S.ImageCarouselContent>
+                                <S.ImageCarouselHeading>{headingText}</S.ImageCarouselHeading>
+                                <S.ImageCarouselSubtitle>{truncate(description, 130)}</S.ImageCarouselSubtitle>
+                                <S.ImageCarouselLinkButton href={link}>
+                                    <S.ImageCarouselBookButtonIcon /> {buttonText}
+                                </S.ImageCarouselLinkButton>
+                            </S.ImageCarouselContent>
+                        </S.ImageCarouselSliderItem>
                     );
                 })}
-            </S.Slider>
-        </S.Container>
+            </S.ImageCarouselSlider>
+        </S.ImageCarouselContainer>
     );
     /* eslint-enable react/jsx-props-no-spreading */
 };

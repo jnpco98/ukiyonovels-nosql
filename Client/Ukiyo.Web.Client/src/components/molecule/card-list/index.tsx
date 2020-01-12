@@ -20,10 +20,12 @@ type Props = {
 const InfoCardList: React.FC<Props> = (props: Props) => {
     const { headingText, content } = props;
     return (
-        <S.Container>
-            <S.SectionDivider>{headingText && <S.HeadingText>{headingText}</S.HeadingText>}</S.SectionDivider>
+        <S.CardListContainer>
+            <S.CardListSectionDivider>
+                {headingText && <S.CardListHeadingText>{headingText}</S.CardListHeadingText>}
+            </S.CardListSectionDivider>
             {content.map(({ title, link, imgSrc, description, meta }) => (
-                <S.Card
+                <S.CardListItem
                     key={title + description}
                     title={title}
                     link={link}
@@ -32,7 +34,7 @@ const InfoCardList: React.FC<Props> = (props: Props) => {
                     meta={meta}
                 />
             ))}
-        </S.Container>
+        </S.CardListContainer>
     );
 };
 

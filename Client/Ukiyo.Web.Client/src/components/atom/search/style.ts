@@ -14,7 +14,7 @@ export const SearchInput = styled.input.attrs({ type: 'text' })`
   }
 `;
 
-export const Search = styled.div`
+export const SearchContainer = styled.div`
   ${center(FLEX_ALIGN_BOTH)};
   background: ${({ theme, ...props }) => theme.colors.backgroundAlternate};
   border-radius: 2.5rem;

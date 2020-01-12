@@ -1,23 +1,18 @@
 import styled from 'styled-components/macro';
 import Button from '../button';
 import * as M from '../../../settings/media';
-import { center, FLEX_ALIGN_BOTH } from '../../../utilities/mixins';
 import Text, { TextType } from '../text';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarAlt, faHeart, faEye } from '@fortawesome/free-solid-svg-icons';
 import { Paragraph, SubsectionTitle } from '../text/style';
 
-export const Card = styled.div`
+export const InfoCardContainer = styled.div`
   display: flex;
   align-items: center;
   color: ${({ theme, ...props }) => theme.colors.black};
 `;
 
-export const CardImage = styled.img`
-  flex: 1;
-`;
-
-export const CardContent = styled.div`
+export const InfoCardContent = styled.div`
   flex: 4;
   display: flex;
   flex-direction: column;
@@ -34,7 +29,7 @@ export const CardContent = styled.div`
   }
 `;
 
-export const Title = styled(SubsectionTitle)`    
+export const InfoCardTitle = styled(SubsectionTitle)`    
   margin-bottom: 0.7rem;
   max-width: 80%;
 
@@ -43,7 +38,7 @@ export const Title = styled(SubsectionTitle)`
   }
 `;
 
-export const Description = styled(Paragraph)`
+export const InfoCardDescription = styled(Paragraph)`
   margin-bottom: 0.3rem;
 
   ${M.MEDIA_SMALL} {
@@ -51,17 +46,17 @@ export const Description = styled(Paragraph)`
   }
 `;
 
-export const CardInfo = styled.div`
+export const InfoCardMetaWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
 `;
 
-export const CardButton = styled(Button)`
+export const InfoCardButtonContinue = styled(Button)`
   align-self: baseline;
 `;
 
-export const CardMeta = styled.div`
+export const InfoCardMeta = styled.div`
   margin: 0.4rem 0;
 
   ${M.MEDIA_SMALL} {
@@ -69,25 +64,25 @@ export const CardMeta = styled.div`
   }
 `;
 
-export const CalendarIcon = styled(FontAwesomeIcon).attrs({
+export const InfoCardCalendarIcon = styled(FontAwesomeIcon).attrs({
   icon: faCalendarAlt
 })`
   margin-right: 0.3rem;
 `;
 
-export const LikesIcon = styled(FontAwesomeIcon).attrs({
+export const InfoCardLikesIcon = styled(FontAwesomeIcon).attrs({
   icon: faHeart
 })`
   margin-right: 0.3rem;
 `;
 
-export const ViewsIcon = styled(FontAwesomeIcon).attrs({
+export const InfoCardViewsIcon = styled(FontAwesomeIcon).attrs({
   icon: faEye
 })`
   margin-right: 0.3rem;
 `;
 
-export const InfoText = styled(Text).attrs({
+export const InfoCardText = styled(Text).attrs({
   textType: TextType.Span
 })`
   margin-right: 0.7rem;
