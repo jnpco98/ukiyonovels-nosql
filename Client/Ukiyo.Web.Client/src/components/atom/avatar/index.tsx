@@ -6,7 +6,7 @@ type Props = {
     className?: string;
     children?: React.ReactNode;
     type?: AvatarType;
-};
+}
 
 const Avatar: React.FC<Props> = (props: Props): ReactElement => {
     const { children = '', className = '', type } = props;

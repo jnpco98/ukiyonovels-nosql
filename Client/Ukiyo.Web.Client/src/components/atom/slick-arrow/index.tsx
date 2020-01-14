@@ -1,4 +1,6 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCaretSquareRight } from '@fortawesome/free-solid-svg-icons';
 import * as S from './style';
 
 type Props = {
@@ -11,7 +13,7 @@ const CustomSlickArrow: React.FC<Props> = (props: Props) => {
     const { className, onClick, children } = props;
 
     /* eslint-disable  */
-    return <S.Container className={className} onClick={onClick}>{children}</S.Container>;
+    return <S.SlickArrowContainer className={className} onClick={onClick}><FontAwesomeIcon icon={faCaretSquareRight}/></S.SlickArrowContainer>;
     /* eslint-enable  */
 };
 

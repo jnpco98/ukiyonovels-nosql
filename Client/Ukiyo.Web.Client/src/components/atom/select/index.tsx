@@ -1,6 +1,5 @@
 import React, { ReactElement, useState, useContext, useRef } from 'react';
 import { ThemeContext } from 'styled-components/macro';
-import { GlyphType } from '../icon/glyph';
 import { useOnClickOutside } from '../../../utilities/hooks';
 import * as S from './style';
 
@@ -31,12 +30,12 @@ const Select = (props: Props): ReactElement => {
         <S.SelectContainer ref={selectRef} onClick={(): void => setSelectOpen(!selectOpen)}>
             <S.SelectOptionSelected>
                 {selected === -1 ? defaultValue : options[selected].displayName}
-                <S.SelectIcon
+                {/* <S.SelectIcon
                     className={selectOpen ? 'active' : ''}
                     glyph={GlyphType.DownFill}
                     size="1.5rem"
                     fill={selectOpen ? themeContext.colors.default : themeContext.colors.accent}
-                />
+                /> */}
             </S.SelectOptionSelected>
             <S.SelectOptionsContainer className={selectOpen ? 'active' : ''} height={maxHeight} autoHide>
                 {options.map((o, idx) => (

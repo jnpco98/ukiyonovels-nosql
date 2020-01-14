@@ -1,19 +1,39 @@
 import styled from 'styled-components/macro';
-import InfoCard from '../../atom/info-card';
 import * as M from '../../../settings/media';
 import { gutter, GUTTER_LEFT, GUTTER_RIGHT } from '../../../utilities/mixins';
-import Text, { TextType } from '../../atom/text';
 import { margin } from 'polished';
 import { SectionTitle } from '../../atom/text/style';
+import { NovelRowContainer } from '../../atom/novel-row/style';
 
-export const CardListContainer = styled.div`
-  margin: 0.65rem 0;
-
+export const NovelListContainer = styled.div`
+  width: 100%;
+  
   ${gutter(GUTTER_LEFT)};
   ${gutter(GUTTER_RIGHT)};
 
+  ${NovelRowContainer} {
+    padding: 0.7rem;
+
+    &:nth-child(odd) {
+      background: ${({ theme, ...props }) => theme.colors.default};
+    }
+
+    &:nth-child(even) {
+      background: ${({ theme, ...props }) => theme.colors.subdued};
+    }
+    
+    &:hover {
+      color: ${({ theme, ...props }) => theme.colors.white};
+      background: ${({ theme, ...props }) => theme.colors.accent};
+    }
+  }
+
   ${M.MEDIA_XSMALL} {
     ${margin('1rem', null, '1rem', null)};
+    
+    ${NovelRowContainer} {
+      padding: 0.8rem;
+    }
   }
 
   ${M.MEDIA_SMALL} {
@@ -26,10 +46,14 @@ export const CardListContainer = styled.div`
   
   ${M.MEDIA_LARGE} {
     ${margin('2.5rem', null, '2.5rem', null)};
+        
+    ${NovelRowContainer} {
+      padding: 0.9rem;
+    }
   }
 `;
 
-export const CardListSectionDivider = styled.div`
+export const NovelListSectionDivider = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
@@ -48,23 +72,6 @@ export const CardListSectionDivider = styled.div`
   }
 `;
 
-export const CardListItem = styled(InfoCard)`
-  margin-bottom: 2rem;
-  position: relative;
-
-  &:not(:last-child) {
-    &:after {
-      content: '';
-      width: 100%;
-      height: 1px;
-      background:  ${({ theme, ...props }) => theme.colors.primary};
-      position: absolute;
-      bottom: -1rem;
-      left: 0;
-    }
-  }
-`;
-
-export const CardListHeadingText = styled(SectionTitle)`
+export const NovelListHeadingText = styled(SectionTitle)`
   font-weight: ${({ theme, ...props }) => theme.font.weightBold};
 `;

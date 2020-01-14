@@ -2,7 +2,6 @@ import styled, { css } from 'styled-components/macro';
 import { lighten } from 'polished';
 import { center, CENTER_VERTICAL } from '../../../utilities/mixins';
 import Simplebar from 'simplebar-react';
-import Icon from '../icon';
 
 type SelectStyleType = {
   width?: string;
@@ -13,15 +12,15 @@ type OptionContainerStyleType = {
   autoHide?: boolean;
 }
 
-export const SelectIcon = styled(Icon)`
-  ${center(CENTER_VERTICAL)};
-  right: 0.5rem;
-  transition: all 0.4s ease-in;
+// export const SelectIcon = styled(Icon)`
+//   ${center(CENTER_VERTICAL)};
+//   right: 0.5rem;
+//   transition: all 0.4s ease-in;
   
-  &.active {
-    transform: scaleY(-1) translateY(50%);
-  }
-`;
+//   &.active {
+//     transform: scaleY(-1) translateY(50%);
+//   }
+// `;
 
 export const SelectContainer = styled.div<SelectStyleType>`
   display: flex;

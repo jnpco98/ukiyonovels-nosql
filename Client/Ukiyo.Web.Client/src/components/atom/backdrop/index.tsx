@@ -4,10 +4,12 @@ import { BackdropContainer } from './style';
 type Props = {
     show: boolean;
     className?: string;
+
     color?: string;
     transparent?: boolean;
-    onClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
     zIndex?: number;
+    
+    onClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 };
 
 const Backdrop: React.FC<Props> = (props: Props) => {

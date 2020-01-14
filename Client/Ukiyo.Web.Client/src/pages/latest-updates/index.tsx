@@ -4,7 +4,6 @@ import CardCarousel from '../../components/molecule/info-thumbnail-carousel';
 import InfoCardList from '../../components/molecule/card-list';
 import RatingList from '../../components/molecule/rating-list';
 import QuickSearch from '../../components/molecule/quicksearch';
-import NovelList from '../../components/molecule/novel-list';
 
 const cardContent = [
     {
@@ -367,35 +366,18 @@ const genres = [
     'Yuri'
 ];
 
-const types = ['Web Novel', 'Light Novel', 'Chinese Novel', 'Korean Novel'];
-
-const novels = [
-    { title: 'A Goblin\'s Evolution', link: '/' },
-    { title: 'A Goblin\'s Evolution', link: '/' },
-    { title: 'A Goblin\'s Evolution', link: '/' },
-    { title: 'A Goblin\'s Evolution', link: '/' },
-    { title: 'A Goblin\'s Evolution', link: '/' },
-    { title: 'A Goblin\'s Evolution', link: '/' },
-    { title: 'A Goblin\'s Evolution', link: '/' },
-]
-
-const Home: React.FC = (): ReactElement => {
+const LatestUpdates: React.FC = (): ReactElement => {
     return (
         <>
-            <HeroBanner />
-            <CardCarousel content={cardContent} headingText="Featured Novels" />
-            <InfoCardList content={infoCardContent} headingText="Latest Release" />
+            <InfoCardList content={infoCardContent} headingText="Latest Updates" />
+
             <RatingList headingText="Popular Novels" contents={ratings} />
             <QuickSearch
                 headingText="Search by Genre"
                 contents={genres.map(g => ({ title: g, count: Math.random() * 1000 }))}
             />
-            <QuickSearch
-                headingText="Search by Type"
-                contents={types.map(t => ({ title: t, count: Math.random() * 1000 }))}
-            />
         </>
     );
 };
 
-export default Home;
+export default LatestUpdates;

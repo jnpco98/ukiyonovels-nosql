@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components/macro';
 import { Paragraph } from '../text/style';
-import { gutter, GUTTER_LEFT, GUTTER_RIGHT, subsectionFontSize } from '../../../utilities/mixins';
 import * as M from '../../../settings/media';
 
 type RatingBarStyleProps = {
@@ -9,10 +8,6 @@ type RatingBarStyleProps = {
 
 export const RatingContainer = styled.div`
   width: 100%;
-  ${gutter(GUTTER_LEFT)};
-  ${gutter(GUTTER_RIGHT)};
-
-  margin-bottom: 0.8rem;
 `;
 
 export const RatingTextWrapper = styled.div`

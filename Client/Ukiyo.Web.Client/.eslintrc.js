@@ -33,7 +33,8 @@ module.exports =  {
     'no-unused-vars': 'warn',
     "no-unused-vars":"off",
     "@typescript-eslint/no-unused-vars": "off",
-    'no-bitwise': 'off'
+    'no-bitwise': 'off',
+    "interface-name": [true, "always-prefix"]
   },
   settings:  {
     react:  {

@@ -1,8 +1,6 @@
 import React, { ReactElement, useContext, useState, useRef } from 'react';
 import { ThemeContext } from 'styled-components/macro';
 import { useOnClickOutside } from '../../../utilities/hooks';
-import { GlyphType } from '../icon/glyph';
-import Icon from '../icon';
 import * as S from './style';
 
 type Props = {
@@ -24,7 +22,7 @@ const Search: React.FC<Props> = (props: Props): ReactElement => {
         <S.SearchContainer ref={searchRef} className={active ? 'active' : ''}>
             <S.SearchInput type="text" name={name} placeholder={placeholder || 'Type to search'} />
             <S.SearchButton onClick={(): void => setActive(!active)}>
-                <Icon glyph={GlyphType.Search} fill={themeContext.colors.accent} />
+                {/* <Icon glyph={GlyphType.Search} fill={themeContext.colors.accent} /> */}
             </S.SearchButton>
         </S.SearchContainer>
     );
