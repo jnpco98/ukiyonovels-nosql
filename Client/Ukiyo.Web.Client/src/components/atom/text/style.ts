@@ -31,7 +31,9 @@ export const SectionTitle = styled.h2`
 
 export const SubsectionTitle = styled.h3`
   ${subsectionFontSize};
+  text-transform: uppercase;
   font-family: ${({ theme, ...props }) => theme.font.secondary};
+  font-weight: ${({ theme, ...props }) => theme.font.weightBold};
 `;
 
 export const Paragraph = styled.p`

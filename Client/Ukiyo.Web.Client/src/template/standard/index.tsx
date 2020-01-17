@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 import * as S from './style';
 import Text, { TextType } from '../../components/atom/text';
-import DynamicHTML from '../../components/atom/dynamicHTML';
+import DynamicHTML from '../../components/atom/dynamic-html';
 
 type Props = {
     pageHeading?: string;
@@ -17,9 +17,11 @@ const StandardPage: React.FC<Props> = (props: Props): ReactElement => {
     const { pageHeading, pageText, contents } = props;
 
     return (
-        <S.StandardPageContainer>
-            {pageHeading && <S.StandardPageTitle>{pageHeading}</S.StandardPageTitle>}
-            {pageText && <DynamicHTML HTMLString={pageText}/>}
+        <>
+            <S.StandardPageContent>
+                {pageHeading && <S.StandardPageTitle>{pageHeading}</S.StandardPageTitle>}
+                {pageText && <DynamicHTML HTMLString={pageText}/>}
+            </S.StandardPageContent>
             {
                 contents && contents.map(c => 
                     <S.StandardPageContent>
@@ -28,7 +30,7 @@ const StandardPage: React.FC<Props> = (props: Props): ReactElement => {
                     </S.StandardPageContent>
                 )
             }
-        </S.StandardPageContainer>
+        </>
     );
 };
 
