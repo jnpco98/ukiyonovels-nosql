@@ -9,11 +9,6 @@ const reset = css`
     overflow: hidden;
   }
 
-  main {
-    width: 100%;
-    overflow: hidden;
-  }
-
   html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
   a, abbr, acronym, address, big, cite, code,
@@ -37,6 +32,7 @@ const reset = css`
     -moz-osx-font-smoothing: grayscale;
 
     &::selection {
+      color: #EEE;
       background: #7d7d7d;
     }
   }
@@ -58,13 +54,8 @@ const reset = css`
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: #161622;
   }
-
-  body {
-    line-height: 1;
-  }
-
+  
   ol, ul {
     list-style: none;
     font-family: "Roboto", Sans-Serif;

@@ -1,5 +1,6 @@
-import styled, { css } from 'styled-components/macro';
-import { pageTitleFontSize, sectionFontSize, subsectionFontSize, regularFontSize } from '../../../utilities/mixins';
+import styled from 'styled-components/macro';
+import { pageTitleFontSize, sectionFontSize, subsectionFontSize, regularFontSize, headingDecoration } from '../../../utilities/mixins';
+import * as M from '../../../settings/media';
 
 export const PageTitle = styled.h1`
   ${pageTitleFontSize};
@@ -8,7 +9,24 @@ export const PageTitle = styled.h1`
 
 export const SectionTitle = styled.h2`
   ${sectionFontSize};
+  ${headingDecoration};
+  
+  overflow: hidden;
   font-family: ${({ theme, ...props }) => theme.font.secondary};
+  font-weight: ${({ theme, ...props }) => theme.font.weightBold};
+  text-align: center;
+  padding: 0.5rem 0;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  position: relative;
+
+  ${M.MEDIA_SMALL} {
+    margin-bottom: 1.5rem;
+  }
+
+  ${M.MEDIA_MEDIUM} {
+    margin-bottom: 2rem;
+  }
 `;
 
 export const SubsectionTitle = styled.h3`

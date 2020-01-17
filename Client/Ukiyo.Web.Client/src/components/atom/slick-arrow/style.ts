@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components/macro';
 import * as M from '../../../settings/media';
 
 export const SlickArrowContainer = styled.div`
-font-size: 1rem;
+  font-size: 1rem;
   z-index: 10;
 
   &:before, &:after {

@@ -2,6 +2,7 @@ import React, { ReactElement } from 'react';
 import { Settings } from 'react-slick';
 import * as S from './style';
 import { DEFAULT_SLIDER_SETTINGS } from '../../../utilities/slider';
+import Text, { TextType } from '../../atom/text';
 
 type Props = {
     content: {
@@ -43,9 +44,7 @@ const CardCarousel: React.FC<Props> = (props: Props): ReactElement => {
     /* eslint-disable react/jsx-props-no-spreading */
     return (
         <S.InfoThumbnailContainer>
-            <S.InfoThumbnailSectionDivider>
-                {headingText && <S.InfoThumbnailHeadingText>{headingText}</S.InfoThumbnailHeadingText>}
-            </S.InfoThumbnailSectionDivider>
+            {headingText && <Text textType={TextType.SectionTitle}>{headingText}</Text>}
             <S.InfoThumbnailSlider {...sliderOptions}>{generateCardContent(0, content.length)}</S.InfoThumbnailSlider>
         </S.InfoThumbnailContainer>
     );

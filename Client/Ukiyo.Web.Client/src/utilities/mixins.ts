@@ -294,3 +294,23 @@ export const gutter = (pos: string, useMargin?: boolean) => {
   `;
   //#endregion Gutters CSS
 }
+
+export const headingDecoration = css`
+  &:before, &:after {
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50%;
+    height: 2px;
+    position: absolute;
+    background: ${({ theme, ...props }) => theme.colors.black};
+    content: '';
+  }
+
+  &:before {
+    margin-left: -51%;
+  }
+
+  &:after { 
+    margin-left: 1%;
+  }
+`;

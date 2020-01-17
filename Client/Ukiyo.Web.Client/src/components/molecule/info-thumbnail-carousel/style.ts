@@ -35,29 +35,6 @@ export const InfoThumbnailContainer = styled.div`
   }
 `;
 
-export const InfoThumbnailSectionDivider = styled.div`
-  display: flex;
-  align-items: center;
-  width: 100%;
-  color: ${({ theme, ...props }) => theme.colors.black};
-  border-bottom: 2px solid ${({ theme, ...props }) => theme.colors.black};
-  padding: 0.5rem 0;
-  text-transform: uppercase;
-  margin-bottom: 1rem;
-
-  ${M.MEDIA_SMALL} {
-    margin-bottom: 1.5rem;
-  }
-
-  ${M.MEDIA_MEDIUM} {
-    margin-bottom: 2rem;
-  }
-`;
-
-export const InfoThumbnailHeadingText = styled(SectionTitle)`
-  font-weight: ${({ theme, ...props }) => theme.font.weightBold};
-`;
-
 export const InfoThumbnailItem = styled(InfoThumbnail)`
   margin-right: 0.65rem;
 

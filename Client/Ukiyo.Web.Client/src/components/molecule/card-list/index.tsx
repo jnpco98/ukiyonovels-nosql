@@ -1,5 +1,6 @@
 import React from 'react';
 import * as S from './style';
+import Text, { TextType } from '../../atom/text';
 
 type Props = {
     headingText?: string;
@@ -21,9 +22,7 @@ const InfoCardList: React.FC<Props> = (props: Props) => {
     const { headingText, content } = props;
     return (
         <S.CardListContainer>
-            <S.CardListSectionDivider>
-                {headingText && <S.CardListHeadingText>{headingText}</S.CardListHeadingText>}
-            </S.CardListSectionDivider>
+            {headingText && <Text textType={TextType.SectionTitle}>{headingText}</Text>}
             {content.map(({ title, link, imgSrc, description, meta }) => (
                 <S.CardListItem
                     key={title + description}

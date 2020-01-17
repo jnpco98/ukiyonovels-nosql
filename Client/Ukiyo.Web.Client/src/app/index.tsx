@@ -2,31 +2,27 @@ import React, { ReactElement, useState } from 'react';
 import { ThemeProvider } from 'styled-components/macro';
 import { AppContainer } from './style';
 import { BaseTheme } from '../settings/theme';
-import { navigation } from '../settings/config/settings.json';
+import { navigation, copyright } from '../settings/config/settings.json';
 
 // eslint-disable-next-line
 import 'simplebar/dist/simplebar.min.css';
 import NavigationMenu from '../components/molecule/menu';
-import HeroBanner from '../components/molecule/image-carousel';
-import CardCarousel from '../components/molecule/info-thumbnail-carousel';
-import InfoCardList from '../components/molecule/card-list';
-import RatingList from '../components/molecule/rating-list';
-import QuickSearch from '../components/molecule/quicksearch';
 
 import NovelList from '../components/molecule/novel-list';
-import Home from '../pages/home';
-import List from '../pages/list';
-import LatestUpdates from '../pages/latest-updates';
-
+import Home from '../template/home';
+import List from '../template/list';
+import LatestUpdates from '../template/latest-updates';
+import StandardPage from '../template/standard';
 
 const App: React.FC = (): ReactElement => {
     return (
         <ThemeProvider theme={BaseTheme}>
             <AppContainer>
                 <NavigationMenu menuItems={navigation.items} />
-                {/* <Home/> */}
-                {/* <List/> */}
+                <Home/>
+                <List/>
                 <LatestUpdates/>
+                <StandardPage pageHeading={copyright.pageHeading} pageText={copyright.pageText} contents={copyright.contents}/>
             </AppContainer>
         </ThemeProvider>
     );

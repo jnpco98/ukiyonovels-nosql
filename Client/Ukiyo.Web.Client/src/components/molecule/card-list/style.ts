@@ -2,9 +2,7 @@ import styled from 'styled-components/macro';
 import InfoCard from '../../atom/info-card';
 import * as M from '../../../settings/media';
 import { gutter, GUTTER_LEFT, GUTTER_RIGHT } from '../../../utilities/mixins';
-import Text, { TextType } from '../../atom/text';
 import { margin } from 'polished';
-import { SectionTitle } from '../../atom/text/style';
 
 export const CardListContainer = styled.div`
   margin: 0.65rem 0;
@@ -29,25 +27,6 @@ export const CardListContainer = styled.div`
   }
 `;
 
-export const CardListSectionDivider = styled.div`
-  display: flex;
-  align-items: center;
-  width: 100%;
-  color: ${({ theme, ...props }) => theme.colors.black};
-  border-bottom: 2px solid ${({ theme, ...props }) => theme.colors.black};
-  padding: 0.5rem 0;
-  text-transform: uppercase;
-  margin-bottom: 1rem;
-
-  ${M.MEDIA_SMALL} {
-    margin-bottom: 1.5rem;
-  }
-
-  ${M.MEDIA_MEDIUM} {
-    margin-bottom: 2rem;
-  }
-`;
-
 export const CardListItem = styled(InfoCard)`
   margin-bottom: 2rem;
   position: relative;
@@ -63,8 +42,4 @@ export const CardListItem = styled(InfoCard)`
       left: 0;
     }
   }
-`;
-
-export const CardListHeadingText = styled(SectionTitle)`
-  font-weight: ${({ theme, ...props }) => theme.font.weightBold};
 `;

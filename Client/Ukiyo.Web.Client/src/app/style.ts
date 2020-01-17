@@ -7,6 +7,9 @@ export const AppContainer = styled.main`
   background: ${({ theme, ...props }) => theme.colors.backgroundAlternate};
   margin: 0 auto;
   min-height: 100rem;
+  line-height: 1.1;
+  width: 100%;
+  overflow: hidden;
 
   .simplebar-scrollbar:before {
     background: ${({ theme, ...props }) => theme.colors.primary};
