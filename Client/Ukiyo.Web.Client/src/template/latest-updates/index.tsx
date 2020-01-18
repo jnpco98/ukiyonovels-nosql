@@ -254,8 +254,3 @@ const LatestUpdates: React.FC = (): ReactElement => {
 };
 
 export default LatestUpdates;
-
-
-// STANDARD PAGES
-
-// NOVEL PAGE

@@ -4,6 +4,7 @@ import NovelDetails from '../../components/atom/novel-details';
 import * as S from './style';
 import Text, { TextType } from '../../components/atom/text';
 import DynamicHTML from '../../components/atom/dynamic-html';
+import Accordion from '../../components/atom/accordion';
 
 const title = "Martial God Asura";
 const type = ["Chinese Novel"];
@@ -19,6 +20,10 @@ const relatedSeries = ["A Martial Odyssey", "A Mistaken Marriage Match – A Gen
 const description = "<p>Even if you have potential, it does not mean you are a genius. You can learn mysterious martial arts, and you can learn without a teacher.</p><p>Even if you have strength, despite having numerous precious treasures, you may not be able to defeat my spirit army.</p><p>Who am I? Every living thing in the world views me as Asura, but I didn’t know, so I became a martial god as Asura.</p>";
 
 const generateClassification = (strs: string[]) => strs.map(str => ({ name: str, link: '#' }));
+
+const content = [
+    { heading: "Download Links", content: <NovelDetails details={generateClassification(tags)}/> }
+]
 
 const Novel: React.FC = (): ReactElement => {
     return(
@@ -46,7 +51,9 @@ const Novel: React.FC = (): ReactElement => {
 
             <NovelDetails headingText="Alternative Names" details={generateClassification(altNames)}/>
             <NovelDetails headingText="Related Series" details={generateClassification(relatedSeries)}/>
-            <NovelDetails headingText="You May Also Like" details={generateClassification(relatedSeries)}/> 
+            <NovelDetails headingText="You May Also Like" details={generateClassification(relatedSeries)}/>
+
+            <Accordion accordionContent={content} />
         </>
     );
 }

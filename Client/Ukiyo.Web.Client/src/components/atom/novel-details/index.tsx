@@ -3,7 +3,7 @@ import * as S from './style';
 import Text, { TextType } from '../text';
 
 type Props = {
-    headingText: string;
+    headingText?: string;
     details: {
         name: string;
         link: string;

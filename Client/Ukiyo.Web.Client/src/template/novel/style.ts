@@ -1,22 +1,14 @@
-import { regularFontSize, gutter, GUTTER_RIGHT, GUTTER_LEFT } from "../../utilities/mixins";
+import { regularFontSize, gutter, GUTTER_RIGHT, GUTTER_LEFT, ratioImage } from "../../utilities/mixins";
 import styled from "styled-components";
 import { SubsectionTitle, SectionTitle } from "../../components/atom/text/style";
 import * as M from '../../settings/media';
 import { margin } from "polished";
 
-export const NovelPortraitWrapper = styled.div`
-  position: relative;
-  width: 100%;
-  padding-bottom: 150%;
+export const NovelPortrait = styled.img`
 `;
 
-export const NovelPortrait = styled.img`
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  object-fit: cover;
-  top: 0;
-  left: 0;
+export const NovelPortraitWrapper = styled.div`
+  ${ratioImage(NovelPortrait, '100%', '150%')};
 `;
 
 export const NovelContent = styled.div`

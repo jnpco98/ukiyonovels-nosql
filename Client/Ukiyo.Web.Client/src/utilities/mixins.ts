@@ -314,3 +314,18 @@ export const headingDecoration = css`
     margin-left: 1%;
   }
 `;
+
+export const ratioImage = (image: AnyStyledComponent, width: string, height?: string) => css`
+  position: relative;
+  width: 100%;
+  padding-bottom: 150%;
+
+  ${image} {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+  }
+`;

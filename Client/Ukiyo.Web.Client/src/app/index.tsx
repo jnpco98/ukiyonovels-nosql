@@ -13,7 +13,8 @@ import Novels from '../template/novels';
 import LatestUpdates from '../template/latest-updates';
 import StandardPage from '../template/standard';
 import Novel from '../template/novel';
-import Accordion from '../components/atom/accordion';
+import PageNotFound from '../template/404';
+import SearchPage from '../template/search';
 
 
 const App: React.FC = (): ReactElement => {
@@ -27,9 +28,9 @@ const App: React.FC = (): ReactElement => {
                 <LatestUpdates/>
                 <StandardPage pageHeading={copyright.pageHeading} pageText={copyright.pageText}/>
                 <StandardPage pageHeading={privacy.pageHeading} pageText={privacy.pageText} contents={privacy.contents}/>
-                <StandardPage pageHeading={termsOfService.pageHeading} pageText={termsOfService.pageText} contents={termsOfService.contents} /> */}
-                <Novel/>
-                <Accordion multiple={false} />
+                <StandardPage pageHeading={termsOfService.pageHeading} pageText={termsOfService.pageText} contents={termsOfService.contents} /> 
+                <PageNotFound />*/}
+                <SearchPage/>
             </AppContainer>
         </ThemeProvider>
     );

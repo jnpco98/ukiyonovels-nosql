@@ -42,12 +42,12 @@ export const AccordionTabLabel = styled.label<LabelStyleProps>`
   display: flex;
   justify-content: space-between;
   padding: 1rem;
-  background: black;
+  background: ${({ theme, ...props }) => theme.colors.accent};
   font-weight: bold;
   cursor: pointer;
 
   &:hover {
-    background: greenyellow;
+    background: ${({ theme, ...props }) => theme.colors.accent};
   }
 `;
 
@@ -64,10 +64,10 @@ export const AccordionTabLabelIcon = styled(FontAwesomeIcon).attrs({
 
 export const AccordionContent = styled.div`
   max-height: 0;
-  padding: 0 1rem;
   color: black;
-  background: white;
+  background: ${({ theme, ...props }) => theme.colors.white};
   transition: all .25s;
+  overflow: hidden;
 `;
 
 export const AccordionTabTrigger = styled.input`
@@ -77,7 +77,7 @@ export const AccordionTabTrigger = styled.input`
 
   &:checked {
     + ${AccordionTabLabel} {
-      background: greenyellow;
+      background: ${({ theme, ...props }) => theme.colors.accent};
 
       ${AccordionTabLabelIcon} {
         transform: rotate(90deg);
@@ -86,7 +86,7 @@ export const AccordionTabTrigger = styled.input`
 
     ~ ${AccordionContent} {
       max-height: 30rem;
-      padding: 1rem;
+      padding: 0.3rem 0;
     }
   }
 `;
