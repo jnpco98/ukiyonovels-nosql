@@ -19,6 +19,7 @@ export const SectionTitle = styled.h2`
   text-transform: uppercase;
   margin-bottom: 1rem;
   position: relative;
+  width: 100%;
 
   ${M.MEDIA_SMALL} {
     margin-bottom: 1.5rem;

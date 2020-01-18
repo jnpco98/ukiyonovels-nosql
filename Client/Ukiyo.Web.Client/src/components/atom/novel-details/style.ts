@@ -4,7 +4,7 @@ import { gutter, GUTTER_LEFT, GUTTER_RIGHT, regularFontSize } from '../../../uti
 import * as M from '../../../settings/media';
 import { margin } from 'polished';
 
-export const TypeListContainer = styled.div`
+export const NovelDetailsContainer = styled.div`
   width: 100%;
   margin: 0.65rem 0;
 
@@ -20,7 +20,7 @@ export const TypeListContainer = styled.div`
   }
 `;
 
-export const TypeTitle = styled(SubsectionTitle)`
+export const NovelDetailsType = styled(SubsectionTitle)`
   ${regularFontSize};
   margin-bottom: 0.3rem;
 
@@ -29,12 +29,12 @@ export const TypeTitle = styled(SubsectionTitle)`
   }
 `;
 
-export const TypeListClassifications = styled.ul`
+export const NovelDetailsList = styled.ul`
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
 `;
 
-export const TypeListClassificationsItem = styled.li`
+export const NovelDetailsItem = styled.li`
   margin-right: 0.5rem;
 
   &:hover {
