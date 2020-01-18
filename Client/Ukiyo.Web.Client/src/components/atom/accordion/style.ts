@@ -3,6 +3,8 @@ import { SubsectionTitle } from '../text/style';
 import { gutter, GUTTER_LEFT, GUTTER_RIGHT, regularFontSize } from '../../../utilities/mixins';
 import * as M from '../../../settings/media';
 import { margin } from 'polished';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 export const AccordionContainer = styled.div`
   width: 100%;
@@ -21,14 +23,14 @@ export const AccordionContainer = styled.div`
 `;
 
 export const AccordionTabs = styled.div`
-  border-radius: 0.5rem;
+  border-radius: 0.3rem;
   overflow: hidden;
   box-shadow: 0 4px 4px -2px rgba(0,0,0,0.5);
 `;
 
 export const AccordionTab = styled.div`
   width: 100%;
-  color: white;
+  color: ${({ theme, ...props }) => theme.colors.background};
   overflow: hidden;
 `;
 
@@ -47,14 +49,17 @@ export const AccordionTabLabel = styled.label<LabelStyleProps>`
   &:hover {
     background: greenyellow;
   }
+`;
 
-  &:after {
-    content: ">";
-    width: 1rem;
-    height: 1rem;
-    text-align: center;
-    transition: all .25s;
-  }
+export const AccordionTabLabelText = styled(SubsectionTitle)`
+  ${regularFontSize};
+`;
+
+export const AccordionTabLabelIcon = styled(FontAwesomeIcon).attrs({
+  icon: faArrowRight
+})`
+  font-size: 0.7rem;
+  transition: all 0.3s ease;
 `;
 
 export const AccordionContent = styled.div`
@@ -74,7 +79,7 @@ export const AccordionTabTrigger = styled.input`
     + ${AccordionTabLabel} {
       background: greenyellow;
 
-      &:after {
+      ${AccordionTabLabelIcon} {
         transform: rotate(90deg);
       }
     }
