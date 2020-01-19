@@ -2,7 +2,7 @@ import React, { ReactElement, forwardRef } from 'react';
 import { AnyStyledComponent } from 'styled-components/macro';
 import * as S from './style';
 
-export enum MenuType {
+export enum MenuHamburgerType {
     SpeedRunner,
     NoEntry,
     Spread,
@@ -10,7 +10,7 @@ export enum MenuType {
 }
 
 type Props = {
-    type?: MenuType;
+    type?: MenuHamburgerType;
     active?: boolean;
     className?: string;
 };
@@ -30,19 +30,19 @@ const Hamburger: React.FC<Props> = (props: Props, ref: React.RefObject<HTMLEleme
 
     switch (type) {
         default:
-        case MenuType.NoEntry:
+        case MenuHamburgerType.NoEntry:
             StyledHamburger = S.NoEntry;
             spanCount = 6;
             break;
-        case MenuType.SpeedRunner:
+        case MenuHamburgerType.SpeedRunner:
             StyledHamburger = S.SpeedRunner;
             spanCount = 3;
             break;
-        case MenuType.Spread:
+        case MenuHamburgerType.Spread:
             StyledHamburger = S.Spread;
             spanCount = 4;
             break;
-        case MenuType.Tear:
+        case MenuHamburgerType.Tear:
             StyledHamburger = S.Tear;
             spanCount = 3;
             break;
