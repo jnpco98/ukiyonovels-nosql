@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-import QuickSearch from '../../components/molecule/quicksearch';
+import QuickSearch from '../../components/organism/quick-search';
 import NovelList from '../../components/organism/novel-list';
 import RatingList from '../../components/organism/rating-list';
 

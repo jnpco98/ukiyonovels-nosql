@@ -1,10 +1,10 @@
-import styled from 'styled-components/macro';
+import styled, { css } from 'styled-components/macro';
 import { SubsectionTitle } from '../../atom/text/style';
 import { gutter, GUTTER_LEFT, GUTTER_RIGHT, regularFontSize } from '../../../utilities/mixins';
 import * as M from '../../../settings/media';
 import { margin } from 'polished';
 
-export const NovelDetailsContainer = styled.div`
+export const ClassificationsContainer = styled.div`
   width: 100%;
   margin: 0.65rem 0;
 
@@ -20,7 +20,7 @@ export const NovelDetailsContainer = styled.div`
   }
 `;
 
-export const NovelDetailsType = styled(SubsectionTitle)`
+export const ClassificationsHeading = styled(SubsectionTitle)`
   ${regularFontSize};
   margin-bottom: 0.3rem;
 
@@ -29,12 +29,23 @@ export const NovelDetailsType = styled(SubsectionTitle)`
   }
 `;
 
-export const NovelDetailsList = styled.ul`
+type ListStyleProps = {
+  inline?: boolean;
+}
+
+export const ClassificationsList = styled.ul<ListStyleProps>`
   display: flex;
-  flex-direction: column;
+  ${props => 
+    props.inline ?
+      css`
+        flex-wrap: wrap;
+      `:
+      css`
+        flex-direction: column;
+      `}
 `;
 
-export const NovelDetailsItem = styled.li`
+export const ClassificationsItem = styled.li`
   margin-right: 0.5rem;
 
   &:hover {

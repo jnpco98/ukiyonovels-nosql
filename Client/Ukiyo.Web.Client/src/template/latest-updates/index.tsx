@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
-import InfoCardList from '../../components/organism/card-list';
+import InfoCardList from '../../components/organism/info-card-list';
 import RatingList from '../../components/organism/rating-list';
-import QuickSearch from '../../components/molecule/quicksearch';
+import QuickSearch from '../../components/organism/quick-search';
 
 const infoCardContent = [
     {

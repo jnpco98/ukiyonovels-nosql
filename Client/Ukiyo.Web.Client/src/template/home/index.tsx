@@ -1,9 +1,9 @@
 import React, { ReactElement } from 'react';
-import HeroBanner from '../../components/organism/image-carousel';
-import CardCarousel from '../../components/organism/info-thumbnail-carousel';
-import InfoCardList from '../../components/organism/card-list';
+import ImageCarousel from '../../components/organism/image-carousel';
+import InfoThumbnailCarousel from '../../components/organism/info-thumbnail-carousel';
+import InfoCardList from '../../components/organism/info-card-list';
 import RatingList from '../../components/organism/rating-list';
-import QuickSearch from '../../components/molecule/quicksearch';
+import QuickSearch from '../../components/organism/quick-search';
 
 const cardContent = [
     {
@@ -381,8 +381,8 @@ const novels = [
 const Home: React.FC = (): ReactElement => {
     return (
         <>
-            <HeroBanner />
-            <CardCarousel content={cardContent} headingText="Featured Novels" />
+            <ImageCarousel />
+            <InfoThumbnailCarousel content={cardContent} headingText="Featured Novels" />
             <InfoCardList content={infoCardContent} headingText="Latest Release" />
             <RatingList headingText="Popular Novels" contents={ratings} />
             <QuickSearch

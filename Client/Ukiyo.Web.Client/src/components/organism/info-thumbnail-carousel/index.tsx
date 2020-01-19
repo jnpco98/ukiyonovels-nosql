@@ -15,7 +15,7 @@ type Props = {
     headingText?: string;
 };
 
-const CardCarousel: React.FC<Props> = (props: Props): ReactElement => {
+const InfoThumbnailCarousel: React.FC<Props> = (props: Props): ReactElement => {
     const { content, headingText } = props;
 
     const sliderOptions: Settings = {
@@ -51,4 +51,4 @@ const CardCarousel: React.FC<Props> = (props: Props): ReactElement => {
     /* eslint-enable react/jsx-props-no-spreading */
 };
 
-export default CardCarousel;
+export default InfoThumbnailCarousel;

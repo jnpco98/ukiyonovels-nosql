@@ -6,7 +6,7 @@ import { navigation, copyright, privacy, termsOfService } from '../settings/conf
 
 // eslint-disable-next-line
 import 'simplebar/dist/simplebar.min.css';
-import Header from '../components/molecule/header';
+import Header from '../components/organism/header';
 
 import Home from '../template/home';
 import Novels from '../template/novels';
@@ -33,7 +33,7 @@ const App: React.FC = (): ReactElement => {
                 <StandardPage pageHeading={privacy.pageHeading} pageText={privacy.pageText} contents={privacy.contents}/>
                 <StandardPage pageHeading={termsOfService.pageHeading} pageText={termsOfService.pageText} contents={termsOfService.contents} /> 
                 <PageNotFound />*/}
-                <Novels/>
+                <Novel/>
             </AppContainer>
         </ThemeProvider>
     );

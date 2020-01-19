@@ -6,7 +6,7 @@ import { DEFAULT_SLIDER_SETTINGS } from '../../../utilities/slider';
 import * as S from './style';
 import { truncate } from '../../../utilities/string';
 
-const HeroBanner: React.FC = (): ReactElement => {
+const ImageCarousel: React.FC = (): ReactElement => {
     const sliderOptions: Settings = {
         ...DEFAULT_SLIDER_SETTINGS,
         prevArrow: <S.Arrow />,
@@ -49,4 +49,4 @@ const HeroBanner: React.FC = (): ReactElement => {
     /* eslint-enable react/jsx-props-no-spreading */
 };
 
-export default HeroBanner;
+export default ImageCarousel;

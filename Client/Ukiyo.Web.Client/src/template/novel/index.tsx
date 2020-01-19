@@ -1,6 +1,5 @@
 import React, { ReactElement } from 'react';
-import TypeList from '../../components/molecule/type-list';
-import NovelDetails from '../../components/molecule/novel-details';
+import Classifications from '../../components/molecule/classifications';
 import * as S from './style';
 import Text, { TextType } from '../../components/atom/text';
 import DynamicHTML from '../../components/molecule/dynamic-html';
@@ -22,7 +21,7 @@ const description = "<p>Even if you have potential, it does not mean you are a g
 const generateClassification = (strs: string[]) => strs.map(str => ({ name: str, link: '#' }));
 
 const content = [
-    { heading: "Download Links", content: <NovelDetails details={generateClassification(tags)}/> }
+    { heading: "Download Links", content: <Classifications classifications={generateClassification(tags)}/> }
 ]
 
 const Novel: React.FC = (): ReactElement => {
@@ -35,23 +34,23 @@ const Novel: React.FC = (): ReactElement => {
                 </S.NovelPortraitWrapper>
             </S.NovelContent>
 
-            <TypeList headingText="Type" classifications={generateClassification(type)}/>
-            <TypeList headingText="Genre" classifications={generateClassification(genre)}/>
-            <TypeList headingText="Tags" classifications={generateClassification(tags)}/>
-            <NovelDetails headingText="Language" details={generateClassification(language)}/>
-            <NovelDetails headingText="Author(s)" details={generateClassification(author)}/>
-            <NovelDetails headingText="Artist(s)" details={generateClassification(artist)}/>
-            <NovelDetails headingText="Year" details={generateClassification(year)}/>
-            <NovelDetails headingText="Status" details={generateClassification(status)}/>
+            <Classifications headingText="Type" classifications={generateClassification(type)} inline/>
+            <Classifications headingText="Genre" classifications={generateClassification(genre)} inline/>
+            <Classifications headingText="Tags" classifications={generateClassification(tags)} inline/>
+            <Classifications headingText="Language" classifications={generateClassification(language)}/>
+            <Classifications headingText="Author(s)" classifications={generateClassification(author)}/>
+            <Classifications headingText="Artist(s)" classifications={generateClassification(artist)}/>
+            <Classifications headingText="Year" classifications={generateClassification(year)}/>
+            <Classifications headingText="Status" classifications={generateClassification(status)}/>
 
             <S.NovelContent>
                 <S.NovelHeadingTitle>Description</S.NovelHeadingTitle>
                 {description && <DynamicHTML HTMLString={description}/>}
             </S.NovelContent>
 
-            <NovelDetails headingText="Alternative Names" details={generateClassification(altNames)}/>
-            <NovelDetails headingText="Related Series" details={generateClassification(relatedSeries)}/>
-            <NovelDetails headingText="You May Also Like" details={generateClassification(relatedSeries)}/>
+            <Classifications headingText="Alternative Names" classifications={generateClassification(altNames)}/>
+            <Classifications headingText="Related Series" classifications={generateClassification(relatedSeries)}/>
+            <Classifications headingText="You May Also Like" classifications={generateClassification(relatedSeries)}/>
 
             <Accordion accordionContent={content} />
         </>
