@@ -2,14 +2,15 @@ import styled, { css } from 'styled-components/macro';
 import * as M from '../../../settings/media';
 import { Anchor } from '../../atom/text/style';
 import { math } from 'polished';
-import HamburgerMenu from '../../atom/hamburger';
+import Hamburger from '../../atom/hamburger';
 import { center, FLEX_ALIGN_MAIN } from '../../../utilities/mixins';
+import SideDrawer from '../../atom/drawer';
 
-type MenuItemStyleProps = {
+type HeaderMenuItemStyleProps = {
   active?: boolean;
 }
 
-const menuItemDefaultStyle = css<MenuItemStyleProps>`
+const menuItemDefaultStyle = css<HeaderMenuItemStyleProps>`
   ${center(FLEX_ALIGN_MAIN)};
   color: ${({ theme, ...props }) => props.active ? theme.colors.background : theme.colors.accent};
   text-transform: uppercase;
@@ -41,49 +42,7 @@ const menuItemDefaultStyle = css<MenuItemStyleProps>`
   }
 `;
 
-type ContainerStyleProps = {
-  floating?: boolean;
-}
-
-export const MenuContainer = styled.div<ContainerStyleProps>`
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  position: fixed;
-  transition: all 0.2s ease;
-  z-index: 50;
-  background: transparent;
-  max-width: ${({ theme, ...props }) => theme.maxScreenSize};
-
-  ul {
-    display: flex;
-    max-width: 80%;
-  }
-
-  ${props =>
-    props.floating &&
-      css`
-        font-size: 0.9rem;
-        position: fixed;
-        background: ${({ theme, ...props }) => theme.colors.background};
-        box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
-      `
-    }
-
-  ${M.MEDIA_XXSMALL} {
-    min-height: 4rem;
-  }
-
-  ${M.MEDIA_XSMALL} {
-    min-height: 5rem;
-  }
-
-  ${M.MEDIA_XLARGE} {
-    min-height: 6rem;
-  }
-`;
-
-export const MenuLeft = styled.ul`
+export const HeaderLeftMenu = styled.ul`
   ${M.MEDIA_XXSMALL} {
     padding-left: 1rem;
   }
@@ -93,7 +52,7 @@ export const MenuLeft = styled.ul`
   }
 `;
 
-export const MenuRight = styled.ul`
+export const HeaderRightMenu = styled.ul`
   ${M.MEDIA_XXSMALL} {
     padding-right: 1rem;
   }
@@ -103,7 +62,10 @@ export const MenuRight = styled.ul`
   }
 `;
 
-export const MenuItemLink = styled(Anchor)`  
+export const HeaderSideDrawerMenu = styled.ul`
+`;
+
+export const HeaderMenuItemLink = styled(Anchor)`  
   ${({ theme, ...props }) =>
     css`
       font-size: ${math(`${theme.font.baseSize} * 0.7`)};
@@ -122,7 +84,7 @@ export const MenuItemLink = styled(Anchor)`
   `};
 `;
 
-export const MenuItem = styled.li<MenuItemStyleProps>`
+export const HeaderMenuItem = styled.li<HeaderMenuItemStyleProps>`
   ${menuItemDefaultStyle};
 
   ${M.MEDIA_XXSMALL} {
@@ -140,7 +102,7 @@ export const MenuItem = styled.li<MenuItemStyleProps>`
   background: ${({ theme, ...props }) => props.active ? theme.colors.accent: ''};
 `;
 
-export const MenuUserLink = styled.li`
+export const HeaderUserLink = styled.li`
   ${menuItemDefaultStyle};
   transition: background 0.09s ease-in;
 
@@ -166,7 +128,7 @@ export const MenuUserLink = styled.li`
   }
 `;
 
-export const MenuHamburger = styled.li`
+export const HeaderHamburger = styled.li`
   ${menuItemDefaultStyle};
   transition: background 0.09s ease-in;
   padding: 1rem 0;
@@ -178,63 +140,68 @@ export const MenuHamburger = styled.li`
 
 type HamburgerIconStyleProps = {
   active: boolean;
-  clientRect: ClientRect;
-  screenOffset: {
-    top: number;
-    left: number;
-  }
 }
 
-export const MenuHamburgerIcon = styled(HamburgerMenu)<HamburgerIconStyleProps>`
+export const HeaderHamburgerIcon = styled(Hamburger)<HamburgerIconStyleProps>`
   transition: transform 0.3s ease;
 `;
 
-type DrawerStyleProps = {
-  sidenavActive: boolean;
-  topOffset?: string;
-  zIndex?: number;
+type ContainerStyleProps = {
+  floating?: boolean;
 }
 
-export const MenuDrawer = styled.div<DrawerStyleProps>`
-  position: fixed;
-  background: ${({ theme, ...props }) => theme.colors.background};
-  overflow: hidden;
-  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
-  z-index: ${props => props.zIndex || 5};
-
-  top: 0;
-  left: 0;
-  height: 100%;
+export const HeaderContainer = styled.div<ContainerStyleProps>`
+  display: flex;
+  justify-content: space-between;
   width: 100%;
-  max-width: 17rem;
+  position: fixed;
+  transition: all 0.2s ease;
+  z-index: 50;
+  background: transparent;
+  max-width: ${({ theme, ...props }) => theme.maxScreenSize};
 
-  li {
-    white-space: nowrap;
+  ${HeaderLeftMenu}, ${HeaderRightMenu} {
+    display: flex;
+    max-width: 80%;
   }
-  
-  ${props => 
-    props.sidenavActive ?
-      css`
-        opacity: 1;
-        transform: translateX(0);
-      ` :
-      css`
-        opacity: 0;
-        transform: translateX(-100%);
-      `}
 
-  ${MenuItem}:first-child {
+  ${props =>
+    props.floating &&
+      css`
+        font-size: 0.9rem;
+        position: fixed;
+        background: ${({ theme, ...props }) => theme.colors.background};
+        box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+      `
+    }
+
+  ${M.MEDIA_XXSMALL} {
+    min-height: 4rem;
+  }
+
+  ${M.MEDIA_XSMALL} {
+    min-height: 5rem;
+  }
+
+  ${M.MEDIA_XLARGE} {
+    min-height: 6rem;
+  }
+
+`;
+
+export const HeaderSideDrawer = styled(SideDrawer)`
+  ${HeaderMenuItem}:first-child {
     margin-top: 4rem;
   }
 
-  ${MenuItem}:last-child {
+  ${HeaderMenuItem}:last-child {
     margin-bottom: 0.5rem;
   }
 
   ${M.MEDIA_XXSMALL} {
     max-width: 23rem;
 
-    ${MenuItem}:first-child {
+    ${HeaderMenuItem}:first-child {
       margin-top: 4.5rem;
     }
   }
@@ -242,16 +209,8 @@ export const MenuDrawer = styled.div<DrawerStyleProps>`
   ${M.MEDIA_XSMALL} {
     max-width: 28rem;
 
-    ${MenuItem}:first-child {
+    ${HeaderMenuItem}:first-child {
       margin-top: 5.5rem;
     }
-  }
-
-  ${M.MEDIA_SMALL} {
-    max-width: 28rem;
-  }
-
-  ${M.MEDIA_MEDIUM} {
-    max-width: 45rem;
   }
 `;

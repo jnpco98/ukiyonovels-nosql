@@ -64,27 +64,19 @@ export const InfoCardMeta = styled.div`
   }
 `;
 
-export const InfoCardCalendarIcon = styled(FontAwesomeIcon).attrs({
-  icon: faCalendarAlt
-})`
+export const InfoCardCalendarIcon = styled(FontAwesomeIcon).attrs({ icon: faCalendarAlt })`
   margin-right: 0.3rem;
 `;
 
-export const InfoCardLikesIcon = styled(FontAwesomeIcon).attrs({
-  icon: faHeart
-})`
+export const InfoCardLikesIcon = styled(FontAwesomeIcon).attrs({ icon: faHeart })`
   margin-right: 0.3rem;
 `;
 
-export const InfoCardViewsIcon = styled(FontAwesomeIcon).attrs({
-  icon: faEye
-})`
+export const InfoCardViewsIcon = styled(FontAwesomeIcon).attrs({ icon: faEye })`
   margin-right: 0.3rem;
 `;
 
-export const InfoCardText = styled(Text).attrs({
-  textType: TextType.Span
-})`
+export const InfoCardText = styled(Text).attrs({ textType: TextType.Span })`
   margin-right: 0.7rem;
   margin-bottom: 0.2rem;
 `;

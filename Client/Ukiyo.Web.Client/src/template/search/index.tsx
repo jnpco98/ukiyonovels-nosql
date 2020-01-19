@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
-import InfoCardList from '../../components/molecule/card-list';
-import RatingList from '../../components/molecule/rating-list';
+import InfoCardList from '../../components/organism/card-list';
+import RatingList from '../../components/organism/rating-list';
 import QuickSearch from '../../components/molecule/quicksearch';
 
 const infoCardContent = [

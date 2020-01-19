@@ -6,7 +6,7 @@ import { navigation, copyright, privacy, termsOfService } from '../settings/conf
 
 // eslint-disable-next-line
 import 'simplebar/dist/simplebar.min.css';
-import NavigationMenu from '../components/molecule/menu';
+import Header from '../components/molecule/header';
 
 import Home from '../template/home';
 import Novels from '../template/novels';
@@ -23,7 +23,7 @@ const App: React.FC = (): ReactElement => {
     return (
         <ThemeProvider theme={BaseTheme}>
             <AppContainer>
-                <NavigationMenu menuItems={navigation.items} />
+                <Header menuItems={navigation.items} />
                 {/* <Home/>
                 <Novel/>
                 <Novels/> 

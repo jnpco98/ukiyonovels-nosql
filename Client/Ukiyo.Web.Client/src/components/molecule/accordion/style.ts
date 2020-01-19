@@ -4,7 +4,7 @@ import { gutter, GUTTER_LEFT, GUTTER_RIGHT, regularFontSize } from '../../../uti
 import * as M from '../../../settings/media';
 import { margin } from 'polished';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 export const AccordionContainer = styled.div`
   width: 100%;
@@ -55,9 +55,7 @@ export const AccordionTabLabelText = styled(SubsectionTitle)`
   ${regularFontSize};
 `;
 
-export const AccordionTabLabelIcon = styled(FontAwesomeIcon).attrs({
-  icon: faArrowRight
-})`
+export const AccordionTabLabelIcon = styled(FontAwesomeIcon).attrs({ icon: faArrowRight })`
   font-size: 0.7rem;
   transition: all 0.3s ease;
 `;

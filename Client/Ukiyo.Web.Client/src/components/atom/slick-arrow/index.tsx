@@ -9,7 +9,7 @@ type Props = {
     onClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 };
 
-const CustomSlickArrow: React.FC<Props> = (props: Props) => {
+const SlickArrow: React.FC<Props> = (props: Props) => {
     const { className, onClick, children } = props;
 
     /* eslint-disable  */
@@ -17,4 +17,4 @@ const CustomSlickArrow: React.FC<Props> = (props: Props) => {
     /* eslint-enable  */
 };
 
-export default CustomSlickArrow;
+export default SlickArrow;

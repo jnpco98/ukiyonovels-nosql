@@ -157,9 +157,7 @@ export const InfoThumbnailIconWrapper = styled.div`
   transform: translate(-50%, -46%);
 `;
 
-export const InfoThumbnailReadIcon = styled(FontAwesomeIcon).attrs({
-	icon: faBookOpen
-})`
+export const InfoThumbnailReadIcon = styled(FontAwesomeIcon).attrs({ icon: faBookOpen })`
   color: ${({ theme, ...props }) => theme.colors.white};
   ${fadeInTextHover(InfoThumbnailContainer)};
 

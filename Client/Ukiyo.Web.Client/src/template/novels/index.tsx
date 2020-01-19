@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 import QuickSearch from '../../components/molecule/quicksearch';
-import NovelList from '../../components/molecule/novel-list';
-import RatingList from '../../components/molecule/rating-list';
+import NovelList from '../../components/organism/novel-list';
+import RatingList from '../../components/organism/rating-list';
 
 const ratings = [1, 2, 3, 4, 5, 6, 7].map(_ => ({
     rating: Math.random(),

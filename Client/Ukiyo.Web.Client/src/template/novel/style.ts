@@ -36,6 +36,4 @@ export const NovelHeadingTitle = styled(SubsectionTitle)`
   }
 `;
 
-export const NovelTitle = styled(SectionTitle).attrs({
-  as: 'h1'
-})``;
+export const NovelTitle = styled(SectionTitle).attrs({ as: 'h1' })``;

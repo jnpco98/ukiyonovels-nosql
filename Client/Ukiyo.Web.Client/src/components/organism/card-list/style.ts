@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro';
-import InfoCard from '../info-card';
+import InfoCard from '../../molecule/info-card';
 import * as M from '../../../settings/media';
 import { gutter, GUTTER_LEFT, GUTTER_RIGHT } from '../../../utilities/mixins';
 import { margin } from 'polished';

@@ -1,11 +1,11 @@
 import styled from 'styled-components/macro';
-import CustomSlickArrow from '../../atom/slick-arrow';
+import SlickArrow from '../../atom/slick-arrow';
 import Slick from 'react-slick';
 import * as M from '../../../settings/media';
-import InfoThumbnail from '../info-thumbnail';
+import InfoThumbnail from '../../molecule/info-thumbnail';
 import Text, { TextType } from '../../atom/text';
 import { math, margin } from 'polished';
-import { InfoThumbnailGenre, InfoThumbnailHeading, InfoThumbnailSubtitle, InfoThumbnailReadIcon } from '../info-thumbnail/style';
+import { InfoThumbnailGenre, InfoThumbnailHeading, InfoThumbnailSubtitle, InfoThumbnailReadIcon } from '../../molecule/info-thumbnail/style';
 import { cardDimRatio } from '../../atom/thumbnail/style';
 import { gutter, GUTTER_LEFT, GUTTER_RIGHT } from '../../../utilities/mixins';
 import { SectionTitle } from '../../atom/text/style';
@@ -111,5 +111,5 @@ export const InfoThumbnailSlider = styled(Slick)`
   }
 `;
 
-export const InfoThumbnailArrow = styled(CustomSlickArrow)`
+export const InfoThumbnailArrow = styled(SlickArrow)`
 `;

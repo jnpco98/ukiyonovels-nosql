@@ -15,7 +15,7 @@ type Props = {
     className?: string;
 };
 
-const HamburgerMenu: React.FC<Props> = (props: Props, ref: React.RefObject<HTMLElement>): ReactElement => {
+const Hamburger: React.FC<Props> = (props: Props, ref: React.RefObject<HTMLElement>): ReactElement => {
     const { className, active, type } = props;
 
     /* eslint-disable */
@@ -55,4 +55,4 @@ const HamburgerMenu: React.FC<Props> = (props: Props, ref: React.RefObject<HTMLE
     );
 };
 
-export default forwardRef(HamburgerMenu);
+export default forwardRef(Hamburger);

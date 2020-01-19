@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro';
 import Slick from 'react-slick';
-import CustomSlickArrow from '../../atom/slick-arrow';
+import SlickArrow from '../../atom/slick-arrow';
 import Button, { ButtonType } from '../../atom/button';
 import * as M from '../../../settings/media';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -139,7 +139,7 @@ export const ImageCarouselContent = styled.div`
   }
 `;
 
-export const Arrow = styled(CustomSlickArrow)`
+export const Arrow = styled(SlickArrow)`
 `;
 
 export const ImageCarouselHeading = styled(SubsectionTitle)`
@@ -183,9 +183,7 @@ export const ImageCarouselSubtitle = styled(Paragraph)`
   }
 `;
 
-export const ImageCarouselLinkButton = styled(Button).attrs({
-  type: ButtonType.Info
-})`
+export const ImageCarouselLinkButton = styled(Button).attrs({ type: ButtonType.Info })`
   align-self: baseline;
     z-index: 1;
 `;

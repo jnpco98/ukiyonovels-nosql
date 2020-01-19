@@ -1,8 +1,8 @@
 import React, { ReactElement } from 'react';
-import HeroBanner from '../../components/molecule/image-carousel';
-import CardCarousel from '../../components/molecule/info-thumbnail-carousel';
-import InfoCardList from '../../components/molecule/card-list';
-import RatingList from '../../components/molecule/rating-list';
+import HeroBanner from '../../components/organism/image-carousel';
+import CardCarousel from '../../components/organism/info-thumbnail-carousel';
+import InfoCardList from '../../components/organism/card-list';
+import RatingList from '../../components/organism/rating-list';
 import QuickSearch from '../../components/molecule/quicksearch';
 
 const cardContent = [

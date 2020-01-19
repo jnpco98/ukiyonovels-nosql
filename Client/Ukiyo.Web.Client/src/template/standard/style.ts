@@ -28,6 +28,4 @@ export const StandardPageContent = styled.div`
   }
 `;
 
-export const StandardPageTitle = styled(SectionTitle).attrs({
-  as: 'h1'
-})``;
+export const StandardPageTitle = styled(SectionTitle).attrs({ as: 'h1' })``;
