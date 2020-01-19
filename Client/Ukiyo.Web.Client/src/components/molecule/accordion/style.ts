@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro';
-import { SubsectionTitle } from '../text/style';
+import { SubsectionTitle } from '../../atom/text/style';
 import { gutter, GUTTER_LEFT, GUTTER_RIGHT, regularFontSize } from '../../../utilities/mixins';
 import * as M from '../../../settings/media';
 import { margin } from 'polished';

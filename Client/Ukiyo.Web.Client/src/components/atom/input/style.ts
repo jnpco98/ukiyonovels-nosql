@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components/macro';
 import { math } from 'polished';
 
-type InputStyleProps = {
+type FieldStyleProps = {
   active?: boolean;
 }
 
@@ -10,14 +10,18 @@ export const InputContainer = styled.div`
   width: 15rem;
 `;
 
-export const InputField = styled.input<InputStyleProps>`
+export const InputField = styled.input<FieldStyleProps>`
   width: 100%;
   padding-top: 1.3rem;
   border: none;
   cursor: ${props => props.active ? 'text' : 'pointer' };
 `;
 
-export const InputLabel = styled.label<InputStyleProps>`
+type LabelStyleProps = {
+  active?: boolean;
+}
+
+export const InputLabel = styled.label<LabelStyleProps>`
   position: absolute;
   top: 0;
   left: 0;
@@ -42,7 +46,7 @@ export const InputLabel = styled.label<InputStyleProps>`
   }
 `;
 
-export const InputLabelSpan = styled.span<InputStyleProps>`
+export const InputLabelSpan = styled.span<LabelStyleProps>`
   position: absolute;
   transform: translateY(120%);
   transition: all 0.3s ease;

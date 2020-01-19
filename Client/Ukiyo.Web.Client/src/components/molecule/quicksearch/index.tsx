@@ -1,6 +1,6 @@
 import React from 'react';
 import * as S from './style';
-import QSRow from '../../atom/qs-row';
+import Row from '../../atom/row';
 import Text, { TextType } from '../../atom/text';
 
 type Props = {
@@ -18,7 +18,7 @@ const QuickSearch: React.FC<Props> = (props: Props) => {
         <S.QuickSearchContainer>
             {headingText && <Text textType={TextType.SectionTitle}>{headingText}</Text>}
             {contents.map(c => (
-                <QSRow key={c.title + c.count} count={c.count} title={c.title} />
+                <Row key={c.title + c.count} count={c.count} title={c.title} bullet hoverDecoration/>
             ))}
         </S.QuickSearchContainer>
     );

@@ -1,4 +1,4 @@
-import styled from 'styled-components/macro';
+import styled, { css } from 'styled-components/macro';
 import { lighten } from 'polished';
 import { center, FLEX_ALIGN_BOTH } from '../../../utilities/mixins';
 
@@ -14,16 +14,24 @@ export const SearchInput = styled.input.attrs({ type: 'text' })`
   }
 `;
 
-export const SearchContainer = styled.div`
+type ContainerStyleProps = {
+  active?: boolean;
+}
+
+export const SearchContainer = styled.div<ContainerStyleProps>`
   ${center(FLEX_ALIGN_BOTH)};
   background: ${({ theme, ...props }) => theme.colors.backgroundAlternate};
   border-radius: 2.5rem;
-  &.active {
-    ${SearchInput} {
-      padding-left: 1rem;
-      width: 10rem;
+
+  ${props =>
+    props.active &&
+      css`
+        ${SearchInput} {
+          padding-left: 1rem;
+          width: 10rem;
+        }
+      `
     }
-  }
 `;
 
 export const SearchButton = styled.button`

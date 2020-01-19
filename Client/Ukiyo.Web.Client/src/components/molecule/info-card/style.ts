@@ -1,10 +1,10 @@
 import styled from 'styled-components/macro';
-import Button from '../button';
+import Button from '../../atom/button';
 import * as M from '../../../settings/media';
-import Text, { TextType } from '../text';
+import Text, { TextType } from '../../atom/text';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarAlt, faHeart, faEye } from '@fortawesome/free-solid-svg-icons';
-import { Paragraph, SubsectionTitle } from '../text/style';
+import { Paragraph, SubsectionTitle } from '../../atom/text/style';
 
 export const InfoCardContainer = styled.div`
   display: flex;

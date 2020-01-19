@@ -4,7 +4,6 @@ import CardCarousel from '../../components/molecule/info-thumbnail-carousel';
 import InfoCardList from '../../components/molecule/card-list';
 import RatingList from '../../components/molecule/rating-list';
 import QuickSearch from '../../components/molecule/quicksearch';
-import NovelList from '../../components/molecule/novel-list';
 
 const cardContent = [
     {

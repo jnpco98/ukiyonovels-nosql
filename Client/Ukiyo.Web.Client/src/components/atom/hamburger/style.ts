@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components/macro';
 
-type HamburgerStyleProps = {
+type ContainerStyleProps = {
   active?: boolean;
 }
 
@@ -32,7 +32,7 @@ const Line = css`
   transition: .25s ease-in-out;
 `;
 
-export const SpeedRunner = styled.div<HamburgerStyleProps>`
+export const SpeedRunner = styled.div<ContainerStyleProps>`
   ${Base};
   span {
     ${Line};
@@ -60,7 +60,7 @@ export const SpeedRunner = styled.div<HamburgerStyleProps>`
       `};
 `;
 
-export const NoEntry = styled.div<HamburgerStyleProps>`
+export const NoEntry = styled.div<ContainerStyleProps>`
   ${Base};
   span {
     display: block;
@@ -117,7 +117,7 @@ export const NoEntry = styled.div<HamburgerStyleProps>`
       `};
 `;
 
-export const Spread = styled.div<HamburgerStyleProps>`
+export const Spread = styled.div<ContainerStyleProps>`
   ${Base};
   span {
     ${Line};
@@ -149,7 +149,7 @@ export const Spread = styled.div<HamburgerStyleProps>`
       `};
 `;
 
-export const Tear = styled.div<HamburgerStyleProps>`
+export const Tear = styled.div<ContainerStyleProps>`
   ${Base};
   span {
     ${Line};

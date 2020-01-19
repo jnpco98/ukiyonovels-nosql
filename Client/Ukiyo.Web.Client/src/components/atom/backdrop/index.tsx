@@ -15,12 +15,9 @@ type Props = {
 const Backdrop: React.FC<Props> = (props: Props) => {
     const { show, className, transparent, onClick, zIndex } = props;
 
-    if (show) {
-        document.body.classList.add('no-scroll');
-    } else {
-        document.body.classList.remove('no-scroll');
-    }
-
+    if(show) document.body.classList.add('no-scroll');
+    else document.body.classList.remove('no-scroll');
+    
     return (
         <BackdropContainer
             className={className}

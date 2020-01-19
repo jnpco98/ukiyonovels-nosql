@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import * as S from './style';
-import Thumbnail from '../thumbnail';
+import Thumbnail from '../../atom/thumbnail';
 import { truncate } from '../../../utilities/string';
 import { SMALL, XXSMALL, MEDIUM } from '../../../settings/media';
 

@@ -1,14 +1,8 @@
 import React, { ReactElement } from 'react';
 import * as S from './style';
 import Text, { TextType } from '../../components/atom/text';
-import DynamicHTML from '../../components/atom/dynamic-html';
 
-type Props = {
-}
-
-const PageNotFound: React.FC<Props> = (props: Props): ReactElement => {
-    const {} = props;
-
+const PageNotFound: React.FC = (): ReactElement => {
     return (
         <>
             <S.PageNotFoundContainer>

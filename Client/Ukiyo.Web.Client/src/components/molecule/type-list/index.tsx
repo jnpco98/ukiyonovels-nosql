@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 import * as S from './style';
-import Text, { TextType } from '../text';
+import Text, { TextType } from '../../atom/text';
 
 type Props = {
     headingText: string;

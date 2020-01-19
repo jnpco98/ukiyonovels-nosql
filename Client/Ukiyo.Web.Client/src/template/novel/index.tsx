@@ -1,10 +1,10 @@
 import React, { ReactElement } from 'react';
-import TypeList from '../../components/atom/type-list';
-import NovelDetails from '../../components/atom/novel-details';
+import TypeList from '../../components/molecule/type-list';
+import NovelDetails from '../../components/molecule/novel-details';
 import * as S from './style';
 import Text, { TextType } from '../../components/atom/text';
-import DynamicHTML from '../../components/atom/dynamic-html';
-import Accordion from '../../components/atom/accordion';
+import DynamicHTML from '../../components/molecule/dynamic-html';
+import Accordion from '../../components/molecule/accordion';
 
 const title = "Martial God Asura";
 const type = ["Chinese Novel"];

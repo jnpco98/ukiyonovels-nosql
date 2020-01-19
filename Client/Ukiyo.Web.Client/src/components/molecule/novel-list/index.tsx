@@ -1,6 +1,6 @@
 import React from 'react';
 import * as S from './style';
-import NovelRow from '../../atom/novel-row';
+import Row from '../../atom/row';
 import Text, { TextType } from '../../atom/text';
 
 type Props = {
@@ -17,7 +17,7 @@ const NovelList: React.FC<Props> = (props: Props) => {
         <S.NovelListContainer>
             {headingText && <Text textType={TextType.SectionTitle}>{headingText}</Text>}
             {contents.map(c => (
-                <NovelRow key={c.title + c.link} link={c.link} title={c.title} />
+                <Row key={c.title + c.link} link={c.link} title={c.title} />
             ))}
         </S.NovelListContainer>
     );

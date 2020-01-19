@@ -3,7 +3,7 @@ import * as M from '../../../settings/media';
 import { gutter, GUTTER_LEFT, GUTTER_RIGHT } from '../../../utilities/mixins';
 import { margin } from 'polished';
 import { SectionTitle } from '../../atom/text/style';
-import { QSRowContainer } from '../../atom/qs-row/style';
+import { RowContainer } from '../../atom/row/style';
 
 export const QuickSearchContainer = styled.div`
   width: 100%;
@@ -11,14 +11,14 @@ export const QuickSearchContainer = styled.div`
   ${gutter(GUTTER_LEFT)};
   ${gutter(GUTTER_RIGHT)};
   
-  ${QSRowContainer} {
+  ${RowContainer} {
     margin-bottom: 0.5rem;
   }
 
   ${M.MEDIA_XSMALL} {
     ${margin('1rem', null, '1rem', null)};
     
-    ${QSRowContainer} {
+    ${RowContainer} {
       margin-bottom: 0.8rem;
     }
   }
@@ -34,7 +34,7 @@ export const QuickSearchContainer = styled.div`
   ${M.MEDIA_LARGE} {
     ${margin('2.5rem', null, '2.5rem', null)};
         
-    ${QSRowContainer} {
+    ${RowContainer} {
       margin-bottom: 1rem;
     }
   }

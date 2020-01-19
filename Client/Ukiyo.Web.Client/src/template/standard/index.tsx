@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 import * as S from './style';
 import Text, { TextType } from '../../components/atom/text';
-import DynamicHTML from '../../components/atom/dynamic-html';
+import DynamicHTML from '../../components/molecule/dynamic-html';
 
 type Props = {
     pageHeading?: string;

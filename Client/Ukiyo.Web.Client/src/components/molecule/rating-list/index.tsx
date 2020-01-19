@@ -1,6 +1,6 @@
 import React from 'react';
 import * as S from './style';
-import RatingBar from '../../atom/rating-bar';
+import Bar from '../../atom/bar';
 import Text, { TextType } from '../../atom/text';
 
 type Props = {
@@ -17,7 +17,7 @@ const RatingList: React.FC<Props> = (props: Props) => {
         <S.RatingListContainer>
             {headingText && <Text textType={TextType.SectionTitle}>{headingText}</Text>}
             {contents.map(c => (
-                <RatingBar key={c.title + c.rating} rating={c.rating} title={c.title} />
+                <Bar key={c.title + c.rating} fillRate={c.rating} title={c.title} />
             ))}
         </S.RatingListContainer>
     );

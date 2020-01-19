@@ -65,7 +65,7 @@ const NavigationMenu: React.FC<Props> = (props: Props): ReactElement => {
     );
 
     return (
-        <S.MenuContainer className={floating && S.CLASS_FLOATING} ref={containerRef}>
+        <S.MenuContainer floating={floating} ref={containerRef}>
             <S.MenuLeft>
                 <S.MenuHamburger onClick={(): void => setDrawerActive(!drawerActive)}>
                     <S.MenuHamburgerIcon

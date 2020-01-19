@@ -1,5 +1,4 @@
-import React, { ReactElement, useState, useContext, useRef } from 'react';
-import { ThemeContext } from 'styled-components/macro';
+import React, { ReactElement, useState, useRef } from 'react';
 import { useOnClickOutside } from '../../../utilities/hooks';
 import * as S from './style';
 
@@ -21,7 +20,6 @@ const Select = (props: Props): ReactElement => {
     const [selected, setSelected] = useState(-1);
     const [selectOpen, setSelectOpen] = useState(false);
 
-    const themeContext = useContext(ThemeContext);
     const selectRef = useRef(document.createElement('div'));
 
     useOnClickOutside(selectRef, () => setSelectOpen(false));
@@ -30,17 +28,12 @@ const Select = (props: Props): ReactElement => {
         <S.SelectContainer ref={selectRef} onClick={(): void => setSelectOpen(!selectOpen)}>
             <S.SelectOptionSelected>
                 {selected === -1 ? defaultValue : options[selected].displayName}
-                {/* <S.SelectIcon
-                    className={selectOpen ? 'active' : ''}
-                    glyph={GlyphType.DownFill}
-                    size="1.5rem"
-                    fill={selectOpen ? themeContext.colors.default : themeContext.colors.accent}
-                /> */}
+                <S.SelectIcon active={selectOpen}/>
             </S.SelectOptionSelected>
-            <S.SelectOptionsContainer className={selectOpen ? 'active' : ''} height={maxHeight} autoHide>
+            <S.SelectOptionsContainer active={selectOpen} height={maxHeight} autoHide>
                 {options.map((o, idx) => (
                     <S.SelectOption
-                        className={idx === selected ? 'selected' : ''}
+                        selected={idx === selected}
                         key={o.value}
                         onClick={(): void => {
                             if (idx === selected) return;

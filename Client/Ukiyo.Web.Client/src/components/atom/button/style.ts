@@ -4,7 +4,7 @@ import { ButtonType } from './index';
 import * as M from '../../../settings/media';
 import { center, FLEX_ALIGN_MAIN } from '../../../utilities/mixins';
 
-type ButtonStyleProps = {
+type ContainerStyleProps = {
   flat?: boolean;
   disabled?: boolean;
   buttonType: ButtonType;
@@ -40,7 +40,7 @@ const Danger = css`
   }
 `;
 
-export const ButtonContainer = styled.a<ButtonStyleProps>`
+export const ButtonContainer = styled.a<ContainerStyleProps>`
   ${center(FLEX_ALIGN_MAIN)};
   color: ${({ theme, ...props }) => theme.colors.infoCompliment};
   background-color: ${({ theme, ...props }) => theme.colors.info};

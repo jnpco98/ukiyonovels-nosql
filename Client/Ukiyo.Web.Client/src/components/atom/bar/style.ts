@@ -1,35 +1,55 @@
 import styled, { css } from 'styled-components/macro';
-import { math } from 'polished';
-
-type BarStyleProps = {
-    width?: string;
-    height?: string;
-    rounded?: boolean;
-}
+import { Paragraph } from '../text/style';
+import * as M from '../../../settings/media';
 
 type FillStyleProps = {
-    fillRate?: number;
+  rating: number;
+  rounded?: boolean;
 }
 
-export const BarContainer = styled.span<BarStyleProps>`
-    position: relative;
-    width: ${(props) => props.width || '100%'};
-    height: ${(props) => props.height || '0.8rem'};
-    background: ${({ theme, ...props }) => props.color ? props.color : theme.colors.subdued};
-    border: 1px solid rgba(0, 0, 0, 0.3);
-    ${props =>
-      props.rounded &&
-      css`
-        border-radius: ${math(`${props.height || '0.8rem'} * 0.5`)}
-      `};
-    overflow: hidden;
+export const BarContainer = styled.div`
+  width: 100%;
 `;
 
-export const BarFill = styled.span<FillStyleProps>`
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: ${props => props.fillRate * 100}%;
-    height: 100%;
-    background: ${({ theme, ...props }) => props.color ? props.color : theme.colors.accent};
+export const BarTextWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.2rem;
+
+  ${M.MEDIA_SMALL} {
+    margin-bottom: 0.5rem;
+  }
+`;
+
+export const BarTitle = styled(Paragraph)`
+  font-family: ${({ theme, ...props }) => theme.font.secondary};
+`;
+
+export const BarRating = styled(Paragraph)`
+  font-family: ${({ theme, ...props }) => theme.font.secondary};
+`;
+
+export const BarFill = styled.div<FillStyleProps>`
+  width: 100%;
+  height: 0.4rem;
+
+  ${props =>
+    props.rounded &&
+      css`
+        border-radius: 0.5rem;
+      `
+    }
+
+  ${({ theme, ...props }) =>
+    css`
+      background-color: ${theme.colors.primary};
+      background-image: linear-gradient(90deg, ${theme.colors.black}, ${theme.colors.black});
+      background-size: ${props.rating * 100}% 100%;
+      background-repeat: no-repeat;
+    `   
+  }
+
+  ${M.MEDIA_SMALL} {
+    height: 0.5rem;
+  }
 `;

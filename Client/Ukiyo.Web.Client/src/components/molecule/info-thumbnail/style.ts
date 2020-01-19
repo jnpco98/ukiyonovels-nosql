@@ -1,12 +1,12 @@
 import styled from 'styled-components/macro';
 import * as M from '../../../settings/media';
-import { Paragraph, Span, SubsectionTitle } from '../text/style';
+import { Paragraph, Span, SubsectionTitle } from '../../atom/text/style';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookOpen } from '@fortawesome/free-solid-svg-icons';
 import { math } from 'polished';
 import { fadeInTextHover, center, CENTER_BOTH, FLEX_ALIGN_BOTH, regularFontSize } from '../../../utilities/mixins';
 import { transparentize } from 'polished';
-import { cardDimRatio } from '../thumbnail/style';
+import { cardDimRatio } from '../../atom/thumbnail/style';
 
 export const InfoThumbnailContainer = styled.div`
   display: flex;

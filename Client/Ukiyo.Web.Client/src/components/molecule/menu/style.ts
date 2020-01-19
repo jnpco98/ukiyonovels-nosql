@@ -41,9 +41,11 @@ const menuItemDefaultStyle = css<MenuItemStyleProps>`
   }
 `;
 
-export const CLASS_FLOATING = 'floating';
+type ContainerStyleProps = {
+  floating?: boolean;
+}
 
-export const MenuContainer = styled.div`
+export const MenuContainer = styled.div<ContainerStyleProps>`
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -57,13 +59,16 @@ export const MenuContainer = styled.div`
     display: flex;
     max-width: 80%;
   }
-  
-  &.${CLASS_FLOATING} {
-    font-size: 0.9rem;
-    position: fixed;
-    background: ${({ theme, ...props }) => theme.colors.background};
-    box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
-  }
+
+  ${props =>
+    props.floating &&
+      css`
+        font-size: 0.9rem;
+        position: fixed;
+        background: ${({ theme, ...props }) => theme.colors.background};
+        box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+      `
+    }
 
   ${M.MEDIA_XXSMALL} {
     min-height: 4rem;

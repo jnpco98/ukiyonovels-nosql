@@ -3,7 +3,7 @@ import * as M from '../../../settings/media';
 import { gutter, GUTTER_LEFT, GUTTER_RIGHT } from '../../../utilities/mixins';
 import { margin } from 'polished';
 import { SectionTitle } from '../../atom/text/style';
-import { RatingContainer } from '../../atom/rating-bar/style';
+import { BarContainer } from '../../atom/bar/style';
 
 export const RatingListContainer = styled.div`
   width: 100%;
@@ -11,14 +11,14 @@ export const RatingListContainer = styled.div`
   ${gutter(GUTTER_LEFT)};
   ${gutter(GUTTER_RIGHT)};
   
-  ${RatingContainer} {
+  ${BarContainer} {
     margin-bottom: 0.5rem;
   }
 
   ${M.MEDIA_XSMALL} {
     ${margin('1rem', null, '1rem', null)};
     
-    ${RatingContainer} {
+    ${BarContainer} {
       margin-bottom: 0.8rem;
     }
   }
@@ -34,7 +34,7 @@ export const RatingListContainer = styled.div`
   ${M.MEDIA_LARGE} {
     ${margin('2.5rem', null, '2.5rem', null)};
         
-    ${RatingContainer} {
+    ${BarContainer} {
       margin-bottom: 1rem;
     }
   }

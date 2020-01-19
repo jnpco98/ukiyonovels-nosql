@@ -2,8 +2,7 @@ import styled from 'styled-components/macro';
 import * as M from '../../../settings/media';
 import { gutter, GUTTER_LEFT, GUTTER_RIGHT } from '../../../utilities/mixins';
 import { margin } from 'polished';
-import { SectionTitle } from '../../atom/text/style';
-import { NovelRowContainer } from '../../atom/novel-row/style';
+import { RowContainer } from '../../atom/row/style';
 
 export const NovelListContainer = styled.div`
   width: 100%;
@@ -11,7 +10,7 @@ export const NovelListContainer = styled.div`
   ${gutter(GUTTER_LEFT)};
   ${gutter(GUTTER_RIGHT)};
 
-  ${NovelRowContainer} {
+  ${RowContainer} {
     padding: 0.7rem;
 
     &:nth-child(odd) {
@@ -31,7 +30,7 @@ export const NovelListContainer = styled.div`
   ${M.MEDIA_XSMALL} {
     ${margin('1rem', null, '1rem', null)};
     
-    ${NovelRowContainer} {
+    ${RowContainer} {
       padding: 0.8rem;
     }
   }
@@ -47,7 +46,7 @@ export const NovelListContainer = styled.div`
   ${M.MEDIA_LARGE} {
     ${margin('2.5rem', null, '2.5rem', null)};
         
-    ${NovelRowContainer} {
+    ${RowContainer} {
       padding: 0.9rem;
     }
   }
