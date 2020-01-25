@@ -3,23 +3,25 @@ import * as S from './style';
 import { faArrowCircleRight } from '@fortawesome/free-solid-svg-icons';
 
 type Props = {
+    className?: string;
     multiple?: boolean;
     accordionContent: {
         heading: string;
         content: React.ReactNode;
     }[];
+    initialOpen?: boolean;
 };
 
 const Accordion: React.FC<Props> = (props: Props): ReactElement => {
-    const { accordionContent, multiple = true } = props;
+    const { className, accordionContent, initialOpen = true, multiple = true } = props;
 
     return (
-        <S.AccordionContainer>
+        <S.AccordionContainer className={className}>
             <S.AccordionTabs>
                 {
                     accordionContent.map(ac => 
                         <S.AccordionTab>
-                            <S.AccordionTabTrigger id={ac.heading} name={ac.heading} type={multiple ? "checkbox" : "radio"}/>
+                            <S.AccordionTabTrigger id={ac.heading} name={ac.heading} type={multiple ? "checkbox" : "radio"} defaultChecked={initialOpen}/>
                             <S.AccordionTabLabel for={ac.heading} >
                             <S.AccordionTabLabelText>{ac.heading}</S.AccordionTabLabelText>
                                 <S.AccordionTabLabelIcon icon={faArrowCircleRight}/>

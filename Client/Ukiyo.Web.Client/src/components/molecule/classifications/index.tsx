@@ -3,20 +3,21 @@ import * as S from './style';
 import Text, { TextType } from '../../atom/text';
 
 type Props = {
-    headingText?: string;
     classifications: {
         name: string;
         link: string;
     }[],
+    className?: string;
+    headingText?: string;
     inline?: boolean;
 };
 
 const Classifications: React.FC<Props> = (props: Props): ReactElement => {
-    const { headingText, classifications = [], inline } = props;
+    const { className, headingText, classifications = [], inline } = props;
 
     return (
-        <S.ClassificationsContainer>
-            <S.ClassificationsHeading>{headingText}</S.ClassificationsHeading>
+        <S.ClassificationsContainer className={className}>
+            {headingText && <S.ClassificationsHeading>{headingText}</S.ClassificationsHeading>}
             <S.ClassificationsList inline={inline}>
             {
                 classifications.map(c => 

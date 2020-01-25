@@ -4,13 +4,14 @@ import * as S from './style';
 
 type Props = {
     HTMLString: string;
+    className?: string;
 }
 
 const DynamicHTML: React.FC<Props> = (props: Props): ReactElement => {
-    const { HTMLString } = props;
+    const { HTMLString, className } = props;
 
     return (
-        <S.DynamicHTMLContainer dangerouslySetInnerHTML={{ __html: purifyHTML(HTMLString) }}/>
+        <S.DynamicHTMLContainer className={className} dangerouslySetInnerHTML={{ __html: purifyHTML(HTMLString) }}/>
     );
 };
 

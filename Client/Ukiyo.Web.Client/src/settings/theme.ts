@@ -1,7 +1,7 @@
 import { ThemeSettings } from 'styled-components/macro';
 
 export const BaseTheme: ThemeSettings = {
-    maxScreenSize: '2650px',
+    maxScreenSize: '1900px',
     gutter: {
         base: '1rem',
         xxsmall: '2rem',

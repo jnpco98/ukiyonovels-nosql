@@ -4,6 +4,7 @@ import Row from '../../atom/row';
 import Text, { TextType } from '../../atom/text';
 
 type Props = {
+    className?: string;
     headingText?: string;
     contents: {
         title: string;
@@ -13,13 +14,15 @@ type Props = {
 };
 
 const QuickSearch: React.FC<Props> = (props: Props) => {
-    const { headingText, contents } = props;
+    const { headingText, contents, className } = props;
     return (
-        <S.QuickSearchContainer>
-            {headingText && <Text textType={TextType.SectionTitle}>{headingText}</Text>}
-            {contents.map(c => (
-                <Row key={c.title + c.count} count={c.count} title={c.title} bullet hoverDecoration/>
-            ))}
+        <S.QuickSearchContainer className={className}>
+            {headingText && <S.QuickSearchHeading>{headingText}</S.QuickSearchHeading>}
+            <S.QuickSearchRows>
+                {contents.map(c => (
+                    <Row key={c.title + c.count} count={c.count} title={c.title} bullet hoverDecoration/>
+                ))}
+            </S.QuickSearchRows>
         </S.QuickSearchContainer>
     );
 };

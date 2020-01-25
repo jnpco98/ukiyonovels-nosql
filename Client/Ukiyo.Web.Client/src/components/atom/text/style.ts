@@ -35,6 +35,15 @@ export const SubsectionTitle = styled.h3`
   text-transform: uppercase;
   font-family: ${({ theme, ...props }) => theme.font.secondary};
   font-weight: ${({ theme, ...props }) => theme.font.weightBold};
+  margin-bottom: 1rem;
+
+  ${M.MEDIA_SMALL} {
+    margin-bottom: 1.2rem;
+  }
+
+  ${M.MEDIA_MEDIUM} {
+    margin-bottom: 1.5rem;
+  }
 `;
 
 export const Paragraph = styled.p`

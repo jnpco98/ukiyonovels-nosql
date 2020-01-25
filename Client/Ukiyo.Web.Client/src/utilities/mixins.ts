@@ -152,10 +152,6 @@ export const sectionFontSize = css`
       ${M.MEDIA_MEDIUM} {
         font-size: ${math(`${theme.font.baseSize} * 1.6`)};
       }
-
-      ${M.MEDIA_LARGE} {
-        font-size: ${math(`${theme.font.baseSize} * 2`)};
-      }
   `};
 `;
 
@@ -175,10 +171,6 @@ export const subsectionFontSize = css`
       ${M.MEDIA_MEDIUM} {
         font-size: ${math(`${theme.font.baseSize} * 1.3`)};
       }
-
-      ${M.MEDIA_XLARGE} {
-        font-size: ${math(`${theme.font.baseSize} * 1.4`)};
-      }
   `};
 `;
 
@@ -193,10 +185,6 @@ export const regularFontSize = css`
 
       ${M.MEDIA_MEDIUM} {
         font-size: ${math(`${theme.font.baseSize} * 0.8`)};
-      }
-
-      ${M.MEDIA_XLARGE} {
-        font-size: ${math(`${theme.font.baseSize} * 1`)};
       }
   `};
 `;
@@ -317,8 +305,8 @@ export const headingDecoration = css`
 
 export const ratioImage = (image: AnyStyledComponent, width: string, height?: string) => css`
   position: relative;
-  width: 100%;
-  padding-bottom: 150%;
+  width: ${width};
+  padding-bottom: ${height};
 
   ${image} {
     width: 100%;

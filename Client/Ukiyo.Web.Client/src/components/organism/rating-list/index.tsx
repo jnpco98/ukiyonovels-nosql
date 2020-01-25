@@ -4,6 +4,7 @@ import Bar from '../../atom/bar';
 import Text, { TextType } from '../../atom/text';
 
 type Props = {
+    className?: string;
     headingText?: string;
     contents: {
         title: string;
@@ -12,10 +13,10 @@ type Props = {
 };
 
 const RatingList: React.FC<Props> = (props: Props) => {
-    const { headingText, contents } = props;
+    const { headingText, contents, className } = props;
     return (
-        <S.RatingListContainer>
-            {headingText && <Text textType={TextType.SectionTitle}>{headingText}</Text>}
+        <S.RatingListContainer className={className}>
+            {headingText && <S.RatingListHeading>{headingText}</S.RatingListHeading>}
             {contents.map(c => (
                 <Bar key={c.title + c.rating} fillRate={c.rating} title={c.title} />
             ))}

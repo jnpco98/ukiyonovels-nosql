@@ -6,18 +6,6 @@ import { margin } from 'polished';
 
 export const ClassificationsContainer = styled.div`
   width: 100%;
-  margin: 0.65rem 0;
-
-  ${gutter(GUTTER_LEFT)};
-  ${gutter(GUTTER_RIGHT)};
-
-  ${M.MEDIA_XSMALL} {
-    ${margin('1rem', null, '1rem', null)};
-  }
-
-  ${M.MEDIA_SMALL} {
-    ${margin('1.5rem', null, '1.5rem', null)};
-  }
 `;
 
 export const ClassificationsHeading = styled(SubsectionTitle)`

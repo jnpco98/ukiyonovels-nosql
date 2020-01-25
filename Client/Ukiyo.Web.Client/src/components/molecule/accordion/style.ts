@@ -1,25 +1,12 @@
 import styled from 'styled-components/macro';
 import { SubsectionTitle } from '../../atom/text/style';
-import { gutter, GUTTER_LEFT, GUTTER_RIGHT, regularFontSize } from '../../../utilities/mixins';
+import { regularFontSize } from '../../../utilities/mixins';
 import * as M from '../../../settings/media';
-import { margin } from 'polished';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 export const AccordionContainer = styled.div`
   width: 100%;
-  margin: 0.65rem 0;
-
-  ${gutter(GUTTER_LEFT)};
-  ${gutter(GUTTER_RIGHT)};
-
-  ${M.MEDIA_XSMALL} {
-    ${margin('1rem', null, '1rem', null)};
-  }
-
-  ${M.MEDIA_SMALL} {
-    ${margin('1.5rem', null, '1.5rem', null)};
-  }
 `;
 
 export const AccordionTabs = styled.div`
@@ -53,6 +40,15 @@ export const AccordionTabLabel = styled.label<LabelStyleProps>`
 
 export const AccordionTabLabelText = styled(SubsectionTitle)`
   ${regularFontSize};
+  margin: 0;
+
+  ${M.MEDIA_SMALL} {
+    margin: 0;
+  }
+
+  ${M.MEDIA_MEDIUM} {
+    margin: 0;
+  }
 `;
 
 export const AccordionTabLabelIcon = styled(FontAwesomeIcon).attrs({ icon: faArrowRight })`
@@ -84,7 +80,7 @@ export const AccordionTabTrigger = styled.input`
 
     ~ ${AccordionContent} {
       max-height: 30rem;
-      padding: 0.3rem 0;
+      padding: 1rem;
     }
   }
 `;
