@@ -183,8 +183,8 @@ export const HeaderContainer = styled.div<ContainerStyleProps>`
     min-height: 6rem;
   }
 
-  ${M.MEDIA_XLARGE} {
-    min-height: 9rem;
+  ${M.MEDIA_XXLARGE} {
+    min-height: 8rem;
   }
 `;
 

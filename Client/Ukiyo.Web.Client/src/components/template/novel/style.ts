@@ -103,11 +103,13 @@ export const NovelContent = styled.div`
       flex: 1;
     }
   }
+
   ${M.MEDIA_MEDIUM} {
     &:first-child {
-      padding-right: 4rem;
+      padding-right: 3rem;
     }
   }
+
   ${M.MEDIA_LARGE} {
     ${ClassificationsContainer}, 
     ${DynamicHTMLContainer}, 
@@ -146,18 +148,15 @@ export const NovelSidePanel = styled(SidePanel)`
   ${M.MEDIA_MEDIUM} {
     padding-left: 2rem;
     margin-top: 0.7rem;
+    flex: 0.4;
   }
 
   ${M.MEDIA_LARGE} {
-    padding-left: 6rem;
-  }
-  
-  ${M.MEDIA_MEDIUM} {
-    flex: 0.4;
+    padding-left: 3rem;
   }
   
   ${M.MEDIA_XXLARGE} {
     flex: 0.3;
-    padding-left: 8rem; 
+    padding-left: 8rem;
   }
 `
