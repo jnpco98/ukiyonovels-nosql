@@ -11,11 +11,9 @@ import { cardDimRatio } from '../../atom/thumbnail/style';
 export const InfoThumbnailContainer = styled.div`
   display: flex;
   position: relative;
-  
-  width: 6.2rem;
-  height: ${math(`6.2rem * ${cardDimRatio}`)};
   overflow: hidden;
   margin: auto;
+  border-radius: 0.5rem;
   
   &:after {
     content: '';
@@ -27,6 +25,11 @@ export const InfoThumbnailContainer = styled.div`
     width: 100%;
     height: 7rem;
   }
+
+  transition: all 0.3s ease;
+
+  width: 6.2rem;
+  height: ${math(`6.2rem * ${cardDimRatio}`)};
 
   ${M.MEDIA_SMALL} {
     width: 8.5rem;
@@ -41,6 +44,7 @@ export const InfoThumbnailContainer = styled.div`
   ${M.MEDIA_XLARGE} {
     width: 10.7rem;
     height: ${math(`10.7rem * ${cardDimRatio}`)};
+    border-radius: 0.7rem;
   }
 `;
 
@@ -81,19 +85,27 @@ export const InfoThumbnailImage = styled.img`
 
 export const InfoThumbnailHeading = styled(SubsectionTitle)`
   color: ${({ theme, ...props }) => theme.colors.white};
-  
   padding: 0 0.5rem;
+  font-size: 0.5rem;
 
   ${InfoThumbnailContainer}:hover & {
-    margin: 0.5rem 0.3rem;
+    margin: 0.2rem 0.3rem;
   }
 
+  ${M.MEDIA_XSMALL} {
+    font-size: 0.5rem;
+  }
+  
   ${M.MEDIA_SMALL} {
+    font-size: 0.7rem;
     ${InfoThumbnailContainer}:hover & {
       margin-bottom: 0;
     }
   }
-  ${regularFontSize};
+
+  ${M.MEDIA_XLARGE} {
+    font-size: 0.8rem;
+  }
 `;
 
 export const InfoThumbnailSubtitle = styled(Paragraph)`
@@ -105,6 +117,19 @@ export const InfoThumbnailSubtitle = styled(Paragraph)`
     margin-bottom: 0;
   }
   font-family: ${({ theme, ...props }) => theme.font.secondary};
+  font-size: 0.5rem;
+
+  ${M.MEDIA_XSMALL} {
+    font-size: 0.5rem;
+  }
+  
+  ${M.MEDIA_SMALL} {
+    font-size: 0.6rem;
+  }
+
+  ${M.MEDIA_MEDIUM} {
+    font-size: 0.7rem;
+  }
 `;
 
 export const InfoThumbnailGenre = styled(Span)`
@@ -114,6 +139,10 @@ export const InfoThumbnailGenre = styled(Span)`
 
   ${InfoThumbnailContainer}:hover & {
     margin-bottom: 1rem;
+  }
+
+  ${M.MEDIA_XSMALL} {
+    font-size: 0.5rem;
   }
 
   ${M.MEDIA_SMALL} {

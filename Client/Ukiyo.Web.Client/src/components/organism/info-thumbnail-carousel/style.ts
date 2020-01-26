@@ -3,14 +3,11 @@ import SlickArrow from '../../atom/slick-arrow';
 import Slick from 'react-slick';
 import * as M from '../../../settings/media';
 import InfoThumbnail from '../../molecule/info-thumbnail';
-import Text, { TextType } from '../../atom/text';
 import { math, margin } from 'polished';
 import { InfoThumbnailGenre, InfoThumbnailHeading, InfoThumbnailSubtitle, InfoThumbnailReadIcon } from '../../molecule/info-thumbnail/style';
 import { cardDimRatio } from '../../atom/thumbnail/style';
-import { gutter, GUTTER_LEFT, GUTTER_RIGHT } from '../../../utilities/mixins';
-import { SectionTitle } from '../../atom/text/style';
 
-export const InfoThumbnailContainer = styled.div`
+export const InfoThumbnailCarouselContainer = styled.div`
   width: 100%;
   position: relative;
   margin: 0.65rem 0;
@@ -32,7 +29,7 @@ export const InfoThumbnailContainer = styled.div`
   }
 `;
 
-export const InfoThumbnailItem = styled(InfoThumbnail)`
+export const InfoThumbnailCarouselItem = styled(InfoThumbnail)`
   margin-right: 0.65rem;
 
   ${M.MEDIA_XXSMALL} {
@@ -44,50 +41,11 @@ export const InfoThumbnailItem = styled(InfoThumbnail)`
   }
 
   ${M.MEDIA_MEDIUM} {
-    width: 8rem;
-    height: ${math(`8rem * ${cardDimRatio}`)};
     margin-bottom: 1.5rem;
-
-    ${InfoThumbnailHeading} {
-      font-size: 0.8rem;
-    }
-
-    ${InfoThumbnailSubtitle} {
-      font-size: 0.8rem;
-    }
-
-    ${InfoThumbnailGenre} {
-      font-size: 0.6rem;
-    }
-
-    ${InfoThumbnailReadIcon} {
-      font-size: 1.3rem;
-    }
-  }
-
-  ${M.MEDIA_XLARGE} {
-    width: 9.5rem;
-    height: ${math(`9.5rem * ${cardDimRatio}`)};
-
-    ${InfoThumbnailHeading} {
-      font-size: 0.9rem;
-    }
-
-    ${InfoThumbnailSubtitle} {
-      font-size: 0.9rem;
-    }
-
-    ${InfoThumbnailGenre} {
-      font-size: 0.7rem;
-    }
-
-    ${InfoThumbnailReadIcon} {
-      font-size: 1.5rem;
-    }
   }
 `;
 
-export const InfoThumbnailSlider = styled(Slick)`  
+export const InfoThumbnailCarouselSlider = styled(Slick)`  
   .slick-dots {
     left: 0;
     bottom: -2rem;
@@ -108,5 +66,5 @@ export const InfoThumbnailSlider = styled(Slick)`
   }
 `;
 
-export const InfoThumbnailArrow = styled(SlickArrow)`
+export const InfoThumbnailCarouselArrow = styled(SlickArrow)`
 `;

@@ -22,8 +22,8 @@ const InfoThumbnailCarousel: React.FC<Props> = (props: Props): ReactElement => {
     const sliderOptions: Settings = {
         ...DEFAULT_SLIDER_SETTINGS,
         swipeToSlide: true,
-        prevArrow: <S.InfoThumbnailArrow />,
-        nextArrow: <S.InfoThumbnailArrow />,
+        prevArrow: <S.InfoThumbnailCarouselArrow />,
+        nextArrow: <S.InfoThumbnailCarouselArrow />,
         variableWidth: true,
         centerMode: false
     };
@@ -32,7 +32,7 @@ const InfoThumbnailCarousel: React.FC<Props> = (props: Props): ReactElement => {
         content
             .filter((c, idx) => idx >= start && idx < last)
             .map(({ heading, subtitle, genre, link, image }, idx, filtered) => (
-                <S.InfoThumbnailItem
+                <S.InfoThumbnailCarouselItem
                     key={heading + subtitle}
                     heading={heading}
                     subtitle={subtitle}
@@ -44,10 +44,10 @@ const InfoThumbnailCarousel: React.FC<Props> = (props: Props): ReactElement => {
 
     /* eslint-disable react/jsx-props-no-spreading */
     return (
-        <S.InfoThumbnailContainer className={className}>
+        <S.InfoThumbnailCarouselContainer className={className}>
             {headingText && <Text textType={TextType.SectionTitle}>{headingText}</Text>}
-            <S.InfoThumbnailSlider {...sliderOptions}>{generateCardContent(0, content.length)}</S.InfoThumbnailSlider>
-        </S.InfoThumbnailContainer>
+            <S.InfoThumbnailCarouselSlider {...sliderOptions}>{generateCardContent(0, content.length)}</S.InfoThumbnailCarouselSlider>
+        </S.InfoThumbnailCarouselContainer>
     );
     /* eslint-enable react/jsx-props-no-spreading */
 };
