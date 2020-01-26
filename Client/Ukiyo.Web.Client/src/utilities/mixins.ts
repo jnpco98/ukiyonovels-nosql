@@ -116,22 +116,22 @@ export const fadeInTextHover = (container: AnyStyledComponent) => css`
 export const pageTitleFontSize = css`
   ${({ theme, ...props }) => 
     css`
-      font-size: ${math(`${theme.font.baseSize} * 1.8`)};
+      font-size: ${math(`${theme.font.baseSize} * 1.4`)};
       
       ${M.MEDIA_XSMALL} {
-        font-size: ${math(`${theme.font.baseSize} * 2`)};
+        font-size: ${math(`${theme.font.baseSize} * 1.8`)};
       }
 
       ${M.MEDIA_SMALL} {
-        font-size: ${math(`${theme.font.baseSize} * 2.4`)};
+        font-size: ${math(`${theme.font.baseSize} * 2`)};
       }
 
       ${M.MEDIA_MEDIUM} {
-        font-size: ${math(`${theme.font.baseSize} * 3`)};
+        font-size: ${math(`${theme.font.baseSize} * 2.4`)};
       }
 
       ${M.MEDIA_LARGE} {
-        font-size: ${math(`${theme.font.baseSize} * 3.7`)};
+        font-size: ${math(`${theme.font.baseSize} * 2.7`)};
       }
   `};
 `;
@@ -152,13 +152,17 @@ export const sectionFontSize = css`
       ${M.MEDIA_MEDIUM} {
         font-size: ${math(`${theme.font.baseSize} * 1.6`)};
       }
+      
+      ${M.MEDIA_LARGE} {
+        font-size: ${math(`${theme.font.baseSize} * 2`)};
+      }
   `};
 `;
 
 export const subsectionFontSize = css`
   ${({ theme, ...props }) => 
     css`
-      font-size: ${math(`${theme.font.baseSize} * 0.8`)};
+      font-size: ${math(`${theme.font.baseSize} * 1`)};
 
       ${M.MEDIA_XSMALL} {
         font-size: ${math(`${theme.font.baseSize} * 1`)};
@@ -171,13 +175,21 @@ export const subsectionFontSize = css`
       ${M.MEDIA_MEDIUM} {
         font-size: ${math(`${theme.font.baseSize} * 1.3`)};
       }
+      
+      ${M.MEDIA_LARGE} {
+        font-size: ${math(`${theme.font.baseSize} * 1.7`)};
+      }
   `};
 `;
 
 export const regularFontSize = css`
   ${({ theme, ...props }) =>
     css`
-      font-size: ${math(`${theme.font.baseSize} * 0.7`)};
+      font-size: ${math(`${theme.font.baseSize} * 0.8`)};
+
+      ${M.MEDIA_XSMALL} {
+        font-size: ${math(`${theme.font.baseSize} * 0.8`)};
+      }
 
       ${M.MEDIA_SMALL} {
         font-size: ${math(`${theme.font.baseSize} * 0.8`)};
@@ -185,6 +197,10 @@ export const regularFontSize = css`
 
       ${M.MEDIA_MEDIUM} {
         font-size: ${math(`${theme.font.baseSize} * 0.8`)};
+      }
+
+      ${M.MEDIA_LARGE} {
+        font-size: ${math(`${theme.font.baseSize} * 1.1`)};
       }
   `};
 `;
@@ -284,6 +300,11 @@ export const gutter = (pos: string, useMargin?: boolean) => {
 }
 
 export const headingDecoration = css`
+  overflow: hidden;
+  text-align: center;
+  position: relative;
+  width: 100%;
+
   &:before, &:after {
     top: 50%;
     transform: translateY(-50%);

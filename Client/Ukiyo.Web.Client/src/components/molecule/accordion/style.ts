@@ -28,6 +28,7 @@ type LabelStyleProps = {
 export const AccordionTabLabel = styled.label<LabelStyleProps>`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 1rem;
   background: ${({ theme, ...props }) => theme.colors.accent};
   font-weight: bold;
@@ -35,6 +36,10 @@ export const AccordionTabLabel = styled.label<LabelStyleProps>`
 
   &:hover {
     background: ${({ theme, ...props }) => theme.colors.accent};
+  }
+
+  ${M.MEDIA_XLARGE} {
+    padding: 1.2rem;
   }
 `;
 
@@ -54,6 +59,10 @@ export const AccordionTabLabelText = styled(SubsectionTitle)`
 export const AccordionTabLabelIcon = styled(FontAwesomeIcon).attrs({ icon: faArrowRight })`
   font-size: 0.7rem;
   transition: all 0.3s ease;
+
+  ${M.MEDIA_XLARGE} {
+    font-size: 0.9rem;
+  }
 `;
 
 export const AccordionContent = styled.div`
@@ -62,6 +71,7 @@ export const AccordionContent = styled.div`
   background: ${({ theme, ...props }) => theme.colors.white};
   transition: all .25s;
   overflow: hidden;
+  opacity: 0;
 `;
 
 export const AccordionTabTrigger = styled.input`
@@ -81,6 +91,15 @@ export const AccordionTabTrigger = styled.input`
     ~ ${AccordionContent} {
       max-height: 30rem;
       padding: 1rem;
+      opacity: 1;
+    }
+  }
+  
+  ${M.MEDIA_LARGE} {
+    &:checked {
+      ~ ${AccordionContent} {
+        padding: 1.5rem 2rem;
+      }
     }
   }
 `;

@@ -28,8 +28,6 @@ export const NovelListContainer = styled.div`
   }
 
   ${M.MEDIA_XSMALL} {
-    ${margin('1rem', null, '1rem', null)};
-    
     ${RowContainer} {
       padding: 0.8rem;
     }

@@ -7,22 +7,6 @@ import SimpleBar from 'simplebar-react';
 
 export const QuickSearchContainer = styled.div`
   width: 100%;
-  
-  ${RowContainer} {
-    margin-bottom: 0.5rem;
-  }
-
-  ${M.MEDIA_XSMALL} {
-    ${RowContainer} {
-      margin-bottom: 0.8rem;
-    }
-  }
-  
-  ${M.MEDIA_LARGE} {
-    ${RowContainer} {
-      margin-bottom: 1rem;
-    }
-  }
 `;
 
 export const QuickSearchHeading = styled(Text).attrs({ textType: TextType.SubsectionTitle })`
@@ -32,8 +16,6 @@ export const QuickSearchHeading = styled(Text).attrs({ textType: TextType.Subsec
   width: 100%;
   overflow: hidden;
 `;
-
-
 
 type QuickSearchRowsStyleProps = {
   height?: string;

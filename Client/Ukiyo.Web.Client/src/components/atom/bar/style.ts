@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components/macro';
 import { Paragraph } from '../text/style';
 import * as M from '../../../settings/media';
+import { margin } from 'polished';
 
 type FillStyleProps = {
   rating: number;
@@ -15,18 +16,30 @@ export const BarTextWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 0.2rem;
-
-  ${M.MEDIA_SMALL} {
-    margin-bottom: 0.5rem;
-  }
 `;
 
 export const BarTitle = styled(Paragraph)`
   font-family: ${({ theme, ...props }) => theme.font.secondary};
+
+  ${M.MEDIA_SMALL} {
+    margin: 0.1rem 0;
+  }
+
+  ${M.MEDIA_MEDIUM} {
+    margin: 0.3rem 0;
+  }
 `;
 
 export const BarRating = styled(Paragraph)`
   font-family: ${({ theme, ...props }) => theme.font.secondary};
+
+  ${M.MEDIA_SMALL} {
+    margin: 0.1rem 0;
+  }
+
+  ${M.MEDIA_MEDIUM} {
+    margin: 0.3rem 0;
+  }
 `;
 
 export const BarFill = styled.div<FillStyleProps>`

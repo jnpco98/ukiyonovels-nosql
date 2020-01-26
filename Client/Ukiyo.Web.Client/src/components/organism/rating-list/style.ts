@@ -39,6 +39,7 @@ export const RatingListHeading = styled(Text).attrs({ textType: TextType.Subsect
 
   ${M.MEDIA_MEDIUM} { 
     margin-bottom: 1.2rem;
+    margin-top: 2rem;
   }
   
   ${M.MEDIA_LARGE} {

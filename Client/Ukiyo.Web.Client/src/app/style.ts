@@ -7,8 +7,6 @@ export const AppContainer = styled.main`
   background: ${({ theme, ...props }) => theme.colors.backgroundAlternate};
   margin: 0 auto;
   min-height: 100rem;
-  max-width: ${({ theme, ...props }) => theme.maxScreenSize};
-  line-height: 1.1;
   width: 100%;
   overflow: hidden;
 

@@ -22,6 +22,7 @@ const menuItemDefaultStyle = css<HeaderMenuItemStyleProps>`
   a {
     display: block;
     padding: 1.1rem 0.9rem;
+    margin: 0;
   }
   
   &:hover {
@@ -158,7 +159,6 @@ export const HeaderContainer = styled.div<ContainerStyleProps>`
   transition: all 0.2s ease;
   z-index: 50;
   background: transparent;
-  max-width: ${({ theme, ...props }) => theme.maxScreenSize};
 
   ${HeaderLeftMenu}, ${HeaderRightMenu} {
     display: flex;
@@ -180,13 +180,12 @@ export const HeaderContainer = styled.div<ContainerStyleProps>`
   }
 
   ${M.MEDIA_XSMALL} {
-    min-height: 5rem;
-  }
-
-  ${M.MEDIA_XLARGE} {
     min-height: 6rem;
   }
 
+  ${M.MEDIA_XLARGE} {
+    min-height: 9rem;
+  }
 `;
 
 export const HeaderSideDrawer = styled(SideDrawer)`
@@ -211,6 +210,13 @@ export const HeaderSideDrawer = styled(SideDrawer)`
 
     ${HeaderMenuItem}:first-child {
       margin-top: 5.5rem;
+    }
+  }
+
+  ${M.MEDIA_LARGE} {
+    max-width: 50%;
+    ${HeaderMenuItem}:first-child {
+      margin-top: 7rem;
     }
   }
 `;

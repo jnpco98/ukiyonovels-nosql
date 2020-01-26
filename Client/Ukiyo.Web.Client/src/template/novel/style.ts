@@ -1,6 +1,6 @@
 import { regularFontSize, gutter, GUTTER_RIGHT, GUTTER_LEFT, ratioImage } from "../../utilities/mixins";
 import styled from "styled-components";
-import { SubsectionTitle, SectionTitle } from "../../components/atom/text/style";
+import { SubsectionTitle, SectionTitle, PageTitle } from "../../components/atom/text/style";
 import * as M from '../../settings/media';
 import { margin } from "polished";
 
@@ -36,4 +36,5 @@ export const NovelHeadingTitle = styled(SubsectionTitle)`
   }
 `;
 
-export const NovelTitle = styled(SectionTitle).attrs({ as: 'h1' })``;
+export const NovelTitle = styled(PageTitle)`
+`;

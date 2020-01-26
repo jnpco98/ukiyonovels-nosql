@@ -1,6 +1,6 @@
 import { regularFontSize, gutter, GUTTER_RIGHT, GUTTER_LEFT, ratioImage } from "../../../utilities/mixins";
 import styled from "styled-components/macro";
-import { SubsectionTitle, SectionTitle } from "../../atom/text/style";
+import { SubsectionTitle, SectionTitle, PageTitle } from "../../atom/text/style";
 import * as M from '../../../settings/media';
 import { ClassificationsContainer } from "../../molecule/classifications/style";
 import { DynamicHTMLContainer } from "../../molecule/dynamic-html/style";
@@ -9,7 +9,6 @@ import SidePanel from "../../organism/side-panel";
 
 export const NovelContainer = styled.div`
   margin-top: 4rem;
-  max-width: ${({ theme, ...props }) => theme.maxScreenSize};
 
   ${M.MEDIA_XXSMALL} {
     margin-top: 5rem;
@@ -28,7 +27,7 @@ export const NovelContainer = styled.div`
   }
 
   ${M.MEDIA_XLARGE} {
-    margin-top: 13rem;
+    margin-top: 16rem;
   }
 `;
 
@@ -40,14 +39,18 @@ export const NovelWrapper = styled.div`
     padding-right: 0;
   }
 
-  ${M.MEDIA_LARGE} {
+  ${M.MEDIA_MEDIUM} {
     flex: 1;
   }
 `;
 
-export const NovelTitle = styled(SectionTitle).attrs({ as: 'h1' })`
-  ${M.MEDIA_MEDIUM} {
-    margin-bottom: 2.5rem;
+export const NovelTitle = styled(PageTitle)`
+  ${M.MEDIA_SMALL} {
+    margin-bottom: 2rem;
+  }
+
+  ${M.MEDIA_LARGE} {
+    margin-bottom: 3rem;
   }
 `;
 
@@ -57,6 +60,10 @@ export const NovelPortrait = styled.img`
 export const NovelPortraitWrapper = styled.div`
   ${ratioImage(NovelPortrait, '100%', '150%')};
   margin-bottom: 1.5rem;
+
+  ${M.MEDIA_LARGE} {
+    margin-bottom: 2rem;
+  }
 `;
 
 export const NovelContentWrapper = styled.div`
@@ -96,16 +103,35 @@ export const NovelContent = styled.div`
       flex: 1;
     }
   }
+  ${M.MEDIA_MEDIUM} {
+    &:first-child {
+      padding-right: 4rem;
+    }
+  }
+  ${M.MEDIA_LARGE} {
+    ${ClassificationsContainer}, 
+    ${DynamicHTMLContainer}, 
+    ${AccordionContainer} {
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  ${M.MEDIA_XXLARGE} {
+    &:first-child {
+      flex: 0.4;
+      padding-right: 6rem;
+    }
+  }
 `;
 
 export const NovelDescriptionHeading = styled(SubsectionTitle)`
   ${regularFontSize};
 
   width: 100%;
-  margin-bottom: 0.5rem;
+  margin: 0.5rem 0;
 
   ${M.MEDIA_MEDIUM} {
-    margin-bottom: 0.75rem;
+    margin: 0.75rem 0;
   }
 `;
 
@@ -126,7 +152,12 @@ export const NovelSidePanel = styled(SidePanel)`
     padding-left: 6rem;
   }
   
-  ${M.MEDIA_LARGE} {
+  ${M.MEDIA_MEDIUM} {
     flex: 0.4;
+  }
+  
+  ${M.MEDIA_XXLARGE} {
+    flex: 0.3;
+    padding-left: 8rem; 
   }
 `
