@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro';
-import { PageTitle, SubsectionTitle } from '../../components/atom/text/style';
+import { PageTitle, SubsectionTitle } from '../../atom/text/style';
 
 
 export const PageNotFoundContainer = styled.div`

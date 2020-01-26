@@ -6,7 +6,13 @@ import { DEFAULT_SLIDER_SETTINGS } from '../../../utilities/slider';
 import * as S from './style';
 import { truncate } from '../../../utilities/string';
 
-const ImageCarousel: React.FC = (): ReactElement => {
+type Props = {
+    className?: string;
+}
+
+const ImageCarousel: React.FC<Props> = (props: Props): ReactElement => {
+    const { className } = props;
+
     const sliderOptions: Settings = {
         ...DEFAULT_SLIDER_SETTINGS,
         prevArrow: <S.Arrow />,
@@ -24,7 +30,7 @@ const ImageCarousel: React.FC = (): ReactElement => {
 
     /* eslint-disable react/jsx-props-no-spreading */
     return (
-        <S.ImageCarouselContainer>
+        <S.ImageCarouselContainer className={className}>
             <S.ImageCarouselSlider {...sliderOptions}>
                 {heroBanner.items.map(props => {
                     const { mobileImage, desktopImage, headingText, description, buttonText, link } = props;

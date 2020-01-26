@@ -1,7 +1,6 @@
 import React, { ReactElement } from 'react';
-import InfoCardList from '../../components/organism/info-card-list';
-import RatingList from '../../components/organism/rating-list';
-import QuickSearch from '../../components/organism/quick-search';
+import InfoCardList from '../../organism/info-card-list';
+import * as S from './style';
 
 const infoCardContent = [
     {
@@ -196,61 +195,16 @@ const infoCardContent = [
     }
 ];
 
-const ratings = [1, 2, 3, 4, 5, 6, 7].map(_ => ({
-    rating: Math.random(),
-    title: 'Children of a Lesser God'
-}));
-
-const genres = [
-    'Action',
-    'Adventure',
-    'Comedy',
-    'Drama',
-    'Ecchi',
-    'Fantasy',
-    'Gender Bender',
-    'Harem',
-    'Historical',
-    'Horror',
-    'Josei',
-    'Martial Arts',
-    'Mature',
-    'Mecha',
-    'Mystery',
-    'Psychological',
-    'Romance',
-    'School Life',
-    'Sci-fi',
-    'Seinen',
-    'Shotacon',
-    'Shoujo',
-    'Shoujo Ai',
-    'Shounen',
-    'Shounen Ai',
-    'Slice of Life',
-    'Smut',
-    'Sports',
-    'Supernatural',
-    'Tragedy',
-    'Wuxia',
-    'Xianxia',
-    'Xuanhuan',
-    'Yaoi',
-    'Yuri'
-];
-
-const SearchPage: React.FC = (): ReactElement => {
+const LatestUpdates: React.FC = (): ReactElement => {
     return (
-        <>
-            <InfoCardList content={infoCardContent} headingText="Search Results" />
-
-            <RatingList headingText="Popular Novels" contents={ratings} />
-            <QuickSearch
-                headingText="Search by Genre"
-                contents={genres.map(g => ({ title: g, count: Math.random() * 1000 }))}
-            />
-        </>
+        <S.LatestUpdatesContainer>
+            <S.LatestUpdatesWrapper>
+                <S.LatestUpdatesTitle>Latest Updates</S.LatestUpdatesTitle>
+                <InfoCardList content={infoCardContent} />
+            </S.LatestUpdatesWrapper>
+            <S.LatestUpdatesSidePanel/>
+        </S.LatestUpdatesContainer>
     );
 };
 
-export default SearchPage;
+export default LatestUpdates;

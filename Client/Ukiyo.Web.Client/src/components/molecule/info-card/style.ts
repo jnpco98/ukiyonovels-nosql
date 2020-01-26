@@ -29,20 +29,24 @@ export const InfoCardContent = styled.div`
   }
 `;
 
-export const InfoCardTitle = styled(SubsectionTitle)`    
-  margin-bottom: 0.7rem;
-  max-width: 80%;
+export const InfoCardTitle = styled(SubsectionTitle)`
+  max-width: 90%;
+  margin: 0 0 0.2rem;
 
   ${M.MEDIA_SMALL} {
-    margin-bottom: 1.2rem;
+  margin: 0 0 0.4rem;
+  }
+
+  ${M.MEDIA_MEDIUM} {
+  margin: 0 0 0.5rem;
   }
 `;
 
 export const InfoCardDescription = styled(Paragraph)`
-  margin-bottom: 0.3rem;
+  margin: 0.4rem 0;
 
-  ${M.MEDIA_SMALL} {
-    margin-bottom: 0.7rem;
+  ${M.MEDIA_MEDIUM} {
+    margin: 0 0 0.5rem;
   }
 `;
 
@@ -57,10 +61,10 @@ export const InfoCardButtonContinue = styled(Button)`
 `;
 
 export const InfoCardMeta = styled.div`
-  margin: 0.4rem 0;
+  margin: 0 0 0.4rem ;
 
-  ${M.MEDIA_SMALL} {
-    margin-bottom: 1rem;
+  ${M.MEDIA_MEDIUM} {
+    margin: 0 0 0.5rem;
   }
 `;
 
@@ -78,5 +82,4 @@ export const InfoCardViewsIcon = styled(FontAwesomeIcon).attrs({ icon: faEye })`
 
 export const InfoCardText = styled(Text).attrs({ textType: TextType.Span })`
   margin-right: 0.7rem;
-  margin-bottom: 0.2rem;
 `;

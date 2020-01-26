@@ -14,9 +14,6 @@ export const InfoThumbnailContainer = styled.div`
   width: 100%;
   position: relative;
   margin: 0.65rem 0;
-
-  ${gutter(GUTTER_LEFT)};
-  ${gutter(GUTTER_RIGHT)};
   
   ${M.MEDIA_XSMALL} {
     ${margin('1rem', null, '1rem', null)};

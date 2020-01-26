@@ -3,6 +3,7 @@ import * as S from './style';
 import Text, { TextType } from '../../atom/text';
 
 type Props = {
+    className?: string;
     headingText?: string;
     content: {
         title: string;
@@ -19,9 +20,9 @@ type Props = {
 };
 
 const InfoCardList: React.FC<Props> = (props: Props) => {
-    const { headingText, content } = props;
+    const { headingText, content, className } = props;
     return (
-        <S.CardListContainer>
+        <S.CardListContainer className={className}>
             {headingText && <Text textType={TextType.SectionTitle}>{headingText}</Text>}
             {content.map(({ title, link, imgSrc, description, meta }) => (
                 <S.CardListItem

@@ -5,6 +5,7 @@ import { DEFAULT_SLIDER_SETTINGS } from '../../../utilities/slider';
 import Text, { TextType } from '../../atom/text';
 
 type Props = {
+    className?: string;
     content: {
         heading: string;
         subtitle: string;
@@ -16,7 +17,7 @@ type Props = {
 };
 
 const InfoThumbnailCarousel: React.FC<Props> = (props: Props): ReactElement => {
-    const { content, headingText } = props;
+    const { content, headingText, className } = props;
 
     const sliderOptions: Settings = {
         ...DEFAULT_SLIDER_SETTINGS,
@@ -43,7 +44,7 @@ const InfoThumbnailCarousel: React.FC<Props> = (props: Props): ReactElement => {
 
     /* eslint-disable react/jsx-props-no-spreading */
     return (
-        <S.InfoThumbnailContainer>
+        <S.InfoThumbnailContainer className={className}>
             {headingText && <Text textType={TextType.SectionTitle}>{headingText}</Text>}
             <S.InfoThumbnailSlider {...sliderOptions}>{generateCardContent(0, content.length)}</S.InfoThumbnailSlider>
         </S.InfoThumbnailContainer>

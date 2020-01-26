@@ -1,7 +1,6 @@
 import styled from 'styled-components/macro';
 import * as M from '../../../settings/media';
 import { headingDecoration } from '../../../utilities/mixins';
-import { RowContainer } from '../../atom/row/style';
 import Text, { TextType } from '../../atom/text';
 import SimpleBar from 'simplebar-react';
 

@@ -1,14 +1,11 @@
 import styled from 'styled-components/macro';
 import InfoCard from '../../molecule/info-card';
 import * as M from '../../../settings/media';
-import { gutter, GUTTER_LEFT, GUTTER_RIGHT } from '../../../utilities/mixins';
 import { margin } from 'polished';
+import Text, { TextType } from '../../atom/text';
 
 export const CardListContainer = styled.div`
   margin: 0.65rem 0;
-
-  ${gutter(GUTTER_LEFT)};
-  ${gutter(GUTTER_RIGHT)};
 
   ${M.MEDIA_XSMALL} {
     ${margin('1rem', null, '1rem', null)};
