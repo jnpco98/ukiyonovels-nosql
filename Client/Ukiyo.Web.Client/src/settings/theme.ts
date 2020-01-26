@@ -16,9 +16,9 @@ export const BaseTheme: ThemeSettings = {
         baseSize: '1rem',
         weightLight: '200',
         weightRegular: '400',
-        weightBold: '600',
+        weightBold: '500',
         primary: '"Nunito Sans", Sans-Serif',
-        secondary: 'Oswald, sans-serif'
+        secondary: '"Montserrat", Sans-Serif'
     },
     colors: {
         default: '#5F6062',
