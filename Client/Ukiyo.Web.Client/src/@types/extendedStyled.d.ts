@@ -3,7 +3,7 @@ import 'styled-components';
 declare module 'styled-components' {
     export interface ThemeSettings {
         maxScreenSize: string;
-        gutter: {
+        gutterHorizontal: {
             base: string;
             xxsmall: string;
             xsmall: string;
@@ -13,6 +13,16 @@ declare module 'styled-components' {
             xlarge: string;
             xxlarge: string;
         };
+        gutterVertical: {
+            base: string;
+            xxsmall: string;
+            xsmall: string;
+            small: string;
+            medium: string;
+            large: string;
+            xlarge: string;
+            xxlarge: string;
+        }
         font: {
             baseSize: string;
             weightLight: string;

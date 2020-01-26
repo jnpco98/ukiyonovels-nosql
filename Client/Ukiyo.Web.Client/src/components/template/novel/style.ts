@@ -1,4 +1,4 @@
-import { regularFontSize, gutter, GUTTER_RIGHT, GUTTER_LEFT, ratioImage } from "../../../utilities/mixins";
+import { regularFontSize, gutter, GUTTER_RIGHT, GUTTER_LEFT, ratioImage, GUTTER_TOP } from "../../../utilities/mixins";
 import styled from "styled-components/macro";
 import { SubsectionTitle, SectionTitle, PageTitle } from "../../atom/text/style";
 import * as M from '../../../settings/media';
@@ -8,26 +8,10 @@ import { AccordionContainer } from "../../molecule/accordion/style";
 import SidePanel from "../../organism/side-panel";
 
 export const NovelContainer = styled.div`
-  margin-top: 4rem;
-
-  ${M.MEDIA_XXSMALL} {
-    margin-top: 5rem;
-  }
-
-  ${M.MEDIA_XSMALL} {
-    margin-top: 6rem;
-  }
-
+  ${gutter(GUTTER_TOP)};
+  
   ${M.MEDIA_MEDIUM} {
     display: flex;
-  }
-  
-  ${M.MEDIA_LARGE} {
-    margin-top: 10rem;
-  }
-
-  ${M.MEDIA_XLARGE} {
-    margin-top: 16rem;
   }
 `;
 

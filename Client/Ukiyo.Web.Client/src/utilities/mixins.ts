@@ -212,20 +212,20 @@ export const gutter = (pos: string, useMargin?: boolean) => {
   return css`
     ${({ theme, ...props }) =>
       gutterFn(
-        pos == GUTTER_TOP ? theme.gutter.base : null, 
-        pos == GUTTER_RIGHT ? theme.gutter.base : null, 
-        pos == GUTTER_BOTTOM ? theme.gutter.base : null, 
-        pos == GUTTER_LEFT ? theme.gutter.base : null
+        pos == GUTTER_TOP ? theme.gutterVertical.base : null, 
+        pos == GUTTER_RIGHT ? theme.gutterHorizontal.base : null, 
+        pos == GUTTER_BOTTOM ? theme.gutterVertical.base : null, 
+        pos == GUTTER_LEFT ? theme.gutterHorizontal.base : null
       )
     }
 
     ${M.MEDIA_XXSMALL} {
       ${({ theme, ...props }) =>
         gutterFn(
-          pos == GUTTER_TOP ? theme.gutter.xxsmall : null, 
-          pos == GUTTER_RIGHT ? theme.gutter.xxsmall : null, 
-          pos == GUTTER_BOTTOM ? theme.gutter.xxsmall : null, 
-          pos == GUTTER_LEFT ? theme.gutter.xxsmall : null
+          pos == GUTTER_TOP ? theme.gutterVertical.xxsmall : null, 
+          pos == GUTTER_RIGHT ? theme.gutterHorizontal.xxsmall : null, 
+          pos == GUTTER_BOTTOM ? theme.gutterVertical.xxsmall : null, 
+          pos == GUTTER_LEFT ? theme.gutterHorizontal.xxsmall : null
         )
       }
     }
@@ -233,10 +233,10 @@ export const gutter = (pos: string, useMargin?: boolean) => {
     ${M.MEDIA_XSMALL} {
       ${({ theme, ...props }) =>
         gutterFn(
-          pos == GUTTER_TOP ? theme.gutter.xsmall : null, 
-          pos == GUTTER_RIGHT ? theme.gutter.xsmall : null, 
-          pos == GUTTER_BOTTOM ? theme.gutter.xsmall : null, 
-          pos == GUTTER_LEFT ? theme.gutter.xsmall : null
+          pos == GUTTER_TOP ? theme.gutterVertical.xsmall : null, 
+          pos == GUTTER_RIGHT ? theme.gutterHorizontal.xsmall : null, 
+          pos == GUTTER_BOTTOM ? theme.gutterVertical.xsmall : null, 
+          pos == GUTTER_LEFT ? theme.gutterHorizontal.xsmall : null
         )
       }
     }
@@ -244,10 +244,10 @@ export const gutter = (pos: string, useMargin?: boolean) => {
     ${M.MEDIA_SMALL} {
       ${({ theme, ...props }) =>
         gutterFn(
-          pos == GUTTER_TOP ? theme.gutter.small : null, 
-          pos == GUTTER_RIGHT ? theme.gutter.small : null, 
-          pos == GUTTER_BOTTOM ? theme.gutter.small : null, 
-          pos == GUTTER_LEFT ? theme.gutter.small : null
+          pos == GUTTER_TOP ? theme.gutterVertical.small : null, 
+          pos == GUTTER_RIGHT ? theme.gutterHorizontal.small : null, 
+          pos == GUTTER_BOTTOM ? theme.gutterVertical.small : null, 
+          pos == GUTTER_LEFT ? theme.gutterHorizontal.small : null
         )
       }
     }
@@ -255,10 +255,10 @@ export const gutter = (pos: string, useMargin?: boolean) => {
     ${M.MEDIA_MEDIUM} {
       ${({ theme, ...props }) =>
         gutterFn(
-          pos == GUTTER_TOP ? theme.gutter.medium : null, 
-          pos == GUTTER_RIGHT ? theme.gutter.medium : null, 
-          pos == GUTTER_BOTTOM ? theme.gutter.medium : null, 
-          pos == GUTTER_LEFT ? theme.gutter.medium : null
+          pos == GUTTER_TOP ? theme.gutterVertical.medium : null, 
+          pos == GUTTER_RIGHT ? theme.gutterHorizontal.medium : null, 
+          pos == GUTTER_BOTTOM ? theme.gutterVertical.medium : null, 
+          pos == GUTTER_LEFT ? theme.gutterHorizontal.medium : null
         )
       }
     }
@@ -266,10 +266,10 @@ export const gutter = (pos: string, useMargin?: boolean) => {
     ${M.LARGE} {
       ${({ theme, ...props }) =>
         gutterFn(
-          pos == GUTTER_TOP ? theme.gutter.large : null, 
-          pos == GUTTER_RIGHT ? theme.gutter.large : null, 
-          pos == GUTTER_BOTTOM ? theme.gutter.large : null, 
-          pos == GUTTER_LEFT ? theme.gutter.large : null
+          pos == GUTTER_TOP ? theme.gutterVertical.large : null, 
+          pos == GUTTER_RIGHT ? theme.gutterHorizontal.large : null, 
+          pos == GUTTER_BOTTOM ? theme.gutterVertical.large : null, 
+          pos == GUTTER_LEFT ? theme.gutterHorizontal.large : null
         )
       }
     }
@@ -277,10 +277,10 @@ export const gutter = (pos: string, useMargin?: boolean) => {
     ${M.MEDIA_XLARGE} {
       ${({ theme, ...props }) =>
         gutterFn(
-          pos == GUTTER_TOP ? theme.gutter.xlarge : null, 
-          pos == GUTTER_RIGHT ? theme.gutter.xlarge : null, 
-          pos == GUTTER_BOTTOM ? theme.gutter.xlarge : null, 
-          pos == GUTTER_LEFT ? theme.gutter.xlarge : null
+          pos == GUTTER_TOP ? theme.gutterVertical.xlarge : null, 
+          pos == GUTTER_RIGHT ? theme.gutterHorizontal.xlarge : null, 
+          pos == GUTTER_BOTTOM ? theme.gutterVertical.xlarge : null, 
+          pos == GUTTER_LEFT ? theme.gutterHorizontal.xlarge : null
         )
       }
     }
@@ -288,10 +288,10 @@ export const gutter = (pos: string, useMargin?: boolean) => {
     ${M.MEDIA_XXLARGE} {
       ${({ theme, ...props }) =>
         gutterFn(
-          pos == GUTTER_TOP ? theme.gutter.xxlarge : null, 
-          pos == GUTTER_RIGHT ? theme.gutter.xxlarge : null, 
-          pos == GUTTER_BOTTOM ? theme.gutter.xxlarge : null, 
-          pos == GUTTER_LEFT ? theme.gutter.xxlarge : null
+          pos == GUTTER_TOP ? theme.gutterVertical.xxlarge : null, 
+          pos == GUTTER_RIGHT ? theme.gutterHorizontal.xxlarge : null, 
+          pos == GUTTER_BOTTOM ? theme.gutterVertical.xxlarge : null, 
+          pos == GUTTER_LEFT ? theme.gutterHorizontal.xxlarge : null
         )
       }
     }
