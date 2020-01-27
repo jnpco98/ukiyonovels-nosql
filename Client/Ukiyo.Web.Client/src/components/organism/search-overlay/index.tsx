@@ -14,13 +14,13 @@ const SearchOverlay: React.FC<Props> = (props: Props): ReactElement => {
 
     const searchRef = useRef(document.createElement('div'));
 
+    const handleClick = (event: React.MouseEvent) => {
+        if(event.target instanceof Node && searchRef.current.contains(event.target)) return;
+        setActive(false);
+    }
+
     return(
-        <S.SearchOverlayContainer show={active} 
-            centerChildren 
-            onClick={event => 
-                !(event.target instanceof Node && searchRef.current.contains(event.target)) && setActive(false)
-            }
-        >
+        <S.SearchOverlayContainer show={active} centerChildren  onClick={event => handleClick(event)} transition="all 0.4s ease">
             <Search ref={searchRef} active={active} onSubmit={() => { onSearchSubmit(); setActive(false); }} placeholder={placeholder}/>
         </S.SearchOverlayContainer>
     );

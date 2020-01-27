@@ -81,8 +81,8 @@ const Header: React.FC<Props> = (props: Props): ReactElement => {
             <S.HeaderSideDrawer drawerActive={drawerActive} >
                 <S.HeaderSideDrawerMenu> {renderMenuItems()} </S.HeaderSideDrawerMenu>
             </S.HeaderSideDrawer>
-
             <Backdrop show={drawerActive} onClick={(): void => setDrawerActive(false)} /> 
+            
             <SearchOverlay active={searchOverlayActive} setActive={setSearchOverlayActive} onSearchSubmit={() => console.log('call api submit')}/>
         </S.HeaderContainer>
     );

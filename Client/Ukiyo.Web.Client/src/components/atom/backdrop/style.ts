@@ -10,13 +10,17 @@ type ContainerStyleProps = {
 }
 
 export const BackdropContainer = styled.div<ContainerStyleProps>`
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background-color: ${({ theme, ...props }) => transparentize(0.3, theme.colors.black)};
   position: fixed;
   top: 0;
   left: 0;
   z-index: ${props => props.zIndex || 0};
+
+  ${center(FLEX_ALIGN_BOTH)};
+  transform: translateY(-100%);
+  opacity: 0;
 
   ${props =>
     props.transparent &&
@@ -26,19 +30,13 @@ export const BackdropContainer = styled.div<ContainerStyleProps>`
   };
 
   ${props =>
-    props.show ?
+    props.show &&
       css`
-        ${props.centerChildren ? 
-            center(FLEX_ALIGN_BOTH) : 
-            css`
-              display: block;
-            `
-          };
-      `:
-      css`
-        display: none;
+        transform: translateY(0);
+        opacity: 1;
       `
-  };
+    };
+
 
   ${props =>
     props.centerChildren &&

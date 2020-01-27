@@ -62,6 +62,14 @@ export const SearchInput = styled.input.attrs({ type: 'text' })`
   ${M.MEDIA_LARGE} {
     width: 30rem;
   }
+
+  ${M.MEDIA_XLARGE} {
+    width: 40rem;
+  }
+
+  ${M.MEDIA_XXLARGE} {
+    width: 50rem;
+  }
   
 `;
 
