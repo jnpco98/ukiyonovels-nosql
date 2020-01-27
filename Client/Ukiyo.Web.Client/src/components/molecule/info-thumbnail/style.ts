@@ -75,11 +75,16 @@ export const InfoThumbnailImage = styled.img`
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
   cursor: pointer;
 
+  @supports (object-fit: cover) {
+    object-fit: cover;
+  }
+  
   ${InfoThumbnailContainer}:hover & {
-    filter: blur(1px);
+    @supports (filter: blur) {
+      filter: blur(1px);
+    }
   }
 `;
 

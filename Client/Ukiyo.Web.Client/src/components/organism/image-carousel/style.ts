@@ -75,13 +75,15 @@ export const ImageCarouselSliderItem = styled.div`
 export const ImageCarouselBackgroundImage = styled.img`
   top: 0;
   left: 0;
-  object-fit: cover;
   position: absolute;
   width: 100%;
   height: 100%;
   margin: auto;
-
   display: none;
+
+  @supports (object-fit: cover) {
+    object-fit: cover;
+  }
 
   ${M.MEDIA_SMALL} {
     && {

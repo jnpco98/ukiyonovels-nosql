@@ -19,8 +19,11 @@ export const ThumbnailContent = styled.div`
 export const ThumbnailImage = styled.img`
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center;
+  
+  @supports (object-fit: cover) {
+    object-fit: cover;
+    object-position: center;
+  }
 `;
 
 export const ThumbnailContainer = styled.a`

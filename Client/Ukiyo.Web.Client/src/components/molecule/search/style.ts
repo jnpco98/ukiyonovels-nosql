@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components/macro';
-import { SubsectionTitle } from '../../atom/text/style';
 import * as M from '../../../settings/media';
 import Text, { TextType } from '../../atom/text';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -25,6 +24,11 @@ export const SearchContainer = styled.div<SearchContainerStyleProps>`
 export const SearchContent = styled.form`
   ${center(CENTER_BOTH)};
   display: flex;
+  padding: 1rem;
+
+  ${M.MEDIA_MEDIUM} {
+    padding: 2rem;
+  }
 `;
 
 export const SearchButton = styled.button.attrs({ type: 'submit' })`

@@ -15,6 +15,7 @@ type Props = {
 const Backdrop: React.FC<Props> = (props: Props) => {
     const { show, className, centerChildren, children, transparent, onClick, zIndex } = props;
 
+    // Replace with redux to fix bugs with conflicting multiple
     if(show) document.body.classList.add('no-scroll');
     else document.body.classList.remove('no-scroll');
     
