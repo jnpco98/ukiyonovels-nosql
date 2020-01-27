@@ -3,17 +3,18 @@ import * as S from './style';
 import { useOnClickOutside } from '../../../utilities/hooks';
 
 type Props = {
-    value: string;
-    setValue: Function;
+    value?: string;
+    setValue?: Function;
     className?: string;
     name: string;
     label: string;
     required?: boolean;
     autoComplete?: string;
+    placeholder?: string;
 };
 
 const Input: React.FC<Props> = (props: Props): ReactElement => {
-    const { value, setValue, className, name, label, required, autoComplete } = props;
+    const { value, setValue, className, name, label, required, autoComplete, placeholder } = props;
     const [active, setActive] = useState(false);
     const [empty, setEmpty] = useState(true);
 
@@ -22,8 +23,9 @@ const Input: React.FC<Props> = (props: Props): ReactElement => {
     useOnClickOutside(inputRef, () => empty && setActive(false));
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setValue(e.target.value)
         e.target.value.length ? setEmpty(false) : setEmpty(true)
+        if(!setValue) return;
+        setValue(e.target.value)
     }
 
     return (
@@ -35,6 +37,7 @@ const Input: React.FC<Props> = (props: Props): ReactElement => {
                 required={required}
                 active={active}
                 onChange={e => handleChange(e)}
+                placeholder={placeholder}
                 value={value}
             />
             <S.InputLabel active={active} htmlFor={name}>
