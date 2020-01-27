@@ -18,7 +18,7 @@ type Props = {
 } & React.HTMLProps<HTMLAnchorElement>;
 
 const Text: React.FC<Props> = (props: Props): ReactElement => {
-    const { children = '', className = '', textType, href } = props;
+    const { children = '', className = '', textType, href, onClick } = props;
 
     let StyledText: AnyStyledComponent;
 
@@ -45,7 +45,7 @@ const Text: React.FC<Props> = (props: Props): ReactElement => {
     }
 
     return (
-        <StyledText href={href} className={className}>
+        <StyledText href={href} className={className} onClick={onClick} >
             {children}
         </StyledText>
     );

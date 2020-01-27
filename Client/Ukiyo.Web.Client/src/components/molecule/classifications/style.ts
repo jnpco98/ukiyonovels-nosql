@@ -1,8 +1,7 @@
 import styled, { css } from 'styled-components/macro';
 import { SubsectionTitle } from '../../atom/text/style';
-import { gutter, GUTTER_LEFT, GUTTER_RIGHT, regularFontSize } from '../../../utilities/mixins';
+import { regularFontSize } from '../../../utilities/mixins';
 import * as M from '../../../settings/media';
-import { margin } from 'polished';
 
 export const ClassificationsContainer = styled.div`
   width: 100%;

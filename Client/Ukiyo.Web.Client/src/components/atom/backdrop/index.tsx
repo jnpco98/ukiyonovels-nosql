@@ -4,8 +4,8 @@ import { BackdropContainer } from './style';
 type Props = {
     show: boolean;
     className?: string;
-
-    color?: string;
+    children?: React.ReactNode;
+    centerChildren?: boolean;
     transparent?: boolean;
     zIndex?: number;
     
@@ -13,7 +13,7 @@ type Props = {
 };
 
 const Backdrop: React.FC<Props> = (props: Props) => {
-    const { show, className, transparent, onClick, zIndex } = props;
+    const { show, className, centerChildren, children, transparent, onClick, zIndex } = props;
 
     if(show) document.body.classList.add('no-scroll');
     else document.body.classList.remove('no-scroll');
@@ -21,11 +21,14 @@ const Backdrop: React.FC<Props> = (props: Props) => {
     return (
         <BackdropContainer
             className={className}
+            centerChildren={centerChildren}
             onClick={onClick}
             show={show}
             transparent={transparent}
             zIndex={zIndex}
-        />
+        >
+            {children}
+        </BackdropContainer>
     );
 };
 

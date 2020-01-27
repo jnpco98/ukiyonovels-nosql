@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
-import ImageCarousel from '../../components/organism/image-carousel';
-import InfoThumbnailCarousel from '../../components/organism/info-thumbnail-carousel';
-import InfoCardList from '../../components/organism/info-card-list';
+import ImageCarousel from '../../organism/image-carousel';
+import InfoThumbnailCarousel from '../../organism/info-thumbnail-carousel';
+import InfoCardList from '../../organism/info-card-list';
 import * as S from './style';
 
 const cardContent = [

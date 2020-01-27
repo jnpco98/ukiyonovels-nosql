@@ -3,7 +3,6 @@ import * as M from '../../../settings/media';
 
 type ContainerStyleProps = {
   sidenavActive: boolean;
-  zIndex?: number;
 }
 
 export const SideDrawerContainer = styled.div<ContainerStyleProps>`
@@ -11,7 +10,7 @@ export const SideDrawerContainer = styled.div<ContainerStyleProps>`
   background: ${({ theme, ...props }) => theme.colors.background};
   overflow: hidden;
   transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
-  z-index: ${props => props.zIndex || 5};
+  z-index: 5;
 
   top: 0;
   left: 0;

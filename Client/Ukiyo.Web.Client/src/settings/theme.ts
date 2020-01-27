@@ -37,8 +37,6 @@ export const BaseTheme: ThemeSettings = {
         black: '#000',
         white: '#FFF',
 
-        backdropColor: 'rgba(0, 0, 0, 0.5)',
-
         background: 'white',
         backgroundAlternate: '#F8F8F8',
 
