@@ -136,7 +136,7 @@ export const NovelSidePanel = styled(SidePanel)`
   }
 
   ${M.MEDIA_LARGE} {
-    padding-left: 3rem;
+    padding-left: 4rem;
   }
   
   ${M.MEDIA_XXLARGE} {

@@ -6,7 +6,6 @@ export const AppContainer = styled.main`
   flex-direction: column;
   background: ${({ theme, ...props }) => theme.colors.backgroundAlternate};
   margin: 0 auto;
-  min-height: 100rem;
   width: 100%;
   overflow: hidden;
 

@@ -19,6 +19,7 @@ export const SearchWrapper = styled.div`
   width: 100%;
   ${M.MEDIA_MEDIUM} {
     flex: 1;
+    width: 0;
   }
 `;
 
@@ -42,7 +43,7 @@ export const SearchSidePanel = styled(SidePanel)`
   }
 
   ${M.MEDIA_LARGE} {
-    padding-left: 3rem;
+    padding-left: 4rem;
   }
   
   ${M.MEDIA_XXLARGE} {

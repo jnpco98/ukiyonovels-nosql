@@ -12,6 +12,7 @@
     "global": "^4.4.0",
     "polished": "^3.4.2",
     "react": "^16.12.0",
+    "react-app-polyfill": "^1.0.5",
     "react-dom": "^16.12.0",
     "react-responsive": "^8.0.1",
     "react-scripts": "3.2.0",
@@ -36,6 +37,7 @@
       "not op_mini all"
     ],
     "development": [
+      "ie 11",
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
