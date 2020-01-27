@@ -69,7 +69,7 @@ export const HomeSidePanel = styled(SidePanel)`
 
   ${M.MEDIA_LARGE} {
     margin-top: 0.7rem;
-    padding-left: 4rem;
+    padding-left: 6rem;
   }
 
   ${M.MEDIA_XXLARGE} {

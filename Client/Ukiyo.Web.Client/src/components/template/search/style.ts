@@ -43,7 +43,7 @@ export const SearchSidePanel = styled(SidePanel)`
   }
 
   ${M.MEDIA_LARGE} {
-    padding-left: 4rem;
+    padding-left: 6rem;
   }
   
   ${M.MEDIA_XXLARGE} {
