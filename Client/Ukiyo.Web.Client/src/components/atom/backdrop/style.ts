@@ -10,18 +10,18 @@ type ContainerStyleProps = {
 }
 
 export const BackdropContainer = styled.div<ContainerStyleProps>`
-  width: 100vw;
-  height: 100vh;
-  background-color: ${({ theme, ...props }) => transparentize(0.3, theme.colors.black)};
-  position: fixed;
   top: 0;
   left: 0;
-  z-index: ${props => props.zIndex || 0};
-
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
   ${center(FLEX_ALIGN_BOTH)};
-  transform: translateY(-100%);
   opacity: 0;
-
+  background-color: ${({ theme, ...props }) => transparentize(0.3, theme.colors.black)};
+  transform: translateY(-100%);
+  z-index: ${props => props.zIndex || 0};
+  backdrop-filter: blur(5px);
+  
   ${props =>
     props.transparent &&
       css`

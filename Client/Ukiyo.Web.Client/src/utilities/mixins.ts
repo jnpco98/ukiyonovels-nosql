@@ -336,8 +336,6 @@ export const ratioImage = (image: AnyStyledComponent, width: string, height?: st
     top: 0;
     left: 0;
 
-    @supports (object-fit: cover) {
-      object-fit: cover;
-    }
+    object-fit: cover;
   }
 `;

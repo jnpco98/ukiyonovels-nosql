@@ -81,9 +81,7 @@ export const ImageCarouselBackgroundImage = styled.img`
   margin: auto;
   display: none;
 
-  @supports (object-fit: cover) {
-    object-fit: cover;
-  }
+  object-fit: cover;
 
   ${M.MEDIA_SMALL} {
     && {
