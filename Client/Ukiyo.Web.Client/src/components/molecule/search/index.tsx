@@ -1,6 +1,5 @@
 import React, { ReactElement, useState, forwardRef } from 'react';
 import * as S from './style';
-import Input from '../../atom/input';
 
 type Props = {
     onSubmit?: Function;
