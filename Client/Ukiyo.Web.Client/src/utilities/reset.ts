@@ -24,7 +24,7 @@ const reset = css`
   article, aside, canvas, details, embed,
   figure, figcaption, footer, header, hgroup,
   main, menu, nav, output, ruby, section, summary,
-  time, mark, audio, video {
+  time, mark, audio, video, textarea, input {
     margin: 0;
     padding: 0;
     border: 0;
@@ -92,9 +92,11 @@ const reset = css`
   button {
     font-family: "Roboto", Sans-Serif;
     outline: none;
+    cursor: pointer;
   }
 
-  input {
+  input, textarea {
+    background: transparent;
     outline: none;
   }
 `;

@@ -69,7 +69,7 @@ export const ContactPageFormTextBox = styled(Input).attrs({ inputType: InputType
   min-height: 10rem;
   
   ${M.MEDIA_LARGE} {
-    height: 12rem;
+    min-height: 12rem;
   }
 `;
 
