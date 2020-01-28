@@ -8,7 +8,8 @@ export enum TextType {
     SubsectionTitle,
     Paragraph,
     Span,
-    Anchor
+    Anchor,
+    Label
 }
 
 type Props = {
@@ -41,6 +42,9 @@ const Text: React.FC<Props> = (props: Props): ReactElement => {
             break;
         case TextType.Anchor:
             StyledText = S.Anchor;
+            break;
+        case TextType.Label:
+            StyledText = S.Label;
             break;
     }
 

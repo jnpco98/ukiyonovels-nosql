@@ -1,49 +1,34 @@
-import React, { ReactElement, useState, useRef } from 'react';
+import React, { ReactElement } from 'react';
+import { AnyStyledComponent } from 'styled-components/macro';
 import * as S from './style';
-import { useOnClickOutside } from '../../../utilities/hooks';
+
+export enum InputType {
+    Multi,
+    Single
+}
 
 type Props = {
-    value?: string;
-    setValue?: Function;
     className?: string;
-    name: string;
-    label: string;
-    required?: boolean;
-    autoComplete?: string;
-    placeholder?: string;
-};
+    inputType?: InputType;
+}
 
 const Input: React.FC<Props> = (props: Props): ReactElement => {
-    const { value, setValue, className, name, label, required, autoComplete, placeholder } = props;
-    const [active, setActive] = useState(false);
-    const [empty, setEmpty] = useState(true);
+    const { className = '', inputType } = props;
 
-    const inputRef = useRef(document.createElement('input'));
+    let StyledInput: AnyStyledComponent;
 
-    useOnClickOutside(inputRef, () => empty && setActive(false));
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        e.target.value.length ? setEmpty(false) : setEmpty(true)
-        if(!setValue) return;
-        setValue(e.target.value)
+    switch (inputType) {
+        case InputType.Multi:
+            StyledInput = S.TextArea;
+            break;
+        default:
+        case InputType.Single:
+            StyledInput = S.Input;
+            break;
     }
 
     return (
-        <S.InputContainer ref={inputRef} onClick={(): void => setActive(true)} className={className}>
-            <S.InputField
-                type="text"
-                name={name}
-                autoComplete={autoComplete}
-                required={required}
-                active={active}
-                onChange={e => handleChange(e)}
-                placeholder={placeholder}
-                value={value}
-            />
-            <S.InputLabel active={active} htmlFor={name}>
-                <S.InputLabelSpan active={active}>{label}</S.InputLabelSpan>
-            </S.InputLabel>
-        </S.InputContainer>
+        <StyledInput className={className} {...props}/>
     );
 };
 

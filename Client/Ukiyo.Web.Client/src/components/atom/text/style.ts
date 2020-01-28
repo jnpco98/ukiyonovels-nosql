@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components/macro';
 import { pageTitleFontSize, sectionFontSize, subsectionFontSize, regularFontSize, headingDecoration } from '../../../utilities/mixins';
 import * as M from '../../../settings/media';
 import { margin } from 'polished';
+import TextAreaAutoResize from 'react-autosize-textarea';
 
 type HeadingStyleProps = {
   clearDecoration?: boolean;
@@ -88,6 +89,16 @@ export const Span = styled.span`
 `;
 
 export const Anchor = styled.a`
+  ${regularFontSize};
+
+  ${margin('0.2rem', null, '0.2rem', null)};
+
+  ${M.MEDIA_MEDIUM} {
+    ${margin('0.4rem', null, '0.4rem', null)};
+  }
+`;
+
+export const Label = styled.label`
   ${regularFontSize};
 
   ${margin('0.2rem', null, '0.2rem', null)};
