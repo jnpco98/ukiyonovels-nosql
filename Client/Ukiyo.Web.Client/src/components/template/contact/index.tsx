@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useRef } from 'react';
 import * as S from './style';
 import DynamicHTML from '../../molecule/dynamic-html';
 import { contact } from '../../../settings/config/settings.json';
@@ -7,6 +7,7 @@ import { AnyStyledComponent } from 'styled-components';
 
 const Contact: React.FC = (): ReactElement => {
     const { pageHeading, pageText, fields, submitText } = contact;
+    const inputRef = useRef(document.createElement('input'));
 
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
@@ -33,7 +34,7 @@ const Contact: React.FC = (): ReactElement => {
                 {
                     fields.map(f => {
                         const InputStyledComponent: AnyStyledComponent = f.multi ? S.ContactPageFormTextBox : S.ContactPageFormInput;
-                        return <InputStyledComponent name={f.displayName} placeholder={f.placeholder} required={f.required} pattern={f.pattern || null} autocomplete="off"/>
+                        return <InputStyledComponent ref={inputRef} name={f.displayName} placeholder={f.placeholder} required={f.required} pattern={f.pattern || null} autocomplete="off"/>
                     })
                 }
                 <S.ContactPageFormSubmit submitButton>{submitText}</S.ContactPageFormSubmit>

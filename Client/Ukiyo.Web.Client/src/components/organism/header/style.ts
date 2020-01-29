@@ -109,6 +109,8 @@ export const HeaderUserLink = styled.li`
 
   &:hover {
     background: none;
+    color: ${({ theme, ...props }) => theme.colors.accent};
+    opacity: 0.5;
   }
 
   a {
@@ -125,6 +127,12 @@ export const HeaderUserLink = styled.li`
   ${M.MEDIA_XLARGE} {
     a {
       padding: 1.1rem 1.2rem;
+    }
+  }
+
+  ${M.MEDIA_MEDIUM} {
+    svg {
+      font-size: 1rem;
     }
   }
 `;
@@ -151,7 +159,7 @@ type ContainerStyleProps = {
   floating?: boolean;
 }
 
-export const HeaderContainer = styled.div<ContainerStyleProps>`
+export const HeaderContainer = styled.header<ContainerStyleProps>`
   display: flex;
   justify-content: space-between;
   width: 100%;

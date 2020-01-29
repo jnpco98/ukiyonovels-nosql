@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, forwardRef } from 'react';
 import { AnyStyledComponent } from 'styled-components/macro';
 import * as S from './style';
 
@@ -12,7 +12,7 @@ type Props = {
     inputType?: InputType;
 }
 
-const Input: React.FC<Props> = (props: Props): ReactElement => {
+const Input: React.FC<Props> = (props: Props, ref: React.RefObject<HTMLInputElement | HTMLTextAreaElement>): ReactElement => {
     const { className = '', inputType } = props;
 
     let StyledInput: AnyStyledComponent;
@@ -28,8 +28,8 @@ const Input: React.FC<Props> = (props: Props): ReactElement => {
     }
 
     return (
-        <StyledInput className={className} {...props}/>
+        <StyledInput ref={ref} className={className} {...props}/>
     );
 };
 
-export default Input;
+export default forwardRef(Input);
