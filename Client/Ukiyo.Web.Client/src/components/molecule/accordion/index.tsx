@@ -10,13 +10,14 @@ type Props = {
         content: React.ReactNode;
     }[];
     initialOpen?: boolean;
+    flat?: boolean;
 };
 
 const Accordion: React.FC<Props> = (props: Props): ReactElement => {
-    const { className, accordionContent, initialOpen = true, multiple = true } = props;
+    const { className, accordionContent, flat = false, initialOpen = true, multiple = true } = props;
 
     return (
-        <S.AccordionContainer className={className}>
+        <S.AccordionContainer flat={flat} className={className}>
             <S.AccordionTabs>
                 {
                     accordionContent.map(ac => 

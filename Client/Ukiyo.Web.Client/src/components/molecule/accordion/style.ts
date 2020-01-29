@@ -1,13 +1,10 @@
-import styled from 'styled-components/macro';
+import styled, { css } from 'styled-components/macro';
 import { SubsectionTitle } from '../../atom/text/style';
 import { regularFontSize } from '../../../utilities/mixins';
 import * as M from '../../../settings/media';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
-
-export const AccordionContainer = styled.div`
-  width: 100%;
-`;
+import { padding, margin } from 'polished';
 
 export const AccordionTabs = styled.div`
   border-radius: 0.3rem;
@@ -102,4 +99,43 @@ export const AccordionTabTrigger = styled.input`
       }
     }
   }
+`;
+
+type AccordionStyleProps = {
+  flat?: boolean;
+}
+
+export const AccordionContainer = styled.div<AccordionStyleProps>`
+  width: 100%;
+  
+  ${({ theme, ...props }) => 
+    props.flat && css`
+      ${AccordionTabs} {
+        box-shadow: none;
+      }
+
+      ${AccordionTabLabel} {
+        background: ${theme.colors.white};
+        color: ${theme.colors.black};
+        border-bottom: 1px solid ${({ theme, ...props }) => theme.colors.black};
+        ${padding(null, 0)};
+      }
+
+      ${AccordionTabTrigger}:checked {
+        + ${AccordionTabLabel} {
+          background: ${({ theme, ...props }) => theme.colors.white};
+        }
+        ~ ${AccordionContent} {
+          ${padding(null, 0)};
+        }
+      }
+      
+      ${M.MEDIA_XLARGE} {
+        ${AccordionTabLabel},
+        ${AccordionTabTrigger}:checked ~ ${AccordionContent} {
+          ${padding(null, 0)};
+        }
+      }
+    `
+  };
 `;
