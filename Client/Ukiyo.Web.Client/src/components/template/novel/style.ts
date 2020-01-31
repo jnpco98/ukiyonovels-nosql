@@ -1,4 +1,4 @@
-import { regularFontSize, gutter, GUTTER_RIGHT, GUTTER_LEFT, ratioImage, GUTTER_TOP } from "../../../utilities/mixins";
+import { regularFontSize, gutter, GUTTER_RIGHT, GUTTER_LEFT, ratioImage, GUTTER_TOP, GUTTER_BOTTOM } from "../../../utilities/mixins";
 import styled from "styled-components/macro";
 import { SubsectionTitle, SectionTitle, PageTitle } from "../../atom/text/style";
 import * as M from '../../../settings/media';
@@ -9,6 +9,7 @@ import SidePanel from "../../organism/side-panel";
 
 export const NovelContainer = styled.div`
   ${gutter(GUTTER_TOP)};
+  ${gutter(GUTTER_BOTTOM)};
   
   ${M.MEDIA_MEDIUM} {
     display: flex;

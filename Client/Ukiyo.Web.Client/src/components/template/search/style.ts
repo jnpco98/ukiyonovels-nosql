@@ -1,7 +1,7 @@
 import styled from 'styled-components/macro';
 import SidePanel from '../../organism/side-panel';
 import * as M from '../../../settings/media';
-import { gutter, GUTTER_RIGHT, GUTTER_TOP, GUTTER_LEFT } from '../../../utilities/mixins';
+import { gutter, GUTTER_RIGHT, GUTTER_TOP, GUTTER_LEFT, GUTTER_BOTTOM } from '../../../utilities/mixins';
 import { PageTitle } from '../../atom/text/style';
 
 export const SearchContainer = styled.div`
@@ -9,6 +9,7 @@ export const SearchContainer = styled.div`
   ${gutter(GUTTER_TOP)};
   ${gutter(GUTTER_LEFT)};
   ${gutter(GUTTER_RIGHT)};
+  ${gutter(GUTTER_BOTTOM)};
   
   ${M.MEDIA_MEDIUM} {
     display: flex;

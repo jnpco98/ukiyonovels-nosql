@@ -4,7 +4,7 @@ import { regularFontSize } from '../../../utilities/mixins';
 import * as M from '../../../settings/media';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import { padding, margin } from 'polished';
+import { padding } from 'polished';
 
 export const AccordionTabs = styled.div`
   border-radius: 0.3rem;
@@ -112,12 +112,13 @@ export const AccordionContainer = styled.div<AccordionStyleProps>`
     props.flat && css`
       ${AccordionTabs} {
         box-shadow: none;
+        border-radius: 0;
       }
 
       ${AccordionTabLabel} {
         background: ${theme.colors.white};
         color: ${theme.colors.black};
-        border-bottom: 1px solid ${({ theme, ...props }) => theme.colors.black};
+        border-bottom: 1px solid ${({ theme, ...props }) => theme.colors.subdued};
         ${padding(null, 0)};
       }
 

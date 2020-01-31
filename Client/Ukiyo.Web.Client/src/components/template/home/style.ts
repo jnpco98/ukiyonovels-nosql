@@ -1,7 +1,7 @@
 import styled from 'styled-components/macro';
 import * as M from '../../../settings/media';
 import SidePanel from '../../organism/side-panel';
-import { gutter, GUTTER_LEFT, GUTTER_RIGHT } from '../../../utilities/mixins';
+import { gutter, GUTTER_LEFT, GUTTER_RIGHT, GUTTER_BOTTOM } from '../../../utilities/mixins';
 import InfoThumbnailCarousel from '../../organism/info-thumbnail-carousel';
 import ImageCarousel from '../../organism/image-carousel';
 import { ImageCarouselSliderItem, ImageCarouselContent } from '../../organism/image-carousel/style';
@@ -10,6 +10,7 @@ export const HomeContainer = styled.div`
   width: 100%;
   ${gutter(GUTTER_LEFT)};
   ${gutter(GUTTER_RIGHT)};
+  ${gutter(GUTTER_BOTTOM)};
   
   ${M.MEDIA_MEDIUM} {
     display: flex;

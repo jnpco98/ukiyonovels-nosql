@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro';
-import { gutter, GUTTER_TOP, GUTTER_LEFT, GUTTER_RIGHT } from '../../../utilities/mixins';
+import { gutter, GUTTER_TOP, GUTTER_LEFT, GUTTER_RIGHT, GUTTER_BOTTOM } from '../../../utilities/mixins';
 import * as M from '../../../settings/media';
 import SidePanel from '../../organism/side-panel';
 import { PageTitle } from '../../atom/text/style';
@@ -9,6 +9,7 @@ export const NovelsContainer = styled.div`
   ${gutter(GUTTER_TOP)};
   ${gutter(GUTTER_LEFT)};
   ${gutter(GUTTER_RIGHT)};
+  ${gutter(GUTTER_BOTTOM)};
 
   ${M.MEDIA_MEDIUM} {
     display: flex;

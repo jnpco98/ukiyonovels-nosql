@@ -1,5 +1,6 @@
 import styled from 'styled-components/macro';
 import { PageTitle, SubsectionTitle } from '../../atom/text/style';
+import { gutter, GUTTER_TOP, GUTTER_BOTTOM } from '../../../utilities/mixins';
 
 
 export const PageNotFoundContainer = styled.div`
@@ -10,6 +11,9 @@ export const PageNotFoundContainer = styled.div`
   justify-content: center;
   flex-direction: column;
   text-align: center;
+
+  ${gutter(GUTTER_TOP)};
+  ${gutter(GUTTER_BOTTOM)};
 `;
 
 export const PageNotFoundHeading = styled(PageTitle)`
