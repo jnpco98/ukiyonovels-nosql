@@ -4,25 +4,29 @@ import { AppContainer } from './style';
 import { BaseTheme } from '../settings/theme';
 import { navigation, copyright, privacy, termsOfService } from '../settings/config/settings.json';
 
-// eslint-disable-next-line
-import 'simplebar/dist/simplebar.min.css';
 import Header from '../components/organism/header';
 
-import Home from '../template/home';
-import Novels from '../template/novels';
-import LatestUpdates from '../template/latest-updates';
-import StandardPage from '../template/standard';
-import Novel from '../template/novel';
-import PageNotFound from '../template/404';
-import SearchPage from '../template/search';
-import Search from '../components/atom/search';
-import Select from '../components/atom/select';
+import Home from '../components/template/home';
+import LatestUpdates from '../components/template/latest-updates';
+
+import Loader, { LoaderType } from '../components/atom/loaders';
+import Novel from '../components/template/novel';
+import StandardPage from '../components/template/standard';
+import Novels from '../components/template/novels';
+import PageNotFound from '../components/template/404';
+import SearchPage from '../components/template/search';
+import Contact from '../components/template/contact';
+import Footer from '../components/organism/footer';
 
 
 const App: React.FC = (): ReactElement => {
     return (
         <ThemeProvider theme={BaseTheme}>
             <AppContainer>
+                {/* <Loader type={LoaderType.Ring} />
+                <Loader type={LoaderType.DualRing} />
+                <Loader type={LoaderType.Ellipsis} /> */}
+
                 <Header menuItems={navigation.items} />
                 {/* <Home/>
                 <Novel/>
@@ -32,8 +36,10 @@ const App: React.FC = (): ReactElement => {
                 <StandardPage pageHeading={copyright.pageHeading} pageText={copyright.pageText}/>
                 <StandardPage pageHeading={privacy.pageHeading} pageText={privacy.pageText} contents={privacy.contents}/>
                 <StandardPage pageHeading={termsOfService.pageHeading} pageText={termsOfService.pageText} contents={termsOfService.contents} /> 
-                <PageNotFound />*/}
-                <Novel/>
+                <PageNotFound /> */}
+
+                <Contact/>
+                <Footer/>
             </AppContainer>
         </ThemeProvider>
     );
