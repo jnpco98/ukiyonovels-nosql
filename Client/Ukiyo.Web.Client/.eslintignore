@@ -11,3 +11,6 @@ src/serviceWorker.ts
 
 # Styled plugin macros config
 babel-plugin-macros.config.js
+
+# JSON Files
+*.json

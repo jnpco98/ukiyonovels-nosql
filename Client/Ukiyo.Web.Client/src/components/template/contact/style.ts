@@ -28,6 +28,8 @@ export const ContactPageContainer = styled.div`
 `;
 
 export const ContactPageContent = styled.div`
+  margin-bottom: 2rem;
+  
   & + & {
     margin-top: 3rem;
   }
@@ -44,7 +46,6 @@ export const ContactPageTitle = styled(SectionTitle).attrs({ as: 'h1' })``;
 export const ContactPageForm = styled.form`
   display: flex;
   flex-direction: column;
-  margin: 2rem 0;
 `;
 
 type ContactPageFieldStyleProps = {
