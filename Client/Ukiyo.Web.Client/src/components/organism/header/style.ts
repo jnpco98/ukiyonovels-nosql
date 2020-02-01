@@ -1,14 +1,10 @@
-import styled, { css } from 'styled-components/macro';
-import * as M from '../../../settings/media';
-import { Anchor } from '../../atom/text/style';
-import { math } from 'polished';
+import styled from 'styled-components/macro';
 import Hamburger from '../../atom/hamburger';
-import { center, FLEX_ALIGN_MAIN } from '../../../utilities/mixins';
 import SideDrawer from '../../atom/drawer';
+import Text, { TextType } from '../../atom/text';
+import { center, FLEX_ALIGN_MAIN } from '../../../utilities/mixins';
+import * as M from '../../../settings/media';
 
-type HeaderMenuItemStyleProps = {
-  active?: boolean;
-}
 
 export const HeaderLeftMenu = styled.ul`
   ${M.MEDIA_XXSMALL} {
@@ -31,19 +27,38 @@ export const HeaderRightMenu = styled.ul`
 export const HeaderSideDrawerMenu = styled.ul`
 `;
 
-export const HeaderMenuItem = styled.li<HeaderMenuItemStyleProps>`
+export const HeaderMenuItemLink = styled(Text).attrs({ textType: TextType.Anchor })`
+  overflow: hidden;
+
+  &:after {
+    transition: all 0.3s ease; 
+  }
+`;
+
+export const HeaderMenuItem = styled.li`
   ${center(FLEX_ALIGN_MAIN)};
 
   text-transform: uppercase;
   margin: 0 0.9rem;
-  padding-top: 0.5rem;
+  padding-top: 0.8rem;
 
   &.is-icon {
-    width: 0.8rem;
-    height: 0.8rem;
     padding-top: 0;
     margin-right: 0;
-  }
+
+    span {
+      width: 0.8rem;
+      height: 0.8rem;
+    }
+
+    ${HeaderMenuItemLink} {
+      font-size: unset;
+
+      &:after {
+        content: none;
+      }
+    }
+  } 
 
   ${M.MEDIA_XXSMALL} {
     margin: 0 2rem;
@@ -51,10 +66,32 @@ export const HeaderMenuItem = styled.li<HeaderMenuItemStyleProps>`
 
   ${M.MEDIA_XSMALL} {
     margin: 0 3rem;
+    padding-top: 1.3rem;
 
-    &.is-icon {
+    &.is-icon span {
       width: 1rem;
       height: 1rem;
+    }
+  }
+
+  ${HeaderMenuItemLink} {
+    position: relative;
+
+    &:after {
+      content: '';
+      width: 100%;
+      height: 2px;
+      position: absolute;
+      background: black;
+      bottom: 0;
+      left: 0;
+      transform: translateX(-110%);
+    }
+  }
+
+  &:hover, &.is-active {
+    ${HeaderMenuItemLink}:after {
+      transform: translateX(0); 
     }
   }
 `;
@@ -62,19 +99,11 @@ export const HeaderMenuItem = styled.li<HeaderMenuItemStyleProps>`
 export const HeaderHamburger = styled.li`
 `;
 
-type HamburgerIconStyleProps = {
-  active: boolean;
-}
-
-export const HeaderHamburgerIcon = styled(Hamburger)<HamburgerIconStyleProps>`
+export const HeaderHamburgerIcon = styled(Hamburger)`
   transition: transform 0.3s ease;
 `;
 
-type ContainerStyleProps = {
-  floating?: boolean;
-}
-
-export const HeaderContainer = styled.header<ContainerStyleProps>`
+export const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -89,15 +118,12 @@ export const HeaderContainer = styled.header<ContainerStyleProps>`
     display: flex;
   }
 
-  ${props =>
-    props.floating &&
-      css`
-        font-size: 0.9rem;
-        position: fixed;
-        background: ${({ theme, ...props }) => theme.colors.background};
-        box-shadow: 0px 10px 13px -9px rgba(0,0,0,0.75);
-      `
-    }
+  &.is-floating {
+    font-size: 0.9rem;
+    position: fixed;
+    background: ${({ theme }) => theme.colors.background};
+    box-shadow: 0px 10px 13px -9px rgba(0,0,0,0.75);
+  }
     
   ${M.MEDIA_XSMALL} {
     height: 6rem;

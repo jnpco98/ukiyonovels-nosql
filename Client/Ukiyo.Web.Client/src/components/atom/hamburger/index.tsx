@@ -1,4 +1,4 @@
-import React, { ReactElement, forwardRef } from 'react';
+import React, { FC, RefObject, ReactElement, forwardRef } from 'react';
 import { AnyStyledComponent } from 'styled-components/macro';
 import * as S from './style';
 
@@ -15,7 +15,7 @@ type Props = {
     className?: string;
 };
 
-const Hamburger: React.FC<Props> = (props: Props, ref: React.RefObject<HTMLElement>): ReactElement => {
+const Hamburger: FC<Props> = (props: Props, ref: RefObject<HTMLElement>): ReactElement => {
     const { className, active, type } = props;
 
     /* eslint-disable */
@@ -49,7 +49,7 @@ const Hamburger: React.FC<Props> = (props: Props, ref: React.RefObject<HTMLEleme
     }
 
     return (
-        <StyledHamburger ref={ref} active={active} className={className}>
+        <StyledHamburger ref={ref} className={`${className} ${active && 'is-active'}`}>
             {generateSpan(spanCount)}
         </StyledHamburger>
     );

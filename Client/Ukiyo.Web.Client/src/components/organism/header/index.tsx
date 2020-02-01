@@ -1,9 +1,8 @@
-import React, { useState, ReactElement, useEffect, useRef } from 'react';
-import Text, { TextType } from '../../atom/text';
-import * as S from './style';
+import React, { FC, useState, ReactElement, useEffect, useRef } from 'react';
 import Backdrop from '../../atom/backdrop';
 import SearchOverlay from '../search-overlay';
 import DynamicIcon from '../../molecule/dynamic-icon';
+import * as S from './style';
 
 interface MenuItem {
     label: string;
@@ -18,7 +17,7 @@ type Props = {
     onSelect?: Function;
 };
 
-const Header: React.FC<Props> = (props: Props): ReactElement => {
+const Header: FC<Props> = (props: Props): ReactElement => {
     const { mainMenuItems, sideMenuItems, onSelect } = props;
 
     const [activeMenuItem, setActiveMenuItem] = useState(sideMenuItems[0].key);
@@ -43,16 +42,23 @@ const Header: React.FC<Props> = (props: Props): ReactElement => {
         if (drawerActive) setDrawerActive(false);
     };
 
-    const renderLinks = (menuItem: MenuItem): ReactElement => (
-        <S.HeaderMenuItem onClick={() => handleSelect(menuItem.key)} active={menuItem.key === activeMenuItem} className={menuItem.icon && 'is-icon'}>
-            <Text textType={TextType.Anchor} href={menuItem.link}>
-                {menuItem.icon ? <DynamicIcon SVGString={menuItem.label} /> : menuItem.label}
-            </Text>
-        </S.HeaderMenuItem>
-    )
+    const renderLinks = (menuItem: MenuItem): ReactElement => {
+        return (
+            <S.HeaderMenuItem 
+                className={`${menuItem.key === activeMenuItem && 'is-active'} ${menuItem.icon && 'is-icon'}`} 
+                onClick={() => { 
+                    menuItem.key === 'search' ? setSearchOverlayActive(true) : handleSelect(menuItem.key);
+                }} 
+            >
+                <S.HeaderMenuItemLink href={menuItem.link}>
+                    {menuItem.icon ? <DynamicIcon SVGString={menuItem.label} /> : menuItem.label}
+                </S.HeaderMenuItemLink>
+            </S.HeaderMenuItem>
+        )
+    }
 
     return (
-        <S.HeaderContainer floating={floating} ref={containerRef}>
+        <S.HeaderContainer className={`${floating && 'is-floating'}`} ref={containerRef}>
             <S.HeaderLeftMenu>
                 <S.HeaderHamburger onClick={(): void => setDrawerActive(!drawerActive)}>
                     <S.HeaderHamburgerIcon active={drawerActive} />
