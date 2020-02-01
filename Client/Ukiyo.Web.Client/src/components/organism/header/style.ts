@@ -10,141 +10,56 @@ type HeaderMenuItemStyleProps = {
   active?: boolean;
 }
 
-const menuItemDefaultStyle = css<HeaderMenuItemStyleProps>`
-  ${center(FLEX_ALIGN_MAIN)};
-  color: ${({ theme, ...props }) => props.active ? theme.colors.background : theme.colors.accent};
-  text-transform: uppercase;
-  text-align: center;
-  transition: background 0.09s ease-in;
-  position: relative;
-  cursor: pointer;
-  
-  a {
-    display: block;
-    padding: 1.1rem 0.9rem;
-    margin: 0;
-  }
-  
-  &:hover {
-    color: ${({ theme, ...props }) => theme.colors.background};
-    background: ${({ theme, ...props }) => theme.colors.accent};
-  }
-
-  ${M.MEDIA_MEDIUM} {
-    a {
-      padding: 1.1rem 1.2rem;
-    }
-  }
-
-  ${M.MEDIA_XLARGE} {
-    a {
-      padding: 1.1rem 1.5rem;
-    }
-  }
-`;
-
 export const HeaderLeftMenu = styled.ul`
   ${M.MEDIA_XXSMALL} {
-    padding-left: 1rem;
+    margin-left: 1rem;
   }
 
   ${M.MEDIA_XSMALL} {
-    padding-left: 2rem;
+    margin-left: 2rem;
   }
 `;
 
 export const HeaderRightMenu = styled.ul`
-  ${M.MEDIA_XXSMALL} {
-    padding-right: 1rem;
-  }
+  margin-right: 1rem;
   
   ${M.MEDIA_XSMALL} {
-    padding-right: 2rem;
+    margin-right: 2rem;
   }
 `;
 
 export const HeaderSideDrawerMenu = styled.ul`
 `;
 
-export const HeaderMenuItemLink = styled(Anchor)`  
-  ${({ theme, ...props }) =>
-    css`
-      font-size: ${math(`${theme.font.baseSize} * 0.7`)};
-
-      ${M.MEDIA_SMALL} {
-        font-size: ${math(`${theme.font.baseSize} * 0.7`)};
-      }
-      
-      ${M.MEDIA_MEDIUM} {
-        font-size: ${math(`${theme.font.baseSize} * 0.7`)};
-      }
-
-      ${M.MEDIA_XLARGE} {
-        font-size: ${math(`${theme.font.baseSize} * 0.8`)};
-      }
-  `};
-`;
-
 export const HeaderMenuItem = styled.li<HeaderMenuItemStyleProps>`
-  ${menuItemDefaultStyle};
+  ${center(FLEX_ALIGN_MAIN)};
+
+  text-transform: uppercase;
+  margin: 0 0.9rem;
+  padding-top: 0.5rem;
+
+  &.is-icon {
+    width: 0.8rem;
+    height: 0.8rem;
+    padding-top: 0;
+    margin-right: 0;
+  }
 
   ${M.MEDIA_XXSMALL} {
-    padding-left: 1rem;
+    margin: 0 2rem;
   }
 
   ${M.MEDIA_XSMALL} {
-    padding-left: 2rem;
-  }
+    margin: 0 3rem;
 
-  ${M.MEDIA_XXLARGE}{    
-    padding-left: 1.1rem;
-  }
-
-  background: ${({ theme, ...props }) => props.active ? theme.colors.accent: ''};
-`;
-
-export const HeaderUserLink = styled.li`
-  ${menuItemDefaultStyle};
-  transition: background 0.09s ease-in;
-
-  &:hover {
-    background: none;
-    color: ${({ theme, ...props }) => theme.colors.accent};
-    opacity: 0.5;
-  }
-
-  a {
-    padding: 1.1rem 0.7rem;
-  }
-
-  
-  ${M.MEDIA_MEDIUM} {
-    a {
-      padding: 1.1rem 1.2rem;
-    }
-  }
-
-  ${M.MEDIA_XLARGE} {
-    a {
-      padding: 1.1rem 1.2rem;
-    }
-  }
-
-  ${M.MEDIA_MEDIUM} {
-    svg {
-      font-size: 1rem;
+    &.is-icon {
+      width: 1rem;
+      height: 1rem;
     }
   }
 `;
 
 export const HeaderHamburger = styled.li`
-  ${menuItemDefaultStyle};
-  transition: background 0.09s ease-in;
-  padding: 1rem 0;
-
-  &:hover {
-    background: initial;
-  }
 `;
 
 type HamburgerIconStyleProps = {
@@ -161,8 +76,10 @@ type ContainerStyleProps = {
 
 export const HeaderContainer = styled.header<ContainerStyleProps>`
   display: flex;
+  align-items: center;
   justify-content: space-between;
   width: 100%;
+  height: 4rem;
   position: fixed;
   transition: all 0.2s ease;
   z-index: 50;
@@ -170,7 +87,6 @@ export const HeaderContainer = styled.header<ContainerStyleProps>`
 
   ${HeaderLeftMenu}, ${HeaderRightMenu} {
     display: flex;
-    max-width: 80%;
   }
 
   ${props =>
@@ -182,17 +98,13 @@ export const HeaderContainer = styled.header<ContainerStyleProps>`
         box-shadow: 0px 10px 13px -9px rgba(0,0,0,0.75);
       `
     }
-
-  ${M.MEDIA_XXSMALL} {
-    min-height: 4rem;
-  }
-
+    
   ${M.MEDIA_XSMALL} {
-    min-height: 6rem;
+    height: 6rem;
   }
 
   ${M.MEDIA_XXLARGE} {
-    min-height: 8rem;
+    height: 8rem;
   }
 `;
 
@@ -201,12 +113,8 @@ export const HeaderSideDrawer = styled(SideDrawer)`
     margin-top: 4rem;
   }
 
-  ${HeaderMenuItem}:last-child {
-    margin-bottom: 0.5rem;
-  }
-
   ${M.MEDIA_XXSMALL} {
-    max-width: 23rem;
+    width: 23rem;
 
     ${HeaderMenuItem}:first-child {
       margin-top: 4.5rem;
@@ -214,17 +122,17 @@ export const HeaderSideDrawer = styled(SideDrawer)`
   }
   
   ${M.MEDIA_XSMALL} {
-    max-width: 28rem;
+    width: 28rem;
 
     ${HeaderMenuItem}:first-child {
-      margin-top: 5.5rem;
+      margin-top: 7.5rem;
     }
   }
 
   ${M.MEDIA_LARGE} {
-    max-width: 50%;
+    width: 50%;
     ${HeaderMenuItem}:first-child {
-      margin-top: 7rem;
+      margin-top: 10rem;
     }
   }
 `;

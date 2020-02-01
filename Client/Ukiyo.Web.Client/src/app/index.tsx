@@ -27,7 +27,7 @@ const App: React.FC = (): ReactElement => {
                 <Loader type={LoaderType.DualRing} />
                 <Loader type={LoaderType.Ellipsis} /> */}
 
-                <Header menuItems={navigation.items} />
+                <Header mainMenuItems={navigation.mainMenu} sideMenuItems={navigation.sidenavMenu}/>
                 {/* <Home/>
                 <Novel/>
                 <Novels/> 

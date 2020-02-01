@@ -1,23 +1,27 @@
 import React, { useState, ReactElement, useEffect, useRef } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserAlt, faCog, faSearch } from '@fortawesome/free-solid-svg-icons';
 import Text, { TextType } from '../../atom/text';
 import * as S from './style';
 import Backdrop from '../../atom/backdrop';
 import SearchOverlay from '../search-overlay';
+import DynamicIcon from '../../molecule/dynamic-icon';
+
+interface MenuItem {
+    label: string;
+    link: string;
+    key: string;
+    icon?: boolean;
+}
 
 type Props = {
-    menuItems: {
-        label: string;
-        link: string;
-    }[];
+    mainMenuItems: MenuItem[];
+    sideMenuItems: MenuItem[];
     onSelect?: Function;
 };
 
 const Header: React.FC<Props> = (props: Props): ReactElement => {
-    const { menuItems, onSelect } = props;
+    const { mainMenuItems, sideMenuItems, onSelect } = props;
 
-    const [active, setActive] = useState(0);
+    const [activeMenuItem, setActiveMenuItem] = useState(sideMenuItems[0].key);
     const [floating, setFloating] = useState(false);
     const [drawerActive, setDrawerActive] = useState(false);
     const [searchOverlayActive, setSearchOverlayActive] = useState(false);
@@ -26,40 +30,26 @@ const Header: React.FC<Props> = (props: Props): ReactElement => {
 
     const handleScroll = (): void => setFloating(window.pageYOffset >= containerRef.current.scrollHeight);
 
-    useEffect(() => onSelect && onSelect(active), []);
+    useEffect(() => onSelect && onSelect(activeMenuItem), []);
 
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);
         return (): void => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    const handleSelect = (idx: number): void => {
-        setActive(idx);
-        if (onSelect) onSelect(idx);
+    const handleSelect = (key: string): void => {
+        setActiveMenuItem(key);
+        if (onSelect) onSelect(key);
         if (drawerActive) setDrawerActive(false);
     };
 
-    const renderMenuItems = (): ReactElement[] =>
-        menuItems.map(({ label, link }, idx) => (
-            <S.HeaderMenuItem key={label + link} onClick={(): void => handleSelect(idx)} active={active === idx}>
-                <S.HeaderMenuItemLink href={link || '#'}>{label}</S.HeaderMenuItemLink>
-            </S.HeaderMenuItem>
-        ));
-
-    const renderUserLinks = (): ReactElement => (
-        <>
-            <S.HeaderUserLink>
-                <Text textType={TextType.Anchor} href="/account">
-                    <FontAwesomeIcon icon={faUserAlt} />
-                </Text>
-            </S.HeaderUserLink>
-            <S.HeaderUserLink>
-                <Text textType={TextType.Anchor} href="/settings">
-                    <FontAwesomeIcon icon={faCog} />
-                </Text>
-            </S.HeaderUserLink>
-        </>
-    );
+    const renderLinks = (menuItem: MenuItem): ReactElement => (
+        <S.HeaderMenuItem onClick={() => handleSelect(menuItem.key)} active={menuItem.key === activeMenuItem} className={menuItem.icon && 'is-icon'}>
+            <Text textType={TextType.Anchor} href={menuItem.link}>
+                {menuItem.icon ? <DynamicIcon SVGString={menuItem.label} /> : menuItem.label}
+            </Text>
+        </S.HeaderMenuItem>
+    )
 
     return (
         <S.HeaderContainer floating={floating} ref={containerRef}>
@@ -70,17 +60,13 @@ const Header: React.FC<Props> = (props: Props): ReactElement => {
             </S.HeaderLeftMenu>
 
             <S.HeaderRightMenu>
-                <S.HeaderUserLink>
-                    <Text textType={TextType.Anchor} href="#!" onClick={() => setSearchOverlayActive(true)}>
-                        <FontAwesomeIcon icon={faSearch} />
-                    </Text>
-                </S.HeaderUserLink>
-                {renderUserLinks()}
+                {mainMenuItems.map(mi => renderLinks(mi))}
             </S.HeaderRightMenu>
-
-            <S.HeaderSideDrawer drawerActive={drawerActive} >
-                <S.HeaderSideDrawerMenu> {renderMenuItems()} </S.HeaderSideDrawerMenu>
+            
+            <S.HeaderSideDrawer drawerActive={drawerActive}>
+                {sideMenuItems.map(si => renderLinks(si))}
             </S.HeaderSideDrawer>
+            
             <Backdrop show={drawerActive} onClick={(): void => setDrawerActive(false)} /> 
             
             <SearchOverlay active={searchOverlayActive} setActive={setSearchOverlayActive} onSearchSubmit={() => console.log('call api submit')}/>
