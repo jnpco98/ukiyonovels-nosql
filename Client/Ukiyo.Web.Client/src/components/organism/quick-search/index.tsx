@@ -20,7 +20,7 @@ const QuickSearch: React.FC<Props> = (props: Props) => {
             {headingText && <S.QuickSearchHeading>{headingText}</S.QuickSearchHeading>}
             <S.QuickSearchRows>
                 {contents.map(c => (
-                    <Row key={c.title + c.count} count={c.count} title={c.title} bullet hoverDecoration/>
+                    <Row className={`is-bulleted is-decorated`} key={c.title + c.count} count={c.count} title={c.title}/>
                 ))}
             </S.QuickSearchRows>
         </S.QuickSearchContainer>

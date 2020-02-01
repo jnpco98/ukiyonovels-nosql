@@ -1,16 +1,10 @@
 import styled, { css } from 'styled-components/macro';
 import { Paragraph } from '../text/style';
 import * as M from '../../../settings/media';
-import { margin } from 'polished';
 
-type FillStyleProps = {
+type BarFillProps = {
   rating: number;
-  rounded?: boolean;
 }
-
-export const BarContainer = styled.div`
-  width: 100%;
-`;
 
 export const BarTextWrapper = styled.div`
   display: flex;
@@ -42,16 +36,13 @@ export const BarRating = styled(Paragraph)`
   }
 `;
 
-export const BarFill = styled.div<FillStyleProps>`
+export const BarFill = styled.div<BarFillProps>`
   width: 100%;
   height: 0.4rem;
 
-  ${props =>
-    props.rounded &&
-      css`
-        border-radius: 0.5rem;
-      `
-    }
+  &.is-rounded {
+    border-radius: 0.5rem;
+  }
 
   ${({ theme, ...props }) =>
     css`
@@ -61,8 +52,14 @@ export const BarFill = styled.div<FillStyleProps>`
       background-repeat: no-repeat;
     `   
   }
+`;
 
-  ${M.MEDIA_SMALL} {
-    height: 0.5rem;
+export const BarContainer = styled.div`
+  width: 100%;
+
+  &.is-rounded {
+    ${BarFill} {
+      border-radius: 0.5rem;
+    }
   }
 `;

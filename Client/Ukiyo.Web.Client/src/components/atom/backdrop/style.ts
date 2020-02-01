@@ -2,46 +2,31 @@ import styled, { css } from 'styled-components/macro';
 import { center, FLEX_ALIGN_BOTH } from '../../../utilities/mixins';
 import { transparentize } from 'polished';
 
-type ContainerStyleProps = {
-  show: boolean;
-  zIndex?: number;
-  transparent?: boolean;
-  centerChildren?: boolean;
+type BackdropProps = {
+  active: boolean;
 }
 
-export const BackdropContainer = styled.div<ContainerStyleProps>`
+export const BackdropContainer = styled.div<BackdropProps>`
   top: 0;
   left: 0;
-  position: fixed;
+  opacity: 0;
   width: 100vw;
   height: 100vh;
-  ${center(FLEX_ALIGN_BOTH)};
-  opacity: 0;
-  background-color: ${({ theme, ...props }) => transparentize(0.3, theme.colors.black)};
-  transform: translateY(-100%);
-  z-index: ${props => props.zIndex || 0};
+  position: fixed;
   backdrop-filter: blur(5px);
+  background-color: ${({ theme }) => transparentize(0.3, theme.colors.black)};
+  transform: translateY(-100%);
+
+  &.is-transparent {
+    background: transparent;
+  }
   
-  ${props =>
-    props.transparent &&
-      css`
-        background: transparent;  
-      `
-  };
+  &.is-content-centered {
+    ${center(FLEX_ALIGN_BOTH)};
+  }
 
-  ${props =>
-    props.show &&
-      css`
-        transform: translateY(0);
-        opacity: 1;
-      `
-    };
-
-
-  ${props =>
-    props.centerChildren &&
-      css`
-        align-items:
-      `
-    };
+  ${props => props.active && css`
+    transform: translateX(0);
+    opacity: 1;
+  `}
 `;

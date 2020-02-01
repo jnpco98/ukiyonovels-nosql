@@ -1,4 +1,4 @@
-import React, { FC, useState, ReactElement, useEffect, useRef } from 'react';
+import React, { useState, ReactElement, useEffect, useRef } from 'react';
 import Backdrop from '../../atom/backdrop';
 import SearchOverlay from '../search-overlay';
 import DynamicIcon from '../../molecule/dynamic-icon';
@@ -17,7 +17,7 @@ type Props = {
     onSelect?: Function;
 };
 
-const Header: FC<Props> = (props: Props): ReactElement => {
+const Header: React.FC<Props> = (props: Props): ReactElement => {
     const { mainMenuItems, sideMenuItems, onSelect } = props;
 
     const [activeMenuItem, setActiveMenuItem] = useState(sideMenuItems[0].key);
@@ -45,7 +45,8 @@ const Header: FC<Props> = (props: Props): ReactElement => {
     const renderLinks = (menuItem: MenuItem): ReactElement => {
         return (
             <S.HeaderMenuItem 
-                className={`${menuItem.key === activeMenuItem && 'is-active'} ${menuItem.icon && 'is-icon'}`} 
+                active={menuItem.key === activeMenuItem}
+                className={`${menuItem.icon && 'is-icon'}`} 
                 onClick={() => { 
                     menuItem.key === 'search' ? setSearchOverlayActive(true) : handleSelect(menuItem.key);
                 }} 
@@ -58,7 +59,7 @@ const Header: FC<Props> = (props: Props): ReactElement => {
     }
 
     return (
-        <S.HeaderContainer className={`${floating && 'is-floating'}`} ref={containerRef}>
+        <S.HeaderContainer floating={floating} ref={containerRef}>
             <S.HeaderLeftMenu>
                 <S.HeaderHamburger onClick={(): void => setDrawerActive(!drawerActive)}>
                     <S.HeaderHamburgerIcon active={drawerActive} />
@@ -66,16 +67,18 @@ const Header: FC<Props> = (props: Props): ReactElement => {
             </S.HeaderLeftMenu>
 
             <S.HeaderRightMenu>
-                {mainMenuItems.map(mi => renderLinks(mi))}
+                {mainMenuItems.map(mm => renderLinks(mm))}
             </S.HeaderRightMenu>
             
             <S.HeaderSideDrawer drawerActive={drawerActive}>
-                {sideMenuItems.map(si => renderLinks(si))}
+                {sideMenuItems.map(sm => renderLinks(sm))}
             </S.HeaderSideDrawer>
             
-            <Backdrop show={drawerActive} onClick={(): void => setDrawerActive(false)} /> 
+            <Backdrop active={drawerActive} onClick={(): void => setDrawerActive(false)} /> 
             
-            <SearchOverlay active={searchOverlayActive} setActive={setSearchOverlayActive} onSearchSubmit={() => console.log('call api submit')}/>
+            <SearchOverlay active={searchOverlayActive} 
+                setActive={setSearchOverlayActive} onSearchSubmit={() => console.log('call api submit')}
+            />
         </S.HeaderContainer>
     );
 };

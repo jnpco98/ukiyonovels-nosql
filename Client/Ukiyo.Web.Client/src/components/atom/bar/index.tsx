@@ -2,17 +2,16 @@ import React, { ReactElement } from 'react';
 import * as S from './style';
 
 type Props = {
+    className?: string;
     title?: string;
     fillRate?: number;
-
-    rounded?: boolean;
 };
 
 const Bar: React.FC<Props> = (props: Props): ReactElement => {
-    const { title, fillRate, rounded } = props;
+    const { className, title, fillRate } = props;
 
     return (
-        <S.BarContainer>
+        <S.BarContainer className={className}>
             {
                 title && 
                     <S.BarTextWrapper>
@@ -20,7 +19,7 @@ const Bar: React.FC<Props> = (props: Props): ReactElement => {
                         <S.BarRating>{(fillRate * 10).toFixed(1)}</S.BarRating>
                     </S.BarTextWrapper>
             }
-            <S.BarFill rating={fillRate} rounded={rounded}/>
+            <S.BarFill rating={fillRate}/>
         </S.BarContainer>
     );
 };

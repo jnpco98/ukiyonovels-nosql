@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
-import * as S from './style';
 import { faArrowCircleRight } from '@fortawesome/free-solid-svg-icons';
+import * as S from './style';
 
 type Props = {
     className?: string;

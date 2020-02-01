@@ -9,28 +9,21 @@ export enum ButtonType {
 }
 
 type Props = {
-    flat?: boolean;
+    href?: string;
+    className?: string;
     submitButton?: boolean;
     buttonType?: ButtonType;
-    className?: string;
     children?: React.ReactNode;
     onClick?: (event: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement, MouseEvent>) => void;
-    href?: string;
 };
 
 const Button: React.FC<Props> = (props: Props): ReactElement => {
-    const { children, className, flat, onClick, buttonType, href, submitButton } = props;
+    const { children, className, onClick, buttonType, href, submitButton } = props;
 
     const submitButtonProps: any = submitButton ? { type: 'submit', as: 'button' } : { href };
 
     return (
-        <S.ButtonContainer 
-            className={className} 
-            onClick={onClick} 
-            buttonType={buttonType} 
-            flat={flat}
-            {...submitButtonProps}
-        >
+        <S.ButtonContainer className={className} onClick={onClick} buttonType={buttonType} {...submitButtonProps}>
             {children}
         </S.ButtonContainer>
     );

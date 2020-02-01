@@ -2,7 +2,6 @@ import React from 'react';
 import * as S from './style';
 import { useMediaQuery } from 'react-responsive';
 import { SMALL } from '../../../settings/media';
-import Text from '../../atom/text';
 
 const genre = ["Adventure", "Action", "Fantasy", "Martial Arts", "Mature", "Romance", "Seinen", "Supernatural", "Xianxia", "Adventure", "Action", "Fantasy", "Martial Arts", "Mature", "Romance", "Seinen", "Supernatural", "Xianxia"];
 const classification = ["Light novel", "Web novel"];

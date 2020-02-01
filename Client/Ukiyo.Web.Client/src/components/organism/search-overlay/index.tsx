@@ -20,7 +20,11 @@ const SearchOverlay: React.FC<Props> = (props: Props): ReactElement => {
     }
 
     return(
-        <S.SearchOverlayContainer show={active} centerChildren  onClick={event => handleClick(event)} transition="all 0.4s ease">
+        <S.SearchOverlayContainer 
+            active={active} 
+            className={`is-content-centered`} 
+            onClick={event => handleClick(event)}
+        >
             <Search ref={searchRef} active={active} onSubmit={() => { onSearchSubmit(); setActive(false); }} placeholder={placeholder}/>
         </S.SearchOverlayContainer>
     );

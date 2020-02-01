@@ -1,7 +1,6 @@
 import React from 'react';
 import * as S from './style';
 import Bar from '../../atom/bar';
-import Text, { TextType } from '../../atom/text';
 
 type Props = {
     className?: string;

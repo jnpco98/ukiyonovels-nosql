@@ -4,6 +4,10 @@ const MULTIPLIER = 0.25;
 const BASE_WIDTH = 4 * MULTIPLIER;
 const BASE_HEIGHT = 3 * MULTIPLIER;
 
+type HamburgerProps = {
+  active: boolean;
+}
+
 const Base = css`
   width: ${BASE_WIDTH}rem;
   height: ${BASE_HEIGHT}rem;
@@ -28,7 +32,7 @@ const Line = css`
   transition: .25s ease-in-out;
 `;
 
-export const SpeedRunner = styled.div`
+export const SpeedRunner = styled.div<HamburgerProps>`
   ${Base};
 
   span {
@@ -38,23 +42,25 @@ export const SpeedRunner = styled.div`
     &:nth-child(3) { top: ${BASE_HEIGHT/5*4}rem; }
   }
 
-  &.is-active span {
-    &:nth-child(1){
-      top: ${BASE_HEIGHT/5*2}rem;
-      transform: rotate(135deg);
+  ${props => props.active && css`
+    span {
+      &:nth-child(1){
+        top: ${BASE_HEIGHT/5*2}rem;
+        transform: rotate(135deg);
+      }
+      &:nth-child(2){
+        opacity: 0;
+        left: -4rem;
+      }
+      &:nth-child(3){
+        top: ${BASE_HEIGHT/5*2}rem;
+        transform: rotate(-135deg);
+      }
     }
-    &:nth-child(2){
-      opacity: 0;
-      left: -4rem;
-    }
-    &:nth-child(3){
-      top: ${BASE_HEIGHT/5*2}rem;
-      transform: rotate(-135deg);
-    }
-  }
+  `}; 
 `;
 
-export const NoEntry = styled.div`
+export const NoEntry = styled.div<HamburgerProps>`
   ${Base};
 
   span {
@@ -79,37 +85,39 @@ export const NoEntry = styled.div`
     &:nth-child(5), &:nth-child(6) { top: ${BASE_HEIGHT/5*4}rem; }
   }
 
-  &.is-active span {
-    &:nth-child(1) { 
-      top: ${BASE_HEIGHT/6.42}rem; 
-      left: ${BASE_WIDTH/12}rem; 
+  ${props => props.active && css`
+    span {
+      &:nth-child(1) { 
+        top: ${BASE_HEIGHT/6.42}rem; 
+        left: ${BASE_WIDTH/12}rem; 
+      }
+      &:nth-child(2) { 
+        top: ${BASE_HEIGHT/6.42}rem;
+        left: calc(50% - ${BASE_WIDTH/12}rem); 
+      }
+      &:nth-child(3) {
+        left: -50%; 
+        opacity: 0;
+      }
+      &:nth-child(4) { 
+        left: 100%; 
+        opacity: 0;
+      }
+      &:nth-child(5) { 
+        top: ${BASE_WIDTH/2-0.0625}rem; 
+        left: ${BASE_WIDTH/12}rem;  
+      }
+      &:nth-child(6) { 
+        top: ${BASE_WIDTH/2-0.0625}rem; 
+        left: calc(50% - ${BASE_WIDTH/12}rem); 
+      }
+      &:nth-child(1), &:nth-child(6) { transform: rotate(45deg); }
+      &:nth-child(2), &:nth-child(5) { transform: rotate(-45deg); }
     }
-    &:nth-child(2) { 
-      top: ${BASE_HEIGHT/6.42}rem;
-      left: calc(50% - ${BASE_WIDTH/12}rem); 
-    }
-    &:nth-child(3) {
-      left: -50%; 
-      opacity: 0;
-    }
-    &:nth-child(4) { 
-      left: 100%; 
-      opacity: 0;
-    }
-    &:nth-child(5) { 
-      top: ${BASE_WIDTH/2-0.0625}rem; 
-      left: ${BASE_WIDTH/12}rem;  
-    }
-    &:nth-child(6) { 
-      top: ${BASE_WIDTH/2-0.0625}rem; 
-      left: calc(50% - ${BASE_WIDTH/12}rem); 
-    }
-    &:nth-child(1), &:nth-child(6) { transform: rotate(45deg); }
-    &:nth-child(2), &:nth-child(5) { transform: rotate(-45deg); }
-  }
+  `};
 `;
 
-export const Spread = styled.div`
+export const Spread = styled.div<HamburgerProps>`
   ${Base};
 
   span {
@@ -119,7 +127,7 @@ export const Spread = styled.div`
     &:nth-child(4) { top:${BASE_HEIGHT/5*4}rem; }
   }
 
-  &.is-active span {
+  ${props => props.active && css`span {
     &:nth-child(1){
       top: ${BASE_HEIGHT/5*2}rem;
       width: 0;
@@ -136,10 +144,10 @@ export const Spread = styled.div`
       width: 0;
       left: 50%;
     }
-  }
+  `};
 `;
 
-export const Tear = styled.div`
+export const Tear = styled.div<HamburgerProps>`
   ${Base};
 
   span {
@@ -158,20 +166,22 @@ export const Tear = styled.div`
     }
   }
 
-  &.is-active span {
-    &:nth-child(1){
-      top: -${BASE_HEIGHT/15}rem;
-      left: ${BASE_WIDTH/5.625}rem;
-      transform: rotate(45deg);
+  ${props => props.active && css`
+    span {
+      &:nth-child(1){
+        top: -${BASE_HEIGHT/15}rem;
+        left: ${BASE_WIDTH/5.625}rem;
+        transform: rotate(45deg);
+      }
+      &:nth-child(2){
+        width: 0;
+        opacity: 0;
+      }
+      &:nth-child(3){
+        top: ${BASE_HEIGHT/1.1538}rem;
+        left: ${BASE_WIDTH/5.625}rem;
+        transform: rotate(-45deg);
+      }
     }
-    &:nth-child(2){
-      width: 0;
-      opacity: 0;
-    }
-    &:nth-child(3){
-      top: ${BASE_HEIGHT/1.1538}rem;
-      left: ${BASE_WIDTH/5.625}rem;
-      transform: rotate(-45deg);
-    }
-  }
+  `};
 `;

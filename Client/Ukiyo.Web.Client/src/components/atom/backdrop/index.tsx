@@ -1,35 +1,24 @@
 import React from 'react';
-import { BackdropContainer } from './style';
+import * as S from './style';
 
 type Props = {
-    show: boolean;
+    active: boolean;
     className?: string;
     children?: React.ReactNode;
-    centerChildren?: boolean;
-    transparent?: boolean;
-    zIndex?: number;
-    
     onClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 };
 
 const Backdrop: React.FC<Props> = (props: Props) => {
-    const { show, className, centerChildren, children, transparent, onClick, zIndex } = props;
+    const { active, className, children, onClick } = props;
 
     // Replace with redux to fix bugs with conflicting multiple
-    if(show) document.body.classList.add('no-scroll');
-    else document.body.classList.remove('no-scroll');
+    if(active) document.body.classList.add('no-scroll');
+    else if (!active) document.body.classList.remove('no-scroll');
     
     return (
-        <BackdropContainer
-            className={className}
-            centerChildren={centerChildren}
-            onClick={onClick}
-            show={show}
-            transparent={transparent}
-            zIndex={zIndex}
-        >
+        <S.BackdropContainer className={className} onClick={onClick} active={active}>
             {children}
-        </BackdropContainer>
+        </S.BackdropContainer>
     );
 };
 

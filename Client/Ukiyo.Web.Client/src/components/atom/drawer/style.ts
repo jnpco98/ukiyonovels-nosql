@@ -1,11 +1,11 @@
 import styled, { css } from 'styled-components';
 import * as M from '../../../settings/media';
 
-type ContainerStyleProps = {
+type DrawerProps = {
   sidenavActive: boolean;
 }
 
-export const SideDrawerContainer = styled.div<ContainerStyleProps>`
+export const SideDrawerContainer = styled.div<DrawerProps>`
   position: fixed;
   background: ${({ theme, ...props }) => theme.colors.background};
   overflow: hidden;
@@ -22,16 +22,16 @@ export const SideDrawerContainer = styled.div<ContainerStyleProps>`
     white-space: nowrap;
   }
   
-  ${props => 
-    props.sidenavActive ?
-      css`
-        opacity: 1;
-        transform: translateX(0);
-      ` :
-      css`
-        opacity: 0;
-        transform: translateX(-100%);
-      `}
+  ${props => props.sidenavActive ?
+    css`
+      opacity: 1;
+      transform: translateX(0);
+    ` :
+    css`
+      opacity: 0;
+      transform: translateX(-100%);
+    `
+  };
 
   ${M.MEDIA_XXSMALL} {
     max-width: 23rem;

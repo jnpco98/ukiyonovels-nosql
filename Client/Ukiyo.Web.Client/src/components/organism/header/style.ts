@@ -1,10 +1,17 @@
-import styled from 'styled-components/macro';
+import styled, { css } from 'styled-components/macro';
 import Hamburger from '../../atom/hamburger';
 import SideDrawer from '../../atom/drawer';
 import Text, { TextType } from '../../atom/text';
 import { center, FLEX_ALIGN_MAIN } from '../../../utilities/mixins';
 import * as M from '../../../settings/media';
 
+type HeaderMenuProps = {
+  floating: boolean;
+}
+
+type HeaderMenuItemProps = {
+  active: boolean;
+}
 
 export const HeaderLeftMenu = styled.ul`
   ${M.MEDIA_XXSMALL} {
@@ -35,7 +42,7 @@ export const HeaderMenuItemLink = styled(Text).attrs({ textType: TextType.Anchor
   }
 `;
 
-export const HeaderMenuItem = styled.li`
+export const HeaderMenuItem = styled.li<HeaderMenuItemProps>`
   ${center(FLEX_ALIGN_MAIN)};
 
   text-transform: uppercase;
@@ -89,11 +96,17 @@ export const HeaderMenuItem = styled.li`
     }
   }
 
-  &:hover, &.is-active {
+  &:hover {
     ${HeaderMenuItemLink}:after {
       transform: translateX(0); 
     }
   }
+
+  ${props => props.active && css`
+    ${HeaderMenuItemLink}:after {
+      transform: translateX(0); 
+    }
+  `};
 `;
 
 export const HeaderHamburger = styled.li`
@@ -103,7 +116,7 @@ export const HeaderHamburgerIcon = styled(Hamburger)`
   transition: transform 0.3s ease;
 `;
 
-export const HeaderContainer = styled.header`
+export const HeaderContainer = styled.header<HeaderMenuProps>`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -118,12 +131,12 @@ export const HeaderContainer = styled.header`
     display: flex;
   }
 
-  &.is-floating {
+  ${props => props.floating && css`
     font-size: 0.9rem;
     position: fixed;
     background: ${({ theme }) => theme.colors.background};
     box-shadow: 0px 10px 13px -9px rgba(0,0,0,0.75);
-  }
+  `};
     
   ${M.MEDIA_XSMALL} {
     height: 6rem;
