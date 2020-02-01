@@ -4,17 +4,22 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Ukiyo.Models.Components
 {
+    public interface INovelFilter
+    {
+        public string Name { get; set; }
+    }
+
     public class Novel : Entity
     {
         [Required]
         [MinLength(10, ErrorMessage = "Title length can't be less than 10 characters")]
-        [MaxLength(50, ErrorMessage = "Title length can't be more than 50 characters")]
+        [MaxLength(100, ErrorMessage = "Title length can't be more than 100 characters")]
         [BsonElement("title")]
         public string Title { get; set; }
 
         [Required]
         [MinLength(20, ErrorMessage = "Description length can't be less than 20 characters")]
-        [MaxLength(500, ErrorMessage = "Description length can't be more than 500 characters")]
+        [MaxLength(1000, ErrorMessage = "Description length can't be more than 1000 characters")]
         [BsonElement("description")]
         public string Description { get; set; }
 
@@ -30,8 +35,14 @@ namespace Ukiyo.Models.Components
         [BsonElement("authors")]
         public IEnumerable<Author> Authors { get; set; }
 
+        [BsonElement("artists")]
+        public IEnumerable<Author> Artists { get; set; }
+
         [BsonElement("related_novels")]
         public IEnumerable<string> RelatedNovels { get; set; }
+
+        [BsonElement("associated_names")]
+        public IEnumerable<string> AssociatedNames { get; set; }
 
         [BsonElement("media_gallery")]
         public IEnumerable<string> MediaGallery { get; set; }

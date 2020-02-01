@@ -4,17 +4,27 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Ukiyo.Handlers.Query;
 using Ukiyo.HttpResponse;
+using Ukiyo.Infrastructure;
 using Ukiyo.Models.Components;
 using Ukiyo.Repositories;
+using System.Linq;
+using System.Linq.Expressions;
+using System;
 
 namespace Ukiyo.Handlers.Core.Component
 {
     public class NovelQuery : BaseQuery
     {
-        public string Author { get; set; } = "";
-        public string Origin { get; set; } = "";
-        public string Genre { get; set; } = "";
-        public string Tag { get; set; } = "";
+        [ModelBinder(BinderType = typeof(CommaSeparatedModelBinder))]
+        public List<string> Author { get; set; } = new List<string>();
+        [ModelBinder(BinderType = typeof(CommaSeparatedModelBinder))]
+        public List<string> Artist { get; set; } = new List<string>();
+        [ModelBinder(BinderType = typeof(CommaSeparatedModelBinder))]
+        public List<string> Origin { get; set; } = new List<string>();
+        [ModelBinder(BinderType = typeof(CommaSeparatedModelBinder))]
+        public List<string> Genre { get; set; } = new List<string>();
+        [ModelBinder(BinderType = typeof(CommaSeparatedModelBinder))]
+        public List<string> Tag { get; set; } = new List<string>();
     }
 
     [Route("api/[controller]")]
@@ -43,29 +53,11 @@ namespace Ukiyo.Handlers.Core.Component
             var sort = query.Order.ToLower() == SORT_ORDER.ASCENDING ?
                 sortBuilder.Ascending(n => n.Title) : sortBuilder.Descending(n => n.Title);
 
-            if (!string.IsNullOrWhiteSpace(query.Author))
-            {
-                filters.Add(filterBuilder.ElemMatch(n => n.Authors,
-                    a => a.Name.ToLower() == query.Author.ToLower()));
-            }
-
-            if (!string.IsNullOrWhiteSpace(query.Origin))
-            {
-                filters.Add(filterBuilder.ElemMatch(n => n.Origins,
-                    o => o.Name.ToLower() == query.Origin.ToLower()));
-            }
-
-            if (!string.IsNullOrWhiteSpace(query.Genre))
-            {
-                filters.Add(filterBuilder.ElemMatch(n => n.Genres,
-                    g => g.Name.ToLower() == query.Genre.ToLower()));
-            }
-
-            if (!string.IsNullOrWhiteSpace(query.Tag))
-            {
-                filters.Add(filterBuilder.ElemMatch(n => n.Tags,
-                    t => t.Name.ToLower() == query.Tag.ToLower()));
-            }
+            filters.Add(BuildNovelQueryFilter(query.Author, n => n.Authors));
+            filters.Add(BuildNovelQueryFilter(query.Origin, n => n.Origins));
+            filters.Add(BuildNovelQueryFilter(query.Genre, n => n.Genres));
+            filters.Add(BuildNovelQueryFilter(query.Tag, n => n.Tags));
+            filters.Add(BuildNovelQueryFilter(query.Artist, n => n.Artists));
 
             var accumulatedFilter = filters.Count > 0 ? filterBuilder.And(filters) : filterBuilder.Empty;
 
@@ -87,5 +79,15 @@ namespace Ukiyo.Handlers.Core.Component
         [HttpPut]
         public async Task<ActionResult<IResponse>> UpdateOne(Novel novel) =>
             await _novelRepository.Update(novel);
+
+        private FilterDefinition<Novel> BuildNovelQueryFilter<TFilter>(IEnumerable<string> queryModel, Expression<Func<Novel, IEnumerable<TFilter>>> field) where TFilter : INovelFilter
+        {
+            var filterBuilder = Builders<Novel>.Filter;
+            var filters = queryModel
+                .Where(qm => !string.IsNullOrWhiteSpace(qm))
+                .Select(qm => Builders<Novel>.Filter.ElemMatch(field, f => f.Name.ToLower() == qm.ToLower())).ToList();
+
+            return Builders<Novel>.Filter.Or(filters.Count > 0 ? filterBuilder.Or(filters) : filterBuilder.Empty);
+        }
     }
 }

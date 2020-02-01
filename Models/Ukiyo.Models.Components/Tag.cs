@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Ukiyo.Models.Components
 {
-    public class Tag
+    public class Tag: INovelFilter
     {
         [Required]
         [MinLength(3, ErrorMessage = "Name length can't be less than 3 characters")]
