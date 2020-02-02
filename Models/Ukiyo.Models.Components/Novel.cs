@@ -9,13 +9,16 @@ namespace Ukiyo.Models.Components
         public string Name { get; set; }
     }
 
-    public class Novel : Entity
+    public class Novel : Entity, IHandleized
     {
         [Required]
         [MinLength(10, ErrorMessage = "Title length can't be less than 10 characters")]
         [MaxLength(100, ErrorMessage = "Title length can't be more than 100 characters")]
         [BsonElement("title")]
         public string Title { get; set; }
+
+        [BsonElement("handle")]
+        public string Handle { get; set; }
 
         [Required]
         [MinLength(20, ErrorMessage = "Description length can't be less than 20 characters")]
@@ -52,5 +55,10 @@ namespace Ukiyo.Models.Components
 
         public Novel(string creator)
             : base(creator) { }
+
+        public string HandleSource()
+        {
+            return Title;
+        }
     }
 }

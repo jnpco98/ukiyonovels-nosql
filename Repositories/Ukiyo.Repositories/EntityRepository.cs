@@ -3,6 +3,7 @@ using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Ukiyo.HttpResponse;
 using Ukiyo.Models.Components;
@@ -129,6 +130,10 @@ namespace Ukiyo.Repositories
         public async Task<HttpResponse<ModifyEntityResult<TEntity>>> Insert(TEntity entity)
         {
             var response = new HttpResponse<ModifyEntityResult<TEntity>>();
+
+            if(entity is IHandleized) 
+                (entity as IHandleized).Handle = Handleize((entity as IHandleized).HandleSource());
+                
             try
             {
                 await _collection.InsertOneAsync(entity);
@@ -271,6 +276,20 @@ namespace Ukiyo.Repositories
                 response.SetInternalError(ex);
                 return response;
             }
+        }
+        
+        private string Handleize(string str)
+        {
+            var toReplace = new String[] { "\"", "'", "\\\\", "(\", \")", "[\", \"]" };
+            str = str.Normalize(System.Text.NormalizationForm.FormD);
+            str = Regex.Replace(str, @"/[\u0300-\u036f]", "").ToLower();
+
+            foreach(var r in toReplace) str = str.Replace(r, "");
+            str = Regex.Replace(str, @"/\W+|\s+", "-");
+
+            if(str[str.Length - 1] == '-') str = Regex.Replace(str, @"/-+\z/", "");
+            if(str[0] == '-') str = Regex.Replace(str, @"/\A-+/", "");
+            return str;
         }
     }
 }

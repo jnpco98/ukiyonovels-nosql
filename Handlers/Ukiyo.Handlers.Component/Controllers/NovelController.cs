@@ -53,11 +53,11 @@ namespace Ukiyo.Handlers.Core.Component
             var sort = query.Order.ToLower() == SORT_ORDER.ASCENDING ?
                 sortBuilder.Ascending(n => n.Title) : sortBuilder.Descending(n => n.Title);
 
+            filters.Add(BuildNovelQueryFilter(query.Artist, n => n.Artists));
             filters.Add(BuildNovelQueryFilter(query.Author, n => n.Authors));
             filters.Add(BuildNovelQueryFilter(query.Origin, n => n.Origins));
             filters.Add(BuildNovelQueryFilter(query.Genre, n => n.Genres));
             filters.Add(BuildNovelQueryFilter(query.Tag, n => n.Tags));
-            filters.Add(BuildNovelQueryFilter(query.Artist, n => n.Artists));
 
             var accumulatedFilter = filters.Count > 0 ? filterBuilder.And(filters) : filterBuilder.Empty;
 

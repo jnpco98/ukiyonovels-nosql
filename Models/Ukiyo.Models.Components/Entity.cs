@@ -4,6 +4,13 @@ using System;
 
 namespace Ukiyo.Models.Components
 {
+    public interface IHandleized
+    {
+        public string Handle { get; set; }
+        
+        public string HandleSource();
+    }
+
     public abstract class Entity
     {
         [BsonId]
