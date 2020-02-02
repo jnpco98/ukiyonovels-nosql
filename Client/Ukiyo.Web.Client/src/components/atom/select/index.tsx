@@ -2,7 +2,7 @@ import React, { ReactElement, useState, useRef } from 'react';
 import { useOnClickOutside } from '../../../utilities/hooks';
 import * as S from './style';
 
-interface SelectOptions {
+type SelectOptions = {
     displayName: string;
     value: string;
 }

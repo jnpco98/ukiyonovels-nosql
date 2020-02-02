@@ -1,7 +1,6 @@
 import React, { ReactElement } from 'react';
-import ImageCarousel from '../../organism/image-carousel';
-import InfoThumbnailCarousel from '../../organism/info-thumbnail-carousel';
 import InfoCardList from '../../organism/info-card-list';
+import { homepage } from '../../../settings/config/settings.json';
 import * as S from './style';
 
 const cardContent = [
@@ -325,7 +324,7 @@ const infoCardContent = [
 const Home: React.FC = (): ReactElement => {
     return (
         <>
-            <S.HomeBanner />
+            <S.HomeBanner contents={homepage.heroBanner} />
             <S.HomeContainer>
                 <S.HomeWrapper>
                     <S.HomeInfoThumbnailCarousel content={cardContent} headingText="Featured Novels" />

@@ -1,1 +1,1 @@
-export default {}
+export const BASE_API_URI: string = 'https://localhost:44306/api';

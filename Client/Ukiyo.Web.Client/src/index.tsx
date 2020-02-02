@@ -8,11 +8,17 @@ import * as serviceWorker from './serviceWorker';
 import App from './app';
 import Reset from './utilities/reset';
 
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import rootReducer from './store/rootReducer';
+
+const store = createStore(rootReducer, {}, window.devToolsExtension && window.devToolsExtension());
+
 ReactDOM.render(
-    <>
+    <Provider store={store}>
         <Reset />
         <App />
-    </>,
+    </Provider>,
     document.getElementById('root')
 );
 

@@ -4,7 +4,7 @@ import SearchOverlay from '../search-overlay';
 import DynamicIcon from '../../molecule/dynamic-icon';
 import * as S from './style';
 
-interface MenuItem {
+type MenuItem = {
     label: string;
     link: string;
     key: string;

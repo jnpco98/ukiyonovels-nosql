@@ -1,4 +1,5 @@
 import React, { ReactElement } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { ThemeProvider } from 'styled-components/macro';
 import { AppContainer } from './style';
 import { BaseTheme } from '../settings/theme';
@@ -9,7 +10,6 @@ import Header from '../components/organism/header';
 import Home from '../components/template/home';
 import LatestUpdates from '../components/template/latest-updates';
 
-import Loader, { LoaderType } from '../components/atom/loaders';
 import Novel from '../components/template/novel';
 import StandardPage from '../components/template/standard';
 import Novels from '../components/template/novels';
@@ -18,17 +18,13 @@ import SearchPage from '../components/template/search';
 import Contact from '../components/template/contact';
 import Footer from '../components/organism/footer';
 
-
 const App: React.FC = (): ReactElement => {
+
     return (
         <ThemeProvider theme={BaseTheme}>
             <AppContainer>
-                {/* <Loader type={LoaderType.Ring} />
-                <Loader type={LoaderType.DualRing} />
-                <Loader type={LoaderType.Ellipsis} /> */}
-
                 <Header mainMenuItems={navigation.mainMenu} sideMenuItems={navigation.sidenavMenu}/>
-                {/* <Home/>
+                <Home/>
                 <Novel/>
                 <Novels/> 
                 <LatestUpdates/>
@@ -36,8 +32,7 @@ const App: React.FC = (): ReactElement => {
                 <StandardPage pageHeading={copyright.pageHeading} pageText={copyright.pageText}/>
                 <StandardPage pageHeading={privacy.pageHeading} pageText={privacy.pageText} contents={privacy.contents}/>
                 <StandardPage pageHeading={termsOfService.pageHeading} pageText={termsOfService.pageText} contents={termsOfService.contents} /> 
-                <PageNotFound /> */}
-
+                <PageNotFound />
                 <Contact/>
                 <Footer/>
             </AppContainer>
@@ -46,3 +41,11 @@ const App: React.FC = (): ReactElement => {
 };
 
 export default App;
+
+
+{/* 
+    import Loader, { LoaderType } from '../components/atom/loaders';
+    <Loader type={LoaderType.Ring} />
+    <Loader type={LoaderType.DualRing} />
+    <Loader type={LoaderType.Ellipsis} /> 
+*/}
