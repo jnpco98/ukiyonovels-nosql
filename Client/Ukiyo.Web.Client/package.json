@@ -72,7 +72,8 @@
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-react": "7.14.3",
     "eslint-plugin-react-hooks": "1.7.0",
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "redux-devtools-extension": "^2.13.8"
   },
   "babelMacros": {
     "styledComponents": {

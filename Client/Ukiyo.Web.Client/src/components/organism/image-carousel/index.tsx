@@ -1,13 +1,9 @@
-import React, { ReactElement, Dispatch, useState } from 'react';
+import React, { ReactElement } from 'react';
 import { Settings } from 'react-slick';
 import { SMALL } from '../../../settings/media';
 import { DEFAULT_SLIDER_SETTINGS } from '../../../utilities/slider';
 import * as S from './style';
 import { truncate } from '../../../utilities/string';
-import { useDispatch, useSelector } from 'react-redux';
-import { NovelActionTypes } from '../../../store/novel/actionTypes';
-import INovel from '../../../store/models/entities/Novel';
-import { AppState } from '../../../store/rootReducer';
 
 type HeroBannerContents = {
     mobileImage?: string;
@@ -48,31 +44,6 @@ const ImageCarousel: React.FC<Props> = (props: Props): ReactElement => {
         ]
     };
 
-    const dispatch = useDispatch<Dispatch<NovelActionTypes>>();
-    const novels = useSelector<AppState>(state => state.novel);
-
-    const [ ctr, setCtr ] = useState(0);
-
-    const a: INovel[]= [
-        {
-            title: `TEST REDUX ${ctr}`,
-            handle: `test-redux-0`,
-            description: '',
-            tags: [],
-            genres: [],
-            origins: [],
-            authors: [],
-            artists: [],
-            relatedNovels: [],
-            associatedNames: [],
-            mediaGallery: [],
-            coverImage: [],
-            lastModified: null
-        }
-    ]
-
-    console.log(`redux_`, novels)
-
 
     /* eslint-disable react/jsx-props-no-spreading */
     return (
@@ -89,7 +60,7 @@ const ImageCarousel: React.FC<Props> = (props: Props): ReactElement => {
                                 {headingText && <S.ImageCarouselHeading>{headingText}</S.ImageCarouselHeading>}
                                 {description && <S.ImageCarouselSubtitle>{truncate(description, 130)}</S.ImageCarouselSubtitle>}
                                 {buttonText && 
-                                    <S.ImageCarouselLinkButton onClick={() => {setCtr(ctr + 1);dispatch({ type: "SEARCH_NOVEL", payload: a })}} href={link}>
+                                    <S.ImageCarouselLinkButton href={link}>
                                         <S.ImageCarouselBookButtonIcon /> {buttonText}
                                     </S.ImageCarouselLinkButton>
                                 }

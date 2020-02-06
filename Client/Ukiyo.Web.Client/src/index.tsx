@@ -9,10 +9,7 @@ import App from './app';
 import Reset from './utilities/reset';
 
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import rootReducer from './store/rootReducer';
-
-const store = createStore(rootReducer, {}, window.devToolsExtension && window.devToolsExtension());
+import store from './store';
 
 ReactDOM.render(
     <Provider store={store}>

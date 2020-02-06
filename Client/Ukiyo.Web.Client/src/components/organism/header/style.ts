@@ -138,7 +138,7 @@ export const HeaderContainer = styled.header<HeaderMenuProps>`
     box-shadow: 0px 10px 13px -9px rgba(0,0,0,0.75);
   `};
     
-  ${M.MEDIA_XSMALL} {
+  ${M.MEDIA_XLARGE} {
     height: 6rem;
   }
 
