@@ -1,3 +1,3 @@
-import { INovelFilter } from "./Novel";
+import { NovelFilter } from "./Novel";
 
-export default interface IOrigin extends INovelFilter {}
+export default interface Origin extends NovelFilter {}

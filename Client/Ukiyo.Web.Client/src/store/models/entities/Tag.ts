@@ -1,3 +1,3 @@
-import { INovelFilter } from "./Novel";
+import { NovelFilter } from "./Novel";
 
-export default interface ITag extends INovelFilter {}
+export default interface Tag extends NovelFilter {}

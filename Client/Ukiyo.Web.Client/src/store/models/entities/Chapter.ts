@@ -1,4 +1,6 @@
-export interface Chapter {
+import Entity from "./Entity";
+
+export interface Chapter extends Entity {
     title: string;
     description: string;
     content: string;

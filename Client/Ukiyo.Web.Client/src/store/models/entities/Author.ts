@@ -1,5 +1,5 @@
-import { INovelFilter } from "./Novel";
+import { NovelFilter } from "./Novel";
 
-export default interface IAuthor extends INovelFilter {
+export default interface Author extends NovelFilter {
     alterateNames: string[];
 }
