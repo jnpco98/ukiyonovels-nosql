@@ -130,7 +130,7 @@ export const pageTitleFontSize = css`
         font-size: ${math(`${theme.font.baseSize} * 2.4`)};
       }
 
-      ${M.MEDIA_LARGE} {
+      ${M.MEDIA_XXLARGE} {
         font-size: ${math(`${theme.font.baseSize} * 2.7`)};
       }
   `};
@@ -153,7 +153,7 @@ export const sectionFontSize = css`
         font-size: ${math(`${theme.font.baseSize} * 1.6`)};
       }
       
-      ${M.MEDIA_LARGE} {
+      ${M.MEDIA_XXLARGE} {
         font-size: ${math(`${theme.font.baseSize} * 2`)};
       }
   `};
@@ -176,7 +176,7 @@ export const subsectionFontSize = css`
         font-size: ${math(`${theme.font.baseSize} * 1.3`)};
       }
       
-      ${M.MEDIA_LARGE} {
+      ${M.MEDIA_XXLARGE} {
         font-size: ${math(`${theme.font.baseSize} * 1.7`)};
       }
   `};
@@ -199,7 +199,7 @@ export const regularFontSize = css`
         font-size: ${math(`${theme.font.baseSize} * 0.8`)};
       }
 
-      ${M.MEDIA_LARGE} {
+      ${M.MEDIA_XXLARGE} {
         font-size: ${math(`${theme.font.baseSize} * 1.1`)};
       }
   `};

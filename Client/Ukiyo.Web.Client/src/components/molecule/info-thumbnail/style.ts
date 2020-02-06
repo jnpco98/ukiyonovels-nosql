@@ -4,7 +4,7 @@ import { Paragraph, Span, SubsectionTitle } from '../../atom/text/style';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookOpen } from '@fortawesome/free-solid-svg-icons';
 import { math } from 'polished';
-import { fadeInTextHover, center, CENTER_BOTH, FLEX_ALIGN_BOTH, regularFontSize } from '../../../utilities/mixins';
+import { fadeInTextHover, center, CENTER_BOTH, FLEX_ALIGN_BOTH } from '../../../utilities/mixins';
 import { transparentize } from 'polished';
 import { cardDimRatio } from '../../atom/thumbnail/style';
 
@@ -36,12 +36,12 @@ export const InfoThumbnailContainer = styled.div`
     height: ${math(`8.5rem * ${cardDimRatio}`)};
   }
 
-  ${M.MEDIA_MEDIUM} {
+  ${M.MEDIA_XLARGE} {
     width: 9.5rem;
     height: ${math(`9.5rem * ${cardDimRatio}`)};
   }
 
-  ${M.MEDIA_XLARGE} {
+  ${M.MEDIA_XXLARGE} {
     width: 10.7rem;
     height: ${math(`10.7rem * ${cardDimRatio}`)};
     border-radius: 0.7rem;

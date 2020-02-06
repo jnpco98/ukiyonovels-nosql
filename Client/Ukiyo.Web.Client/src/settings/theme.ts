@@ -7,9 +7,9 @@ export const BaseTheme: ThemeSettings = {
         xsmall: '3rem',
         small: '5rem',
         medium: '7rem',
-        large: '12rem',
-        xlarge: '13rem',
-        xxlarge: '17rem'
+        large: '9rem',
+        xlarge: '12rem',
+        xxlarge: '10%'
     },
     gutterVertical: {
         base: '4rem',
