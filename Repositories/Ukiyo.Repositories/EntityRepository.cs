@@ -67,9 +67,11 @@ namespace Ukiyo.Repositories
             return filterBuilder.Or(filters) & filterBuilder.Eq(e => e.Archived, false);
         }
 
-        public async Task<HttpResponse<IEnumerable<TEntity>>> Paginate(int page = 0, int count = 10, FilterDefinition<TEntity> filter = null, SortDefinition<TEntity> sort = null, ProjectionDefinition<TEntity> projection = null)
+        public async Task<HttpResponse<IEnumerable<TEntity>>> Paginate(int page = 1, int count = 10, FilterDefinition<TEntity> filter = null, SortDefinition<TEntity> sort = null, ProjectionDefinition<TEntity> projection = null)
         {
             if (count > Limit) count = Limit;
+            if (page < 1) page = 1;
+
             var response = new HttpResponse<IEnumerable<TEntity>>();
             var filterBuilder = Builders<TEntity>.Filter;
             var sortBuilder = Builders<TEntity>.Sort;
@@ -77,7 +79,7 @@ namespace Ukiyo.Repositories
             try
             {
                 var query = _collection.Find(filter & filterBuilder.Eq(e => e.Archived, false))
-                                    .Limit(count).Skip(page * count)
+                                    .Limit(count).Skip((page - 1) * count)
                                     .Sort(sort ?? sortBuilder.Ascending(e => e.LastModified))
                                     .Project<TEntity>(projection ?? Builders<TEntity>.Projection.Exclude(e => e.Archived));
 
@@ -248,7 +250,7 @@ namespace Ukiyo.Repositories
             try
             {
                 var toUpdate = await _collection.Find(filter).FirstOrDefaultAsync();
-                var result = await _collection.ReplaceOneAsync(filter, entity, new UpdateOptions { IsUpsert = true });
+                var result = await _collection.ReplaceOneAsync(filter, entity, new UpdateOptions { IsUpsert = false });
 
                 if (result.ModifiedCount > 0 && result.IsAcknowledged)
                 {
