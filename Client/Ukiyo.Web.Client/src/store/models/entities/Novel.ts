@@ -1,25 +1,33 @@
-import ITag from "./Tag";
-import IGenre from "./Genre";
-import IOrigin from "./Origin";
-import IAuthor from "./Author";
-import IArtist from "./Artist";
+import Tag from "./Tag";
+import Genre from "./Genre";
+import Origin from "./Origin";
+import Author from "./Author";
+import Artist from "./Artist";
+import Entity, { BaseQuery } from "./Entity";
 
-export default interface INovel {
+export interface NovelQuery extends BaseQuery {
+    tags?: string[];
+    genres?: string[];
+    origins?: string[];
+    authors?: string[];
+    artists?: string[];
+}
+
+export default interface Novel extends Entity {
     title: string;
     handle: string;
     description: string;
-    tags: ITag[];
-    genres: IGenre[];
-    origins: IOrigin[];
-    authors: IAuthor[];
-    artists: IArtist[];
+    tags: Tag[];
+    genres: Genre[];
+    origins: Origin[];
+    authors: Author[];
+    artists: Artist[];
     relatedNovels: string[];
     associatedNames: string[];
     mediaGallery: string[];
     coverImage: string[];
-    lastModified: Date;
 }
 
-export interface INovelFilter {
+export interface NovelFilter {
     name: string;
 }
