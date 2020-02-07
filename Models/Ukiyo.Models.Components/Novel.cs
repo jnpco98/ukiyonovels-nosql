@@ -9,6 +9,12 @@ namespace Ukiyo.Models.Components
         public string Name { get; set; }
     }
 
+    public class NovelSort
+    {
+        public const string TITLE = "title";
+        public const string LAST_MODIFIED = "lastmodified";
+    }
+
     public class Novel : Entity, IHandleized
     {
         [Required]

@@ -10,7 +10,7 @@ namespace Ukiyo.Models.Components
         
         public string HandleSource();
     }
-
+    
     public abstract class Entity
     {
         [BsonId]
