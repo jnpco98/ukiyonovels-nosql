@@ -133,8 +133,12 @@ namespace Ukiyo.Repositories
         {
             var response = new HttpResponse<ModifyEntityResult<TEntity>>();
 
-            if(entity is IHandleized) 
+            if(entity is IHandleized)
+            {
                 (entity as IHandleized).Handle = Handleize((entity as IHandleized).HandleSource());
+            }
+            
+            entity.LastModified = DateTime.Now;
                 
             try
             {
@@ -205,9 +209,9 @@ namespace Ukiyo.Repositories
             var response = new HttpResponse<ModifyEntityResult<TEntity>>();
             var filterBuilder = Builders<TEntity>.Filter;
             var filter = filterBuilder.Eq(e => e.Id, id);
-            var update = Builders<TEntity>.Update
-                                        .Set(e => e.Archived, true)
-                                        .CurrentDate(e => e.LastModified);
+
+            var update = Builders<TEntity>.Update.Set(e => e.Archived, true).CurrentDate(e => e.LastModified);
+            
             try
             {
                 var toArchive = await _collection.Find(filter).FirstOrDefaultAsync();
@@ -246,6 +250,8 @@ namespace Ukiyo.Repositories
             var response = new HttpResponse<ModifyEntityResult<TEntity>>();
             var filterBuilder = Builders<TEntity>.Filter;
             var filter = filterBuilder.Eq(e => e.Id, entity.Id);
+
+            entity.LastModified = DateTime.Now;
 
             try
             {

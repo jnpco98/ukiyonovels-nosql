@@ -23,9 +23,6 @@ namespace Ukiyo.Models.Components
         [BsonElement("archived")]
         public bool? Archived { get; set; }
 
-        [BsonElement("created_at")]
-        public DateTime CreatedAt { get; set; }
-
         [BsonElement("last_modified")]
         public DateTime LastModified { get; set; }
 
@@ -34,8 +31,6 @@ namespace Ukiyo.Models.Components
             Id = ObjectId.GenerateNewId().ToString();
             Creator = creator;
             Archived = false;
-            CreatedAt = DateTime.Now;
-            LastModified = DateTime.Now;
         }
     }
 }

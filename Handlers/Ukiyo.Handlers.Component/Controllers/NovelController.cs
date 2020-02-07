@@ -70,7 +70,7 @@ namespace Ukiyo.Handlers.Core.Component
             await _novelRepository.Get(id);
 
         [HttpPost]
-        public async Task<ActionResult<IResponse>> InsertOne(Novel novel) =>
+        public async Task<ActionResult<IResponse>> InsertOne(Novel novel) => 
             await _novelRepository.Insert(novel);
 
         [HttpDelete("{id}")]
