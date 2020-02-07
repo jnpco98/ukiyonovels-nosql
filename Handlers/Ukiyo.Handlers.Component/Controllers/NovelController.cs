@@ -41,23 +41,24 @@ namespace Ukiyo.Handlers.Core.Component
         [HttpGet]
         public async Task<ActionResult<IResponse>> GetAll([FromQuery] NovelQuery query)
         {
-            if (query == null)
-            {
-                query = new NovelQuery();
-            }
+            if (query == null) query = new NovelQuery();
 
             var filterBuilder = Builders<Novel>.Filter;
             var filters = new List<FilterDefinition<Novel>>();
-
-            var sortBuilder = Builders<Novel>.Sort;
-            var sort = query.Order.ToLower() == SORT_ORDER.ASCENDING ?
-                sortBuilder.Ascending(n => n.Title) : sortBuilder.Descending(n => n.Title);
 
             filters.Add(BuildNovelQueryFilter(query.Artist, n => n.Artists));
             filters.Add(BuildNovelQueryFilter(query.Author, n => n.Authors));
             filters.Add(BuildNovelQueryFilter(query.Origin, n => n.Origins));
             filters.Add(BuildNovelQueryFilter(query.Genre, n => n.Genres));
             filters.Add(BuildNovelQueryFilter(query.Tag, n => n.Tags));
+
+            var sortBuilder = Builders<Novel>.Sort;
+            var sort = query.Order.ToLower() == SortOrder.DESCENDING.ToLower() ? sortBuilder.Descending(n => n.Title): sortBuilder.Ascending(n => n.Title);
+
+            if(query.Sort.ToLower() == NovelSort.LAST_MODIFIED.ToLower())
+            {
+                sort = query.Order.ToLower() == SortOrder.DESCENDING.ToLower() ? sortBuilder.Descending(n => n.LastModified) : sortBuilder.Ascending(n => n.LastModified);
+            }
 
             var accumulatedFilter = filters.Count > 0 ? filterBuilder.And(filters) : filterBuilder.Empty;
 

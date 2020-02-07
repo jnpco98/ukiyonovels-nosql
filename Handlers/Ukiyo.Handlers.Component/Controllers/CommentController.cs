@@ -41,7 +41,7 @@ namespace Ukiyo.Handlers.Core.Component
             var filters = new List<FilterDefinition<Comment>>();
 
             var sortBuilder = Builders<Comment>.Sort;
-            var sort = query.Order.ToLower() == SORT_ORDER.ASCENDING ?
+            var sort = query.Order.ToLower() == SortOrder.ASCENDING ?
                 sortBuilder.Ascending(r => r.LastModified) : sortBuilder.Descending(r => r.LastModified);
 
             if (!string.IsNullOrWhiteSpace(query.Chapter))

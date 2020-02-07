@@ -39,7 +39,7 @@ namespace Ukiyo.Handlers.Core.Component
             var filters = new List<FilterDefinition<Book>>();
 
             var sortBuilder = Builders<Book>.Sort;
-            var sort = query.Order.ToLower() == SORT_ORDER.ASCENDING ?
+            var sort = query.Order.ToLower() == SortOrder.ASCENDING ?
                 sortBuilder.Ascending(b => b.Title) : sortBuilder.Descending(b => b.Title);
 
             if (!string.IsNullOrWhiteSpace(query.Novel))

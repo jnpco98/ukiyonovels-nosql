@@ -14,8 +14,6 @@ namespace Ukiyo.Handlers.Core.Component
     {
         [Required]
         public string Novel { get; set; } = "";
-
-        public string Sort { get; set; } = "";
     }
 
     [ApiController]
@@ -42,9 +40,9 @@ namespace Ukiyo.Handlers.Core.Component
 
             var sortBuilder = Builders<Review>.Sort;
             var sort = string.IsNullOrWhiteSpace(query.Sort) || query.Sort.ToLower() == "ratings" ?
-                query.Order.ToLower() == SORT_ORDER.ASCENDING ?
+                query.Order.ToLower() == SortOrder.ASCENDING ?
                     sortBuilder.Ascending(r => r.Rating) : sortBuilder.Descending(r => r.Rating) :
-                query.Order.ToLower() == SORT_ORDER.ASCENDING ?
+                query.Order.ToLower() == SortOrder.ASCENDING ?
                     sortBuilder.Ascending(r => r.LastModified) : sortBuilder.Descending(r => r.LastModified);
 
             if (!string.IsNullOrWhiteSpace(query.Novel))
