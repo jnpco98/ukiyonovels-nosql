@@ -7,7 +7,7 @@ namespace Ukiyo.Models.Components
     public class Author: INovelFilter
     {
         [Required]
-        [MinLength(5, ErrorMessage = "Name length can't be less than 5 characters")]
+        [MinLength(3, ErrorMessage = "Name length can't be less than 3 characters")]
         [MaxLength(60, ErrorMessage = "Name length can't be more than 60 characters")]
         [BsonElement("name")]
         public string Name { get; set; }

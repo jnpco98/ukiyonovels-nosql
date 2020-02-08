@@ -112,7 +112,12 @@ namespace Ukiyo.Repositories
             try
             {
                 var query = _collection.Find(e => e.Id == id);
+
                 var result = await query.FirstOrDefaultAsync();
+
+                result.ModifyOnGet();
+                await Update(result);
+
                 response.Data = result;
 
                 if (result == null)
@@ -135,7 +140,7 @@ namespace Ukiyo.Repositories
 
             if(entity is IHandleized)
             {
-                (entity as IHandleized).Handle = Handleize((entity as IHandleized).HandleSource());
+                (entity as IHandleized).Handle = Handleize((entity as IHandleized).HandleSource);
             }
             
             entity.LastModified = DateTime.Now;
@@ -251,11 +256,12 @@ namespace Ukiyo.Repositories
             var filterBuilder = Builders<TEntity>.Filter;
             var filter = filterBuilder.Eq(e => e.Id, entity.Id);
 
-            entity.LastModified = DateTime.Now;
-
             try
             {
                 var toUpdate = await _collection.Find(filter).FirstOrDefaultAsync();
+                
+                entity.ModifyOnUpdate(toUpdate);
+
                 var result = await _collection.ReplaceOneAsync(filter, entity, new UpdateOptions { IsUpsert = false });
 
                 if (result.ModifiedCount > 0 && result.IsAcknowledged)

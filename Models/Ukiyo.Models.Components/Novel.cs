@@ -25,6 +25,9 @@ namespace Ukiyo.Models.Components
 
         [BsonElement("handle")]
         public string Handle { get; set; }
+        
+        [BsonElement("type")]
+        public string Type { get; set; }
 
         [Required]
         [MinLength(20, ErrorMessage = "Description length can't be less than 20 characters")]
@@ -59,12 +62,30 @@ namespace Ukiyo.Models.Components
         [BsonElement("cover_image")]
         public IEnumerable<string> CoverImage { get; set; }
 
+        [BsonElement("likes_count")]
+        public int Likes { get; set; } = 0; 
+
+        [BsonElement("views_count")]
+        public int Views { get; set; } = 0;
+
         public Novel(string creator)
             : base(creator) { }
 
-        public string HandleSource()
+        public string HandleSource
         {
-            return Title;
+            get { return Title; }
+        }
+
+        public override void ModifyOnGet()
+        {
+            base.ModifyOnGet();
+            this.Views = this.Views += 1;
+            this.Likes = this.Likes += 1;
+        }
+
+        public override void ModifyOnUpdate(Entity source)
+        {
+            base.ModifyOnUpdate(source);
         }
     }
 }

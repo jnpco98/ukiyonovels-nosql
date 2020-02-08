@@ -26,6 +26,7 @@ namespace Ukiyo.Handlers.Core.Component
         public List<string> Genre { get; set; } = new List<string>();
         [ModelBinder(BinderType = typeof(CommaSeparatedModelBinder))]
         public List<string> Tag { get; set; } = new List<string>();
+        public string Type { get; set; } = "";
     }
 
     [Route("api/[controller]")]
@@ -47,10 +48,8 @@ namespace Ukiyo.Handlers.Core.Component
             var filterBuilder = Builders<Novel>.Filter;
             var filters = new List<FilterDefinition<Novel>>();
 
-            if(!string.IsNullOrWhiteSpace(query.Handle))
-            {
-                filters.Add(filterBuilder.Eq(n => n.Handle, query.Handle));
-            }
+            if(!string.IsNullOrWhiteSpace(query.Handle)) filters.Add(filterBuilder.Eq(n => n.Handle, query.Handle));
+            if(!string.IsNullOrWhiteSpace(query.Type)) filters.Add(filterBuilder.Eq(n => n.Type, query.Type));
 
             filters.Add(BuildNovelQueryFilter(query.Artist, n => n.Artists));
             filters.Add(BuildNovelQueryFilter(query.Author, n => n.Authors));
