@@ -15,6 +15,7 @@ namespace Ukiyo.Handlers.Core.Component
 {
     public class NovelQuery : BaseQuery
     {
+        public string Handle { get; set; } = "";
         [ModelBinder(BinderType = typeof(CommaSeparatedModelBinder))]
         public List<string> Author { get; set; } = new List<string>();
         [ModelBinder(BinderType = typeof(CommaSeparatedModelBinder))]
@@ -45,6 +46,11 @@ namespace Ukiyo.Handlers.Core.Component
 
             var filterBuilder = Builders<Novel>.Filter;
             var filters = new List<FilterDefinition<Novel>>();
+
+            if(!string.IsNullOrWhiteSpace(query.Handle))
+            {
+                filters.Add(filterBuilder.Eq(n => n.Handle, query.Handle));
+            }
 
             filters.Add(BuildNovelQueryFilter(query.Artist, n => n.Artists));
             filters.Add(BuildNovelQueryFilter(query.Author, n => n.Authors));
@@ -86,9 +92,9 @@ namespace Ukiyo.Handlers.Core.Component
             var filterBuilder = Builders<Novel>.Filter;
             var filters = queryModel
                 .Where(qm => !string.IsNullOrWhiteSpace(qm))
-                .Select(qm => Builders<Novel>.Filter.ElemMatch(field, f => f.Name.ToLower() == qm.ToLower())).ToList();
+                .Select(qm => filterBuilder.ElemMatch(field, f => f.Name.ToLower() == qm.ToLower())).ToList();
 
-            return Builders<Novel>.Filter.Or(filters.Count > 0 ? filterBuilder.Or(filters) : filterBuilder.Empty);
+            return filterBuilder.Or(filters.Count > 0 ? filterBuilder.Or(filters) : filterBuilder.Empty);
         }
     }
 }
