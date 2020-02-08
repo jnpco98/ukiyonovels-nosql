@@ -71,21 +71,9 @@ namespace Ukiyo.Models.Components
         public Novel(string creator)
             : base(creator) { }
 
-        public string HandleSource
+        public string GetHandleSource()
         {
-            get { return Title; }
-        }
-
-        public override void ModifyOnGet()
-        {
-            base.ModifyOnGet();
-            this.Views = this.Views += 1;
-            this.Likes = this.Likes += 1;
-        }
-
-        public override void ModifyOnUpdate(Entity source)
-        {
-            base.ModifyOnUpdate(source);
+            return Title;
         }
     }
 }

@@ -8,7 +8,7 @@ namespace Ukiyo.Models.Components
     {
         public string Handle { get; set; }
         
-        public string HandleSource { get; }
+        public string GetHandleSource();
     }
 
     public abstract class Entity
@@ -31,14 +31,6 @@ namespace Ukiyo.Models.Components
             Id = ObjectId.GenerateNewId().ToString();
             Creator = creator;
             Archived = false;
-        }
-
-        public virtual void ModifyOnGet() {}
-
-        public virtual void ModifyOnUpdate(Entity source)
-        {
-            this.Id = source.Id;
-            this.LastModified = DateTime.Now;
         }
     }
 }

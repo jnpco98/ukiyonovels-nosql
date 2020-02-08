@@ -71,8 +71,13 @@ namespace Ukiyo.Handlers.Core.Component
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<IResponse>> GetOne(string id) =>
-            await _novelRepository.Get(id);
+        public async Task<ActionResult<IResponse>> GetOne(string id) {
+
+            var response = await _novelRepository.Get(id);
+            response.Data.Views += 1;
+            await UpdateOne(response.Data);
+            return response;
+        }
 
         [HttpPost]
         public async Task<ActionResult<IResponse>> InsertOne(Novel novel) => 
@@ -83,8 +88,12 @@ namespace Ukiyo.Handlers.Core.Component
             await _novelRepository.Archive(id);
 
         [HttpPut]
-        public async Task<ActionResult<IResponse>> UpdateOne(Novel novel) =>
-            await _novelRepository.Update(novel);
+        public async Task<ActionResult<IResponse>> UpdateOne(Novel novel) {
+            var response = await _novelRepository.Get(novel.Id);
+            var source = response.Data;
+            novel.Handle = source.Handle;
+            return await _novelRepository.Update(novel);
+        }
 
         private FilterDefinition<Novel> BuildNovelQueryFilter<TFilter>(IEnumerable<string> queryModel, Expression<Func<Novel, IEnumerable<TFilter>>> field) where TFilter : INovelFilter
         {

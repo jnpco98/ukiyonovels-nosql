@@ -115,9 +115,6 @@ namespace Ukiyo.Repositories
 
                 var result = await query.FirstOrDefaultAsync();
 
-                result.ModifyOnGet();
-                await Update(result);
-
                 response.Data = result;
 
                 if (result == null)
@@ -140,7 +137,7 @@ namespace Ukiyo.Repositories
 
             if(entity is IHandleized)
             {
-                (entity as IHandleized).Handle = Handleize((entity as IHandleized).HandleSource);
+                (entity as IHandleized).Handle = Handleize((entity as IHandleized).GetHandleSource());
             }
             
             entity.LastModified = DateTime.Now;
@@ -258,18 +255,19 @@ namespace Ukiyo.Repositories
 
             try
             {
-                var toUpdate = await _collection.Find(filter).FirstOrDefaultAsync();
+                var sourceEntity = await _collection.Find(filter).FirstOrDefaultAsync();
                 
-                entity.ModifyOnUpdate(toUpdate);
+                entity.Id = sourceEntity.Id;
+                entity.LastModified = DateTime.Now;
 
                 var result = await _collection.ReplaceOneAsync(filter, entity, new UpdateOptions { IsUpsert = false });
 
                 if (result.ModifiedCount > 0 && result.IsAcknowledged)
                 {
                     var updatedEntites = new List<TEntity>();
-                    updatedEntites.Add(toUpdate);
+                    updatedEntites.Add(sourceEntity);
 
-                    response.Message = $"Successfully updated resource [{typeof(TEntity).Name} ({toUpdate.Id}]).";
+                    response.Message = $"Successfully updated resource [{typeof(TEntity).Name} ({sourceEntity.Id}]).";
                     response.Data = new ModifyEntityResult<TEntity>(updatedEntites)
                     {
                         Modified = updatedEntites.Count
